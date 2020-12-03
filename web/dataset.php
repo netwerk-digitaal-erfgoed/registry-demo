@@ -40,7 +40,7 @@ if (isset($_GET["guid"]) && preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0
         <div class="container px-3 pt-3 pt-md-5 pb-md-4 mx-auto">
             <div class="text-center">
                 <div id="beta">
-                    <span class="note"><a href="/faq.php#prototype">Bèta</a></span>
+                    <span class="note"><a href="/faq.php#prototype">demonstrator</a></span>
                 </div>
                 <h1 class="display-4">Register</h1>
                 <p class="lead">Inzicht in erfgoed datasets</p>

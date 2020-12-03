@@ -34,17 +34,12 @@
                 <div id="beta">
                     <span class="note"><a href="/faq.php#prototype">Demonstrator</a></span>
                 </div>
-                <h1 class="display-4">Register</h1>
+                <h1 class="display-4">Datasetbeschrijving aanmelden</h1>
                 <p class="lead">Inzicht in erfgoed datasets</p>
                 <p><br/></p>
                 <p>
-                    <a class="btn btn-primary" style="width:300px" href="aanmelden.php">Datasetbeschrijving aanmelden</a><br/>
-<!--                    <br/>
-                    <a class="btn btn-outline-primary" href="binnenkort.php">Datasetbeschrijving registreren (binnenkort)</a><br/>
-                    <br/>
-                    <a class="btn btn-outline-primary" href="binnenkort.php">Datasetbeschrijving valideren (binnenkort)</a><br/> -->
-                    <br/>
-                    <a class="btn btn-primary" style="width:300px" href="list.php">Datasetbeschrijvingen doorzoeken</a>
+					<input type="url" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url"><br>
+                    <a class="btn btn-primary" href="form.php">Haal databeschrijving op (en valideer de datasetbeschrijving)</a><br/>
                 </p>
             </div>
         </div>

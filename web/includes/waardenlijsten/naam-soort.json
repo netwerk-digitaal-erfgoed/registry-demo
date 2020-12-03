@@ -1,0 +1,27 @@
+
+{
+    "http://netwerkdigitaalerfgoed.nl/def/soort#sparql": {
+        "labels": {
+            "nl-NL": "SPARQL-endpoint",
+            "en-US": "SPARQL-endpoint"
+        }
+    },
+    "http://netwerkdigitaalerfgoed.nl/def/soort#oai-pmh": {
+        "labels": {
+            "nl-NL": "OAI-PMH-endpoint",
+            "en-US": "OAI-PMH-endpoint"
+        }
+    },
+    "http://netwerkdigitaalerfgoed.nl/def/soort#ldf": {
+        "labels": {
+            "nl-NL": "LDF-endpoint",
+            "en-US": "LDF-endpoint"
+        }
+    },
+    "http://netwerkdigitaalerfgoed.nl/def/soort#datadump": {
+        "labels": {
+            "nl-NL": "Datadump",
+            "en-US": "Datadump"
+        }
+    }
+}

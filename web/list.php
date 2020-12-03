@@ -32,7 +32,7 @@
         <div class="container px-3 pt-3 pt-md-5 pb-md-4 mx-auto">
             <div class="text-center">
                 <div id="beta">
-                    <span class="note"><a href="/faq.php#prototype">Bèta</a></span>
+                    <span class="note"><a href="/faq.php#prototype">Demonstrator</a></span>
                 </div>
                 <h1 class="display-4">Overzicht datasetbeschrijvingen</h1>
                 <p class="lead">Tijdelijk test-register</p>
@@ -42,16 +42,26 @@
 		<div class="container">
 			<div class="row">
 				<ul>
-				<?php
+<?php
 				
 	$datacatalogfile="../datasetdescriptions/index.json";
 	$datacatalog=json_decode(file_get_contents($datacatalogfile),true);
-
+	$dateModified=date(DATE_RFC3339,filemtime($datacatalogfile));
+	
+	$datasets=array();
 	foreach ($datacatalog as $d) {
-		echo '<li><a href="dataset.php?guid='.$d["guid"].'">'.$d["identifier"]." &raquo; ".$d["name"].'</a></li>';
+		$datasetdescriptionfile="../datasetdescriptions/".$d["guid"].".json";
+		if (file_exists($datasetdescriptionfile)) {
+			echo '					<li><a href="dataset.php?guid='.$d["guid"].'">'.$d["identifier"]." &raquo; ".$d["name"].'</a></li>';
+			$dataset=file_get_contents($datasetdescriptionfile);
+			array_push($datasets,str_replace("\n","",str_replace("\t","",$dataset)));
+		} else {
+			error_log("WARN: $datasetdescriptionfile doesn't exist");
+		}
 	}
 	
-				?>
+?>
+
 				</ul>
 			</div>
 		</div>
@@ -67,5 +77,27 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/bootstrap-select.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 -->
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org/",
+		"@type": "DataCatalog",
+		"@id": "https://register-demo.netwerkdigitaalerfgoed.nl/list.php",
+		"name": "Tijdelijk gepubliceerde datasets via de demonstrator van het Register.",
+		"datePublished": "2020-11-20T08:55:19+00:00",
+		"dateModifier": "<?= $dateModified ?>",
+		"publisher": {
+			"@type": "Organization",
+			"name": "Netwerk Digitaal Erfgoed",
+			"url": "https://www.netwerkdigitaalerfgoed.nl/"
+		},
+		"dataset": [
+			<?php
+		print join(",\n\t\t\t",$datasets);
+	?>
+
+		]
+	}
+	</script>
     </body>
 </html>

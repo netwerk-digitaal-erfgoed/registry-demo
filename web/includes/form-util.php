@@ -2,12 +2,14 @@
 
 $selects=array();
 
-function echo_datasetfields() {
+function echo_datasetfields($screen) {
 	global $datasetfields;
 	
 	echo '<table class="table">';
 	foreach($datasetfields as $datasetfield) {
-		echo field($datasetfield);
+		if (isset($datasetfield["screen"]) && $datasetfield["screen"]==$screen) {
+			echo field($datasetfield);
+		}
 	}
 	echo '</table>';
 }
@@ -214,7 +216,7 @@ function field_xml_string($field) {
 	$str.='</th><td id="val_'.$id.'">';
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='<span class="multi">'; } 
 	
-	$str.='<input ';
+	$str.='<input placeholder="'.$field["title"].'"';
 	if ($field["range"]=="xsd:anyURI") {
 		$str.='type="url" ';
 	}
@@ -287,7 +289,7 @@ function field_waardelijst($field) {
 	$str.='</th><td id="val_'.$id.'">'; 
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='<span class="multi">'; }
 
-	$str.='<select data-placeholder="Maak een keuze uit de lijst ('.$field["range"].')" id="'.$id.'" class="form-control"><option></option>';
+	$str.='<select data-placeholder="'.$field["title"].' - maak een keuze uit de lijst" id="'.$id.'" class="form-control"><option></option>'; # ('.$field["range"].')
 	$str.=waardenlijst($field["select"]);
 	$str.='</select>';
 	
