@@ -1,2 +1,2 @@
 FROM php:8.0.0-fpm-alpine
-COPY web /var/www/html
+COPY web /web
