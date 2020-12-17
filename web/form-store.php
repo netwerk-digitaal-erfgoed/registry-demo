@@ -16,11 +16,11 @@ if($datasetdescription!==NULL) {
 	file_put_contents($datacatalogfile,json_encode($datacatalog));
 
 	error_log("json, data stored as $guid.json");
-	header("Location: /");
+	header("Location: /register/");
 	
 } else {
 	error_log("invalid json, data not stored");
-	header("Location: /form.php");
+	header("Location: /form.pregister/hp");
 }
 exit;
 

@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /dataset.php
+Disallow: /register/dataset.php
