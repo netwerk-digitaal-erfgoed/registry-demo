@@ -10,7 +10,7 @@
         <nav class="navbar navbar-expand-sm navbar-light border-bottom shadow-sm">
             <div class="container">
                 <a href="." class="router-link-active router-link-exact-active navbar-brand" aria-current="page">
-                    <img src="/static/logo-nl.png" height="30" />
+                    <img src="static/logo-nl.png" height="30" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
