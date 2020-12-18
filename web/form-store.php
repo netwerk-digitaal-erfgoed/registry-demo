@@ -7,20 +7,20 @@ $datasetdescriptionstring=$_POST["datasetdescription"];
 $datasetdescription=json_decode($datasetdescriptionstring,true);
 if($datasetdescription!==NULL) {	
 	$guid=GUID();
-	$file="../datasetdescriptions/".$guid.".json";
+	$file="/datasetdescriptions/".$guid.".json";
 	file_put_contents($file,$datasetdescriptionstring);
 
-	$datacatalogfile="../datasetdescriptions/index.json";
+	$datacatalogfile="/datasetdescriptions/index.json";
 	$datacatalog=json_decode(file_get_contents($datacatalogfile),true);
 	array_push($datacatalog,array("guid"=>$guid,"identifier"=>$datasetdescription["identifier"],"name"=>$datasetdescription["name"]));
 	file_put_contents($datacatalogfile,json_encode($datacatalog));
 
 	error_log("json, data stored as $guid.json");
-	header("Location: /register/");
+	header("Location: .");
 	
 } else {
 	error_log("invalid json, data not stored");
-	header("Location: /form.pregister/hp");
+	header("Location: form.php");
 }
 exit;
 

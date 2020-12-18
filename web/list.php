@@ -44,7 +44,7 @@
 				<ul>
 <?php
 				
-	$datacatalogdir="../datasetdescriptions/";
+	$datacatalogdir="/datasetdescriptions/";
 	$datacatalogfile=$datacatalogdir."index.json";
 	$datasets=array();
 	
