@@ -44,22 +44,30 @@
 				<ul>
 <?php
 				
-	$datacatalogfile="../datasetdescriptions/index.json";
-	$datacatalog=json_decode(file_get_contents($datacatalogfile),true);
-	$dateModified=date(DATE_RFC3339,filemtime($datacatalogfile));
-	
+	$datacatalogdir="../datasetdescriptions/";
+	$datacatalogfile=$datacatalogdir."index.json";
 	$datasets=array();
-	foreach ($datacatalog as $d) {
-		$datasetdescriptionfile="../datasetdescriptions/".$d["guid"].".json";
-		if (file_exists($datasetdescriptionfile)) {
-			echo '					<li><a href="dataset.php?guid='.$d["guid"].'">'.$d["identifier"]." &raquo; ".$d["name"].'</a></li>';
-			$dataset=file_get_contents($datasetdescriptionfile);
-			array_push($datasets,str_replace("\n","",str_replace("\t","",$dataset)));
-		} else {
-			error_log("WARN: $datasetdescriptionfile doesn't exist");
-		}
-	}
 	
+	if (file_exists($datacatalogfile)) {
+		$datacatalog=json_decode(file_get_contents($datacatalogfile),true);
+		$dateModified=date(DATE_RFC3339,filemtime($datacatalogfile));
+		
+		foreach ($datacatalog as $d) {
+			$datasetdescriptionfile="../datasetdescriptions/".$d["guid"].".json";
+			if (file_exists($datasetdescriptionfile)) {
+				echo '					<li><a href="dataset.php?guid='.$d["guid"].'">'.$d["identifier"]." &raquo; ".$d["name"].'</a></li>';
+				$dataset=file_get_contents($datasetdescriptionfile);
+				array_push($datasets,str_replace("\n","",str_replace("\t","",$dataset)));
+			} else {
+				error_log("WARN: $datasetdescriptionfile doesn't exist");
+			}
+		}
+	} else {
+		if (!file_exists($datacatalogdir)) {
+			mkdir($datacatalogdir);
+		}
+		file_put_contents($datacatalogfile,json_encode($datasets));
+	}
 ?>
 
 				</ul>
@@ -71,18 +79,13 @@
                 <p>Een initiatief van het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a></p>
             </div>
         </footer>
-<!--
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/bootstrap-select.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
--->
 
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org/",
 		"@type": "DataCatalog",
-		"@id": "https://demo.netwerkdigitaalerfgoed.nl/register/list.php",
+		"@id": "https://demo.netwerkdigitaalerfgoed.nl/register/",
+		"url": "https://demo.netwerkdigitaalerfgoed.nl/register/list.php",
 		"name": "Tijdelijk gepubliceerde datasets via de demonstrator van het Register.",
 		"datePublished": "2020-11-20T08:55:19+00:00",
 		"dateModifier": "<?= $dateModified ?>",
@@ -95,7 +98,6 @@
 			<?php
 		print join(",\n\t\t\t",$datasets);
 	?>
-
 		]
 	}
 	</script>
