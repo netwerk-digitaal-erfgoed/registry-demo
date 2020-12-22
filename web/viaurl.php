@@ -38,7 +38,7 @@
                 <p class="lead">Inzicht in erfgoed datasets</p>
                 <p><br/></p>
                 <p>
-					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://www.openarch.nl/datasets/ade">><br>
+					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://www.openarch.nl/datasets/ade"><br>
 					<button onclick="call_api()">URL datasetbeschrijving toevoegen</button>
 					<br/>
 					<pre id="api_result"></pre>
@@ -54,7 +54,7 @@
 
 <script>
 
-function api_result() {
+function call_api() {
 	fetch("/register-api/datasets", {
 	  "method": "POST",
 	  "headers": {
