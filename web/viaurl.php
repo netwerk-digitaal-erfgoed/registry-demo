@@ -38,8 +38,11 @@
                 <p class="lead">Inzicht in erfgoed datasets</p>
                 <p><br/></p>
                 <p>
-					<input type="url" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url"><br>
-                    <a class="btn btn-primary" href="form.php">Haal databeschrijving op (en valideer de datasetbeschrijving)</a><br/>
+					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://www.openarch.nl/datasets/ade">><br>
+					<button onclick="call_api()">URL datasetbeschrijving toevoegen</button>
+					<br/>
+					<pre id="api_result"></pre>
+
                 </p>
             </div>
         </div>
@@ -48,11 +51,28 @@
                 <p>Een initiatief van het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a></p>
             </div>
         </footer>
-<!--
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/bootstrap-select.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
--->
+
+<script>
+
+function api_result() {
+	fetch("/register-api/datasets", {
+	  "method": "POST",
+	  "headers": {
+		"Link": "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\",<http://www.w3.org/ns/ldp#Resource>; rel=\"type\"",
+		"Content-Type": "application/ld+json"
+	  },
+	  "body": {
+		"@id": document.getElementById("datasetdescriptionurl").value
+	  }
+	})
+	.then(response => {
+	  document.getElementById("api_result").innerHTML=response;
+	})
+	.catch(err => {
+	  console.log(err);
+	});
+}
+</script>
+
     </body>
 </html>
