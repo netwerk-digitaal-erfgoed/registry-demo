@@ -39,7 +39,7 @@
                 <p><br/></p>
                 <p>
 					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://www.openarch.nl/datasets/ade"><br>
-					<button onclick="call_api()">URL datasetbeschrijving toevoegen</button>
+					<button class="btn btn-success" onclick="call_api()">URL datasetbeschrijving toevoegen</button>
 					<br/>
 					<pre id="api_result"></pre>
 
@@ -61,12 +61,14 @@ function call_api() {
 		"Link": "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\",<http://www.w3.org/ns/ldp#Resource>; rel=\"type\"",
 		"Content-Type": "application/ld+json"
 	  },
-	  "body": {
-		"@id": document.getElementById("datasetdescriptionurl").value
-	  }
+	  "body": JSON.stringify( {"@id": document.getElementById("datasetdescriptionurl").value })
+	})
+	.then(response => { 
+		document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
+		return response.text(); 
 	})
 	.then(response => {
-	  document.getElementById("api_result").innerHTML=response;
+		document.getElementById("api_result").innerHTML+=response
 	})
 	.catch(err => {
 	  console.log(err);
