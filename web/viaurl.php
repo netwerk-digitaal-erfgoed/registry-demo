@@ -54,6 +54,8 @@
 
 <script>
 
+// curl -X POST -H "Content-Type: application/ld+json" -H  -d '{"@id": "https://www.openarch.nl/datasets/ade"}' https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets
+
 function call_api() {
 	fetch("/register-api/datasets", {
 	  "method": "POST",
