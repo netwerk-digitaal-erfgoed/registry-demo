@@ -38,7 +38,7 @@
                 <p class="lead">Inzicht in erfgoed datasets</p>
                 <p><br/></p>
                 <p>
-					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://www.openarch.nl/datasets/ade"><br>
+					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"><br>
 					<button class="btn btn-success" onclick="call_api()">URL datasetbeschrijving toevoegen</button>
 					<br/>
 					<pre id="api_result"></pre>
@@ -53,6 +53,8 @@
         </footer>
 
 <script>
+
+// alternatieve dataset url: https://www.openarch.nl/datasets/ade (groot)
 
 // curl -X POST -H "Content-Type: application/ld+json" -H  -d '{"@id": "https://www.openarch.nl/datasets/ade"}' https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets
 
