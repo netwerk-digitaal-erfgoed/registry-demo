@@ -35,7 +35,7 @@
                     <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
                 <h1 class="display-4">Datasetbeschrijving aanmelden</h1>
-                <p class="lead">Inzicht in erfgoed datasets</p>
+                <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
                 <p>
 					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"><br>
@@ -46,39 +46,40 @@
                 </p>
             </div>
         </div>
+		
         <footer class="text-muted border-top">
             <div class="container">
                 <p>Een initiatief van het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a></p>
             </div>
         </footer>
 
-<script>
+		<script>
 
-// alternatieve dataset url: https://www.openarch.nl/datasets/ade (groot)
+		// alternatieve dataset url: https://www.openarch.nl/datasets/ade (groot)
 
-// curl -X POST -H "Content-Type: application/ld+json" -H  -d '{"@id": "https://www.openarch.nl/datasets/ade"}' https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets
+		// curl -X POST -H "Content-Type: application/ld+json" -H  -d '{"@id": "https://www.openarch.nl/datasets/ade"}' https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets
 
-function call_api() {
-	fetch("/register-api/datasets", {
-	  "method": "POST",
-	  "headers": {
-		"Link": "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\",<http://www.w3.org/ns/ldp#Resource>; rel=\"type\"",
-		"Content-Type": "application/ld+json"
-	  },
-	  "body": JSON.stringify( {"@id": document.getElementById("datasetdescriptionurl").value })
-	})
-	.then(response => { 
-		document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
-		return response.text(); 
-	})
-	.then(response => {
-		document.getElementById("api_result").innerHTML+=response
-	})
-	.catch(err => {
-	  console.log(err);
-	});
-}
-</script>
+		function call_api() {
+			fetch("/register-api/datasets", {
+			  "method": "POST",
+			  "headers": {
+				"Link": "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\",<http://www.w3.org/ns/ldp#Resource>; rel=\"type\"",
+				"Content-Type": "application/ld+json"
+			  },
+			  "body": JSON.stringify( {"@id": document.getElementById("datasetdescriptionurl").value })
+			})
+			.then(response => { 
+				document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
+				return response.text(); 
+			})
+			.then(response => {
+				document.getElementById("api_result").innerHTML+=response
+			})
+			.catch(err => {
+			  console.log(err);
+			});
+		}
+		</script>
 
     </body>
 </html>

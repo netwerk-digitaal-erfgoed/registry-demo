@@ -1,18 +1,10 @@
-<?php
-
-if (isset($_GET["guid"]) && preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/', $_GET["guid"])) {
-
-	$datasetdescriptionfile="../datasetdescriptions/".$_GET["guid"].".json";
-	$datasetdescriptionstring=file_get_contents($datasetdescriptionfile);
-	$datasetdescription=json_decode($datasetdescriptionstring,true);
-
-?><html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Register</title>
-		<link href="static/style.css" rel="stylesheet" type="text/css">		
+        <link href="static/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-light border-bottom shadow-sm">
@@ -40,40 +32,22 @@ if (isset($_GET["guid"]) && preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0
         <div class="container px-3 pt-3 pt-md-5 pb-md-4 mx-auto">
             <div class="text-center">
                 <div id="beta">
-                    <span class="note"><a href="faq.php#prototype">demonstrator</a></span>
+                    <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
-                <h1 class="display-4">Register</h1>
+                <h1 class="display-4">Datasetbeschrijving doorzoeken</h1>
                 <p class="lead">Inzicht in erfgoeddatasets</p>
-			</div>
+                <p><br/></p>
+                <p>
+                    <a class="btn btn-primary" style="width:300px" href="list.php">... lokaal opgeslagen datasetbeschrijvingen</a><br/>
+                    <br/>
+                    <a class="btn btn-primary" style="width:300px" href="binnenkort.php">... opgeslagen in triplestore</a><br/>
+                </p>
+            </div>
         </div>
-
-		<div class="container">
-			<div class="row">
-				<h2 class="mt-5">Datasetbeschrijving <?= $datasetdescription["name"] ?></h2>
-				<pre><?= $datasetdescriptionstring ?></pre>
-			</div>
-			<div class="row">
-				<br>
-				<a class="btn btn-outline-primary" href="list.php">Terug naar het overzicht van datasetbeschrijvingen</a>
-			</div>
-		</div>
-		
         <footer class="text-muted border-top">
             <div class="container">
                 <p>Een initiatief van het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a></p>
             </div>
         </footer>
-
-		<script type="application/ld+json">
-		<?= $datasetdescriptionstring ?>
-		</script>
-
     </body>
 </html>
-<?php
-
-} else {
-	error_log("invalid or missing guid");
-	header("Location: /register/");
-	exit;
-}

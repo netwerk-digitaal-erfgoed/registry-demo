@@ -23,5 +23,5 @@ if (isset($_GET["guid"]) && preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0
 } else {
 	error_log("ERROR: invalid or missing guid");
 }
-header("Location: /register/list.php");
+header("Location: list.php");
 exit;

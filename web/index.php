@@ -35,7 +35,7 @@
                     <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
                 <h1 class="display-4">Register</h1>
-                <p class="lead">Inzicht in erfgoed datasets</p>
+                <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
                 <p>
                     <a class="btn btn-primary" style="width:300px" href="aanmelden.php">Datasetbeschrijving aanmelden</a><br/>
@@ -44,7 +44,7 @@
                     <br/>
                     <a class="btn btn-outline-primary" href="binnenkort.php">Datasetbeschrijving valideren (binnenkort)</a><br/> -->
                     <br/>
-                    <a class="btn btn-primary" style="width:300px" href="list.php">Datasetbeschrijvingen doorzoeken</a>
+                    <a class="btn btn-primary" style="width:300px" href="zoeken.php">Datasetbeschrijvingen doorzoeken</a>
                 </p>
             </div>
         </div>
@@ -53,11 +53,5 @@
                 <p>Een initiatief van het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a></p>
             </div>
         </footer>
-<!--
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/bootstrap-select.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
--->
     </body>
 </html>
