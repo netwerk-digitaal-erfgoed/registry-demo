@@ -38,7 +38,7 @@
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
                 <p>
-                    <a class="btn btn-primary" style="width:300px" href="list.php">... lokaal opgeslagen datasetbeschrijvingen</a><br/>
+                    <a class="btn btn-primary" style="width:300px" href="list.php">... lokaal opgeslagen in bestanden</a><br/>
                     <br/>
                     <a class="btn btn-primary" style="width:300px" href="binnenkort.php">... opgeslagen in triplestore</a><br/>
                 </p>
