@@ -66,10 +66,10 @@ $datasetfields[]=array(
 	"range"=>"donl:language",
 	"title"=>"De in de beschrijving gebruikte taal",
 	"script_schema"=>'if ($("#id_dataset_metadataLanguage").val() != "") { 	
-	if ($("#id_dataset_metadataLanguage).val()=="http://publications.europa.eu/resource/authority/language/NLD") { schema["inLanguage"].push("nl-NL"); }
-	if ($("#id_dataset_metadataLanguage).val()=="http://publications.europa.eu/resource/authority/language/DEU") { schema["inLanguage"].push("de-DE"); }
-	if ($("#id_dataset_metadataLanguage).val()=="http://publications.europa.eu/resource/authority/language/ENG") { schema["inLanguage"].push("en-US"); }
-	if ($("#id_dataset_metadataLanguage).val()=="http://publications.europa.eu/resource/authority/language/FRY") { schema["inLanguage"].push("nl-FY"); }
+	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/NLD") { schema["inLanguage"]="nl-NL"; }
+	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/DEU") { schema["inLanguage"]="de-DE"; }
+	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/ENG") { schema["inLanguage"]="en-US"; }
+	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/FRY") { schema["inLanguage"]="nl-FY"; }
 	}',
 	"screen"=>1
 );
@@ -108,12 +108,12 @@ $datasetfields[]=array(
 $datasetfields[]=array(
 	"id"=>"dataset_mainEntityOfPage",
 	"label"=>"Meer informatie",
-	"example"=>"http://demo.netwerkdigitaalerfgoed.nl/",
+	"example"=>"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html",
 	"property_uri"=>"schema:mainEntityOfPage",
 	"multiple"=>1,
 	"range"=>"xsd:anyURI",
 	"title"=>"Webpagina met meer informatie over de dataset",
-	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["keywords"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
+	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_0").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["mainEntityOfPage"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
 	"screen"=>2
 );
 
@@ -254,10 +254,9 @@ $datasetfields[]=array(
 	"select"=>"overheid_taxonomiebeleidsagenda",
 	"range"=>"overheid:taxonomiebeleidsagenda",
 	"title"=>"Genre waarbinnen de dataset valt",
-	"script_schema"=>'if ($("#id_dataset_genre_0").val()) { var genre_idx=0; schema["genre"]=[]; while ($("#id_dataset_genre_"+genre_idx).val()) { schema["genre"].push($("#id_dataset_genre_"+genre_idx).val()); keyword_idx++; }}',
+	"script_schema"=>'if ($("#id_dataset_genre_0").val()) { var genre_idx=0; schema["genre"]=[]; while ($("#id_dataset_genre_"+genre_idx).val()) { schema["genre"].push($("#id_dataset_genre_"+genre_idx).val()); genre_idx++; }}',
 	"screen"=>2
 );
-
 
 $datasetfields[]=array(
 	"id"=>"dataset_citation",
