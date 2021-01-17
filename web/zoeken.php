@@ -40,7 +40,7 @@
                 <p>
                     <a class="btn btn-primary" style="width:300px" href="list.php">... lokaal opgeslagen in bestanden</a><br/>
                     <br/>
-                    <a class="btn btn-primary" style="width:300px" href="binnenkort.php">... opgeslagen in triplestore</a><br/>
+                    <a class="btn btn-primary" style="width:300px" href="sparql.php">... opgeslagen in triplestore</a><br/>
                 </p>
             </div>
         </div>

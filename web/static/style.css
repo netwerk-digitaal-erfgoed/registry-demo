@@ -108,7 +108,8 @@ input:-moz-ui-invalid {
 	box-shadow: none
 }
 
-pre {
+pre,xmp {
+	text-align:left;
     font-family: monospace;
     font-size: 0.8em;
     background-color: #eee;

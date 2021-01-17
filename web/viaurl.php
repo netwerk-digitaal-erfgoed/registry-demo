@@ -40,9 +40,11 @@
                 <p>
 					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"><br>
 					<button class="btn btn-success" onclick="call_api()">URL datasetbeschrijving toevoegen</button>
-					<br/>
-					<pre id="api_result"></pre>
-
+				</p>
+				<br/>
+				<xmp id="api_result"></xmp>
+				<br/>
+				<p>Deze pagina is een eenvoudige GUI op de <a href="apidoc.php">Register API</p>.</p>
                 </p>
             </div>
         </div>
@@ -60,7 +62,7 @@
 		// curl -X POST -H "Content-Type: application/ld+json" -H  -d '{"@id": "https://www.openarch.nl/datasets/ade"}' https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets
 
 		function call_api() {
-			fetch("/register-api/datasets", {
+			fetch("https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets", {
 			  "method": "POST",
 			  "headers": {
 				"Link": "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\",<http://www.w3.org/ns/ldp#Resource>; rel=\"type\"",
