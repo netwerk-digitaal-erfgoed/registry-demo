@@ -41,8 +41,14 @@
 				<h2>SPARQL</h2>
 
 				<ul>
-				<li>
-				<b>Register - Aantal datasets per erfgoedinstelling (creator)</b>
+				<li><b>Lijst met alle datasets</b><xmp>
+PREFIX schema: <http://schema.org/>
+
+SELECT * WHERE {
+  ?dataset a schema:Dataset .
+  ?dataset schema:name ?name 
+}</xmp>				
+				<li><b> Aantal datasets per erfgoedinstelling (creator)</b>
 				<xmp>PREFIX schema: <http://schema.org/> 
 SELECT DISTINCT ?creatorname (count(distinct ?s) as ?count) WHERE { 
 	?s schema:creator ?o . 
@@ -68,8 +74,8 @@ foreach ($result["results"]["bindings"] as $r) {
 }
 ?>
 </p>
-<li><b>Register - Aantal datasets per licentie-vorm (literal/URI)</b>
-<xmp>PREFIX schema: <http://schema.org/>
+				<li><b>Aantal datasets per licentie-vorm (literal/URI)</b><xmp>
+PREFIX schema: <http://schema.org/>
 SELECT ?url (count(distinct ?dataset) as ?count) WHERE {
     {
         SELECT (IRI(?name) AS ?url) ?dataset WHERE {
@@ -88,16 +94,15 @@ SELECT ?url (count(distinct ?dataset) as ?count) WHERE {
 } GROUP BY ?url</xmp>
 </li>
 <div id="piechart"></div>
-<li><b>Register - Datasets met een Turtle distributie</b>
-<xmp>PREFIX schema: <http://schema.org/>
+<li><b>Datasets met een Turtle distributie</b><xmp>
+PREFIX schema: <http://schema.org/>
 
 SELECT * WHERE {
   ?dataset schema:name ?name .
   ?dataset schema:distribution ?distribution .
   ?distribution schema:encodingFormat "application/n-triples"
 } LIMIT 10</xmp></li>
-<li><b>Register - Datasets met genealogie als keyword</b>
-<xmp>
+<li><b>Datasets met genealogie als keyword</b><xmp>
 PREFIX schema: <http://schema.org/> SELECT * WHERE { 
 	?dataset schema:name ?name . 
 	?dataset schema:keywords "Genealogie" 
@@ -112,8 +117,6 @@ PREFIX schema: <http://schema.org/> SELECT * WHERE {
                 <p>Een initiatief van het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a></p>
             </div>
         </footer>
-
-
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
