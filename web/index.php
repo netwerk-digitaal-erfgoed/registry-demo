@@ -35,7 +35,7 @@
                     <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
                 <h1 class="display-4">Register</h1>
-                <p class="lead">Inzicht in erfgoeddatasets</p>
+                <p class="lead">Door erfgoedinstellingen gepubliceerde datasetbeschrijvingen worden na<br>aanmelding verzameld met als doel een beter inzicht te krijgen in erfgoeddatasets.</p>
                 <p><br/></p>
                 <p>
                     <a class="btn btn-primary" style="width:300px" href="aanmelden.php">Datasetbeschrijving aanmelden</a><br/>
@@ -45,6 +45,9 @@
                     <a class="btn btn-outline-primary" href="binnenkort.php">Datasetbeschrijving valideren (binnenkort)</a><br/> -->
                     <br/>
                     <a class="btn btn-primary" style="width:300px" href="zoeken.php">Datasetbeschrijvingen doorzoeken</a>
+                    <br/>
+					<br/>
+                    <a class="btn btn-primary" style="width:300px" href="faq.php">Veelgestelde vragen over het Register</a>
                 </p>
             </div>
         </div>
