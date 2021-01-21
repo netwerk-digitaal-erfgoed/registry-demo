@@ -34,7 +34,7 @@
                 <div id="beta">
                     <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
-                <h1 class="display-4">Datasetbeschrijving aanmelden</h1>
+                <h1 class="display-4">Datasetbeschrijving valideren</h1>
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
                 <p>
