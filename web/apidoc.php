@@ -46,6 +46,13 @@
   -H 'content-type: application/ld+json' \
   --data-binary '{"@id":"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"}'
 </xmp>
+				<p><br/></p>
+				<h4 class="text-left">Voorbeeld validatie datasetbeschrijving via API met Curl</h4>
+				<xmp>curl -i -X PUT 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets/validate' \
+  -H 'link: <http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"' \
+  -H 'content-type: application/ld+json' \
+  --data-binary '{"@id":"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"}'
+</xmp>
             </div>
         </div>
 		
