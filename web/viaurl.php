@@ -56,11 +56,6 @@
         </footer>
 
 		<script>
-
-		// alternatieve dataset url: https://www.openarch.nl/datasets/ade (groot)
-
-		// curl -X POST -H "Content-Type: application/ld+json" -H  -d '{"@id": "https://www.openarch.nl/datasets/ade"}' https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets
-
 		function call_api() {
 			document.getElementById("api_result").innerHTML="Calling API ..."; 
 			fetch("https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets", {
