@@ -36,7 +36,7 @@
 			<div class="content">
 			
 				<h2>Triplestore</h2>
-				<p>De opgehaalde datasetbeschrijvingen worden opgeslagen in de <a target="_blank" href="https://graphdb.ddeboer.nl">triplestore van het Register</a> (in&nbsp;repository&nbsp;"registry"), deze is openbaar en query-baar via SPARQL.</p>
+				<p>De opgehaalde datasetbeschrijvingen worden opgeslagen in de <a target="_blank" href="https://triplestore.netwerkdigitaalerfgoed.nl">triplestore van het Register</a> (in&nbsp;repository&nbsp;"registry"), deze is openbaar en query-baar via SPARQL.</p>
 				
 				<h2>SPARQL</h2>
 
@@ -59,7 +59,7 @@ SELECT DISTINCT ?creatorname (count(distinct ?s) as ?count) WHERE {
 <p class="text-center">
 <?php
 
-$ch = curl_init("https://graphdb.ddeboer.nl/repositories/registry");
+$ch = curl_init("https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry");
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0ASELECT+DISTINCT+%3Fcreatorname+(count(distinct+%3Fs)+as+%3Fcount)+WHERE+%7B%0A++%3Fs+schema%3Acreator+%3Fo+.%0A++%3Fo+schema%3Aname+%3Fcreatorname%0A%7D+GROUP+BY+%3Fcreatorname+ORDER+BY+DESC(%3Fcount)+LIMIT+10&infer=true&sameAs=true&limit=1000&offset=0');
 curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/x-www-form-urlencoded; charset=UTF-8','Accept: application/x-sparqlstar-results+json, application/sparql-results+json;q=0.9, */*;q=0.8'));
@@ -130,7 +130,7 @@ PREFIX schema: <http://schema.org/> SELECT * WHERE {
 		  
 <?php
 
-$ch = curl_init("https://graphdb.ddeboer.nl/repositories/registry");
+$ch = curl_init("https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry");
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0ASELECT+%3Furl+(count(distinct+%3Fdataset)+as+%3Fcount)+WHERE+%7B%0A++++%7B%0A++++++++SELECT+(IRI(%3Fname)+AS+%3Furl)+%3Fdataset+WHERE+%7B%0A++++++++++++%3Fdataset+a+schema%3ADataset+.%0A%09%09%09%3Fdataset+schema%3Alicense+%3Fname%0A%09%09%09FILTER(isLiteral(%3Fname))%0A%09%09%7D%0A++++%7D+UNION+%7B%0A++++++++SELECT+%3Furl+%3Fdataset+WHERE+%7B%0A++++++++++++%3Fdataset+a+schema%3ADataset+.%0A++%09%09%09%3Fdataset+schema%3Alicense+%3Flicense+.%0A++%09%09%09%3Flicense+schema%3Aurl+%3Furl%0A++++++++++++FILTER(isURI(%3Flicense))%0A%09%09%7D+%0A++++%7D%0A%7D+GROUP+BY+%3Furl&infer=true&sameAs=true&limit=1000&offset=0');
 curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/x-www-form-urlencoded; charset=UTF-8','Accept: application/x-sparqlstar-results+json, application/sparql-results+json;q=0.9, */*;q=0.8'));
