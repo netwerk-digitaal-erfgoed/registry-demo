@@ -34,13 +34,15 @@
                 <div id="beta">
                     <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
-                <h1 class="display-4">Datasetbeschrijving doorzoeken</h1>
+                <h1 class="display-4">Datasetbeschrijvingen doorzoeken</h1>
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
                 <p>
-                    <a class="btn btn-primary" style="width:300px" href="list.php">... lokaal opgeslagen in bestanden</a><br/>
+                    <a class="btn btn-primary" style="width:300px" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/register/index2.html">... als Data Stories</a><br/>                   
                     <br/>
-                    <a class="btn btn-primary" style="width:300px" href="sparql.php">... opgeslagen in triplestore</a><br/>
+                    <a class="btn btn-primary" style="width:300px" href="https://triplestore.netwerkdigitaalerfgoed.nl">... opgeslagen in triplestore</a><br/>
+					<br/>
+					 <a class="btn btn-primary" style="width:300px" href="list.php">... lokaal opgeslagen in bestanden</a><br/>
                 </p>
             </div>
         </div>
