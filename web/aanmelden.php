@@ -37,9 +37,11 @@
                 <h1 class="display-4">Datasetbeschrijving aanmelden</h1>
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
+				<p>Als de online publicatie van datasetbeschrijvingen reeds voor elkaar is dan kan de URL van de pagina met dataset (of datasets) worden aangemeld. Als de online publicatie van datasetbeschrijving nog niet mogelijk is, dan kan er handmatig een datasetbeschrijving worden gemaakt via het formulier.</p>
+                <p><br/></p>
                 <p>
                     <a class="btn btn-primary" style="width:300px" href="viaurl.php">... via URL van datasetbeschrijving</a><br/>
-                    <br/>
+					<br/>
                     <a class="btn btn-primary" style="width:300px" href="form.php">... via formulier van datasetbeschrijving</a><br/>
                 </p>
             </div>
