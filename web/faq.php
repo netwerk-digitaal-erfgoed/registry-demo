@@ -81,7 +81,7 @@
 				<p>Het Register wordt gemaakt en beheerd door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a>. De instellingen staan in voor de werking en beschikbaarheid van het Register.</p>
 				
 				<h3 class="display-5">Wat is de status van het Register?</h3>
-				<p>Het Register is in ontwikkeling. Het ontwerp van het Register, waaronder de requirements voor datasetbeschrijvingen alsmede de beschrijving van de API hebben, is gereed. Toetsing hiervan gebeurd aan de hand van de realisatie van een prototype en demonstrator. Vanaf 2021 wordt er gewerkt een volwaardige versie van de Register componenten. Die versie is geschikt om breed gebruikt te worden door allerlei instellingen en in allerlei collectiebeheersystemen.</p>
+				<p>Het Register is in ontwikkeling. Het ontwerp van het Register, waaronder de requirements voor datasetbeschrijvingen alsmede de beschrijving van de API hebben, zijn gerealiseerd in een prototype en demonstrator. De huidige versie is geschikt om breed gebruikt te worden door instellingen en in collectiebeheersystemen.</p>
 				
 				<h3 class="display-5">Kan ik al aan de slag met datasetbeschrijvingen maken?</h3>
 				<p>Jazeker! Het Register is weliswaar nog in ontwikkeling, de definitie van wat voor informatie er in de datasetbeschrijving opgenomen dient te worden staat al. Als dataset beheerder kun je al inventariseren waar de datasetbeschrijving wordt opgeslagen en waar deze wordt gepubliceerd. Veelal betekent dit ook contact zoeken met uw software leverancier.</p>
@@ -113,7 +113,7 @@
 				<p>Het Register wordt gemaakt en beheerd door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a>. De instellingen staan in voor de werking en beschikbaarheid van het Register.</p>
 				
 				<h3 class="display-5">Wat is de status van het Register?</h3>
-				<p>Het Register is in ontwikkeling. Het ontwerp van het Register, waaronder de requirements voor datasetbeschrijvingen alsmede de beschrijving van de API hebben, is gereed. Toetsing hiervan gebeurd aan de hand van de realisatie van een prototype en demonstrator. Vanaf 2021 wordt er gewerkt een volwaardige versie van de Register componenten. Die versie is geschikt om breed gebruikt te worden door allerlei instellingen en in allerlei collectiebeheersystemen.</p>
+				<p>Het Register is in ontwikkeling. Het ontwerp van het Register, waaronder de requirements voor datasetbeschrijvingen alsmede de beschrijving van de API hebben, zijn gerealiseerd in een prototype en demonstrator. De huidige versie is geschikt om breed gebruikt te worden door instellingen en in collectiebeheersystemen.</p>
 				
 				<h3 class="display-5">Kan ik het Register nu al gebruiken?</h3>
 				<p>Jazeker! Het Register is weliswaar nog in ontwikkeling, maar nu al te gebruiken. We horen dan ook graag wat je ervan vindt. Bijvoorbeeld: zijn de zoekmogelijkheden toereikend? Is de API bruikbaar?</p>
@@ -150,8 +150,12 @@
 				<p>Het Register biedt, naast een "Admin console" voor de beheerders van het Register, een tweetal toegangen: een REST API en een SPARL endpoint.</p>
 				
 				<h3 class="display-5">Hoe kan een dataset aangemeld worden bij het Register?</h3>
-				<p>Via de REST API kan een URL worden aangemeld van een pagina waar een datasetbeschrijving wordt gepubliceerd.<p>
-				<p>In de toekomst kan er ook een URL van een datacatalog worden aangemeld.</p>
+				<p>Via de REST API kan een URL worden aangemeld van een pagina waar een datasetbeschrijving wordt gepubliceerd, een directe URL van een RDF bestand met datasetbeschrijving of een URL van een datacatalog.<p>
+				<p>Via de <a href="aanmelden.php">demonstrator</a> kun via de browser een URL aangemeld worden, deze demonstrator maakt gebruik van de REST API.</p>
+
+				<h3 class="display-5"><a id="allowed_domain_names"></a>Kan iedereen een datasetbeschrijving toevoegen aan het register?</h3>
+				<p>Het aanmelden van datasets via de REST API werkt op basis van een <a href="https://triplestore.netwerkdigitaalerfgoed.nl/resource?uri=https:%2F%2Fdata.netwerkdigitaalerfgoed.nl%2Fregistry%2Fallowed_domain_names&role=context" target="_blank">lijst van toegestane domeinen</a>. Datasetbechrijvingen (en datacatalogi) die afkomstig zijn van domeinen op deze lijst worden toegevoegd.</p>
+				<p>Ontbreekt er een domeinnaam van een erfgoedinstelling of leverancier, <a href="#contact">meld dit dan</a>.</p> 
 				
 				<h3 class="display-5">Hoe kan een datasetbeschrijving gecontroleerd worden?</h3>
 				<p>Via de REST API kan de datasetbeschrijving van een datasetbeschrijving worden gecontroleerd.<p>
@@ -178,13 +182,13 @@
 				<p>Het Register wordt gemaakt en beheerd door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a>. De instellingen staan in voor de werking en beschikbaarheid van het Register.</p>
 				
 				<h3 class="display-5">Wat is de status van het Register?</h3>
-				<p>Het Register is in ontwikkeling. Het ontwerp van het Register, waaronder de requirements voor datasetbeschrijvingen alsmede de beschrijving van de API hebben, is gereed. Toetsing hiervan gebeurd aan de hand van de realisatie van een prototype en demonstrator. Vanaf 2021 wordt er gewerkt een volwaardige versie van de Register componenten. Die versie is geschikt om breed gebruikt te worden door allerlei instellingen en in allerlei collectiebeheersystemen.</p>
+				<p>Het Register is in ontwikkeling. Het ontwerp van het Register, waaronder de requirements voor datasetbeschrijvingen alsmede de beschrijving van de API hebben, zijn gerealiseerd in een prototype en demonstrator. De huidige versie is geschikt om breed gebruikt te worden door instellingen en in collectiebeheersystemen.</p>
 				
 				<h3 class="display-5">Kan ik het Register nu al gebruiken?</h3>
 				<p>Jazeker! Het Register is weliswaar nog in ontwikkeling, maar nu al te gebruiken. We horen dan ook graag wat je ervan vindt. Bijvoorbeeld: zijn de zoekmogelijkheden toereikend? Is de API bruikbaar?</p>
 				<p>Als je een stap verder wilt gaan, dan kun je het Register in je collectiebeheersysteem implementeren zodat collectiebeheerders ermee aan de slag kunnen. Wij ondersteunen je hier graag bij.</p>
 
-				<h3 class="display-5">Ik heb een vraag. Met wie kan ik contact opnemen?</h3>
+				<h3 class="display-5" id="contact">Ik heb een vraag. Met wie kan ik contact opnemen?</h3>
 				<p>Met <a href="mailto:bob.coret@netwerkdigitaalerfgoed.nl">Bob Coret</a>, projectleider bij het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a>.</p>
 				<p>Ga je aan de slag met het publiceren van datasetbeschrijvingen en de API op het Register, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.</p>
 				
