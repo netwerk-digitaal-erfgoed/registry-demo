@@ -298,7 +298,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:isBasedOnUrl",
 	"range"=>"xsd:anyURI",
 	"title"=>"De URI van de dataset waar deze dataset op is gebaseerd",
-	"script_schema"=>'if ($("#id_dataset_includedInDataCatalog").val()) { schema["isBasedOnUrl"]=$("#id_dataset_isBasedOnUrl").val(); }'
+	"script_schema"=>'if ($("#id_dataset_isBasedOnUrl").val()) { schema["isBasedOnUrl"]=$("#id_dataset_isBasedOnUrl").val(); }'
 );
 
 $datasetfields[]=array(
@@ -308,10 +308,10 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:includedInDataCatalog",
 	"range"=>"xml:string",
 	"title"=>"De URI van de datacatalogus waar deze dataset deel van uit maakt",
-	"script_schema"=>'if ($("#id_dataset_includedInDataCatalog").val()) { schema["includedInDataCatalog"]={};  schema["includedInDataCatalog"]["@type"]="DataCatalog"; schema["includedInDataCatalog"]["url"]=$("#id_dataset_includedInDataCatalog").val(); }',
+	"script_schema"=>'if ($("#id_dataset_includedInDataCatalog").val()) { schema["includedInDataCatalog"]=$("#id_dataset_includedInDataCatalog").val(); }',
 	"screen"=>2
 );
-	  
+
 # ----
 
 $datasetfields[]=array(
