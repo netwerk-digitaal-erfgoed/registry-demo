@@ -106,7 +106,7 @@ function echo_script_jsonld_schema() {
 	global $datasetfields,$distributionfields;
 
 	echo 'var schema = {};';
-	echo 'schema["@context"] = {}; schema["@context"]["@vocab"]="http://schema.org/";';
+	echo 'schema["@context"] = "http://schema.org/";';
 	echo 'schema["@type"] = "Dataset";';
 	
 	foreach($datasetfields as $datasetfield) {
@@ -117,7 +117,7 @@ function echo_script_jsonld_schema() {
 	
 	echo 'schema["distribution"]=[];'."\n";
 	
-    echo 'if ($("#id_distribution_0_accessURL").val()) {'."\n";   # id_distribution_0_accessURL
+    echo 'if ($("#id_distribution_0_accessURL").val()) {'."\n";
 	echo 'var dataset_idx=0;'."\n";
 	echo 'while ($("#id_distribution_"+dataset_idx+"_accessURL").val()) {'."\n";
 
