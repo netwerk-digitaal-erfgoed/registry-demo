@@ -38,7 +38,7 @@
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
 				<h4 class="text-left">API specificatie</h4>
-                <p class="text-left">De Register API is bedoeld om online pagina's met datasetbeschrijving aan te melden (en te valideren en op te sommen).<br>De API beschrijving staat op Github: <a href="https://github.com/netwerk-digitaal-erfgoed/registry-poc/blob/master/api-4.md" target="_blank">Register-function: API</a>.</p>
+                <p class="text-left">De Register API is bedoeld om online pagina's met datasetbeschrijving aan te melden en te valideren.<br>De API beschrijving is op basis van een Open API specification beschikbaar via <a href="https://demo.netwerkdigitaalerfgoed.nl/register-api/static/index.html" target="_blank">Swagger UI</a>.</p>
 				<p><br/></p>
 				<h4 class="text-left">Voorbeeld aanmelding URL van pagina met datasetbeschrijving via API met Curl</h4>
 				<xmp>curl 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets' \
