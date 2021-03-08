@@ -1,4 +1,4 @@
-{
+	{
   "https://data.overheid.nl/organisatie/stichting-leerplan-ontwikkeling": {
     "labels": {
       "nl-NL": "SLO nationaal expertisecentrum leerplanontwikkeling",
@@ -9833,7 +9833,7 @@
       "en-US": "Regionale Uitvoeringsdienst Drenthe"
     }
   },
-  "https://data.overheid.nl/organisatie/NLPO:12345678": {
+  "https://data.overheid.nl/community/organization/nlpo12345678": {
     "labels": {
       "nl-NL": "Nederlands Instituut voor Beeld en Geluid",
       "en-US": "Nederlands Instituut voor Beeld en Geluid"
