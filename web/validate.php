@@ -61,7 +61,7 @@
 			fetch("https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets/validate", {
 			  "method": "PUT",
 			  "headers": {
-				"Link": "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\",<http://www.w3.org/ns/ldp#Resource>; rel=\"type\"",
+				"Accept": "application/ld+json",
 				"Content-Type": "application/ld+json"
 			  },
 			  "body": JSON.stringify( {"@id": document.getElementById("datasetdescriptionurl").value })
