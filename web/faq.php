@@ -64,7 +64,8 @@
 				<p>Net als het publiceren van de dataset is het aan de erfgoedinstelling om de datasetbeschrijving te publiceren. Informatie, leesbaar voor mens en machine, dient online beschikbaar te worden gemaakt.</p>
 								
 				<h3 class="display-5">Hoe kan ik mijn datasetbeschrijving controleren?</h3>
-				<p>Je kunt de datasetbeschrijving controleren met behulp van Google's <a href="https://search.google.com/structured-data/testing-tool/u/0/?hl=nl">Tool voor gestructureerde gegevenstests</a>. Geef hier de URL op van de (online) pagina waarin de datasetbeschrijving is opgenomen of plak een codefragment om de test uit te voeren.</p>
+				<p>Via de REST API kan de datasetbeschrijving van een datasetbeschrijving worden gecontroleerd op de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a>.<p>
+				<p>Je kunt de datasetbeschrijving ook controleren met behulp van <a href="https://validator.schema.org/">Schema Markup Validator</a>. Geef hier de URL op van de (online) pagina waarin de datasetbeschrijving is opgenomen of plak een codefragment om de test uit te voeren.</p>
 				
 				<h3 class="display-5">Wat is het Register?</h3>
 				<p>Het doel van het Register is om inzicht te krijgen in erfgoeddatasets. Erfgoedinstellingen worden aangemoedigd om datasets aan te bieden vanuit hun systeem, deze datasets te beschrijven en online te publiceren en om deze URL's van datasetbeschrijvingen aan te melden bij het Register. Het Register haalt de datasetbeschrijvingen op waardoor de erfgoeddatasets doorzoekbaar gemaakt kan worden.</p>
@@ -158,8 +159,8 @@
 				<p>Ontbreekt er een domeinnaam van een erfgoedinstelling of leverancier, <a href="#contact">meld dit dan</a>.</p> 
 				
 				<h3 class="display-5">Hoe kan een datasetbeschrijving gecontroleerd worden?</h3>
-				<p>Via de REST API kan de datasetbeschrijving van een datasetbeschrijving worden gecontroleerd.<p>
-				<p>Je kunt de datasetbeschrijving controleren met behulp van Google's <a href="https://search.google.com/structured-data/testing-tool/u/0/?hl=nl">Tool voor gestructureerde gegevenstests</a>. Geef hier de URL op van de (online) pagina waarin de datasetbeschrijving is opgenomen of plak een codefragments om de test uit te voeren.</p>
+				<p>Via de REST API kan de datasetbeschrijving van een datasetbeschrijving worden gecontroleerd op de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a>.<p>
+				<p>Je kunt de datasetbeschrijving ook controleren met behulp van <a href="https://validator.schema.org/">Schema Markup Validator</a>. Geef hier de URL op van de (online) pagina waarin de datasetbeschrijving is opgenomen of plak een codefragment om de test uit te voeren.</p>
 				
 				<h3 class="display-5">Hoe werkt het Register, technisch?</h3>
 				<p>Het Register beoogt een verwijzer naar datasets te worden. Hiertoe crawlt het Register de URL's van aangemelde pagina's met datasetbeschrijvingen.</p>
