@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Datasetregister</title>
         <link href="static/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -38,17 +38,17 @@
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
 				<h4 class="text-left">API specificatie</h4>
-                <p class="text-left">De Register API is bedoeld om online pagina's met datasetbeschrijving aan te melden en te valideren.<br>De API beschrijving is op basis van een Open API specification beschikbaar via <a href="https://demo.netwerkdigitaalerfgoed.nl/register-api/static/index.html" target="_blank">Swagger UI</a>.</p>
+                <p class="text-left">De Datasetregister API is bedoeld om online pagina's met datasetbeschrijving aan te melden en te valideren.<br>De API beschrijving is op basis van een Open API specification beschikbaar via <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html" target="_blank">Swagger UI</a>.</p>
 				<p><br/></p>
 				<h4 class="text-left">Voorbeeld aanmelding URL van pagina met datasetbeschrijving via API met Curl</h4>
-				<xmp>curl 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets' \
+				<xmp>curl 'https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets' \
   -H 'link: <http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"' \
   -H 'content-type: application/ld+json' \
   --data-binary '{"@id":"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"}'
 </xmp>
 				<p><br/></p>
 				<h4 class="text-left">Voorbeeld validatie datasetbeschrijving via API met Curl</h4>
-				<xmp>curl -i -X PUT 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets/validate' \
+				<xmp>curl -i -X PUT 'https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate' \
   -H 'link: <http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"' \
   -H 'content-type: application/ld+json' \
   --data-binary '{"@id":"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"}'

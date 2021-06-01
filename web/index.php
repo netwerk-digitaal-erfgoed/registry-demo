@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Datasetregister</title>
         <link href="static/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -34,13 +34,13 @@
                 <div id="beta">
                     <span class="note"><a href="faq.php#prototype">Demonstrator</a></span>
                 </div>
-                <h1 class="display-4">Register</h1>
+                <h1 class="display-4">Datasetregister</h1>
                 <p class="lead">Door erfgoedinstellingen gepubliceerde datasetbeschrijvingen worden na<br>aanmelding verzameld met als doel een beter inzicht te krijgen in erfgoeddatasets.</p>
                 <p><br/></p>
                 <p><a class="btn btn-primary" style="width:300px" href="validate.php">Datasetbeschrijving valideren</a></p>
 				<p><a class="btn btn-primary" style="width:300px" href="aanmelden.php">Datasetbeschrijving aanmelden</a></p>
 				<p><a class="btn btn-primary" style="width:300px" href="zoeken.php">Datasetbeschrijvingen doorzoeken</a></p>
-				<p><a class="btn btn-primary" style="width:300px" href="faq.php">Veelgestelde vragen over het Register</a></p>
+				<p><a class="btn btn-primary" style="width:300px" href="faq.php">Veelgestelde vragen</a></p>
             </div>
         </div>
         <footer class="text-muted border-top">

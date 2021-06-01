@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Datasetregister</title>
         <link href="static/style.css" rel="stylesheet" type="text/css">		
     </head>
     <body>
@@ -35,7 +35,7 @@
 			
 			<div class="content">
 			
-				<p>Op dit moment zijn wij bezig met de realisatie van het prototype van het Register. Gaandeweg komen meer functies beschikbaar. Deze functies zullen via deze demonstrator inzichtelijk worden gemaakt.</p>
+				<p>Op dit moment zijn wij bezig met de realisatie van het prototype van het Datasetregister. Gaandeweg komen meer functies beschikbaar. Deze functies zullen via deze demonstrator inzichtelijk worden gemaakt.</p>
 				
 			</div>
 		</div>

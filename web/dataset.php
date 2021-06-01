@@ -11,7 +11,7 @@ if (isset($_GET["guid"]) && preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Datasetregister</title>
 		<link href="static/style.css" rel="stylesheet" type="text/css">		
     </head>
     <body>
@@ -42,7 +42,7 @@ if (isset($_GET["guid"]) && preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0
                 <div id="beta">
                     <span class="note"><a href="faq.php#prototype">demonstrator</a></span>
                 </div>
-                <h1 class="display-4">Register</h1>
+                <h1 class="display-4">Datasetregister</h1>
                 <p class="lead">Inzicht in erfgoeddatasets</p>
 			</div>
         </div>

@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Datasetregister</title>
         <link href="static/style.css" rel="stylesheet" type="text/css">		
     </head>
     <body>
@@ -86,7 +86,7 @@
 		"@type": "DataCatalog",
 		"@id": "https://demo.netwerkdigitaalerfgoed.nl/register/",
 		"url": "https://demo.netwerkdigitaalerfgoed.nl/register/list.php",
-		"name": "Tijdelijk gepubliceerde datasets via de demonstrator van het Register.",
+		"name": "Tijdelijk gepubliceerde datasets via de demonstrator van het Datasetregister.",
 		"datePublished": "2020-11-20T08:55:19+00:00",
 		"dateModifier": "<?= $dateModified ?>",
 		"publisher": {

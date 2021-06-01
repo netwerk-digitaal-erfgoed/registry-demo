@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Datasetregister</title>
         <link href="static/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -37,7 +37,7 @@
                 <h1 class="display-4">Datasetbeschrijving valideren</h1>
                 <p class="lead">Inzicht in erfgoeddatasets</p>
                 <p><br/></p>
-				<p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Register API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.</p>
+				<p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.</p>
                 <p><br/></p>
                 <p>
 					<input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"><br>
@@ -58,7 +58,7 @@
 		<script>
 		function call_api() {
 			document.getElementById("api_result").innerHTML="Calling API ..."; 
-			fetch("https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets/validate", {
+			fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
 			  "method": "PUT",
 			  "headers": {
 				"Accept": "application/ld+json",
