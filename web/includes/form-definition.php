@@ -36,7 +36,7 @@ $datasetfields[]=array(
 	"label"=>"Beschrijving inhoud",
 	"example"=>"Door het formulier vooringevulde, vaste waarden om het testen te vereenvoudigen.",
 	"property_uri"=>"schema:description",
-	"mandatory"=>1,
+	"mandatory"=>0,
 	"range"=>"xml:string",
 	"title"=>"De beschrijving van de inhoud van de dataset",
 	"script_schema"=>'if ($("#id_dataset_description").val()) { schema["description"]=$("#id_dataset_description").val(); }',
@@ -57,6 +57,21 @@ $datasetfields[]=array(
 );
 
 $datasetfields[]=array(
+	"id"=>"dataset_publisher",
+	"label"=>"Verstrekker",
+	"example"=>"http://standaarden.overheid.nl/owms/terms/Nationaal_Archief",
+	"property_uri"=>"schema:publisher",
+	"mandatory"=>1,
+	"range"=>"donl:authority",
+	"select"=>"donl_organization",
+	"title"=>"De uitgever (publisher) van de dataset",
+	"script_schema"=>'if ($("#id_dataset_publisher").val()) { var publisher={}; publisher["@id"]=$("#id_dataset_publisher").val(); publisher["@type"]="Organization"; publisher["name"]=$("#id_dataset_publisher option:selected").text(); schema["publisher"]=publisher; }',
+	"screen"=>1
+);
+
+#-----
+
+$datasetfields[]=array(
 	"id"=>"dataset_metadataLanguage",
 	"label"=>"Taal metadata",
 	"example"=>"http://publications.europa.eu/resource/authority/language/NLD",
@@ -71,7 +86,7 @@ $datasetfields[]=array(
 	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/ENG") { schema["inLanguage"]="en-US"; }
 	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/FRY") { schema["inLanguage"]="nl-FY"; }
 	}',
-	"screen"=>1
+	"screen"=>2
 );
 
 
@@ -79,32 +94,14 @@ $datasetfields[]=array(
 	"id"=>"dataset_authority",
 	"label"=>"Data-eigenaar",
 	"example"=>"http://standaarden.overheid.nl/owms/terms/Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap",
-	"mandatory"=>1,
+	"mandatory"=>0,
 	"property_uri"=>"schema:creator",	
 	"range"=>"donl:authority",
 	"select"=>"donl_organization",
-	"title"=>"De maker (of eigenaar) van de dataset",
+	"title"=>"De maker (creator) of eigenaar van de dataset",
 	"script_schema"=>'schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_authority option:selected").text(); schema["creator"]["url"]=$("#id_dataset_authority").val();',
-	"screen"=>1
+	"screen"=>2
 );
-
-
-
-$datasetfields[]=array(
-	"id"=>"dataset_publisher",
-	"label"=>"Verstrekker",
-	"example"=>"http://standaarden.overheid.nl/owms/terms/Nationaal_Archief",
-	"property_uri"=>"schema:publisher",
-	"mandatory"=>1,
-	"range"=>"donl:authority",
-	"select"=>"donl_organization",
-	"title"=>"De uitgever van de dataset",
-	"script_schema"=>'if ($("#id_dataset_publisher").val()) { var publisher={}; publisher["@id"]=$("#id_dataset_publisher").val(); publisher["@type"]="Organization"; publisher["name"]=$("#id_dataset_publisher option:selected").text(); schema["publisher"]=publisher; }',
-	"screen"=>1
-);
-
-#-----
-
 $datasetfields[]=array(
 	"id"=>"dataset_mainEntityOfPage",
 	"label"=>"Meer informatie",
@@ -317,7 +314,7 @@ $datasetfields[]=array(
 $datasetfields[]=array(
 	"id"=>"dataset_distribution",
 	"label"=>"Distributie",
-	"mandatory"=>1,
+	"mandatory"=>0,
 	"multiple"=>1,
 	"property_uri"=>"schema:DataDownload",
 	"range"=>"schema:DataDownload",

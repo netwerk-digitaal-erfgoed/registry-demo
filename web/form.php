@@ -64,7 +64,7 @@ include('includes/form-util.php');
 						<a class="nav-link" id="rec-tab" data-toggle="tab" href="#rec" role="tab" aria-controls="rec" aria-selected="false">3 - Aanbevolen velden</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" id="dist-tab" data-toggle="tab" href="#dist" role="tab" aria-controls="dist" aria-selected="false">4 - Verplichte distributies</a>
+						<a class="nav-link" id="dist-tab" data-toggle="tab" href="#dist" role="tab" aria-controls="dist" aria-selected="false">4 - Distributies</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" id="jsonld-tab" data-toggle="tab" href="#jsonld" role="tab" aria-controls="jsonld" aria-selected="false">5 - Datasetbeschrijving in JSON-LD</a>
