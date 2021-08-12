@@ -3,11 +3,11 @@ label {
      margin-right:10px;
     display:inline-block 
 }
-
+/*
 .mandatory::after {
      content: " (*)";
 }
-
+*/
 .vcard {
      background-color:#fafafa 
 }

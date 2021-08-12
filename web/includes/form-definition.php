@@ -32,18 +32,6 @@ $datasetfields[]=array(
 );
 
 $datasetfields[]=array(
-	"id"=>"dataset_description",
-	"label"=>"Beschrijving inhoud",
-	"example"=>"Door het formulier vooringevulde, vaste waarden om het testen te vereenvoudigen.",
-	"property_uri"=>"schema:description",
-	"mandatory"=>0,
-	"range"=>"xml:string",
-	"title"=>"De beschrijving van de inhoud van de dataset",
-	"script_schema"=>'if ($("#id_dataset_description").val()) { schema["description"]=$("#id_dataset_description").val(); }',
-	"screen"=>1
-);
-
-$datasetfields[]=array(
 	"id"=>"dataset_license",
 	"label"=>"Licentie",
 	"example"=>"http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
@@ -70,6 +58,18 @@ $datasetfields[]=array(
 );
 
 #-----
+
+$datasetfields[]=array(
+	"id"=>"dataset_description",
+	"label"=>"Beschrijving inhoud",
+	"example"=>"Door het formulier vooringevulde, vaste waarden om het testen te vereenvoudigen.",
+	"property_uri"=>"schema:description",
+	"mandatory"=>0,
+	"range"=>"xml:string",
+	"title"=>"De beschrijving van de inhoud van de dataset",
+	"script_schema"=>'if ($("#id_dataset_description").val()) { schema["description"]=$("#id_dataset_description").val(); }',
+	"screen"=>2
+);
 
 $datasetfields[]=array(
 	"id"=>"dataset_metadataLanguage",
