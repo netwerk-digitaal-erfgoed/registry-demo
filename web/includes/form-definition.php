@@ -89,7 +89,6 @@ $datasetfields[]=array(
 	"screen"=>2
 );
 
-
 $datasetfields[]=array(
 	"id"=>"dataset_authority",
 	"label"=>"Data-eigenaar",
@@ -99,9 +98,10 @@ $datasetfields[]=array(
 	"range"=>"donl:authority",
 	"select"=>"donl_organization",
 	"title"=>"De maker (creator) of eigenaar van de dataset",
-	"script_schema"=>'schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_authority option:selected").text(); schema["creator"]["url"]=$("#id_dataset_authority").val();',
+	"script_schema"=>'if ($("#id_dataset_authority").val()) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_authority option:selected").text(); schema["creator"]["url"]=$("#id_dataset_authority").val(); }',
 	"screen"=>2
 );
+
 $datasetfields[]=array(
 	"id"=>"dataset_mainEntityOfPage",
 	"label"=>"Meer informatie",
@@ -203,7 +203,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:name",
 	"range"=>"xml:string",
 	"title"=>"Naam van de contactpersoon bij de verstrekker van de dataset",
-	"script_schema"=>'if ($("#id_dataset_contactPointPublisher_name").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["name"]=$("#id_dataset_contactPointCreator_name").val(); }',
+	"script_schema"=>'if ($("#id_dataset_contactPointPublisher_name").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["name"]=$("#id_dataset_contactPointPublisher_name").val(); }',
 	"screen"=>2
 );
 
@@ -214,7 +214,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:email",
 	"range"=>"xml:string",
 	"title"=>"E-mail van de contactpersoon bij de verstrekker van de dataset",
-	"script_schema"=>'if ($("#id_dataset_contactPointCreator_email").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["email"]=$("#id_dataset_contactPointCreator_email").val(); }',
+	"script_schema"=>'if ($("#id_dataset_contactPointPublisher_email").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["email"]=$("#id_dataset_contactPointPublisher_email").val(); }',
 	"screen"=>2
 );
 
@@ -225,7 +225,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:telephone",
 	"range"=>"xml:string",
 	"title"=>"Telefoonnummer van de contactpersoon bij de verstrekker van de dataset",
-	"script_schema"=>'if ($("#id_dataset_contactPointCreator_phone").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["telephone"]=$("#id_dataset_contactPointCreator_phone").val(); }',
+	"script_schema"=>'if ($("#id_dataset_contactPointPublisher_phone").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["telephone"]=$("#id_dataset_contactPointPublisher_phone").val(); }',
 	"screen"=>2
 );
 
@@ -348,8 +348,8 @@ $distributionfields[]=array(
 	"mandatory"=>1,
 	"multiple"=>1,
 	"property_uri"=>"schema:encodingFormat",
-	"select"=>"mdr_filetype_nal",
-	"range"=>"mdr:filetype",
+	"select"=>"iana_mediatypes",
+	"range"=>"dcat:mediaType",
 	"title"=>"Media type (MIME formaat)",
 	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_encodingFormat_0").val()) {
 var encodingFormat_idx=0; distribution["encodingFormat"]=[]; while ($("#id_distribution_"+dataset_idx+"_encodingFormat_"+encodingFormat_idx).val()) { distribution["encodingFormat"].push($("#id_distribution_"+dataset_idx+"_encodingFormat_"+encodingFormat_idx).val()); encodingFormat_idx++; }}'
@@ -358,21 +358,20 @@ var encodingFormat_idx=0; distribution["encodingFormat"]=[]; while ($("#id_distr
 $distributionfields[]=array(
 	"id"=>"distribution_0_name",
 	"label"=>"Soort",
-#	"example"=>"SPARQL-endpoint",
 	"mandatory"=>1,
 	"property_uri"=>"schema:name",  // alternatief "schema:conditionsOfAccess"
-#	"range"=>"xml:string",
-#	"title"=>"Een identifier die duidelijk maakt op welke manier gegevens beschikbaar worden gesteld: via een SPARQL-endpoint, OAI-PMH-endpoint, LDF-endpoint of een datadump.",
-#	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_name").val()) { distribution["name"]=$("#id_distribution_"+dataset_idx+"_name").val(); }'
-	
-	"example"=>"http://netwerkdigitaalerfgoed.nl/def/soort#datadump",
 
-	"range"=>"DONL:License",
-	"select"=>"naam-soort",
-	"title"=>"Soort datadistributie",
-	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_name").val() != "") { distribution["name"]=$("#id_distribution_"+dataset_idx+"_name").val(); }'
+	"example"=>"SPARQL-endpoint",
+	"range"=>"xml:string",
+	"title"=>"Een identifier die duidelijk maakt op welke manier gegevens beschikbaar worden gesteld: via een SPARQL-endpoint, OAI-PMH-endpoint, LDF-endpoint of een datadump.",
+	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_name").val()) { distribution["name"]=$("#id_distribution_"+dataset_idx+"_name").val(); }'
 	
-	
+#	"example"=>"http://netwerkdigitaalerfgoed.nl/def/soort#datadump",
+#	"range"=>"DONL:License",
+#	"title"=>"Soort datadistributie",
+#	"select"=>"naam-soort",
+#	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_name").val() != "") { distribution["name"]=$("#id_distribution_"+dataset_idx+"_name").val(); }'
+		
 );
 
 $distributionfields[]=array(
@@ -442,7 +441,7 @@ $distributionfields[]=array(
 	"property_uri"=>"schema:contentSize",
 	"range"=>"xml:string",
 	"title"=>"Grootte van het bestand in bytes",
-	"script_schema"=>'distribution["contentSize"]={}; distribution["contentSize"]=$("#id_distribution_"+dataset_idx+"_contentSize").val();'
+	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_contentSize").val()) { distribution["contentSize"]={}; distribution["contentSize"]=$("#id_distribution_"+dataset_idx+"_contentSize").val(); }'
 );
 
 $contactPointfields=array();
