@@ -71,7 +71,11 @@ include("includes/header.php");
                      <div id="result">
                      </div>
                      <!-- <form id="dataset_store" action="form-store.php" method="post"> -->
-                     <textarea readonly name="datasetdescription" id="id_script_jsonld_schema"></textarea>
+					 
+					<p id="copy-status" class="m-text-align--right">Klik de JSON-LD om deze te kopieren.</p>
+		 
+
+                     <textarea readonly name="datasetdescription" style="border:1px solid #172a59" id="id_script_jsonld_schema"></textarea>
                      <!-- <button class="btn btn-success" type="submit">Sla bovenstaande datasetbeschrijving op (en neem op in het test-register)</button>
                         </form>
                         -->
@@ -140,6 +144,33 @@ function make_script_jsonld() {
 	jsonldString = JSON.stringify(schema, null, '\t');
 	$("#id_script_jsonld_schema").val(jsonldString);
 }
+
+document.addEventListener(
+  "click",
+  function (event) {
+    // Only fire if the target has id copy
+    if (!event.target.matches("#id_script_jsonld_schema")) return;
+
+    if (!navigator.clipboard) {
+      // Clipboard API not available
+      return;
+    }
+    const text = event.target.value;
+    try {
+      navigator.clipboard.writeText(text);
+      document.getElementById("copy-status").innerText = "De JSON-LD is gekopieerd.";
+      setTimeout(function () {
+        document.getElementById("copy-status").innerText = "Klik de JSON-LD om deze te kopieren.";
+      }, 1200);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  },
+  false
+);
+
+
+Resources
 
 /*
 TODO (nice)

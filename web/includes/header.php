@@ -264,17 +264,17 @@
                      </a>
                      <ul class="main">
                         <li >
-                           <a class="m-theme-before m-select--none" href="/form.php">
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"form.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/form.php">
                            Maak
                            </a>
                         </li>
                         <li >
-                           <a class="m-theme-before m-select--none" href="/validate.php">
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/validate.php">
                            Valideer
                            </a>
                         </li>
                         <li >
-                           <a class="m-theme-before m-select--none" href="/viaurl.php">
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/viaurl.php">
                            Voeg toe
                            </a>
                         </li>
@@ -284,7 +284,7 @@
                            </a>
                         </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu" role="open submenu">
-                           <a class="m-theme-before m-select--none" href="/faq.php">
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="/faq.php">
                            Veel gestelde vragen
                            </a>
                            <nav>

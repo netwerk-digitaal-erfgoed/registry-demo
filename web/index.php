@@ -5,17 +5,18 @@
          <h1 class="title--l">Datasetregister</h1>
 		 <h2 class="title--m am-text-align--right">Voor alle erfgoeddatasets!</h2>
          <p><br></p>
-		 <p>Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p>
-         <hr class="hr--thick m-theme-before no-theme item-in-view inview">
+		 <p><span class="initial"><svg class="rect"><rect class="svgInitial" width="100%" height="100%" style="stroke-width: 6; fill: transparent; stroke-dasharray: 360; stroke-dashoffset: 370;"></rect> </svg><span> H </span></span>et datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p>
       </div>
    </section>
-   <section id="" class="m-flex c-module c-module--icon-row m-t-space">
-      <div class="o-container o-container__medium p-t-space p-b-space">
+   
+   <section id="" class="m-flex c-module c-module--icon-row m-t-space m-bg--light p-t-space p-b-space">
+      <div class="o-container o-container__medium">
          <div class="c-grid__row item-in-view inview">
             <div class="all-1_3 phablet-1_1 item-in-view inview">
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
                      <h3>Ben je actief met datasets bij een erfgoedinstelling?</h3>
+					 
                      <ul>
                         <li><a href="/form.php">Maak een datasetbeschrijving</a></li>
                         <li><a href="/viaurl.php">Voeg een datasetbeschrijving toe</a></li>
