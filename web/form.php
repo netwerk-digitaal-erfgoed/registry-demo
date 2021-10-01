@@ -13,8 +13,21 @@ include("includes/header.php");
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l">Maak handmatig een datasetbeschrijving</h1>
+         <h1 class="title--l">Maak een datasetbeschrijving</h1>
+		 <p><br></p>
+		 <h2 class="title--m">Datasetbeschrijvingen uw (collectiebeheer)systeem</h2>
+		 
+		 <p>Het beschrijven van een dataset toont grote overeenkomsten met het beschrijven van een erfgoedcollectie. Het is dan ook logisch om ook de datasets in het collectiebeheersysteem te beheren. Dicht bij de bron, want vanuit hier worden veelal ook de datasets (als bestand of als API) beschikbaar gesteld. Online publicatie van de datasetbeschrijvingen is hierdoor vaak een eenvoudige en vooral geautomatiseerde stap. Vraag bij uw leverancier wat de mogelijkheden zijn om datasetbeschrijvingen te maken en te publiceren zodat ook uw datasets beter vindbaar worden.</p>
+		 
+         <p><br></p>		 
+
+		 <h2 class="title--m">Maak handmatig een datasetbeschrijving</h2>
+		 <p>Als uw leverancier (nog) geen mogelijkheden biedt om een datasetbeschrijving te maken, dan kunt u handmatig een datasetbeschrijving maken conform de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">requirements</a>. Als hulpmiddel is onderstaand formulier beschikbaar. Deze handmatige werkwijze staat los van het collectiebeheersysteem en is dus verre van ideaal.</p>
+		<p><strong>Let wel</strong>: het resultaat van het formulier is een datasetbeschrijving in JSON-LD, deze moet nog wel online worden gepubliceerd voordat het kan worden aangemeld bij het Datasetregister.</p>
+
          <p><br></p>
+		 
+		 <h2 class="title--m">Datasetbeschrijving formulier</h2>
          <div class="container">
             <div class="row">
                <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,13 +50,11 @@ include("includes/header.php");
                <div class="tab-content" id="myTabContent">
                   <div  class="tab-pane fade show active" id="uitleg" role="tabpanel" aria-labelledby="uitleg-tab">
                      <br>
-                     <p>Het formulier op een datasetbeschrijving meer te maken is gebaseerd op het <a target="_new" href="https://github.com/netwerk-digitaal-erfgoed/project-organisations-datasets/tree/master/publication-model">Publication model for dataset descriptions</a>. Het formulier geleid de gebruiker in het beschrijven van de dataset en daarna de distributies van de dataset.</p>
+                     <p>Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe.<br>Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden.</p>
                      <br>
-                     <p>Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe.<br>Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden. De datasetbeschrijving kan ook - puur voor testdoeleinden - opgeslagen worden in een test-register.</p>
-                     <br>
-                     <p>Dit is een <strong>demonstrator</strong>, heeft is bedoeld om een indruk te geven van een datasetbeschrijving. Klik op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata, om een beter beeld te krijgen van wat er gevraagd wordt.<br><br>
-                        Het formulier implementeert niet het volledige publicatiemodel, zo kunnen er alleen organisaties gekozen worden als eigenaar en verstrekker (een persoon is volgens het publicatie model ook mogelijk) en is er geen meertaligheid. Voor enkele properties zijn voor het gemak <a target="_new" href="https://waardelijsten.dcat-ap-donl.nl/">waardelijsten gekoppeld van DCAT-AP-DONL</a>, deze stelt het publicatiemodel niet verplicht, maar adviseert het gebruik van waardelijsten wel.
-                     </p>
+                     <p>Wilt u alleen een indruk krijgen van een datasetbeschrijving? Klik dan op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata.</p>
+					 <br>
+                     <p>Via het formulier is niet alles mogelijk, zo kunnen er alleen organisaties gekozen worden als eigenaar en verstrekker (een persoon is volgens de eisen ook mogelijk) en is er geen meertaligheid. Voor enkele waarden zijn voor het gemak <a target="_new" href="https://waardelijsten.dcat-ap-donl.nl/">waardelijsten gekoppeld van DCAT-AP-DONL</a>, deze zijn waardelijsten zijn niet verplicht maar wel handig.</p>
                   </div>
                   <div class="tab-pane fade" id="req" role="tabpanel" aria-labelledby="req-tab">					
                      <br><?php echo_datasetfields(1); ?>
@@ -74,7 +85,7 @@ include("includes/header.php");
 
 <!-- jQuery  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="static/vendor/chosen/chosen.jquery.min.js"></script>
+<script src="assets/vendor/chosen/chosen.jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
 <script>
