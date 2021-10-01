@@ -119,7 +119,6 @@
                                  <li><a href="/apidoc.php">Datasetregister API Specification</a></li>
                               </ul>
                            </div>
-                           <div class="c-grid__col c-site-footer__col"></div>
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
                                  <li><a href="/privacy.php" class="">Privacyverklaring</a></li>
@@ -164,4 +163,5 @@
    </div>
 </footer>
 </div>
+ <script type='text/javascript' src='/assets/main.js' id='main-js-js'></script>
 </body></html>
