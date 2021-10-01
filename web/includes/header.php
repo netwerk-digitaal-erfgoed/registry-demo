@@ -278,6 +278,11 @@
                            Voeg toe
                            </a>
                         </li>
+						<li >
+                           <a class="m-theme-before m-select--none" href="https://triplestore.netwerkdigitaalerfgoed.nl/">
+                           Zoek
+                           </a>
+                        </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu" role="open submenu">
                            <a class="m-theme-before m-select--none" href="/faq.php">
                            Veel gestelde vragen
@@ -285,15 +290,15 @@
                            <nav>
                               <ul class="submenu">
                                  <li>
-                                    <ad7eefa href="https://register-demo.coret.org/faq-beheerders.php">
+                                    <a href="https://register-demo.coret.org/faq-beheerders.php">
                                     datasetbeheerders bij erfgoed&shy;instellingen</a>
                                  </li>
                                  <li>
-                                    <ad7eefa href="https://register-demo.coret.org/faq-gebruikers.php">
+                                    <a href="https://register-demo.coret.org/faq-gebruikers.php">
                                     datasetgebruikers bij erfgoed&shy;instellingen en aggregators</a>
                                  </li>
                                  <li>
-                                    <ad7eefa href="https://register-demo.coret.org/faq-ontwikkelaars.php">
+                                    <a href="https://register-demo.coret.org/faq-ontwikkelaars.php">
                                     ontwikkelaars van erfgoed software</a>
                                  </li>
                               </ul>
@@ -497,6 +502,11 @@
                         <li>
                            <a class="m-theme-before m-select--none" href="/viaurl.php">
                            Voeg toe
+                           </a>
+                        </li>
+						<li >
+                           <a class="m-theme-before m-select--none" href="https://triplestore.netwerkdigitaalerfgoed.nl/">
+                           Zoek
                            </a>
                         </li>
                         <li>
