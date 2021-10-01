@@ -19,7 +19,7 @@
          <meta name="msapplication-TileColor" content="#434343">
          <meta name="theme-color" content="#434343">
          <title>Datasetregister</title>
-         <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarme het gebruik van deze datasets.">
+         <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
       </head>
       <body class="home page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">

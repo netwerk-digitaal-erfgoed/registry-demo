@@ -3,7 +3,7 @@
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l">Datasetregister</h1>
-         <p>Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarme het gebruik van deze datasets.</p>
+         <p>Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p>
          <hr class="hr--thick m-theme-before no-theme item-in-view inview">
       </div>
    </section>
