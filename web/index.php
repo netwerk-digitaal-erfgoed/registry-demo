@@ -17,7 +17,7 @@
                   <div class="text m-t-half-space">
                      <h3>Ben je actief met datasets bij een erfgoedinstelling?</h3>
 					 
-                     <ul>
+                     <ul class="list--quicklinks">
                         <li><a href="/form.php">Maak een datasetbeschrijving</a></li>
                         <li><a href="/viaurl.php">Voeg een datasetbeschrijving toe</a></li>
 						<li><a href="/faq-beheerders.php">Veelgestelde vragen door dataset beheerders</a></li>
@@ -29,7 +29,7 @@
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
                      <h3>Ben je op zoek naar erfgoeddatasets?</h3>
-                     <ul>
+                     <ul class="list--quicklinks">
                         <li><a target="datastory" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/">Leer via de Data story hoe te zoeken</a></li>
                         <li><a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">Doorzoek alle datasetbeschrijvingen</a></li>
                         <li><a href="/faq-gebruikers.php">Veelgestelde vragen door dataset gebruikers</a></li>
@@ -41,7 +41,7 @@
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
                      <h3>Ontwikkel je software voor erfgoedinstellingen?</h3>
-                     <ul>
+                     <ul class="list--quicklinks">
                         <li><a target="triplestore" href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Eisen gesteld aan datasetbeschrijvingen</a></li>
                         <li><a href="/validate.php">Valideer een datasetbeschrijving</a></li>
                         <li><a target="datastory" href="https://register-demo.coret.org/apidoc.php">Documentatie van de API</a></li>
