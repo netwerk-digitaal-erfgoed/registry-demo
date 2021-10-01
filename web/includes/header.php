@@ -18,7 +18,7 @@
          <link rel="manifest" href="assets/site.webmanifest">
          <meta name="msapplication-TileColor" content="#434343">
          <meta name="theme-color" content="#434343">
-         <title>Datasetregister</title>
+         <title>Datasetregister - Voor alle erfgoeddatasets!</title>
          <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
       </head>
