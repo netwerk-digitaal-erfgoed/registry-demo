@@ -153,6 +153,13 @@
                                  </svg>
                               </a>
                            </li>
+                           <li>
+                              <a aria-labelledby="footer" role="none" aria-label="github-link" target="_blank" href="https://github.com/netwerk-digitaal-erfgoed/">
+                                 <svg class="icon icon-github">
+                                    <use xlink:href="#icon-github"></use>
+                                 </svg>
+                              </a>
+                           </li>
                         </ul>
                      </div>
                   </div>
