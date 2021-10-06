@@ -29,6 +29,10 @@
 
 <script>
 function call_api() {
+	var as=document.getElementById("api_status");
+	as.style.backgroundColor="none";
+	as.innerHTML="";
+			
 	document.getElementById("api_result").innerHTML="Calling API ..."; 
 	fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
 	  "method": "PUT",

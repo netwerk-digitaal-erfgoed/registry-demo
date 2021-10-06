@@ -27,7 +27,11 @@
 </main>
 <script>
    function call_api() {
-   	document.getElementById("api_result").innerHTML="Calling API ..."; 
+   	var as=document.getElementById("api_status");
+	as.style.backgroundColor="none";
+	as.innerHTML="";
+
+	document.getElementById("api_result").innerHTML="Calling API ..."; 
    	fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets", {
    	  "method": "POST",
    	  "headers": {
