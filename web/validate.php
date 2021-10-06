@@ -20,6 +20,7 @@
             </svg>
          </span>
          <p><br></p>
+		 <div id="api_status"></div>
          <xmp id="api_result">(Hier komt het resultaat van de aanroep van de validatie functie via de API)</xmp>
          </p>
       </div>
@@ -38,7 +39,29 @@ function call_api() {
 	  "body": JSON.stringify( {"@id": document.getElementById("datasetdescriptionurl").value })
 	})
 	.then(response => { 
-		document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
+		//document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
+		var as=document.getElementById("api_status");
+
+		if (response.status=="200") {
+			as.style.backgroundColor="#5cb85c";
+			as.innerHTML="Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.";
+		} else {
+			as.style.backgroundColor="#e44d26";
+			if (response.status=="400") {
+				as.innerHTML="Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>. De antwoordtekst bevat een lijst met SHACL-overtredingen.";
+			} else {
+				if (response.status=="404") {
+					as.innerHTML="De URL kan niet worden gevonden.";
+				} else {
+					if (response.status=="406") {
+						as.innerHTML="De URL kan worden gevonden, maar bevat geen datasets.";
+					} else {
+						as.innerHTML="Er heeft zich een onbekende fout voorgedaan. <a href=\"/contact.php\">Neem contact met ons op</a> en geef daarbij de door u ingevulde URL op.";
+					}
+				}
+			}
+		}
+	
 		return response.text(); 
 	})
 	.then(response => {

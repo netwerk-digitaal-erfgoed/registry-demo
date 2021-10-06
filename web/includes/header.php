@@ -21,6 +21,10 @@
          <title>Datasetregister - Voor alle erfgoeddatasets!</title>
          <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
+		 <style>
+			#api_status { padding:10px;color:white;margin-bottom: -20px; font-weight:bold }
+			#api_status a { color:white; text-decoration:underline }
+		</style>
       </head>
       <body class="home page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">
          <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"

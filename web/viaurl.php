@@ -19,6 +19,7 @@
             </svg>
          </span>
          <p><br/></p>
+		 <div id="api_status"></div>
          <xmp id="api_result">(Hier komt het resultaat van de aanroep van de aanmeld functie via de API)</xmp>
          </p>
       </div>
@@ -36,11 +37,37 @@
    	  "body": JSON.stringify( {"@id": document.getElementById("datasetdescriptionurl").value })
    	})
    	.then(response => { 
-   		document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
+   		//document.getElementById("api_result").innerHTML="Status: "+response.status+"\n\n"; 
+		var as=document.getElementById("api_status");
+
+		if (response.status=="202") {
+			as.style.backgroundColor="#5cb85c";
+			as.innerHTML="Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>. De datasets worden binnenkort toegevoegd aan het Dataset Register.";
+		} else {
+			as.style.backgroundColor="#e44d26";
+			if (response.status=="400") {
+				as.innerHTML="Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>. De antwoordtekst bevat een lijst met SHACL-overtredingen.";
+			} else {
+				if (response.status=="403") {
+					as.innerHTML="De domeinnaam van de ingediende URL staat niet op de lijst met toegestane domeinnamen. <a href=\"/contact.php\">Neem contact met ons op</a> om de domeinnaam van uw instelling toe te voegen.";
+				} else {
+					if (response.status=="404") {
+						as.innerHTML="De URL kan niet worden gevonden.";
+					} else {
+						if (response.status=="406") {
+							as.innerHTML="De URL kan worden gevonden, maar bevat geen datasets.";
+						} else {
+							as.innerHTML="Er heeft zich een onbekende fout voorgedaan. <a href=\"/contact.php\">Neem contact met ons op</a> en geef daarbij de door u ingevulde URL op.";
+						}
+					}
+				}
+			}
+		}
+
    		return response.text(); 
    	})
    	.then(response => {
-   		document.getElementById("api_result").innerHTML+=response
+   		document.getElementById("api_result").innerHTML=response
    	})
    	.catch(err => {
    	  console.log(err);
