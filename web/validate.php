@@ -65,7 +65,7 @@ function call_api() {
 		return response.text(); 
 	})
 	.then(response => {
-		document.getElementById("api_result").innerHTML+=response
+		document.getElementById("api_result").innerHTML=response
 	})
 	.catch(err => {
 	  console.log(err);
