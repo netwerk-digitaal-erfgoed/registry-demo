@@ -9,7 +9,7 @@
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal m-txt-clr--inverse">
       <div class="o-container o-container__small">
          <label>URL van de datasetbeschrijving (of datacatalogus):</label>
-         <input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving" class="form-control form-control-lg" name="db_url" value="https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"><br>
+         <input type="url" id="datasetdescriptionurl" placeholder="URL van pagina met datasetbeschrijving (of -catalogus)" class="form-control form-control-lg" name="db_url" value=""><br>
          <span class="btn btn--arrow m-t-half-space" onclick="call_api()">
             Datasetbeschrijving valideren
             <svg class="rect">
