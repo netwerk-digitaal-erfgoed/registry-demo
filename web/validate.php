@@ -32,7 +32,7 @@ include("includes/header.php") ?>
 		<div id="api_result"></div>
 		 
 		 <span id="api_source_link" class="btn btn--arrow m-t-half-space" onclick="toggle_visibility()">
-            Klik op de SHACL validatie resultaten te bekijken
+            Klik om de SHACL validatie resultaten te bekijken
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
             </svg>
