@@ -172,9 +172,7 @@ function call_api() {
 			return response.text();
 		})
 		.then(response => {
-			if (response && response.trim() !== "") {
-				displayMessages(response);
-			}
+			displayMessages(response);
 		})
 		.catch(err => {
 			console.log(err);
@@ -185,9 +183,13 @@ function call_api() {
 function displayMessages(response) {
 
 	document.getElementById("api_source").innerHTML = response;
-	results = JSON.parse(response);
-
-	results.forEach(processMessages);
+	
+	try {
+		results = JSON.parse(response);
+		results.forEach(processMessages);
+    } catch (err) {
+        console.log(err);
+    }
 
 
 	//Messages.sort(function(a, b) {
