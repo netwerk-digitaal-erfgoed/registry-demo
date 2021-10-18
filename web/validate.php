@@ -172,7 +172,9 @@ function call_api() {
 			return response.text();
 		})
 		.then(response => {
-			displayMessages(response);
+			if (response && response.trim() !== "") {
+				displayMessages(response);
+			}
 		})
 		.catch(err => {
 			console.log(err);
