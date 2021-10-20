@@ -12,11 +12,11 @@ include("includes/header.php") ?>
          <p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.</p>
       </div>
    </section>
-   <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal m-txt-clr--inverse">
+   <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form action="validate.php" id="validate_form" class="form-control" method="get">
          <label>URL van pagina met datasetbeschrijving (of datacatalogus):</label>
          <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= $url ?>"><br>
-         <span class="btn btn--arrow m-t-half-space" onclick="validate_form.submit()">
+         <span class="btn btn--arrow m-t-half-space btn--api" onclick="validate_form.submit()">
             Datasetbeschrijving valideren
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
@@ -31,7 +31,7 @@ include("includes/header.php") ?>
  <?php if(!empty($url)) { ?>
 		<div id="api_result"></div>
 		 
-		 <span id="api_source_link" class="btn btn--arrow m-t-half-space" onclick="toggle_visibility()">
+		 <span id="api_source_link" class="btn btn--arrow m-t-half-space btn--api" onclick="toggle_visibility()">
             Klik om de SHACL validatie resultaten te bekijken
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>

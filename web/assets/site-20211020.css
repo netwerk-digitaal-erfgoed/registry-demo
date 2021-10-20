@@ -15,6 +15,7 @@
 .chosen-container,
 label {
    font-size: 18px!important;
+   color: #be2c00; 
 }
 
 #api_status {
@@ -31,19 +32,33 @@ label {
    text-decoration: underline
 }
 
+
+#api_result {
+   background-color: #fff!important;
+   padding: 20px!important;
+   font-size: 16px!important;
+   margin: 30px 0!important;
+   border: 0!important;
+   color: #be2c00
+}
+
 #api_result h2,
 #api_result h3,
 #api_result p,
 #api_result li,
 #api_result td {
-   color: black!important
+   color: #be2c00!blackimportant
 }
 
 #api_result a {
    font-size: 0.8em;
-   color: #777;
+   color: #be2c00;
    padding: 0 10px;
    text-decoration: underline
+}
+
+.btn--api {
+	color: #be2c00!important;
 }
 
 .imessage {
@@ -82,15 +97,6 @@ label {
    color: #0a3dfa;
 }
 
-#api_result {
-   background-color: #fff!important;
-   padding: 20px!important;
-   font-size: 16px!important;
-   margin: 30px 0!important;
-   border: 0!important;
-   color: #0a3dfa
-}
-
 textarea {
    font-family: monospace!important;
    background-color: #328275!important;
@@ -106,6 +112,7 @@ label {
    margin-right: 10px;
    display: inline-block;
    font-size: 18px!important;
+   opacity: 1!important;
 }
 
 label a {
@@ -220,3 +227,8 @@ textarea {
    margin-bottom: 20px!important;
    border-bottom: 1px solid #adbffc!important;
 }
+
+.nav-tabs .nav-link, table a {
+    color: #be2c00;
+}
+
