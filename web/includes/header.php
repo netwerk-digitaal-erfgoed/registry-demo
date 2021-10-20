@@ -115,7 +115,7 @@
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/viaurl.php">Voeg toe</a>
                         </li>
 						<li>
-                           <a class="m-theme-before m-select--none" href="https://triplestore.netwerkdigitaalerfgoed.nl/">Zoek</a>
+                           <a class="m-theme-before m-select--none" href="/search.php">Zoek</a>
                         </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu" role="open submenu">
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>
@@ -165,7 +165,7 @@
                            <a class="m-theme-before m-select--none" href="/viaurl.php">Voeg toe</a>
                         </li>
 						<li>
-                           <a class="m-theme-before m-select--none" href="https://triplestore.netwerkdigitaalerfgoed.nl/">Zoek</a>
+                           <a class="m-theme-before m-select--none" href="/search.php">Zoek</a>
                         </li>
                         <li>
                            <a class="m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>

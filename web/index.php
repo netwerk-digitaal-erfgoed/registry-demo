@@ -31,7 +31,7 @@
                      <h3>Ben je op zoek naar erfgoeddatasets?</h3>
                      <ul class="list--quicklinks">
                         <li><a target="datastory" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/">Leer via de Data story hoe te zoeken</a></li>
-                        <li><a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">Doorzoek alle datasetbeschrijvingen</a></li>
+                        <li><a target="triplestore" href="/search.php">Doorzoek alle datasetbeschrijvingen</a></li>
                         <li><a href="/faq-gebruikers.php">Veelgestelde vragen door dataset gebruikers</a></li>
                      </ul>
                   </div>
