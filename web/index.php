@@ -9,6 +9,21 @@
       </div>
    </section>
    
+	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
+		<div class="o-container o-container__medium">
+			<div class="c-grid__row item-in-view p-b-half-space inview">
+				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
+					<div style="color:#be2c00">Voor erfgoedinstellingen met datasets:</div>
+					<a href="/viaurl.php"><span class="btn btn--arrow m-t-half-space btn--api"> Voeg een datasetbeschrijving toe <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+				</div>
+				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
+					<div style="color:#be2c00">Voor gebruikers van erfgoeddata:</div>
+					<a href="/search.php"><span class="btn btn--arrow m-t-half-space btn--api"> Doorzoek alle datasetbeschrijvingen <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+   
    <section id="" class="m-flex c-module c-module--icon-row m-t-space m-bg--light p-t-space p-b-space">
       <div class="o-container o-container__medium">
          <div class="c-grid__row item-in-view inview">
@@ -16,7 +31,6 @@
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
                      <h3>Ben je actief met datasets bij een erfgoedinstelling?</h3>
-					 
                      <ul class="list--quicklinks">
                         <li><a href="/form.php">Maak een datasetbeschrijving</a></li>
                         <li><a href="/viaurl.php">Voeg een datasetbeschrijving toe</a></li>
