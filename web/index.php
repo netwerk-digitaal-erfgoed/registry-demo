@@ -9,7 +9,7 @@
       </div>
    </section>
    
-	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
+	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal" style="padding:0 20px">
 		<div class="o-container o-container__medium">
 			<div class="c-grid__row item-in-view p-b-half-space inview">
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
