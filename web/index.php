@@ -18,7 +18,7 @@
 				</div>
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
 					<div style="color:#be2c00">Voor gebruikers van erfgoeddata:</div>
-					<a href="/search.php"><span class="btn btn--arrow m-t-half-space btn--api"> Doorzoek alle datasetbeschrijvingen <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+					<a href="/search.php"><span class="btn btn--arrow m-t-half-space btn--api"> Doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 			</div>
 		</div>
@@ -68,4 +68,38 @@
       </div>
    </section>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => get_count());
+
+function get_count() {
+	var url = "https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=SELECT%20(COUNT(%20DISTINCT%20%3Fdataset)%20as%20%3FpCount)%20WHERE%20%7B%20%3Fdataset%20a%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23Dataset%3E%20%7D";
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+
+	xhr.setRequestHeader("Accept", "application/json");
+
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+		  if(xhr.status==200) {
+			show_count(xhr.responseText);
+		  }
+	   }};
+
+	xhr.send();
+}
+
+function show_count(response) {
+	//console.log(response);
+	try {
+		results = JSON.parse(response);
+		document.getElementById("datasetcount").innerHTML="<b>"+results.results.bindings[0].pCount.value+"</b>";
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+</script>
+
 <?php include("includes/footer.php") ?>
