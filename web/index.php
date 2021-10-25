@@ -12,7 +12,7 @@
 				</figure>
 				<div class="all-2_3 tablet-portrait-1_1">
 					<div class="m-t-half-space">
-						<p><br></p><p><span class="initial"><svg class="rect"><rect class="svgInitial" width="100%" height="100%" style="stroke-width: 6; fill: transparent; stroke-dasharray: 360; stroke-dashoffset: 370;"></rect> </svg><span> H </span></span>et datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p><p><br></p>
+						<p><br></p><p>Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p><p><br></p>
 					</div>
 				</div>
 			</div>
