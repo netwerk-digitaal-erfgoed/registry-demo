@@ -1,13 +1,23 @@
 <?php include("includes/header.php") ?>
 <main>
-   <section class="text m-t-space m-b-space m-theme--blue">
-      <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l">Datasetregister</h1>
-		 <h2 class="title--m am-text-align--right">Voor alle erfgoeddatasets!</h2>
-         <p><br></p>
-		 <p><span class="initial"><svg class="rect"><rect class="svgInitial" width="100%" height="100%" style="stroke-width: 6; fill: transparent; stroke-dasharray: 360; stroke-dashoffset: 370;"></rect> </svg><span> H </span></span>et datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p>
-      </div>
-   </section>
+	<section class="m-t-quarter-space">
+		<div class="o-container o-container__medium p-t-space p-b-space c-hero">
+			<h1 class="title--l">Datasetregister</h1>
+			<h2 class="title--m am-text-align--right">Voor alle erfgoeddatasets!</h2>
+			<div class="m-flex m-tablet-portrait--noflex">
+				<figure>
+					<picture>
+						<video src="https://player.vimeo.com/external/510215263.hd.mp4?s=5d74bcb2a84cdaed594f4d6e40a84051b5ef9932&profile_id=174" muted playsinline autoplay loop></video>
+					</picture>
+				</figure>
+				<div class="all-2_3 tablet-portrait-1_1">
+					<div class="m-t-half-space">
+						<p><br></p><p><span class="initial"><svg class="rect"><rect class="svgInitial" width="100%" height="100%" style="stroke-width: 6; fill: transparent; stroke-dasharray: 360; stroke-dashoffset: 370;"></rect> </svg><span> H </span></span>et datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p><p><br></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
    
 	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal" style="padding:0 20px">
 		<div class="o-container o-container__medium">
