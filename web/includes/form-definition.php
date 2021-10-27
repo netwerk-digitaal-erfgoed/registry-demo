@@ -90,7 +90,7 @@ $datasetfields[]=array(
 );
 
 $datasetfields[]=array(
-	"id"=>"dataset_authority",
+	"id"=>"dataset_creator",
 	"label"=>"Data-eigenaar",
 	"example"=>"http://standaarden.overheid.nl/owms/terms/Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap",
 	"mandatory"=>0,
@@ -98,7 +98,7 @@ $datasetfields[]=array(
 	"range"=>"donl:authority",
 	"select"=>"donl_organization",
 	"title"=>"De maker (creator) of eigenaar van de dataset",
-	"script_schema"=>'if ($("#id_dataset_authority").val()) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_authority option:selected").text(); schema["creator"]["url"]=$("#id_dataset_authority").val(); }',
+	"script_schema"=>'if ($("#id_dataset_creator").val()) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_creator option:selected").text(); schema["creator"]["@id"]=$("#id_dataset_creator").val(); }',
 	"screen"=>2
 );
 
@@ -113,8 +113,6 @@ $datasetfields[]=array(
 	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_0").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["mainEntityOfPage"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
 	"screen"=>2
 );
-
-
 
 $datasetfields[]=array(
 	"id"=>"dataset_dateCreated",
