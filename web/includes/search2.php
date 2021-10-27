@@ -1,7 +1,7 @@
 <?php
 
 define('SPARQL_ENDPOINT', 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry');
-define('SPARQL_CACHE_DURATION_HOURS',1);
+define('SPARQL_CACHE_DURATION_HOURS',0);
 
 function getFormats() {
 	$sparqlGetPublishers='PREFIX dct: <http://purl.org/dc/terms/>
@@ -60,12 +60,16 @@ function getPublishers() {
 }
 
 function getSPARQLresults($sparqlQueryString) {
-	$cacheFile=md5($sparqlQueryString).".json";
-	if (file_exists($cacheFile) && (time() - filectime($cacheFile))/3600<SPARQL_CACHE_DURATION_HOURS && !isset($_GET["nocache"])) {
-		$contents=file_get_contents($cacheFile);
-	} else {
-		$contents=doSPARQLcall($sparqlQueryString);
-		file_put_contents($cacheFile,$contents);
+	if (SPARQL_CACHE_DURATION_HOURS>0 ) {
+		$cacheFile=md5($sparqlQueryString).".json";
+		if (file_exists($cacheFile) && (time() - filectime($cacheFile))/3600<SPARQL_CACHE_DURATION_HOURS && !isset($_GET["nocache"])) {
+			$contents=file_get_contents($cacheFile);
+		} else {
+			$contents=doSPARQLcall($sparqlQueryString);
+			file_put_contents($cacheFile,$contents);
+		}
+	} else { # no caching
+		$contents=doSPARQLcall($sparqlQueryString);		
 	}
 	return json_decode($contents, true);	
 }
