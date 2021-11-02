@@ -126,7 +126,9 @@
                               </ul>
                            </div>
                         </div>
-                     </div>
+					 	<p><br><br></p>
+						<p><img src="/assets/na-logo.png" class="nalogo">Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.</p>
+					 </div>
                   </div>
                   <div class="all-1_3 tablet-landscape-1_1">
                      <div class="c-grid__col">
@@ -170,5 +172,5 @@
    </div>
 </footer>
 </div>
- <script type='text/javascript' src='/assets/main.js' id='main-js-js'></script>
+<script type='text/javascript' src='/assets/main.js' id='main-js-js'></script>
 </body></html>
