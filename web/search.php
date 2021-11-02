@@ -3,15 +3,32 @@
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l">Doorzoek alle datasetbeschrijvingen</h1>
-         
+         				
+		<p>Door erfgoedinstellingen aangemelde datasetbeschrijvingen worden opgeslagen in een openbare triplestore op basis van het DCAT datamodel. Op deze pagina wordt uitgelegd hoe het datamodel in elkaar zit. De triplestore is via SPARQL te doorzoeken, via de Data Stories geven we voorbeelden om je op weg te helpen met SPARQL.</p> 
+
+	
+		<div class="m-theme-bg m-theme-bg m-theme--teal" style="margin:24px 0 48px 0">
+			<div class="c-grid__row item-in-view p-b-half-space inview" style="margin:0;padding:0;text-align:center">
+				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
+					<a target="datastory" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/"><span class="btn btn--arrow m-t-half-space btn--api">Leer via de Data Stories hoe te zoeken <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 788; stroke-dashoffset: 788;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+				</div>
+				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1" style="margin:0;padding:0;text-align:center">				
+					<a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/"><span class="btn btn--arrow m-t-half-space btn--api">Naar de triplestore om te SPARQL'n<svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 788; stroke-dashoffset: 788;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+				</div>
+			</div>
+		</div>
+	
+	
+		<h2 class="title--2">Voorbeeld queries</h2>
 		 
-		 
-		<p>Door erfgoedinstellingen aangemelde datasetbeschrijvingen worden opgeslagen in een openbare <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> op basis van het DCAT datamodel. Deze triplestore is via SPARQL te doorzoeken, we geven graag wat voorbeeld om je op weg te helpen.</p> 
+		<p>Via de <a href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/">Datasetregister Data Stories</a> worden er voorbeelden gegeven van wat er aan het Datasetregister gevraagd kan worden. Door op de "blauwe pijl omhoog" te klikken bij resultaten wordt de gebruikte SPARQL-query getoond. Deze SPARQL-query kan ook aangepast worden en opnieuw uitgevoerd worden.</p>
+		<p>Ook via de <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> (in GraphDB) worden er voorbeelden gegeven van SPARQL-queries (in de sectie "Saved SPARQL queries").</p>
+		
+		<p><br></p>
+		
+		<h2 class="title--2">Uitleg van de dataconcepten</h2>
 
-		<p><br></p><h2 class="title--2">Uitleg van de dataconcepten</h2>
-
-
-		<p><br></p><h3>Datasetbeschrijving</h3>
+		<h3>Datasetbeschrijving</h3>
 		<p>Wanneer de datasetbeschrijving bij de bron wordt opgehaald en gevalideerd, dan wordt deze in een eigen graaf opgeslagen op basis van <code>dcat:Dataset</code>. De URL van de graaf correspondeert met de IRI van de dataset.</p>
 		<p>Datasetbeschrijvingen die worden geleverd op basis van schema.org - zoals geadviseerd in de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a> - worden geconverteerd naar DCAT.</p>
 
@@ -205,11 +222,6 @@
 		</table>
 
 
-		<p><br></p><h2 class="title--2">Voorbeeld queries</h2>
-		 
-		<p>Via de <a href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/">Datasetregister Datastories</a> worden er voorbeelden gegeven van wat er aan het Datasetregister gevraagd kan worden. Door op de "blauwe pijl omhoog" te klikken bij resultaten wordt de gebruikte SPARQL-query getoond. Deze SPARQL-query kan ook aangepast worden en opnieuw uitgevoerd worden.</p>
-		<p>Ook via de <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> (in GraphDB) worden er voorbeelden gegeven van SPARQL-queries (in de sectie "Saved SPARQL queries").</p>
-		
       </div>
    </section>
 </main>

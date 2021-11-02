@@ -15,3 +15,9 @@
 }
 
 .nalogo { float:right;height:60px;padding-right:10px }
+
+table { margin-top:20px;width:100%;font-size:1.1em }
+thead { border-top:2px solid #be2c00; border-bottom:1px solid #be2c00 }
+td { border-top:1px solid #be2c00;padding:3px }
+th { background-color: #faebe5 }
+tbody { border-bottom:2px solid #be2c00 } 
