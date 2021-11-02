@@ -97,14 +97,14 @@
 			<div id="searchresults" style="display:none">
 				<p><br><p>
 				<h2>Zoekresultaten (<span id="countdatasets">0</span>)</h2>
-				<ol id="datasets"></ol>
+				<ul id="datasets"></ul>
 			</div>
 
 		</div>
 	</section>
 </main>
 
-<script type="text/javascript" src="/assets/search2.20211028.js"></script>
+<script type="text/javascript" src="/assets/search2.20211102.js"></script>
 <?php 
 	include("includes/footer.php") 
 ?>
