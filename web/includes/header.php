@@ -8,7 +8,7 @@
       <head>
          <meta charset="UTF-8">
          <link rel="icon" href="assets/favicon-32x32.png">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <link rel="stylesheet" id="nde-style-css" href="assets/style.20211104.css" type="text/css" media="all">
          <link rel="stylesheet" id="site-style-css" href="assets/site.20211104.css" type="text/css" media="all">
