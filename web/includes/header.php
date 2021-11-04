@@ -10,8 +10,8 @@
          <link rel="icon" href="assets/favicon-32x32.png">
          <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <link rel="stylesheet" id="nde-style-css" href="assets/style-20211102.css" type="text/css" media="all">
-         <link rel="stylesheet" id="site-style-css" href="assets/site-20211020.css" type="text/css" media="all">
+         <link rel="stylesheet" id="nde-style-css" href="assets/style.20211104.css" type="text/css" media="all">
+         <link rel="stylesheet" id="site-style-css" href="assets/site.20211104.css" type="text/css" media="all">
          <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -20,6 +20,15 @@
          <meta name="theme-color" content="#434343">
          <title>Datasetregister - Voor alle erfgoeddatasets!</title>
          <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Datasetregister">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="/assets/beeldmerk-social3.jpg">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Datasetregister - Voor alle erfgoeddatasets!">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://datasetregister.netwerkdigitaalerfgoed.nl/">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
+		 <meta property="twitter:card" content="summary">
+		 <meta property="twitter:image:src" content="/assets/beeldmerk-social3.jpg">
+		 <meta property="twitter:title" content="Datasetregister - Voor alle erfgoeddatasets!">
+		 <meta property="twitter:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
       </head>
       <body class="home page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">
@@ -112,10 +121,10 @@
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/validate.php">Valideer</a>
                         </li>
                         <li>
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/viaurl.php">Voeg toe</a>
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/viaurl.php">Meld aan</a>
                         </li>
 						<li>
-                           <a class="m-theme-before m-select--none" href="/search.php">Zoek</a>
+                           <a class="m-theme-before m-select--none" href="/search.php">Doorzoek</a>
                         </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu" role="open submenu">
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>
@@ -162,10 +171,10 @@
                            <a class="m-theme-before m-select--none" href="/validate.php">Valideer</a>
                         </li>
                         <li>
-                           <a class="m-theme-before m-select--none" href="/viaurl.php">Voeg toe</a>
+                           <a class="m-theme-before m-select--none" href="/viaurl.php">Meld aan</a>
                         </li>
 						<li>
-                           <a class="m-theme-before m-select--none" href="/search.php">Zoek</a>
+                           <a class="m-theme-before m-select--none" href="/search.php">Doorzoek</a>
                         </li>
                         <li>
                            <a class="m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>

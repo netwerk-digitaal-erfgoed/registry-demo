@@ -8,7 +8,7 @@ include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-      <h1 class="title--l">Datasetbeschrijving aanmelden</h1>
+      <h1 class="title--l">Meld een datasetbeschrijving aan</h1>
       <p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> aan te melden. Als de domeinnaam voorkomt op de lijst van toegestane domeinnamen (zie <a href="faq-ontwikkelaars.php#allowed_domain_names">FAQ</a>) en de aangetroffen datasetbeschrijving(en) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a> dan zullen deze in het Datasetregister worden opgenomen.</p>
    </section>
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
@@ -25,7 +25,7 @@ include("includes/header.php") ?>
             </svg>
          </span>
          <p><br/></p>
-		 <div id="api_status"></div>
+         <div id="api_status"></div>
          <xmp id="api_result">(Hier komt het resultaat van de aanroep van de aanmeld functie via de API)</xmp>
          </p>
       </div>

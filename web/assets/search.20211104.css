@@ -1,0 +1,65 @@
+.column {
+     float: left;
+     width: 57%;
+     margin-right:2% 
+}
+ .column2 {
+     float: left;
+     width: 40%;
+     border-left:2px solid white;
+     padding-left:20px;
+}
+ .row:after {
+     content: "";
+     display: table;
+     clear: both;
+}
+ input[type=search], select {
+     width:100%;
+     padding:8px;
+     margin-top: 1px;
+}
+ .linkprop span {
+     cursor: pointer;
+     text-decoration:underline;
+}
+ .choices {
+     text-align:center;
+}
+ .choices a {
+     font-size:0.8em;
+     font-weight:400;
+}
+ .props {
+     border-left:3px solid #be2c00;
+     border-spacing: 5px;
+     padding:5px;
+     border-collapse: unset;
+     background-color:#fff4ef;
+}
+ .props th, .props td {
+     vertical-align:top;
+}
+ .formatcheckboxes {
+     background-color:#fff4ef;
+     border:3px solid #fff;
+     height:200px;
+     overflow-y:auto;
+     overflow-x:hidden;
+     padding:5px;
+     margin:1px;
+}
+ ol li {
+     font-size:1em !important 
+}
+ label {
+     font-weight:100!important;
+     color:#172a70!important;
+}
+ .search-div {
+     padding:16px;
+     margin:32px 0;
+}
+ #searchresults {
+     margin-top:50px;
+}

@@ -8,7 +8,7 @@ include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l">Datasetbeschrijving valideren</h1>
+         <h1 class="title--l">Valideer een datasetbeschrijving</h1>
          <p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.</p>
       </div>
    </section>

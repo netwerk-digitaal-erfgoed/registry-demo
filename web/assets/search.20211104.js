@@ -74,6 +74,9 @@ function updateSparql() {
   }
 
   sparqlQuery = sparqlPrefixes + sparqltxt + sparqlUnion;
+
+  document.getElementById('sparql-query').innerHTML = sparqlQuery;
+
 }
 
 var creator = '';
@@ -86,6 +89,7 @@ function set_creator(value) {
 
 document.getElementById('creator_list').addEventListener('change', function() {
   set_creator(this.value);
+  updateSparql();
 });
 
 var publisher = '';
@@ -98,6 +102,7 @@ function set_publisher(value) {
 
 document.getElementById('publisher_list').addEventListener('change', function() {
   set_publisher(this.value);
+  updateSparql();
 });
 
 var formats = new Set();
@@ -121,7 +126,7 @@ function set_choice(name, value, checked) {
       }
       break;
   }
-
+  updateSparql();
 }
 
 function getDatasetDescription(uri) {
@@ -231,6 +236,7 @@ function searchTriplestore() {
   updateSparql();
   var url = sparqlUrl + encodeURIComponent(sparqlQuery);
   window.open(url, 'triplestore').focus();
+  return false;
 }
 
 function searchDatasets() {
@@ -311,6 +317,7 @@ function set_lod_choices() {
       }
     }
   }
+  updateSparql();
   return false;
 }
 
@@ -324,3 +331,28 @@ function clear_formats() {
   }
   return false;
 }
+
+
+document.getElementById('sparql-query').addEventListener(
+  "click",
+  function(event) {
+
+    if (!navigator.clipboard) {
+      // Clipboard API not available
+      return;
+    }
+    const text = document.getElementById('sparql-query').innerHTML;
+    try {
+      navigator.clipboard.writeText(text);
+      document.getElementById("copy-status").innerText = "De SPARQL is gekopieerd.";
+      setTimeout(function() {
+        document.getElementById("copy-status").innerText = "Klik de SPARQL om deze te kopieren.";
+      }, 1200);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  },
+  false
+);
+
+updateSparql();
