@@ -1,4 +1,10 @@
-<?php include("includes/header.php") ?>
+<?php 
+
+$url="";
+if (isset($_GET["url"]) && filter_var($_GET["url"], FILTER_VALIDATE_URL)) {
+	$url=$_GET["url"];
+}
+include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
@@ -8,7 +14,7 @@
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small">
          <label>URL van pagina met datasetbeschrijving (of datacatalogus):</label>
-         <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="db_url" value=""><br>
+         <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="db_url" value="<?= $url ?>"><br>
          <span class="btn btn--arrow m-t-half-space btn--api" onclick="call_api()">
             Datasetbeschrijving aanmelden
             <svg class="rect">

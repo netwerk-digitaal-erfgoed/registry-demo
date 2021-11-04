@@ -31,6 +31,16 @@ include("includes/header.php") ?>
  <?php if(!empty($url)) { ?>
 		<div id="api_result"></div>
 		 
+		  <a id="btnAdd" class="btn btn--arrow m-t-half-space btn--api" style="display:none" href="viaurl.php">
+            Datasetbeschrijving aanmelden
+            <svg class="rect">
+               <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
+            </svg>
+            <svg class="icon icon-arrow-right">
+               <use xlink:href="#icon-arrow-right"></use>
+            </svg>
+         </a>
+		 
 		 <span id="api_source_link" class="btn btn--arrow m-t-half-space btn--api" onclick="toggle_visibility()">
             Klik om de SHACL validatie resultaten te bekijken
             <svg class="rect">
@@ -130,10 +140,19 @@ function processMessages(shaclObject) {
 }
 
 function call_api() {
+	var ab = document.getElementById("btnAdd");
+	ab.style.display = "none";
+
+	var al = document.getElementById("api_source_link");
+	al.style.display = "none";
+
 	var as = document.getElementById("api_status");
 
 	as.style.backgroundColor = "none";
 	as.innerHTML = "";
+
+
+
 
 	document.getElementById("api_result").innerHTML = "Calling API ...";
 	fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
@@ -152,7 +171,12 @@ function call_api() {
 			if (response.status == "200") {
 				as.style.backgroundColor = "#5cb85c";
 				as.innerHTML = "Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.";
+				
+				ab.style.display = "inline-block";
+				ab.href = "viaurl.php?url="+document.getElementById("datasetdescriptionurl").value;
+
 			} else {
+				al.style.display = "block";
 				as.style.backgroundColor = "#e44d26";
 				if (response.status == "400") {
 					as.innerHTML = "Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.";
