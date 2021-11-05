@@ -1,5 +1,5 @@
 <?php include("includes/search.php"); include("includes/header.php"); ?>
-<link rel="stylesheet" href="/assets/search.20211104.css" type="text/css" media="all">
+<link rel="stylesheet" href="/assets/search.20211105.css" type="text/css" media="all">
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
@@ -8,16 +8,16 @@
       </div>
    </section>
    <section id="" class="m-t-quarter-space m-theme-bg m-theme--teal search-div">
-      <div class="o-container o-container__small">
+      <div class="o-container no-container__small">
          <div class="row">
             <div class="column">
                <h4>Zoekwoord</h4>
                <input class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
                <br><br>
                <h4>Doorzoek</h4>
-               <p><label><input class="choice" type="checkbox" checked name="searchIn[]" value="dct:title"> Naam</label>&nbsp;&nbsp;&nbsp;
-                  <label><input class="choice" type="checkbox" name="searchIn[]" value="dct:description"> Omschrijving</label>&nbsp;&nbsp;&nbsp;
-                  <label><input class="choice" type="checkbox" name="searchIn[]" value="dcat:keyword"> Steekwoorden</label>
+               <p><label class="doorzoek"><input class="choice" type="checkbox" checked name="searchIn[]" value="dct:title"> Naam</label>
+                  <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" value="dct:description"> Omschrijving</label>
+                  <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" value="dcat:keyword"> Steekwoorden</label>
                </p>
                <br>
                <h4>Uitgever</h4>
@@ -51,11 +51,11 @@
                      	echo '<label>';
                      	echo '<input class="choice" type="checkbox" name="format[]" value="'.htmlentities($format_name).'">';
                      	echo '&nbsp;&nbsp;'.htmlentities($format_name);
-                     	echo '</label><br>';
+                     	echo '</label>';
                      }
                      ?>
                </div>
-               <p class="choices"><a href="#" onclick="return set_lod_choices()">Selecteer Linked Data formaten</a> | <a href="#" onclick="return clear_formats()">Verwijder selectie(s)</a></p>
+               <p class="choices"><a href="#" onclick="return set_lod_choices()">Selecteer Linked Data formaten</a><span class="mobile-hidden"> | <a href="#" onclick="return clear_formats()">Verwijder selectie(s)</a></span></p>
                <span class="btn btn--arrow m-t-half-space btn--api" style="display:block" onclick="searchDatasets()">
                   Zoek datasets
                   <svg class="rect">
@@ -82,5 +82,5 @@
       </div>
    </section>
 </main>
-<script type="text/javascript" src="/assets/search.20211104.js"></script>
+<script type="text/javascript" src="/assets/search.20211105.js"></script>
 <?php include("includes/footer.php") ?>

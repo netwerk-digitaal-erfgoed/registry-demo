@@ -283,9 +283,13 @@ function showDatasets(sparqlresult) {
     span.appendChild(document.createTextNode(title));
     li.appendChild(span);
 
+    var div = document.createElement("div");
+    div.setAttribute("class", "scroll");
+	li.appendChild(div);
+ 
     var eul = document.createElement("table");
     eul.setAttribute("id", "props-" + dataset);
-    li.appendChild(eul);
+    div.appendChild(eul);
 
     li.addEventListener('click', function() {
       getDatasetDescription(this.id);

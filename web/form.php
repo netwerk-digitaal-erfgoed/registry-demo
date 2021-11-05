@@ -11,7 +11,7 @@ include("includes/header.php");
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/css/bootstrap-select.min.css" integrity="sha384-YT6Vh7LpL+LTEi0RVF6MlYgTcoBIji2PmGBbXk3D4So5lw1e64pyuwTtbLOED1Li" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link href="assets/vendor/chosen/chosen.css" rel="stylesheet" type="text/css">
-<<main>
+<main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l">Maak een datasetbeschrijving</h1>
