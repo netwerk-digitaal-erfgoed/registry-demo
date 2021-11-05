@@ -308,7 +308,7 @@ function set_lod_choices() {
   choices = document.getElementsByClassName('choice');
   for (i = 0; i < choices.length; i++) {
     if (choices[i].name == "format[]") {
-      if (["application/ld+json", "application/n-quads", "application/n-triples", "application/rdf+xml", "application/sparql-query", "application/trig", "application/turtle", "application/vnd.hdt", "text/turtle"].includes(choices[i].value)) {
+      if (["application/ld+json", "application/n-quads", "application/n-triples", "application/rdf+xml", "application/sparql-query", "application/trig", "application/turtle", "application/vnd.hdt", "text/turtle", "text/n3"].includes(choices[i].value)) {
         choices[i].checked = true;
         formats.add(choices[i].value);
       } else {
