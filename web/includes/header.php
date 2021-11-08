@@ -21,12 +21,12 @@
          <title>Datasetregister - Voor alle erfgoeddatasets!</title>
          <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Datasetregister">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="/assets/beeldmerk-social.jpg">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://datasetregister.netwerkdigitaalerfgoed.nl/assets/beeldmerk-social.jpg">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Datasetregister - Voor alle erfgoeddatasets!">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://datasetregister.netwerkdigitaalerfgoed.nl/">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
 		 <meta property="twitter:card" content="summary">
-		 <meta property="twitter:image:src" content="/assets/beeldmerk-social.jpg">
+		 <meta property="twitter:image:src" content="https://datasetregister.netwerkdigitaalerfgoed.nl/assets/beeldmerk-social.jpg">
 		 <meta property="twitter:title" content="Datasetregister - Voor alle erfgoeddatasets!">
 		 <meta property="twitter:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
