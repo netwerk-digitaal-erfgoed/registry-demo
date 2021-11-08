@@ -229,3 +229,17 @@
     display:inline;
   }
 }
+body.home {
+	background:url(/assets/beeldmerk.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+.b-homepanel {
+	width:60%;
+	background-color:#ffffffe5!important;
+	box-shadow: 0px 0px 7px #be2c00;
+}
+@media only screen and (max-width:42.375em){
+	.b-homepanel {
+		width:90%;
+	}
+}

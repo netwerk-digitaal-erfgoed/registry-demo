@@ -1,34 +1,22 @@
 <?php include("includes/header.php") ?>
-<main>
-	<section class="m-t-quarter-space">
-		<div class="o-container o-container__medium p-t-space p-b-space c-hero">
-			<h1 class="title--l">Datasetregister</h1>
-			<h2 class="title--m am-text-align--right">Voor alle erfgoeddatasets!</h2>
-			<div class="m-flex m-tablet-portrait--noflex">
-				<figure>
-					<picture>
-						<video src="https://player.vimeo.com/external/510215263.hd.mp4?s=5d74bcb2a84cdaed594f4d6e40a84051b5ef9932&profile_id=174" muted playsinline autoplay loop></video>
-					</picture>
-				</figure>
-				<div class="all-2_3 tablet-portrait-1_1">
-					<div class="m-t-half-space">
-						<p><br></p><p>Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p><p><br></p>
-					</div>
-				</div>
-			</div>
+<main style="padding-top:70px">
+
+	<section class="m-t-quarter-space" style="margin:0 0 30px 0">
+		<div class="o-container o-container__medium p-t-space p-b-space c-hero b-homepanel">
+			<h1 class="title--l m-text-align--center" style="text-shadow:1px 0px 0px white;">Datasetregister</h1>
+			<h2 class="title--m m-text-align--center" style="text-shadow:1px 0px 0px white;">Voor alle erfgoeddatasets!</h2>
+			<p class=" m-text-align--center" style="text-shadow:1px 0px 0px white;">Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p>
 		</div>
 	</section>
    
-	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal" style="padding:0 20px">
-		<div class="o-container o-container__medium">
-			<div class="c-grid__row item-in-view p-b-half-space inview">
+	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space">
+		<div class="o-container o-container__medium m-theme-bg b-homepanel" style="padding:10px 0 10px 0!important;">
+			<div class="c-grid__row item-in-view p-b-half-space inview" style="margin:0;padding:0;text-align:center">
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
-					<div style="color:#be2c00">Voor erfgoedinstellingen met datasets:</div>
-					<a href="/viaurl.php"><span class="btn btn--arrow m-t-half-space btn--api"> Voeg een datasetbeschrijving toe <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+					<a href="/viaurl.php"><span class="btn btn--arrow m-t-half-space btn--api">Voor erfgoedinstellingen met datasets:<br>voeg een datasetbeschrijving toe <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
-				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
-					<div style="color:#be2c00">Voor gebruikers van erfgoeddata:</div>
-					<a href="/search.php"><span class="btn btn--arrow m-t-half-space btn--api"> Doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1" style="margin:0;padding:0;text-align:center">				
+					<a href="/search.php"><span class="btn btn--arrow m-t-half-space btn--api">Voor gebruikers van erfgoeddata:<br>doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 			</div>
 		</div>

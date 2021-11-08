@@ -11,7 +11,7 @@
 		 <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <link rel="stylesheet" id="nde-style-css" href="assets/style.20211105.css" type="text/css" media="all">
-         <link rel="stylesheet" id="site-style-css" href="assets/site.20211105.css" type="text/css" media="all">
+         <link rel="stylesheet" id="site-style-css" href="assets/site.20211108.css" type="text/css" media="all">
          <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -21,17 +21,17 @@
          <title>Datasetregister - Voor alle erfgoeddatasets!</title>
          <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Datasetregister">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="/assets/beeldmerk-social3.jpg">
+		 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="/assets/beeldmerk-social.jpg">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Datasetregister - Voor alle erfgoeddatasets!">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://datasetregister.netwerkdigitaalerfgoed.nl/">
 		 <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
 		 <meta property="twitter:card" content="summary">
-		 <meta property="twitter:image:src" content="/assets/beeldmerk-social3.jpg">
+		 <meta property="twitter:image:src" content="/assets/beeldmerk-social.jpg">
 		 <meta property="twitter:title" content="Datasetregister - Voor alle erfgoeddatasets!">
 		 <meta property="twitter:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
       </head>
-      <body class="home page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">
+      <body class="<?php if(substr($_SERVER['SCRIPT_FILENAME'],-9,9)=="index.php") { echo "home "; } ?> page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">
          <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
