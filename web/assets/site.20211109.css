@@ -45,6 +45,9 @@
  .btn--api {
      color: #be2c00!important;
 }
+ .btn {
+	 cursor: pointer
+}
  .imessage {
      box-shadow: 0px 0px 9px 3px rgba(95, 95, 95, 0.9);
      padding: 10px;
