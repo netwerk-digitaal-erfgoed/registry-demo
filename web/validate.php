@@ -12,7 +12,7 @@ include("includes/header.php") ?>
          <p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.</p>
       </div>
    </section>
-   <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
+   <section class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form action="validate.php" id="validate_form" class="form-control" method="get">
          <label>URL van pagina met datasetbeschrijving (of datacatalogus):</label>
          <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= $url ?>"><br>
@@ -29,8 +29,19 @@ include("includes/header.php") ?>
 		 <div id="api_status"></div>
  
  <?php if(!empty($url)) { ?>
-		<div id="api_result"></div>
-		 
+ 
+      </div>
+   </section>
+   
+   <section class="m-t-quarter-space">
+      <div class="o-container">
+         <div id="api_result"></div>
+      </div>
+   </section>
+   
+   <section class="m-flex c-module c-module--doorway p-b-space m-theme-bg m-theme--teal">
+      <div class="o-container o-container__small">
+	  
 		  <a id="btnAdd" class="btn btn--arrow m-t-half-space btn--api" style="display:none" href="viaurl.php">
             Datasetbeschrijving aanmelden
             <svg class="rect">
@@ -108,7 +119,7 @@ function showMessages(items) {
 		nrMessage++;
 	}
 
-	strValidationResults += strOverview + '<p><br><br></p>' + strDetails;
+	strValidationResults += strOverview + strDetails;
 }
 
 function processMessages(shaclObject) {
