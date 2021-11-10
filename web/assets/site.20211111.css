@@ -168,9 +168,11 @@ body {
  xmp {
      color: #fff;
      background-color: #172a59;
-     margin:20px 0 0 0;
-     padding:20px;
+     margin:10px 0 0 0;
+     padding:10px;
      overflow-x: auto;
+	 font-size:1.4em;
+	 line-height: initial;
 }
  textarea {
      overflow: auto;

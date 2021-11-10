@@ -77,6 +77,7 @@ function updateSparql() {
 
   document.getElementById('sparql-query').innerHTML = sparqlQuery;
 
+  toHash();
 }
 
 var creator = '';
@@ -266,7 +267,8 @@ function showDatasets(sparqlresult) {
 
   document.getElementById("countdatasets").innerHTML = sparqlresult.results.bindings.length;
   document.getElementById("searchresults").style.display = "block";
-  location.href = "#searchresults";
+//location.href = "#searchresults";
+  document.getElementById("sparql").scrollIntoView();
 
   var ul = document.getElementById("datasets");
   ul.innerHTML = "";
@@ -359,4 +361,62 @@ document.getElementById('sparql-query').addEventListener(
   false
 );
 
-updateSparql();
+function toHash() {
+	var searchData={};
+
+	if (creator) {
+		searchData['c']=creator;
+	}
+	if (publisher) {
+		searchData['p']=publisher;
+	}
+	if (formats.size > 0) {
+		searchData['f']=Array.from(formats);
+	}
+	searchData['t']=document.getElementById("searchTerm").value.trim().toLowerCase();
+    searchData['i']=Array.from(searchIn);
+
+	history.pushState({}, "", "#"+btoa(JSON.stringify(searchData)));
+}
+
+function fromHash() {
+
+	var hash = new URL(document.URL).hash.substring(1);
+
+	if (hash.length>0) {
+		try {
+			var searchData=JSON.parse(atob(hash));
+			if (searchData['creator']) {
+				creator=searchData.c;
+				document.getElementById("creator_list").value=creator;
+			}
+			if (searchData['publisher']) {
+				creator=searchData.p;
+				document.getElementById("publisher_list").value=publisher;
+			}
+			
+			searchIn=new Set(searchData.i);
+			document.getElementById("dct_title").checked=searchData.i.includes("dct:title");
+			document.getElementById("dct_description").checked=searchData.i.includes("dct:description");
+			document.getElementById("dcat_keyword").checked=searchData.i.includes("dcat:keyword");		  
+			document.getElementById("searchTerm").value=searchData.t;
+
+			if (searchData.f) {
+				formats=new Set(searchData.f);		
+				formatChoices=document.getElementsByClassName("choice");
+				Array.prototype.forEach.call(formatChoices, function(el) {
+					el.checked=searchData.f.includes(el.value);
+				});
+			}
+			updateSparql();
+			searchDatasets();
+		} catch (e) {
+			console.log(e);
+			return false;
+		}
+	} else {
+		updateSparql();		
+	}
+}
+
+fromHash();

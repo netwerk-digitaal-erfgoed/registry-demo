@@ -15,9 +15,9 @@
                <input class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
                <br><br>
                <h4>Doorzoek</h4>
-               <p><label class="doorzoek"><input class="choice" type="checkbox" checked name="searchIn[]" value="dct:title"> Naam</label>
-                  <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" value="dct:description"> Omschrijving</label>
-                  <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" value="dcat:keyword"> Steekwoorden</label>
+               <p><label class="doorzoek"><input class="choice" type="checkbox" checked name="searchIn[]" id="dct_title" value="dct:title"> Naam</label>
+                  <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dct_description" value="dct:description"> Omschrijving</label>
+                  <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dcat_keyword" value="dcat:keyword"> Steekwoorden</label>
                </p>
                <br>
                <h4>Uitgever</h4>
@@ -71,10 +71,11 @@
    </section>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
+	     <p><a style="float:right" onclick="return searchTriplestore()" href="#">Neem onderstaande SPARQL mee naar de triplestore</a></p>
+		 <h2 id="sparql">SPARQL</h2>
          <xmp id="sparql-query">
          </xmp>
-         <span id="copy-status" style="float:right">Klik de SPARQL om deze te kopieren.</span>
-         <p><a onclick="return searchTriplestore()" href="#">Neem bovenstaande SPARQL mee naar de triplestore</a></p>
+         <p id="copy-status" style="float:right">Klik de SPARQL om deze te kopieren.</p>
          <div id="searchresults" style="display:none">
             <h2>Zoekresultaten (<span id="countdatasets">0</span>)</h2>
             <ul id="datasets"></ul>
@@ -82,5 +83,5 @@
       </div>
    </section>
 </main>
-<script type="text/javascript" src="/assets/search.20211105.js"></script>
+<script type="text/javascript" src="/assets/search.20211110.js"></script>
 <?php include("includes/footer.php") ?>
