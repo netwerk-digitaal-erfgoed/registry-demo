@@ -83,5 +83,5 @@
       </div>
    </section>
 </main>
-<script type="text/javascript" src="/assets/search.20211110.js"></script>
+<script type="text/javascript" src="/assets/search.20211119.js"></script>
 <?php include("includes/footer.php") ?>
