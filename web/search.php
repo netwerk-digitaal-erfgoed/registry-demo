@@ -1,4 +1,10 @@
-<?php include("includes/search.php"); include("includes/header.php"); ?>
+<?php include("includes/search.php"); include("includes/header.php"); 
+
+if (filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
+	$o=$_GET["o"];
+}
+
+?>
 <link rel="stylesheet" href="/assets/search.20211105.css" type="text/css" media="all">
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
@@ -26,7 +32,9 @@
                   <?php
                      $publishers=getPublishers();
                      foreach ($publishers as $publisher_uri => $publisher_name) {
-                     	echo '<option value="'.htmlentities($publisher_uri).'">'.str_replace(" ","&nbsp;",htmlentities($publisher_name))."</option>";
+                     	echo '<option ';
+						if ($publisher_uri==$o) { echo 'selected '; }
+                     	echo 'value="'.htmlentities($publisher_uri).'">'.str_replace(" ","&nbsp;",htmlentities($publisher_name))."</option>";
                      }
                      ?>
                </select>
@@ -37,7 +45,9 @@
                   <?php
                      $creators=getCreators();
                      foreach ($creators as $creator_uri => $creator_name) {
-                     	echo '<option value="'.htmlentities($creator_uri).'">'.str_replace(" ","&nbsp;",htmlentities($creator_name))."</option>";
+                     	echo '<option ';
+						if ($creator_uri==$o) { echo 'selected '; }
+						echo 'value="'.htmlentities($creator_uri).'">'.str_replace(" ","&nbsp;",htmlentities($creator_name))."</option>";
                      }
                      ?>
                </select>
@@ -83,5 +93,5 @@
       </div>
    </section>
 </main>
-<script type="text/javascript" src="/assets/search.20211119.js"></script>
+<script type="text/javascript" src="/assets/search.20211123.js"></script>
 <?php include("includes/footer.php") ?>

@@ -368,12 +368,25 @@ function fromHash() {
 	}
 }
 
+var bSearch=0;
 var creator = '';
+if (document.getElementById('creator_list').selectedIndex>0) { 
+	creator=document.getElementById('creator_list').options[document.getElementById('creator_list').selectedIndex].value; 
+	bSearch=1;
+}
 var publisher = '';
+if (document.getElementById('publisher_list').selectedIndex>0) { 
+	publisher=document.getElementById('publisher_list').options[document.getElementById('publisher_list').selectedIndex].value; 
+	bSearch=1;
+}
 var formats = new Set();
 var searchIn = new Set(["dct:title"]);
 
-fromHash();
+if (bSearch) {
+	 searchDatasets();
+} else {
+	fromHash();
+}
 
 document.getElementById('creator_list').addEventListener('change', function() {
   set_creator(this.value);
