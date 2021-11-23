@@ -1,6 +1,6 @@
 <?php include("includes/search.php"); include("includes/header.php"); 
 
-if (filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
+if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 	$o=$_GET["o"];
 }
 
