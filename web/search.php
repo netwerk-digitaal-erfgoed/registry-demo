@@ -33,7 +33,7 @@ if (filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                      $publishers=getPublishers();
                      foreach ($publishers as $publisher_uri => $publisher_name) {
                      	echo '<option ';
-						if ($publisher_uri==$o) { echo 'selected '; }
+						if (isset($o) && $publisher_uri==$o) { echo 'selected '; }
                      	echo 'value="'.htmlentities($publisher_uri).'">'.str_replace(" ","&nbsp;",htmlentities($publisher_name))."</option>";
                      }
                      ?>
@@ -46,7 +46,7 @@ if (filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                      $creators=getCreators();
                      foreach ($creators as $creator_uri => $creator_name) {
                      	echo '<option ';
-						if ($creator_uri==$o) { echo 'selected '; }
+						if (isset($o) && $creator_uri==$o) { echo 'selected '; }
 						echo 'value="'.htmlentities($creator_uri).'">'.str_replace(" ","&nbsp;",htmlentities($creator_name))."</option>";
                      }
                      ?>
