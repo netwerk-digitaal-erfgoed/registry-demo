@@ -14,7 +14,7 @@ include("includes/header.php") ?>
    </section>
    <section class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form action="validate.php" id="validate_form" class="form-control" method="get">
-         <label>URL van pagina met datasetbeschrijving (of datacatalogus):</label>
+         <label for="datasetdescriptionurl">URL van pagina met datasetbeschrijving (of datacatalogus):</label>
          <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= $url ?>"><br>
          <span class="btn btn--arrow m-t-half-space btn--api" onclick="validate_form.submit()">
             Datasetbeschrijving valideren
