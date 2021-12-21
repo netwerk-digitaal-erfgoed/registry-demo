@@ -3,7 +3,7 @@
       <div class="c-grid__row">
          <div class="all-1_4 tablet-portrait-1_1">
             <div class="c-grid__col">
-               <a href="/" class="logo" aria-label="nde-logo" aria-labelledby="footer" role="none">
+               <a href="/" class="logo" aria-label="Logo Netwerk Digitaal Erfgoed" aria-labelledby="footer">
                   <div class="icon icon--first">
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="43.167 125.167 157.333 150" enable-background="new 43.167 125.167 157.333 150" xml:space="preserve">
                         <g>
@@ -132,31 +132,31 @@
                   </div>
                   <div class="all-1_3 tablet-landscape-1_1">
                      <div class="c-grid__col">
-                        <p>Volg ons op:</p>
+                        <p>Volg Netwerk Digitaal Erfgoed via:</p>
                         <ul class="social">
                            <li>
-                              <a aria-labelledby="footer" role="none" aria-label="twitter-link" target="_blank" href="https://twitter.com/DigitaalErfgoed">
+                              <a aria-labelledby="footer" aria-label="Twitter link" target="_blank" href="https://twitter.com/DigitaalErfgoed">
                                  <svg class="icon icon-twitter">
                                     <use xlink:href="#icon-twitter"></use>
                                  </svg>
                               </a>
                            </li>
                            <li>
-                              <a aria-labelledby="footer" role="none" aria-label="linkedin-link" target="_blank" href="https://www.linkedin.com/company/netwerkdigitaalerfgoed/?originalSubdomain=nl">
+                              <a aria-labelledby="footer" aria-label="LinkedIn link" target="_blank" href="https://www.linkedin.com/company/netwerkdigitaalerfgoed/?originalSubdomain=nl">
                                  <svg class="icon icon-linkedin">
                                     <use xlink:href="#icon-linkedin"></use>
                                  </svg>
                               </a>
                            </li>
                            <li>
-                              <a aria-labelledby="footer" role="none" aria-label="youtube-link" target="_blank" href="https://www.youtube.com/channel/UCvHDarEQeREkRVLdzJSbKWw">
+                              <a aria-labelledby="footer" aria-label="Youtube link" target="_blank" href="https://www.youtube.com/channel/UCvHDarEQeREkRVLdzJSbKWw">
                                  <svg class="icon icon-youtube">
                                     <use xlink:href="#icon-youtube"></use>
                                  </svg>
                               </a>
                            </li>
                            <li>
-                              <a aria-labelledby="footer" role="none" aria-label="github-link" target="_blank" href="https://github.com/netwerk-digitaal-erfgoed/">
+                              <a aria-labelledby="footer" aria-label="Github link" target="_blank" href="https://github.com/netwerk-digitaal-erfgoed/">
                                  <svg class="icon icon-github">
                                     <use xlink:href="#icon-github"></use>
                                  </svg>
