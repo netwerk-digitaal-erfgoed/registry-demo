@@ -31,20 +31,20 @@ include("includes/header.php");
       <div class="container">
          <div class="row">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-               <li class="nav-item">
-                  <a class="nav-link active" id="uitleg-tab" data-toggle="tab" href="#uitleg" role="tab" aria-controls="uitleg" aria-selected="true">1 - Uitleg</a>
+               <li class="nav-item" role="tab">
+                  <a class="nav-link active" id="uitleg-tab" data-toggle="tab" href="#uitleg" aria-controls="uitleg" aria-selected="true">1 - Uitleg</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" id="req-tab" data-toggle="tab" href="#req" role="tab" aria-controls="req" aria-selected="false">2 - Verplichte velden</a>
+               <li class="nav-item" role="tab">
+                  <a class="nav-link" id="req-tab" data-toggle="tab" href="#req" aria-controls="req" aria-selected="false">2 - Verplichte velden</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" id="rec-tab" data-toggle="tab" href="#rec" role="tab" aria-controls="rec" aria-selected="false">3 - Aanbevolen velden</a>
+               <li class="nav-item" role="tab">
+                  <a class="nav-link" id="rec-tab" data-toggle="tab" href="#rec" aria-controls="rec" aria-selected="false">3 - Aanbevolen velden</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" id="dist-tab" data-toggle="tab" href="#dist" role="tab" aria-controls="dist" aria-selected="false">4 - Distributies</a>
+               <li class="nav-item" role="tab">
+                  <a class="nav-link" id="dist-tab" data-toggle="tab" href="#dist" aria-controls="dist" aria-selected="false">4 - Distributies</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" id="jsonld-tab" data-toggle="tab" href="#jsonld" role="tab" aria-controls="jsonld" aria-selected="false">5 - Resultaat</a>
+               <li class="nav-item" role="tab">
+                  <a class="nav-link" id="jsonld-tab" data-toggle="tab" href="#jsonld" aria-controls="jsonld" aria-selected="false">5 - Resultaat</a>
                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
