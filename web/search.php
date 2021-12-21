@@ -17,17 +17,17 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
       <div class="o-container no-container__small">
          <div class="row">
             <div class="column">
-               <h4>Zoekwoord</h4>
-               <input class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
+               <label id="searchTermLabel">Zoekwoord</label>
+               <input aria-labelledby="searchTermLabel" class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
                <br><br>
-               <h4>Doorzoek</h4>
+               <label>Doorzoek</label>
                <p><label class="doorzoek"><input class="choice" type="checkbox" checked name="searchIn[]" id="dct_title" value="dct:title"> Naam</label>
                   <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dct_description" value="dct:description"> Omschrijving</label>
                   <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dcat_keyword" value="dcat:keyword"> Steekwoorden</label>
                </p>
                <br>
-               <h4>Uitgever</h4>
-               <select class="form-control" id="publisher_list" name="publisher">
+               <label id="publisher_listLabel">Uitgever</label>
+               <select aria-labelledby="publisher_listLabel" class="form-control" id="publisher_list" name="publisher">
                   <option value="">Alle organisaties</option>
                   <?php
                      $publishers=getPublishers();
@@ -39,8 +39,8 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                      ?>
                </select>
                <br>- of -<br>
-               <h4>Maker</h4>
-               <select class="form-control" id="creator_list"  name="creator">
+               <label id="creator_listLabel">Maker</label>
+               <select aria-labelledby="creator_listLabel" class="form-control" id="creator_list"  name="creator">
                   <option value="">Alle organisaties</option>
                   <?php
                      $creators=getCreators();
@@ -53,7 +53,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                </select>
             </div>
             <div class="column2">
-               <h4>Formaat</h4>
+               <label>Formaat</label>
                <div class="formatcheckboxes">
                   <?php
                      $formats=getFormats();
