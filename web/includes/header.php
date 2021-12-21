@@ -126,7 +126,7 @@
 						<li>
                            <a class="m-theme-before m-select--none" href="/search.php">Doorzoek</a>
                         </li>
-                        <li class="has-sub" arial-label="Open submenu" title="Open submenu" role="open submenu">
+                        <li class="has-sub" arial-label="Open submenu" title="Open submenu">
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>
                            <nav>
                               <ul class="submenu">
