@@ -99,7 +99,11 @@ function showMessages(items) {
 		if (resultSeverity[1] == 'Warning') {
 			strDetails += "Waarschuwing";
 		} else {
-			strDetails += "Overtreding";
+			if (resultSeverity[1] == 'Info') {
+			strDetails += "Advies";
+			} else {
+				strDetails += "Overtreding";
+			}
 		}
 		strDetails += '</span>' + message + ' via ' + items[message][0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"] + '</h3><ul>';
 		strDetails += '<li>Shape: ' + items[message][0]["http://www.w3.org/ns/shacl#sourceShape"][0]["@id"] + '</li>';
