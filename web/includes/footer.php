@@ -132,7 +132,7 @@
                   </div>
                   <div class="all-1_3 tablet-landscape-1_1">
                      <div class="c-grid__col">
-                        <p>Volg Netwerk Digitaal Erfgoed via:</p>
+                        <p>Volg het Netwerk Digitaal Erfgoed via:</p>
                         <ul class="social">
                            <li>
                               <a aria-labelledby="footer" aria-label="Twitter link" target="_blank" href="https://twitter.com/DigitaalErfgoed">

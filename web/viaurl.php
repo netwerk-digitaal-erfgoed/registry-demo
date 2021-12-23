@@ -27,7 +27,7 @@ include("includes/header.php") ?>
          <p><br/></p>
          <div id="api_status"></div>
          <xmp id="api_result">(Hier komt het resultaat van de aanroep van de aanmeld functie via de API)</xmp>
-         </p>
+        </p>
       </div>
    </section>
 </main>

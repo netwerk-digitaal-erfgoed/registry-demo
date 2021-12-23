@@ -28,9 +28,9 @@
       <h2>Hoe kan ik het Datasetregister uitproberen?</h3>
       <p>Via deze website, een demonstrator voor de Datasetregister API, kun je datasetbeschrijvingen aanmelden en doorzoeken. Deze demonstrator maakt gebruik van de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/">REST API</a>, die je ook direct kunt aanspreken.</p>
       <h2>Wie maakt en beheert het Datasetregister?</h3>
-      <p>Het Datasetregister wordt gemaakt en beheerd door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a>. De instellingen staan in voor de werking en beschikbaarheid van het Datasetregister.</p>
+      <p>Het Datasetregister is gemaakt door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a> en wordt beheerd door het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a>. Het Nationaal Archief staat in voor de werking en beschikbaarheid van het Datasetregister.</p>
       <h2>Wat is de status van het Datasetregister?</h3>
-      <p>Het Datasetregister is klaar om gevuld te worden. De requirements, API en deze website zijn stabiel en worden op basis van feedback van gebruikers en leveranciers verfijnd.</p>
+      <p>Het Datasetregister is klaar om verder gevuld te worden. De requirements, API en deze website zijn stabiel en worden op basis van feedback van gebruikers en leveranciers verfijnd.</p>
       <h2>Kan ik al aan de slag met datasetbeschrijvingen maken?</h3>
       <p>Jazeker! De definitie van wat voor informatie er in de datasetbeschrijving opgenomen dient te worden ligt vast. Oook het mechanisme om datasetbeschrijvingen aan te melden en de opslag van datasetbeschrijvingen in een triplestore zijn operationeel. Als dataset beheerder kun je dus beginen met het beschrijven van de beschikbare datasets, bekijken waar de datasetbeschrijvingen kunnen worden gepubliceerd en deze aanmelden. Veelal betekent dit ook contact zoeken met uw software leverancier.</p>
       <p>Via een formulier kun je handmatig een datasetbeschrijving maken. Hiermee krijg je een idee over welke informatie benodigd <i>en</i> voorhanden is binnen systeem en organisatie. Vanuit het oogpunt van onderhoud is een oplossing vanuit uw systeem duurzamer.</p>
@@ -38,35 +38,8 @@
       <p>We horen ook graag wat je ervan vindt. Bijvoorbeeld: is duidelijk welke informatie in de datasetbeschrijving thuishoort? Is duidelijk hoe je de datasetbeschrijvingen gevuld krijgt, qua proces en qua gebruikte software?</p>
       <h2>Ga je aan de slag?</h3>
       <p>Ga je aan de slag met het publiceren van datasetbeschrijvingen en de API op het Datasetregister, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.</p>
+	  <h2>Meer weten?</h3>
+      <p>Heb je vragen en/of opmerkingen over de werking van het Datasetregister neem dan contact op met <a href="mailto:info@nationaalarchief.nl?subject=Datasetregister">info@nationaalarchief.nl</a>.</p>
    </div>
-   <section class="m-flex c-module c-module--contact m-t-space m-bg--light">
-      <div class="o-container o-container__small">
-         <div class="c-grid__row">
-            <div class="all-1_3 p-t-space p-b-space m-theme-before item-in-view inview">
-               <div class="c-grid__col">
-                  <figure class="ratio ratio--1_1">
-                     <picture><img src="assets/bob-coret-1.jpg" alt="Foto Bob Coret"></picture>
-                  </figure>
-               </div>
-            </div>
-            <div class="all-2_3 p-t-space p-b-space m-theme-before item-in-view inview">
-               <div class="c-grid__col m-height-100 m-flex m-flex--align-center">
-                  <div class="all-1_1">
-                     <h2 class="title--s">Meer weten?</h2>
-                     <p>Neem contact op met projectleider Bob Coret</p>
-                     <div class="m-t-half-space">
-                        <a href="mailto:bob.coret@kb.nl" class="link link--icon link--contact">
-                           <svg class="icon icon-email">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                           bob.coret@kb.nl 
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
 </main>
 <?php include("includes/footer.php") ?>

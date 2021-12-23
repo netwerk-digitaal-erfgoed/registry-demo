@@ -217,7 +217,7 @@ body {
   display:none;
 }
 @media only screen and (min-width:42.375em){
-  body:after{
+  /* body:after{
     content: "beta";
     position: fixed;
     width: 80px;
@@ -234,7 +234,7 @@ body {
     line-height: 27px;
     transform:rotate(-45deg);
     z-index: 15;
-  }
+  } */
   .mobile-hidden {
     display:inline;
   }

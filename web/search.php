@@ -24,7 +24,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                <p><label class="doorzoek"><input class="choice" type="checkbox" checked name="searchIn[]" id="dct_title" value="dct:title"> Naam</label>
                   <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dct_description" value="dct:description"> Omschrijving</label>
                   <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dcat_keyword" value="dcat:keyword"> Steekwoorden</label>
-               </p>
+              </p>
                <br>
                <label id="publisher_listLabel">Uitgever</label>
                <select aria-labelledby="publisher_listLabel" class="form-control" id="publisher_list" name="publisher">
