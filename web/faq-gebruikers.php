@@ -12,7 +12,7 @@
       <h2>Hoe kan ik de datasetbeschrijvingen doorzoeken?</h3>
       <p>De datasetbeschrijvingen zijn via de web-GUI op het SPARQL-endpoint van de triplestore te doorzoeken. De datasetbeschrijvingen zijn opgeslagen op basis van het DCAT vocabulair.</p>
       <h2>Wie maakt en beheert het Datasetregister?</h3>
-      <p>Het Datasetregister is gemaakt door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a> en wordt beheerd door het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a>. Het Nationaal Archief staat in voor de werking en beschikbaarheid van het Datasetregister.</p>
+      <p>Het Datasetregister is gemaakt door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a> en wordt beheerd en onderhouden door het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a>. Het Nationaal Archief staat in voor de werking en beschikbaarheid van het Datasetregister.</p>
       <h2>Wat is de status van het Datasetregister?</h3>
       <p>Het Datasetregister is klaar om verder gevuld te worden. De requirements, API en deze website zijn stabiel en worden op basis van feedback van gebruikers en leveranciers verfijnd.</p>
       <h2>Kan ik het Datasetregister nu al gebruiken?</h3>
@@ -23,5 +23,6 @@
 	  <h2>Meer weten?</h3>
       <p>Heb je vragen en/of opmerkingen over de werking van het Datasetregister neem dan contact op met <a href="mailto:info@nationaalarchief.nl?subject=Datasetregister">info@nationaalarchief.nl</a>.</p>
    </div>
+   <p><br></p>
 </main>
 <?php include("includes/footer.php") ?>

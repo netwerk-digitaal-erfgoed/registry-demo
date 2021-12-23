@@ -8,7 +8,7 @@
       </div>
       <div class="o-container o-container__small m-t-space">
          <h2>Onze gegevens</h2>
-         <p>Deze website is eigendom van en wordt beheerd door het Nationaal Archief. Je kunt ons bereiken via <a href="mailto:info@nationaalarchief.nl?subjec=Datasetregister">info@nationaalarchief.nl</a>.</p>
+         <p>Deze website is eigendom van en wordt beheerd en onderhouden door het Nationaal Archief. Je kunt ons bereiken via <a href="mailto:info@nationaalarchief.nl?subjec=Datasetregister">info@nationaalarchief.nl</a>.</p>
          <h2>Deze dienst</h2>
          <p>Deze website en de API van het Datasetregister maken geen gebruik van cookies voor tracking of analytische doeleinden.</p>
          <p>Bevragingen van website en API worden vastgelegd in een logbestand. Deze technische informatie, waaronder het IP-adres dat de bevraging doet, is alleen toegankelijk door technische beheerders en wordt gebruikt om inzicht te krijgen in het gebruik van het Datasetregister.</p>
