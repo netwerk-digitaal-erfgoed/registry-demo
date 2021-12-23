@@ -58,7 +58,7 @@ body {
      padding: 10px;
      margin: 20px 0 
 }
- .val_count_Violation, .val_count_Warning {
+ .val_count_Violation, .val_count_Warning, .val_count_Info {
      color: white;
      font-weight: bold;
      border: 1px solid white;
@@ -72,6 +72,9 @@ body {
 }
  .val_count_Warning {
      background-color: orange 
+}
+ .val_count_Info {
+     background-color: #5cb85c 
 }
  #api_source {
      display: none;
@@ -171,7 +174,6 @@ body {
      margin:10px 0 0 0;
      padding:10px;
      overflow-x: auto;
-	 font-size:1.4em;
 	 line-height: initial;
 }
  textarea {
@@ -253,3 +255,4 @@ body.home {
 		width:90%;
 	}
 }
+.val_count_Warning
