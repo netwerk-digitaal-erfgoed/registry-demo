@@ -13,8 +13,10 @@ function getFormats() {
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers);
 
 	$formats=array();
-	foreach ($sparqlResults["results"]["bindings"] as $item) {
-		array_push($formats,$item["format"]["value"]);
+	if (isset($sparqlResults)) {
+		foreach ($sparqlResults["results"]["bindings"] as $item) {
+			array_push($formats,$item["format"]["value"]);
+		}
 	}
 	return $formats;
 }
@@ -34,8 +36,10 @@ function getCreators() {
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers);
 
 	$creators=array();
-	foreach ($sparqlResults["results"]["bindings"] as $item) {
-		$creators[$item["creator"]["value"]]=$item["creator_name"]["value"];
+	if (isset($sparqlResults)) {
+		foreach ($sparqlResults["results"]["bindings"] as $item) {
+			$creators[$item["creator"]["value"]]=$item["creator_name"]["value"];
+		}
 	}
 	return $creators;
 }
@@ -54,19 +58,23 @@ function getPublishers() {
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers);
 
 	$publishers=array();
-	foreach ($sparqlResults["results"]["bindings"] as $item) {
-		$publishers[$item["publisher"]["value"]]=$item["publisher_name"]["value"];
+	if (isset($sparqlResults)) {
+		foreach ($sparqlResults["results"]["bindings"] as $item) {
+			$publishers[$item["publisher"]["value"]]=$item["publisher_name"]["value"];
+		}
 	}
 	return $publishers;
 }
 
 function getSPARQLresults($sparqlQueryString) {
 	$cacheFile=CACHE_DIRECTORY.md5($sparqlQueryString).".json";
-	if (file_exists($cacheFile) && (time() - filectime($cacheFile))/3600<SPARQL_CACHE_DURATION_HOURS && !isset($_GET["nocache"])) {
+	if (file_exists($cacheFile) && filesize($cacheFile)>0 && (time() - filectime($cacheFile))/3600<SPARQL_CACHE_DURATION_HOURS && !isset($_GET["nocache"])) {
 		$contents=file_get_contents($cacheFile);
 	} else {
 		$contents=doSPARQLcall($sparqlQueryString);
-		file_put_contents($cacheFile,$contents);
+		if (!empty($contents)) {
+			file_put_contents($cacheFile,$contents);
+		}
 	}
 	return json_decode($contents, true);	
 }
