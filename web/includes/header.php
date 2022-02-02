@@ -131,13 +131,13 @@
                            <nav>
                               <ul class="submenu">
                                  <li>
-                                    <a href="https://register-demo.coret.org/faq-beheerders.php">datasetbeheerders bij erfgoed&shy;instellingen</a>
+                                    <a href="/faq-beheerders.php">datasetbeheerders bij erfgoed&shy;instellingen</a>
                                  </li>
                                  <li>
-                                    <a href="https://register-demo.coret.org/faq-gebruikers.php">datasetgebruikers bij erfgoed&shy;instellingen en aggregators</a>
+                                    <a href="/faq-gebruikers.php">datasetgebruikers bij erfgoed&shy;instellingen en aggregators</a>
                                  </li>
                                  <li>
-                                    <a href="https://register-demo.coret.org/faq-ontwikkelaars.php">ontwikkelaars van erfgoed software</a>
+                                    <a href="/faq-ontwikkelaars.php">ontwikkelaars van erfgoed software</a>
                                  </li>
                               </ul>
                            </nav>
