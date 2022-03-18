@@ -39,7 +39,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:license",
 	"range"=>"DONL:License",
 	"select"=>"donl_license",
-	"title"=>"De licentie die van toepassing is op de datasetbeschrijving",
+	"title"=>"De licentie die van toepassing is op de dataset",
 	"script_schema"=>'if ($("#id_dataset_license").val() != "") { schema["license"]=$("#id_dataset_license").val(); }',
 	"screen"=>1
 );

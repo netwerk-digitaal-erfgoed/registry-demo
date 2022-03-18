@@ -16,7 +16,7 @@ include("includes/header.php");
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l">Maak een datasetbeschrijving</h1>
          <p><br></p>
-         <h2 class="title--m">Datasetbeschrijvingen uw (collectiebeheer)systeem</h2>
+         <h2 class="title--m">Datasetbeschrijvingen uit uw (collectiebeheer)systeem</h2>
          <p>Het beschrijven van een dataset toont grote overeenkomsten met het beschrijven van een erfgoedcollectie. Het is dan ook logisch om ook de datasets in het collectiebeheersysteem te beheren. Dicht bij de bron, want vanuit hier worden veelal ook de datasets (als bestand of als API) beschikbaar gesteld. Online publicatie van de datasetbeschrijvingen is hierdoor vaak een eenvoudige en vooral geautomatiseerde stap. Vraag bij uw leverancier wat de mogelijkheden zijn om datasetbeschrijvingen te maken en te publiceren zodat ook uw datasets beter vindbaar worden.</p>
          <p><br></p>
          <h2 class="title--m">Maak handmatig een datasetbeschrijving</h2>
