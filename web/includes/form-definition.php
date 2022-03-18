@@ -13,7 +13,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:identifier",
 	"mandatory"=>1,
 	"range"=>"xsd:anyURI",
-	"title"=>"De unieke identificatie van de dataset (een URI)",
+	"title"=>"De unieke identificatie van de datasetbeschrijving (een URI)",
 	"description"=>"",
 	"script_schema"=>'if ($("#id_dataset_identifier").val()) { schema["@id"]=$("#id_dataset_identifier").val(); schema["identifier"]=$("#id_dataset_identifier").val(); }',
 	"screen"=>1
