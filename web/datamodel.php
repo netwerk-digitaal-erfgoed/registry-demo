@@ -36,9 +36,9 @@
 		<td><a href="https://schema.org/identifier" rel="nofollow"><code>schema:identifier</code></a></td>
 		</tr>
 		<tr>
-		<td><a href="http://purl.org/dc/terms/Beschrijving" rel="nofollow"><code>dct:Beschrijving</code></a></td>
-		<td>Dataset Beschrijving.</td>
-		<td><a href="https://schema.org/Beschrijving" rel="nofollow"><code>schema:Beschrijving</code></a></td>
+		<td><a href="http://purl.org/dc/terms/description" rel="nofollow"><code>dct:description</code></a></td>
+		<td>Dataset description.</td>
+		<td><a href="https://schema.org/description" rel="nofollow"><code>schema:description</code></a></td>
 		</tr>
 		<tr>
 		<td><a href="http://purl.org/dc/terms/license" rel="nofollow"><code>dct:license</code></a></td>
@@ -168,9 +168,9 @@
 		<td><a href="https://schema.org/dateModified" rel="nofollow"><code>schema:dateModified</code></a></td>
 		</tr>
 		<tr>
-		<td><a href="http://purl.org/dc/terms/Beschrijving" rel="nofollow"><code>dct:Beschrijving</code></a></td>
-		<td>Distribution Beschrijving.</td>
-		<td><a href="https://schema.org/Beschrijving" rel="nofollow"><code>schema:Beschrijving</code></a></td>
+		<td><a href="http://purl.org/dc/terms/description" rel="nofollow"><code>dct:description</code></a></td>
+		<td>Distribution description.</td>
+		<td><a href="https://schema.org/description" rel="nofollow"><code>schema:description</code></a></td>
 		</tr>
 		<tr>
 		<td><a href="http://purl.org/dc/terms/language" rel="nofollow"><code>dct:language</code></a></td>
