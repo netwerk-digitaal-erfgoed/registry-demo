@@ -90,7 +90,6 @@ function showMessages(items) {
 
 	for (var message in items) {
 
-
 		var resultSeverity = items[message][0]["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#");
 
 		strOverview += '<li><span title="' + resultSeverity[1] + '" class="val_count_' + resultSeverity[1] + '">' + items[message].length + '</span>' + message + ' <a href="#message' + nrMessage + '">naar details</a></li>';
@@ -116,7 +115,9 @@ function showMessages(items) {
 
 		for (var imessage in items[message]) {
 			strDetails += '<tr><td>' + items[message][imessage]["http://www.w3.org/ns/shacl#focusNode"][0]["@id"];
-			strDetails += '</td><td>' + items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
+			if (items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"]) { 
+				strDetails+=items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
+			}
 			strDetails += '</td><td>';
 			if (typeof items[message][imessage]["http://www.w3.org/ns/shacl#value"] !== 'undefined' && typeof items[message][imessage]["http://www.w3.org/ns/shacl#value"][0] !== 'undefined' && typeof items[message][imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"] !== 'undefined') {
 				strDetails += items[message][imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"];
