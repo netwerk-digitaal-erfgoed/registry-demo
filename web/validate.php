@@ -105,7 +105,11 @@ function showMessages(items) {
 				strDetails += "Overtreding";
 			}
 		}
-		strDetails += '</span>' + message + ' via ' + items[message][0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"] + '</h3><ul>';
+		strDetails += '</span>' + message;
+		if (items[message][0]["http://www.w3.org/ns/shacl#resultPath"]) {
+			strDetails+=' via ' + items[message][0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
+		}
+		strDetails += '</h3><ul>';
 		strDetails += '<li>Shape: ' + items[message][0]["http://www.w3.org/ns/shacl#sourceShape"][0]["@id"] + '</li>';
 		strDetails += '<li>Constraint: ' + items[message][0]["http://www.w3.org/ns/shacl#sourceConstraintComponent"][0]["@id"] + '</li>';
 		strDetails += '</ul><br><table><thead><th>Focus node</th><th>Property or path</th><th>Value</th></thead><tbody>';
