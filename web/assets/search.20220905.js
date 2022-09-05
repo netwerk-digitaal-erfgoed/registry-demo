@@ -1,5 +1,5 @@
 var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\n\n";
-var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisher WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \"nl\")) \n";
+var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n  FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \"nl\")) \n";
 var sparqlEnd = "}";
 var sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 var sparqlQuery;
@@ -258,14 +258,14 @@ function showDatasets(sparqlresult) {
   for (var prop in sparqlresult.results.bindings) {
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
-    publisher = sparqlresult.results.bindings[prop].publisher.value;
+    publisherName = sparqlresult.results.bindings[prop].publisherName.value;
 	
     var li = document.createElement("li");
     li.setAttribute("id", dataset);
     li.setAttribute("class", "linkprop");
 
     var span = document.createElement("span");
-    span.appendChild(document.createTextNode(title+" ("+publisher+")"));
+    span.appendChild(document.createTextNode(title+" ("+publisherName+")"));
     li.appendChild(span);
 
     var div = document.createElement("div");
