@@ -1,4 +1,4 @@
-var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\n\n";
+var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n";
 var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n  FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \"nl\")) \n";
 var sparqlEnd = "}";
 var sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
