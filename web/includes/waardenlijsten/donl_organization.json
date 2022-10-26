@@ -9879,6 +9879,11 @@
 	"labels": {
 		"nl-NL": "Westfries Archief",
 		"en-US": "Westfries Archief"
+	},
+  "https://hetnieuweinstituut.nl/": {
+	"labels": {
+		"nl-NL": "Het Nieuwe Instituut",
+		"en-US": "Het Nieuwe Instituut"
 	}
   }
 }

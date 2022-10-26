@@ -8566,5 +8566,11 @@
       "nl-NL": "application/sparql-query",
       "en-US": "application/sparql-query"
     }
+  },
+  "application/sparql-results+json": {
+    "labels": {
+      "nl-NL": "application/sparql-results+json",
+      "en-US": "application/sparql-results+json"
+    }
   }
 }
