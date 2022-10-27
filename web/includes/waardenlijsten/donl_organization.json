@@ -1,4 +1,4 @@
-	{
+{
   "https://data.overheid.nl/organisatie/stichting-leerplan-ontwikkeling": {
     "labels": {
       "nl-NL": "SLO nationaal expertisecentrum leerplanontwikkeling",
@@ -7,15 +7,15 @@
   },
   "https://data.overheid.nl/organisatie/kennisnet_nl": {
     "labels": {
-	  "nl-NL": "Kennisnet.nl",
-	  "en-US": "Kennisnet.nl"
-	}
+      "nl-NL": "Kennisnet.nl",
+      "en-US": "Kennisnet.nl"
+    }
   },
   "https://data.overheid.nl/organisatie/Samenwerkingsorganisatie_Beroepsonderwijs_Bedrijfsleven": {
-	"labels": {
-	  "nl-NL": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)",
-	  "en-US": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)"
-	}
+    "labels": {
+      "nl-NL": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)",
+      "en-US": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)"
+    }
   },
   "https://data.overheid.nl/organisatie/stichting_arbeidsmarkt_en_opleidingsfonds_gemeenten": {
     "labels": {
@@ -9876,14 +9876,15 @@
     }
   },
   "http://standaarden.overheid.nl/owms/terms/wfrarch": {
-	"labels": {
-		"nl-NL": "Westfries Archief",
-		"en-US": "Westfries Archief"
-	},
+    "labels": {
+      "nl-NL": "Westfries Archief",
+      "en-US": "Westfries Archief"
+    }
+  },
   "https://hetnieuweinstituut.nl/": {
-	"labels": {
-		"nl-NL": "Het Nieuwe Instituut",
-		"en-US": "Het Nieuwe Instituut"
-	}
+    "labels": {
+      "nl-NL": "Het Nieuwe Instituut",
+      "en-US": "Het Nieuwe Instituut"
+    }
   }
 }
