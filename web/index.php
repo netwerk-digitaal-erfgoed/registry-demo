@@ -1,4 +1,12 @@
-<?php include("includes/header.php") ?>
+<?php 
+
+if(!isset($_GET["lang"]) && !_bot_detected()) {
+   if (strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2))!="nl") {
+      header('Location: /?lang=en', true, 302);
+   }
+}
+
+include("includes/header.php") ?>
 <main style="padding-top:70px">
 
 	<section class="m-t-quarter-space" style="margin:0 0 30px 0">
@@ -100,4 +108,14 @@ function show_count(response) {
 
 </script>
 
-<?php include("includes/footer.php") ?>
+<?php
+
+include("includes/footer.php");
+
+function _bot_detected() {
+
+   return (
+     isset($_SERVER['HTTP_USER_AGENT'])
+     && preg_match('/bot|crawl|slurp|spider|mediapartners/i', $_SERVER['HTTP_USER_AGENT'])
+   );
+ }

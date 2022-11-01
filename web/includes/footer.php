@@ -172,5 +172,5 @@
    </div>
 </footer>
 </div>
-<script type='text/javascript' src='/assets/main.js' id='main-js-js'></script>
+<script type='text/javascript' src='assets/main.js' id='main-js-js'></script>
 </body></html>

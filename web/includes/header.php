@@ -183,6 +183,11 @@
 					<li>
 					   <a class="m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
 					</li>
+               <li><?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
+                           <li><a href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>">Schakel naar de<br><strong>Nederlandse</strong> versie</a>
+                        <?php } else { ?>
+                           <li><a href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en">Switch to the<br><strong>English</strong> version</a></li>
+                        <?php } ?></li>
 				 </ul>
                </div>
             </nav>
