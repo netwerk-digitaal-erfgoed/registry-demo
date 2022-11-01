@@ -2,21 +2,20 @@
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l">Uitleg van de dataconcepten</h1>
+         <h1 class="title--l"><?= t('Uitleg van de dataconcepten')?></h1>
          			
 
-		<h2>Datasetbeschrijving</h2>
-		<p>Wanneer de datasetbeschrijving bij de bron wordt opgehaald en gevalideerd, dan wordt deze in een eigen graaf opgeslagen op basis van <code>dcat:Dataset</code>. De URL van de graaf correspondeert met de IRI van de dataset.</p>
-		<p>Datasetbeschrijvingen die worden geleverd op basis van schema.org - zoals geadviseerd in de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a> - worden geconverteerd naar DCAT.</p>
-
-		<p>Onderstaande tabel geeft de eigenschappen weer die in een datasetbeschrijving kunnen voorkomen:</p>
+		<h2><?= t('Datasetbeschrijving')?></h2>
+		<p><?= t('Wanneer de datasetbeschrijving bij de bron wordt opgehaald en gevalideerd, dan wordt deze in een eigen graaf opgeslagen op basis van <code>dcat:Dataset</code>. De URL van de graaf correspondeert met de IRI van de dataset.')?></p>
+		<p><?= t('Datasetbeschrijvingen die worden geleverd op basis van schema.org - zoals geadviseerd in de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a> - worden geconverteerd naar DCAT.')?></p>
+		<p><?= t('Onderstaande tabel geeft de eigenschappen weer die in een datasetbeschrijving kunnen voorkomen:')?></p>
 				
 		<table class="properties">
 		<thead>
 		<tr>
-		<th>Eigenschap</th>
-		<th>Beschrijving</th>
-		<th>Gebaseerd op</th>
+		<th><?= t('Eigenschap') ?></th>
+		<th><?= t('Beschrijving') ?></th>
+		<th><?= t('Gebaseerd op') ?></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -104,18 +103,18 @@
 		</table>
 
 
-		<p><br></p><h3 id="foaforganization">Organisaties</h2>
+		<p><br></p><h3 id="foaforganization"><?= t('Organisaties')?></h3>
 
-		<p>Elke datasetbeschrijving heeft een <code>dct:publisher</code> en optioneel ook een of meer <code>dct:creator</code>s.</p> Een <code>dct:publisher</code> is de organisatie die de dataset publiceert. Een <code>dct:creator</code> is de organisatie die de dataset (oorsponkelijk) heeft gemaakt.</p>
+		<p><?= t('Elke datasetbeschrijving heeft een <code>dct:publisher</code> en optioneel ook een of meer <code>dct:creator</code>s. Een <code>dct:publisher</code> is de organisatie die de dataset publiceert. Een <code>dct:creator</code> is de organisatie die de dataset (oorsponkelijk) heeft gemaakt.')?></p>
 		
-		<p>Organisatie hebben als type <code>foaf:Organization</code> en naast een IRI ook onderstaande eigenschappen:</p>
+		<p><?= t('Organisatie hebben als type <code>foaf:Organization</code> en naast een IRI ook onderstaande eigenschappen:')?></p>
 
 		<table class="properties">
 		<thead>
 		<tr>
-		<th>Eigenschap</th>
-		<th>Beschrijving</th>
-		<th>Gebaseerd op</th>
+		<th><?= t('Eigenschap') ?></th>
+		<th><?= t('Beschrijving') ?></th>
+		<th><?= t('Gebaseerd op') ?></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -127,18 +126,18 @@
 		</tbody>
 		</table>
 
-		<p><br></p><h3 id="dcatdistribution">Distributies</h2>
+		<p><br></p><h3 id="dcatdistribution"><?= t('Distributies')?></h2>
 
-		<p>Een datasetbeschrijving kan een of meerdere distributies bevatten. Een distributie geeft de wijze aan waarop de dataset kan worden opgehaald (als het om een bestand/datadump gaat) of bevraagd (als het op een API gaat, zoals OAI-PMH, SPARQL, enz.).</p>
+		<p><?= t('Een datasetbeschrijving kan een of meerdere distributies bevatten. Een distributie geeft de wijze aan waarop de dataset kan worden opgehaald (als het om een bestand/datadump gaat) of bevraagd (als het op een API gaat, zoals OAI-PMH, SPARQL, enz.).')?></p>
 
-		<p>Onderstaande tabel geeft de eigenschappen weer die in een distributie kunnen voorkomen:</p>
+		<p><?= t('Onderstaande tabel geeft de eigenschappen weer die in een distributie kunnen voorkomen:')?></p>
 						
 		<table class="properties">
 		<thead>
 		<tr>
-		<th>Eigenschap</th>
-		<th>Beschrijving</th>
-		<th>Gebaseerd op</th>
+		<th><?= t('Eigenschap') ?></th>
+		<th><?= t('Beschrijving') ?></th>
+		<th><?= t('Gebaseerd op') ?></th>
 		</tr>
 		</thead>
 		<tbody>

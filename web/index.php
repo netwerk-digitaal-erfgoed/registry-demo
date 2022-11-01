@@ -3,9 +3,9 @@
 
 	<section class="m-t-quarter-space" style="margin:0 0 30px 0">
 		<div class="o-container o-container__medium p-t-space p-b-space c-hero b-homepanel">
-			<h1 class="title--l m-text-align--center" style="text-shadow:1px 0px 0px white;">Datasetregister</h1>
-			<h2 class="title--m m-text-align--center" style="text-shadow:1px 0px 0px white;">Voor alle erfgoeddatasets!</h2>
-			<p class=" m-text-align--center" style="text-shadow:1px 0px 0px white;">Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.</p>
+			<h1 class="title--l m-text-align--center" style="text-shadow:1px 0px 0px white;"><?= t('Datasetregister') ?></h1>
+			<h2 class="title--m m-text-align--center" style="text-shadow:1px 0px 0px white;"><?= t('Voor alle erfgoeddatasets!') ?></h2>
+			<p class=" m-text-align--center" style="text-shadow:1px 0px 0px white;"><?= t('Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.') ?></p>
 		</div>
 	</section>
    
@@ -13,10 +13,10 @@
 		<div class="o-container o-container__medium m-theme-bg b-homepanel" style="padding:10px 0 10px 0!important;">
 			<div class="c-grid__row item-in-view p-b-half-space inview" style="margin:0;padding:0;text-align:center">
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
-					<a href="/viaurl.php"><span class="btn btn--arrow m-t-half-space btn--api">Voor erfgoedinstellingen met datasets:<br>voeg een datasetbeschrijving toe <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+					<a href="viaurl.php<?= l() ?>"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor erfgoedinstellingen met datasets') ?>:<br><?= t('voeg een datasetbeschrijving toe') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1" style="margin:0;padding:0;text-align:center">				
-					<a href="/search.php"><span class="btn btn--arrow m-t-half-space btn--api">Voor gebruikers van erfgoeddata:<br>doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+					<a href="search.php<?= l() ?>"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor gebruikers van erfgoeddata') ?>:<br><?= t('doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 			</div>
 		</div>
@@ -28,11 +28,11 @@
             <div class="all-1_3 phablet-1_1 item-in-view inview">
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
-                     <h3>Ben je actief met datasets bij een erfgoedinstelling?</h3>
+                     <h3><?= t('Ben je actief met datasets bij een erfgoedinstelling?') ?></h3>
                      <ul class="list--quicklinks">
-                        <li><a href="/form.php">Maak een datasetbeschrijving</a></li>
-                        <li><a href="/viaurl.php">Voeg een datasetbeschrijving toe</a></li>
-						<li><a href="/faq-beheerders.php">Veelgestelde vragen door dataset beheerders</a></li>
+                        <li><a href="form.php<?= l() ?>"><?= t('Maak een datasetbeschrijving') ?></a></li>
+                        <li><a href="viaurl.php<?= l() ?>"><?= t('Voeg een datasetbeschrijving toe') ?></a></li>
+						<li><a href="faq-beheerders.php<?= l() ?>"><?= t('Veelgestelde vragen door dataset beheerders') ?></a></li>
                      </ul>
                   </div>
                </div>
@@ -40,11 +40,11 @@
             <div class="all-1_3 phablet-1_1 item-in-view inview">
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
-                     <h3>Ben je op zoek naar erfgoeddatasets?</h3>
+                     <h3><?= t('Ben je op zoek naar erfgoeddatasets?') ?></h3>
                      <ul class="list--quicklinks">
-                        <li><a target="datastory" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/">Leer via de Data story hoe te zoeken</a></li>
-                        <li><a target="triplestore" href="/search.php">Doorzoek alle datasetbeschrijvingen</a></li>
-                        <li><a href="/faq-gebruikers.php">Veelgestelde vragen door dataset gebruikers</a></li>
+                        <li><a target="datastory" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/"><?= t('Leer via de Data story hoe te zoeken') ?></a></li>
+                        <li><a target="triplestore" href="search.php<?= l() ?>"><?= t('Doorzoek alle datasetbeschrijvingen') ?></a></li>
+                        <li><a href="faq-gebruikers.php<?= l() ?>"><?= t('Veelgestelde vragen door dataset gebruikers') ?></a></li>
                      </ul>
                   </div>
                </div>
@@ -52,12 +52,12 @@
             <div class="all-1_3 phablet-1_1 item-in-view inview">
                <div class="c-grid__col m-text-align--center">
                   <div class="text m-t-half-space">
-                     <h3>Ontwikkel je software voor erfgoedinstellingen?</h3>
+                     <h3><?= t('Ontwikkel je software voor erfgoedinstellingen?') ?></h3>
                      <ul class="list--quicklinks">
-                        <li><a target="triplestore" href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Eisen gesteld aan datasetbeschrijvingen</a></li>
-                        <li><a href="/validate.php">Valideer een datasetbeschrijving</a></li>
-                        <li><a target="datastory" href="https://register-demo.coret.org/apidoc.php">Documentatie van de API</a></li>
-                        <li><a href="/faq-ontwikkelaars.php">Veelgestelde vragen door ontwikkelaars</a></li>
+                        <li><a target="triplestore" href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/"><?= t('Eisen gesteld aan datasetbeschrijvingen') ?></a></li>
+                        <li><a href="validate.php<?= l() ?>"><?= t('Valideer een datasetbeschrijving') ?></a></li>
+                        <li><a target="datastory" href="apidoc.php<?= l() ?>"><?= t('Documentatie van de API') ?></a></li>
+                        <li><a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('Veelgestelde vragen door ontwikkelaars') ?></a></li>
                      </ul>
                   </div>
                </div>

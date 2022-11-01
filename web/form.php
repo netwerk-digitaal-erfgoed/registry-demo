@@ -1,8 +1,8 @@
 <?php 
 
+include("includes/header.php");
 include('includes/form-definition.php'); 
 include('includes/form-util.php'); 
-include("includes/header.php");
 
 ?>
 
@@ -14,16 +14,16 @@ include("includes/header.php");
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l">Maak een datasetbeschrijving</h1>
+         <h1 class="title--l"><?= t('Maak een datasetbeschrijving')?></h1>
          <p><br></p>
-         <h2 class="title--m">Datasetbeschrijvingen uit uw (collectiebeheer)systeem</h2>
-         <p>Het beschrijven van een dataset toont grote overeenkomsten met het beschrijven van een erfgoedcollectie. Het is dan ook logisch om ook de datasets in het collectiebeheersysteem te beheren. Dicht bij de bron, want vanuit hier worden veelal ook de datasets (als bestand of als API) beschikbaar gesteld. Online publicatie van de datasetbeschrijvingen is hierdoor vaak een eenvoudige en vooral geautomatiseerde stap. Vraag bij uw leverancier wat de mogelijkheden zijn om datasetbeschrijvingen te maken en te publiceren zodat ook uw datasets beter vindbaar worden.</p>
+         <h2 class="title--m"><?= t('Datasetbeschrijvingen uit uw (collectiebeheer)systeem')?></h2>
+         <p><?= t('Het beschrijven van een dataset toont grote overeenkomsten met het beschrijven van een erfgoedcollectie. Het is dan ook logisch om ook de datasets in het collectiebeheersysteem te beheren. Dicht bij de bron, want vanuit hier worden veelal ook de datasets (als bestand of als API) beschikbaar gesteld. Online publicatie van de datasetbeschrijvingen is hierdoor vaak een eenvoudige en vooral geautomatiseerde stap. Vraag bij uw leverancier wat de mogelijkheden zijn om datasetbeschrijvingen te maken en te publiceren zodat ook uw datasets beter vindbaar worden.')?></p>
          <p><br></p>
-         <h2 class="title--m">Maak handmatig een datasetbeschrijving</h2>
-         <p>Als uw leverancier (nog) geen mogelijkheden biedt om een datasetbeschrijving te maken, dan kunt u handmatig een datasetbeschrijving maken conform de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">requirements</a>. Als hulpmiddel is onderstaand formulier beschikbaar. Deze handmatige werkwijze staat los van het collectiebeheersysteem en is dus verre van ideaal.</p>
-         <p><strong>Let wel</strong>: het resultaat van het formulier is een datasetbeschrijving in JSON-LD, deze moet nog wel online worden gepubliceerd voordat het kan worden aangemeld bij het Datasetregister.</p>
+         <h2 class="title--m"><?= t('Maak handmatig een datasetbeschrijving')?></h2>
+         <p><?= t('Als uw leverancier (nog) geen mogelijkheden biedt om een datasetbeschrijving te maken, dan kunt u handmatig een datasetbeschrijving maken conform de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">requirements</a>. Als hulpmiddel is onderstaand formulier beschikbaar. Deze handmatige werkwijze staat los van het collectiebeheersysteem en is dus verre van ideaal.')?></p>
+         <p><?= t('<strong>Let wel</strong>: het resultaat van het formulier is een datasetbeschrijving in JSON-LD, deze moet nog wel online worden gepubliceerd voordat het kan worden aangemeld bij het Datasetregister.')?></p>
          <p><br></p>
-         <h2 class="title--m">Datasetbeschrijving formulier</h2>
+         <h2 class="title--m"><?= t('Datasetbeschrijving formulier')?></h2>
       </div>
    </section>
    <section id="" class="m-t-quarter-space m-theme-bg m-theme--teal search-div">
@@ -32,29 +32,29 @@ include("includes/header.php");
          <div class="row">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                <li class="nav-item" role="tab">
-                  <a class="nav-link active" id="uitleg-tab" data-toggle="tab" href="#uitleg" aria-controls="uitleg" aria-selected="true">1 - Uitleg</a>
+                  <a class="nav-link active" id="uitleg-tab" data-toggle="tab" href="#uitleg" aria-controls="uitleg" aria-selected="true">1 - <?= t('Uitleg')?></a>
                </li>
                <li class="nav-item" role="tab">
-                  <a class="nav-link" id="req-tab" data-toggle="tab" href="#req" aria-controls="req" aria-selected="false">2 - Verplichte velden</a>
+                  <a class="nav-link" id="req-tab" data-toggle="tab" href="#req" aria-controls="req" aria-selected="false">2 - <?= t('Verplichte velden')?></a>
                </li>
                <li class="nav-item" role="tab">
-                  <a class="nav-link" id="rec-tab" data-toggle="tab" href="#rec" aria-controls="rec" aria-selected="false">3 - Aanbevolen velden</a>
+                  <a class="nav-link" id="rec-tab" data-toggle="tab" href="#rec" aria-controls="rec" aria-selected="false">3 - <?= t('Aanbevolen velden')?></a>
                </li>
                <li class="nav-item" role="tab">
-                  <a class="nav-link" id="dist-tab" data-toggle="tab" href="#dist" aria-controls="dist" aria-selected="false">4 - Distributies</a>
+                  <a class="nav-link" id="dist-tab" data-toggle="tab" href="#dist" aria-controls="dist" aria-selected="false">4 - <?= t('Distributies')?></a>
                </li>
                <li class="nav-item" role="tab">
-                  <a class="nav-link" id="jsonld-tab" data-toggle="tab" href="#jsonld" aria-controls="jsonld" aria-selected="false">5 - Resultaat</a>
+                  <a class="nav-link" id="jsonld-tab" data-toggle="tab" href="#jsonld" aria-controls="jsonld" aria-selected="false">5 - <?= t('Resultaat')?></a>
                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-               <div  class="tab-pane fade show active" id="uitleg" role="tabpanel" aria-labelledby="uitleg-tab">
+               <div class="tab-pane fade show active" id="uitleg" role="tabpanel" aria-labelledby="uitleg-tab">
                   <br>
-                  <p>Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe.<br>Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden.</p>
+                  <p><?= t('Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe.<br>Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden.')?></p>
                   <br>
-                  <p>Wilt u alleen een indruk krijgen van een datasetbeschrijving? Klik dan op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata.</p>
+                  <p><?= t('Wilt u alleen een indruk krijgen van een datasetbeschrijving? Klik dan op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata.')?></p>
                   <br>
-                  <p>Via het formulier is niet alles mogelijk, zo kunnen er alleen organisaties gekozen worden als eigenaar en verstrekker (een persoon is volgens de eisen ook mogelijk) en is er geen meertaligheid. Voor enkele waarden zijn voor het gemak <a target="_new" href="https://waardelijsten.dcat-ap-donl.nl/">waardelijsten gekoppeld van DCAT-AP-DONL</a>, deze zijn waardelijsten zijn niet verplicht maar wel handig.</p>
+                  <p><?= t('Via het formulier is niet alles mogelijk, zo kunnen er alleen organisaties gekozen worden als eigenaar en verstrekker (een persoon is volgens de eisen ook mogelijk) en is er geen meertaligheid. Voor enkele waarden zijn voor het gemak <a target="_new" href="https://waardelijsten.dcat-ap-donl.nl/">waardelijsten gekoppeld van DCAT-AP-DONL</a>, deze zijn waardelijsten zijn niet verplicht maar wel handig.')?></p>
                </div>
                <div class="tab-pane fade" id="req" role="tabpanel" aria-labelledby="req-tab">					
                   <br><?php echo_datasetfields(1); ?>
@@ -71,9 +71,9 @@ include("includes/header.php");
                   </div>
                   <xmp id="id_script_jsonld_schema">
                   </xmp>
-                  <p id="copy-status" class="m-text-align--right">Klik de JSON-LD om deze te kopieren.</p>
+                  <p id="copy-status" class="m-text-align--right"><?= t('Klik de JSON-LD om deze te kopieren.')?></p>
                   <p><br></p>
-                  <p>Heeft u niet zelf de mogelijkheden om deze JSON-LD te publiceren?<br>Dan kunt u gebruik maken van de <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">"publicatieservice" via Github</a>.</p>
+                  <p><?= t('Heeft u niet zelf de mogelijkheden om deze JSON-LD te publiceren?<br>Dan kunt u gebruik maken van de <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">"publicatieservice" via Github</a>.')?></p>
                </div>
             </div>
          </div>
@@ -150,9 +150,9 @@ document.getElementById('id_script_jsonld_schema').addEventListener(
     const text = document.getElementById('id_script_jsonld_schema').innerHTML;
     try {
       navigator.clipboard.writeText(text);
-      document.getElementById("copy-status").innerText = "De JSON-LD is gekopieerd.";
+      document.getElementById("copy-status").innerText = "<?= t('De JSON-LD is gekopieerd.')?>";
       setTimeout(function () {
-        document.getElementById("copy-status").innerText = "Klik de JSON-LD om deze te kopieren.";
+        document.getElementById("copy-status").innerText = "<?= t('Klik de JSON-LD om deze te kopieren.')?>";
       }, 1200);
     } catch (err) {
       console.error("Failed to copy!", err);

@@ -8,16 +8,16 @@ include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l">Valideer een datasetbeschrijving</h1>
-         <p>Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.</p>
+         <h1 class="title--l"><?= t('Valideer een datasetbeschrijving') ?></h1>
+         <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een SHACL bestand. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.') ?></p>
       </div>
    </section>
    <section class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form action="validate.php" id="validate_form" class="form-control" method="get">
-         <label for="datasetdescriptionurl">URL van pagina met datasetbeschrijving (of datacatalogus):</label>
+         <label for="datasetdescriptionurl"><?= t('URL van pagina met datasetbeschrijving (of datacatalogus)')?>:</label>
          <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= $url ?>"><br>
          <span class="btn btn--arrow m-t-half-space btn--api" onclick="validate_form.submit()">
-            Datasetbeschrijving valideren
+		 <?= t('Datasetbeschrijving valideren') ?>
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
             </svg>
@@ -43,7 +43,7 @@ include("includes/header.php") ?>
       <div class="o-container o-container__small">
 	  
 		  <a id="btnAdd" class="btn btn--arrow m-t-half-space btn--api" style="display:none" href="viaurl.php">
-            Datasetbeschrijving aanmelden
+		  <?= t('Datasetbeschrijving aanmelden') ?>
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
             </svg>
@@ -53,7 +53,7 @@ include("includes/header.php") ?>
          </a>
 		 
 		 <span id="api_source_link" class="btn btn--arrow m-t-half-space btn--api" onclick="toggle_visibility()">
-            Klik om de SHACL validatie resultaten te bekijken
+		 <?= t('Klik om de SHACL validatie resultaten te bekijken') ?>
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
             </svg>
@@ -190,7 +190,7 @@ function call_api() {
 
 			if (response.status == "200") {
 				as.style.backgroundColor = "#5cb85c";
-				as.innerHTML = "Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.";
+				as.innerHTML = "<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.') ?>";
 				
 				ab.style.display = "inline-block";
 				ab.href = "viaurl.php?url="+document.getElementById("datasetdescriptionurl").value;
@@ -199,15 +199,15 @@ function call_api() {
 				al.style.display = "block";
 				as.style.backgroundColor = "#e44d26";
 				if (response.status == "400") {
-					as.innerHTML = "Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.";
+					as.innerHTML = "<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.')?>";
 				} else {
 					if (response.status == "404") {
-						as.innerHTML = "De URL kan niet worden gevonden.";
+						as.innerHTML = "<?= t('De URL kan niet worden gevonden.')?>";
 					} else {
 						if (response.status == "406") {
-							as.innerHTML = "De URL kan worden gevonden, maar bevat geen datasets.";
+							as.innerHTML = "<?= t('De URL kan worden gevonden, maar bevat geen datasets.')?>";
 						} else {
-							as.innerHTML = "Er heeft zich een onbekende fout voorgedaan. <a href=\"/contact.php\">Neem contact met ons op</a> en geef daarbij de door u ingevulde URL op.";
+							as.innerHTML = "<?= t('Er heeft zich een onbekende fout voorgedaan. <a href=\"/contact.php\">Neem contact met ons op</a> en geef daarbij de door u ingevulde URL op.')?>";
 						}
 					}
 				}
@@ -247,9 +247,9 @@ function displayMessages(response) {
 		strValidationResults += "<h2>Er ";
 		if (arrStats['Violation'] > 0) {
 			if (arrStats['Violation'] > 1) {
-				strValidationResults += "zijn " + arrStats['Violation'] + " overtredingen";
+				strValidationResults += "zijn " + arrStats['Violation'] + " <?= t('overtredingen') ?>";
 			} else {
-				strValidationResults += "is " + arrStats['Violation'] + " overtreding";
+				strValidationResults += "is " + arrStats['Violation'] + " <?= t('overtreding') ?>";
 			}
 		}
 
@@ -258,9 +258,9 @@ function displayMessages(response) {
 				strValidationResults += " en er "
 			}
 			if (arrStats['Warning'] > 1) {
-				strValidationResults += "zijn " + arrStats['Warning'] + " waarschuwingen";
+				strValidationResults += "zijn " + arrStats['Warning'] + " <?= t('waarschuwingen') ?>";
 			} else {
-				strValidationResults += "is " + arrStats['Warning'] + " waarschuwing";
+				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing') ?>";
 			}
 		}
 		strValidationResults += " geconstateerd</h2>";

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include ("language.php"); ?><!DOCTYPE html>
 <!--[if IE 9]> 
 <html class="no-js ie ie9" lang="nl-NL">
    <![endif]-->
@@ -8,7 +8,7 @@
       <head>
          <meta charset="UTF-8">
          <link rel="icon" href="assets/favicon-32x32.png">
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		   <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <link rel="stylesheet" id="nde-style-css" href="assets/style.20211223.css" type="text/css" media="all">
          <link rel="stylesheet" id="site-style-css" href="assets/site.20211223.css" type="text/css" media="all">
@@ -18,17 +18,17 @@
          <link rel="manifest" href="assets/site.webmanifest">
          <meta name="msapplication-TileColor" content="#434343">
          <meta name="theme-color" content="#434343">
-         <title>Datasetregister - Voor alle erfgoeddatasets!</title>
-         <meta name="description" content="Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Datasetregister">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://datasetregister.netwerkdigitaalerfgoed.nl/assets/beeldmerk-social.jpg">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Datasetregister - Voor alle erfgoeddatasets!">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://datasetregister.netwerkdigitaalerfgoed.nl/">
-		 <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
-		 <meta property="twitter:card" content="summary">
-		 <meta property="twitter:image:src" content="https://datasetregister.netwerkdigitaalerfgoed.nl/assets/beeldmerk-social.jpg">
-		 <meta property="twitter:title" content="Datasetregister - Voor alle erfgoeddatasets!">
-		 <meta property="twitter:description" content="Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.">
+         <title><?= t('Datasetregister') ?> - <?= t('Voor alle erfgoeddatasets!') ?></title>
+         <meta name="description" content="<?= t('Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.') ?>">
+		   <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="<?= t('Datasetregister') ?>">
+		   <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://datasetregister.netwerkdigitaalerfgoed.nl/assets/beeldmerk-social.jpg">
+		   <meta prefix="og: http://ogp.me/ns#" property="og:title" content="<?= t('Datasetregister') ?> - <?= t('Voor alle erfgoeddatasets!') ?>">
+		   <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://datasetregister.netwerkdigitaalerfgoed.nl/">
+		   <meta prefix="og: http://ogp.me/ns#" property="og:description" content="<?= t('Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.') ?>">
+		   <meta property="twitter:card" content="summary">
+		   <meta property="twitter:image:src" content="https://datasetregister.netwerkdigitaalerfgoed.nl/assets/beeldmerk-social.jpg">
+		   <meta property="twitter:title" content="<?= t('Datasetregister') ?> - <?= t('Voor alle erfgoeddatasets!') ?>">
+		   <meta property="twitter:description" content="<?= t('Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.') ?>">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
       </head>
       <body class="<?php if(substr($_SERVER['SCRIPT_FILENAME'],-9,9)=="index.php") { echo "home "; } ?> page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">
@@ -111,46 +111,51 @@
             <div class="o-container">
                <nav class="desktop">
                   <div class="menu-holder">
-                     <a href="/" class="logo m-select--none" aria-label="Naar de startpagina van het Datasetregister" style="width:400px;margin-top:12px">
+                     <a href="/<?= l() ?>" class="logo m-select--none" aria-label="<?= t('Naar de startpagina van het Datasetregister') ?>" style="width:400px;margin-top:12px">
 						<svg viewBox="0 0 266 38" xmlns="http://www.w3.org/2000/svg"> <defs> <style>.st0{fill:currentColor}</style> </defs> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -11.695065, 28.198312)" class="st0" d="M26.89 22.35h2.61v11.73h-2.61z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -3.999806, 9.619853)" class="st0" d="M8.31 3.77h2.61V15.5H8.31z"/> <path transform="matrix(0.382812, -0.923826, 0.923826, 0.382812, 8.495902, 26.296938)" class="st0" d="M18.06 5.49h11.73V8.1H18.06z"/> <path transform="matrix(0.382812, -0.923826, 0.923826, 0.382812, -20.135798, 31.990094)" class="st0" d="M8.01 29.76h11.73v2.61H8.01z"/> <path class="st0" d="M17.6 26.2h2.61v11.73H17.6zM17.6-.08h2.61v11.73H17.6z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -10.065885, 11.521379)" class="st0" d="M22.62 25.2h2.61v11.73h-2.61z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -1.542401, 5.825825)" class="st0" d="M12.57.92h2.61v11.73h-2.61z"/> <path transform="matrix(0.382683, -0.92388, 0.92388, 0.382683, -8.666396, 14.829821)" class="st0" d="M5.46 8.03h2.61v11.73H5.46z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -2.956749, 12.935421)" class="st0" d="M25.17 12.6H36.9v2.61H25.17z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -8.651537, 4.411784)" class="st0" d="M.9 22.65h11.73v2.61H.9z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, 1.4415, 22.756004)" class="st0" d="M22.32 8.33h11.73v2.61H22.32z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -17.136665, 15.061452)" class="st0" d="M3.75 26.91h11.73v2.61H3.75z"/> <text class="st0" style="font-family: Poppins,Helvetica,Arial,sans-serif;font-size: 27px; font-weight:400;" x="41" y="26">datasetregister</text> <rect x="-0.039" y="17.751" width="43.395" height="2.414" class="st0"/></svg>
                      </a>
                      <ul class="main">
-                        <li><a class="<?php if(strstr($_SERVER['REQUEST_URI'],"form.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/form.php">Maak</a>
+                        <li><a class="<?php if(strstr($_SERVER['REQUEST_URI'],"form.php")) { echo "active "; } ?>m-theme-before m-select--none" href="form.php<?= l() ?>"><?= t('Maak') ?></a>
                         </li>
                         <li>
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/validate.php">Valideer</a>
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="validate.php<?= l() ?>"><?= t('Valideer') ?></a>
                         </li>
                         <li>
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="/viaurl.php">Meld aan</a>
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
                         </li>
 						<li>
-                           <a class="m-theme-before m-select--none" href="/search.php">Doorzoek</a>
+                           <a class="m-theme-before m-select--none" href="search.php<?= l() ?>"><?= t('Doorzoek') ?></a>
                         </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu">
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
                            <nav>
                               <ul class="submenu">
                                  <li>
-                                    <a href="/faq-beheerders.php">datasetbeheerders bij erfgoed&shy;instellingen</a>
+                                    <a href="faq-beheerders.php<?= l() ?>"><?= t('datasetbeheerders bij erfgoed&shy;instellingen') ?></a>
                                  </li>
                                  <li>
-                                    <a href="/faq-gebruikers.php">datasetgebruikers bij erfgoed&shy;instellingen en aggregators</a>
+                                    <a href="faq-gebruikers.php<?= l() ?>"><?= t('datasetgebruikers bij erfgoed&shy;instellingen en aggregators') ?></a>
                                  </li>
                                  <li>
-                                    <a href="/faq-ontwikkelaars.php">ontwikkelaars van erfgoed software</a>
+                                    <a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('ontwikkelaars van erfgoed software') ?></a>
                                  </li>
                               </ul>
                            </nav>
                         </li>
+                        <?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
+                           <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>">NL &#x2022; <strong>EN</strong></a></li>
+                        <?php } else { ?>
+                           <li><a title="Switch to the English version" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en"><strong>NL</strong> &#x2022; EN</a></li>
+                        <?php } ?>
                      </ul>
                   </div>
                </nav>
                <div class="mobile-controls cf">
-                  <a href="/" class="logo m-select--none" aria-label="nde-logo" aria-labelledby="header" role="none" style="width:240px;margin-top:16px;margin-right:0">
+                  <a href="/<?= l() ?>" class="logo m-select--none" aria-label="nde-logo" aria-labelledby="header" role="none" style="width:240px;margin-top:16px;margin-right:0">
                      <svg viewBox="0 0 266 38" xmlns="http://www.w3.org/2000/svg"> <defs> <style>.st0{fill:currentColor}</style> </defs> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -11.695065, 28.198312)" class="st0" d="M26.89 22.35h2.61v11.73h-2.61z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -3.999806, 9.619853)" class="st0" d="M8.31 3.77h2.61V15.5H8.31z"/> <path transform="matrix(0.382812, -0.923826, 0.923826, 0.382812, 8.495902, 26.296938)" class="st0" d="M18.06 5.49h11.73V8.1H18.06z"/> <path transform="matrix(0.382812, -0.923826, 0.923826, 0.382812, -20.135798, 31.990094)" class="st0" d="M8.01 29.76h11.73v2.61H8.01z"/> <path class="st0" d="M17.6 26.2h2.61v11.73H17.6zM17.6-.08h2.61v11.73H17.6z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -10.065885, 11.521379)" class="st0" d="M22.62 25.2h2.61v11.73h-2.61z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -1.542401, 5.825825)" class="st0" d="M12.57.92h2.61v11.73h-2.61z"/> <path transform="matrix(0.382683, -0.92388, 0.92388, 0.382683, -8.666396, 14.829821)" class="st0" d="M5.46 8.03h2.61v11.73H5.46z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -2.956749, 12.935421)" class="st0" d="M25.17 12.6H36.9v2.61H25.17z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -8.651537, 4.411784)" class="st0" d="M.9 22.65h11.73v2.61H.9z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, 1.4415, 22.756004)" class="st0" d="M22.32 8.33h11.73v2.61H22.32z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -17.136665, 15.061452)" class="st0" d="M3.75 26.91h11.73v2.61H3.75z"/> <text class="st0" style="font-family: Poppins,Helvetica,Arial,sans-serif;font-size: 27px; font-weight:400;" x="41" y="26">datasetregister</text> <rect x="-0.039" y="17.751" width="43.395" height="2.414" class="st0"/></svg>
                   </a>
                   <div class="menu-toggler m-select--none">
-                     <span>Sluiten</span>
+                     <span><?= t('Sluiten') ?></span>
                      <div class="bar"></div>
                      <div class="bar"></div>
                      <div class="bar"></div>
@@ -161,22 +166,22 @@
                <div class="menu-holder o-container m-text-align--left">
 				  <ul class="main">
 					<li>
-					   <a class="m-theme-before m-select--none" href="/">Home</a>
+					   <a class="m-theme-before m-select--none" href="/<?= l() ?>">Home</a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="/form.php">Maak</a>
+					   <a class="m-theme-before m-select--none" href="form.php<?= l() ?>"><?= t('Maak') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="/validate.php">Valideer</a>
+					   <a class="m-theme-before m-select--none" href="validate.php<?= l() ?>"><?= t('Valideer') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="/viaurl.php">Meld aan</a>
+					   <a class="m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="/search.php">Doorzoek</a>
+					   <a class="m-theme-before m-select--none" href="search.php<?= l() ?>"><?= t('Doorzoek') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="/faq.php">Veel gestelde vragen</a>
+					   <a class="m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
 					</li>
 				 </ul>
                </div>

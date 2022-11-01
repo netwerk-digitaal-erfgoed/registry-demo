@@ -238,7 +238,7 @@ function field_xml_string($field) {
 	$str.='value="">';
 
 	if (isset($field["lang"]) && $field["lang"]==1) {
-		$str.=' <select data-placeholder="Maak een keuze uit de lijst" id="id_'.$field["id"].'_0_lang"><option value="nl">Nederlands</option><option value="en">English</option><option value="de">Deutsch</option><option value="fr">Français</option></select>';
+		$str.=' <select data-placeholder="'.t('Maak een keuze uit de lijst').'" id="id_'.$field["id"].'_0_lang"><option value="nl">'.t('Nederlands').'</option><option value="en">'.t('Engels').'</option><option value="de">'.t('Duits').'</option><option value="fr">'.t('Frans').'</option></select>';
 	}
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='</span>'; } 
 	$str.='</td></tr>';
@@ -289,7 +289,7 @@ function field_waardelijst($field) {
 	$str.='</th><td id="val_'.$id.'">'; 
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='<span class="multi">'; }
 
-	$str.='<select data-placeholder="'.$field["title"].' - maak een keuze uit de lijst" id="'.$id.'" class="form-control"><option></option>'; # ('.$field["range"].')
+	$str.='<select data-placeholder="'.$field["title"].' - '.t('Maak een keuze uit de lijst').'" id="'.$id.'" class="form-control"><option></option>'; # ('.$field["range"].')
 	$str.=waardenlijst($field["select"]);
 	$str.='</select>';
 	

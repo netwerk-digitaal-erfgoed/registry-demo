@@ -116,23 +116,23 @@
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
                                  <li><a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a></li>
-                                 <li><a href="/apidoc.php">Datasetregister API Specification</a></li>
+                                 <li><a href="apidoc.php<?= l() ?>"><?= t('Datasetregister API specificatie') ?></a></li>
                               </ul>
                            </div>
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
-                                 <li><a href="/privacy.php" class="">Privacyverklaring</a></li>
-                                 <li><a href="/contact.php" class="router-link-active router-link-exact-active" aria-current="page">Contact</a></li>
+                                 <li><a href="privacy.php<?= l() ?>"><?= t('Privacyverklaring') ?></a></li>
+                                 <li><a href="contact.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Contact') ?></a></li>
                               </ul>
                            </div>
                         </div>
 					 	<p><br><br></p>
-						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="/assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a>Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.</p>
+						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="/assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.') ?></p>
 					 </div>
                   </div>
                   <div class="all-1_3 tablet-landscape-1_1">
                      <div class="c-grid__col">
-                        <p>Volg het Netwerk Digitaal Erfgoed via:</p>
+                        <p><?= t('Volg het Netwerk Digitaal Erfgoed via') ?>:</p>
                         <ul class="social">
                            <li>
                               <a aria-labelledby="footer" aria-label="Twitter link" target="_blank" href="https://twitter.com/DigitaalErfgoed">
