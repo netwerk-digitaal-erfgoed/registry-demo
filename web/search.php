@@ -96,5 +96,5 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 <script>
 var querylang="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
 </script>
-<script type="text/javascript" src="assets/search.20221102.js"></script>
+<script type="text/javascript" src="assets/search.20221102.2.js"></script>
 <?php include("includes/footer.php") ?>

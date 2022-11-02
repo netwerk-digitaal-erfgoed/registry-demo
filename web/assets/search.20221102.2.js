@@ -1,5 +1,5 @@
-var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\n\n";
-var sparqlStart = "SELECT DISTINCT ?dataset ?title WHERE {\n  ?dataset a dcat:Dataset .\n  ?dataset dct:title ?title .\n  FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \"nl\")) \n";
+var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n";
+var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n  FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \""+querylang+"\"))\n  FILTER(LANG(?publisherName) = \"\" || LANGMATCHES(LANG(?publisherName), \""+querylang+"\")) \n";
 var sparqlEnd = "}";
 var sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 var sparqlQuery;
@@ -28,7 +28,7 @@ function updateSparql() {
   searchTerm = document.getElementById("searchTerm").value.trim().toLowerCase();
   if (searchTerm) {
     if (searchIn.size > 1) {
-      var sparqlUnion = "SELECT DISTINCT ?dataset ?title WHERE {{\n";
+      var sparqlUnion = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {{\n";
       var union = 0;
       if (searchIn.has("dct:title")) {
         sparqlUnion += sparqltxt;
@@ -249,7 +249,6 @@ function showDatasets(sparqlresult) {
 
   document.getElementById("countdatasets").innerHTML = sparqlresult.results.bindings.length;
   document.getElementById("searchresults").style.display = "block";
-//location.href = "#searchresults";
   document.getElementById("sparql").scrollIntoView();
 
   var ul = document.getElementById("datasets");
@@ -258,18 +257,19 @@ function showDatasets(sparqlresult) {
   for (var prop in sparqlresult.results.bindings) {
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
-
+    publisherName = sparqlresult.results.bindings[prop].publisherName.value;
+	
     var li = document.createElement("li");
     li.setAttribute("id", dataset);
     li.setAttribute("class", "linkprop");
 
     var span = document.createElement("span");
-    span.appendChild(document.createTextNode(title));
+    span.appendChild(document.createTextNode(title+" ("+publisherName+")"));
     li.appendChild(span);
 
     var div = document.createElement("div");
     div.setAttribute("class", "scroll");
-	li.appendChild(div);
+	  li.appendChild(div);
  
     var eul = document.createElement("table");
     eul.setAttribute("id", "props-" + dataset);
