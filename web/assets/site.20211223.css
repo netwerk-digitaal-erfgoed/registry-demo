@@ -39,7 +39,7 @@ body {
      color: #be2c00 
 }
  #api_result h2, #api_result h3, #api_result p, #api_result li, #api_result td {
-     color: #be2c00!blackimportant 
+     color: #be2c00!important
 }
  #api_result a {
      font-size: 0.8em;
@@ -242,7 +242,7 @@ body {
   }
 }
 body.home {
-	background:url(/assets/beeldmerk.jpg) no-repeat center center fixed;
+	background:url(beeldmerk.jpg) no-repeat center center fixed;
 	background-size: cover;
 }
 .b-homepanel {
@@ -255,4 +255,3 @@ body.home {
 		width:90%;
 	}
 }
-.val_count_Warning
