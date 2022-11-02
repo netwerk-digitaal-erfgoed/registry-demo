@@ -127,7 +127,7 @@
                            </div>
                         </div>
 					 	<p><br><br></p>
-						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="/assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.') ?></p>
+						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.') ?></p>
 					 </div>
                   </div>
                   <div class="all-1_3 tablet-landscape-1_1">
