@@ -8,6 +8,7 @@
             <li><a href="faq-beheerders.php<?= l() ?>"><?= t('dataset beheerders bij erfgoedinstellingen') ?></a></li>
             <li><a href="faq-gebruikers.php<?= l() ?>"><?= t('dataset gebruikers bij erfgoedinstellingen en aggregators') ?></a></li>
             <li><a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('ontwikkelaars van erfgoed software') ?></a></li>
+            <li><a href="faq-developers.php<?= l() ?>"><?= t('ontwikkelaars die erfgoed datasets willen vinden') ?></a></li>
          </ul>
       </div>
    </section>

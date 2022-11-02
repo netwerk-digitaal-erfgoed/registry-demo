@@ -139,6 +139,9 @@
                                  <li>
                                     <a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('ontwikkelaars van erfgoed software') ?></a>
                                  </li>
+                                 <li>
+                                    <a href="faq-developers.php<?= l() ?>"><?= t('ontwikkelaars die erfgoed datasets willen vinden') ?></a>
+                                 </li>
                               </ul>
                            </nav>
                         </li>
