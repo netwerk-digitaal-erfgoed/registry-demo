@@ -10,7 +10,7 @@ function getFormats() {
 		  ?distribution dct:format ?format
 		} GROUP BY ?format ORDER BY ?format';
 
-	$sparqlResults=getSPARQLresults($sparqlGetPublishers);
+	$sparqlResults=getSPARQLresults($sparqlGetPublishers,'nn');
 
 	$formats=array();
 	if (isset($sparqlResults)) {
@@ -21,19 +21,24 @@ function getFormats() {
 	return $formats;
 }
 
-
 function getCreators() {
-	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-		PREFIX dcat: <http://www.w3.org/ns/dcat#>
-		PREFIX dct: <http://purl.org/dc/terms/>
-		SELECT DISTINCT ?creator ?creator_name WHERE {
-		  ?dataset a dcat:Dataset .
-		  ?dataset dct:creator ?creator .
-		  ?creator foaf:name ?creator_name
-		  FILTER isIRI(?creator) 
-		} ORDER BY ?publisher_name';
 
-	$sparqlResults=getSPARQLresults($sparqlGetPublishers);
+	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } else { $lang="nl"; }
+
+	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX dcat: <http://www.w3.org/ns/dcat#>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+	SELECT DISTINCT ?creator ?creator_name WHERE {
+		?dataset a dcat:Dataset .
+		?dataset dct:creator ?creator .
+		?creator foaf:name ?creator_name
+		FILTER isIRI(?creator) 
+		FILTER(LANG(?creator_name) = "" || LANGMATCHES(LANG(?creator_name), "'.$lang.'")) 
+		BIND(LCASE(STRDT(STR(?creator_name), xsd:string)) AS ?creator_name2)
+	} ORDER BY ?creator_name2';
+
+	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
 
 	$creators=array();
 	if (isset($sparqlResults)) {
@@ -45,17 +50,23 @@ function getCreators() {
 }
 
 function getPublishers() {
-	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-		PREFIX dcat: <http://www.w3.org/ns/dcat#>
-		PREFIX dct: <http://purl.org/dc/terms/>
-		SELECT DISTINCT ?publisher ?publisher_name WHERE {
-		  ?dataset a dcat:Dataset .
-		  ?dataset dct:publisher ?publisher .
-		  ?publisher foaf:name ?publisher_name
-		  FILTER isIRI(?publisher) 
-		} ORDER BY ?publisher_name';
 
-	$sparqlResults=getSPARQLresults($sparqlGetPublishers);
+	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } else { $lang="nl"; }
+
+	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	PREFIX dcat: <http://www.w3.org/ns/dcat#>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+	SELECT DISTINCT ?publisher ?publisher_name WHERE {
+		?dataset a dcat:Dataset .
+		?dataset dct:publisher ?publisher .
+		?publisher foaf:name ?publisher_name
+		FILTER isIRI(?publisher) 
+		FILTER(LANG(?publisher_name) = "" || LANGMATCHES(LANG(?publisher_name), "'.$lang.'")) 
+		BIND(LCASE(STRDT(STR(?publisher_name), xsd:string)) AS ?publisher_name2)
+	} ORDER BY ?publisher_name2';
+
+	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
 
 	$publishers=array();
 	if (isset($sparqlResults)) {
@@ -66,8 +77,8 @@ function getPublishers() {
 	return $publishers;
 }
 
-function getSPARQLresults($sparqlQueryString) {
-	$cacheFile=CACHE_DIRECTORY.md5($sparqlQueryString).".json";
+function getSPARQLresults($sparqlQueryString,$lang) {
+	$cacheFile=CACHE_DIRECTORY.md5($sparqlQueryString).".".$lang.".json";
 	if (file_exists($cacheFile) && filesize($cacheFile)>0 && (time() - filectime($cacheFile))/3600<SPARQL_CACHE_DURATION_HOURS && !isset($_GET["nocache"])) {
 		$contents=file_get_contents($cacheFile);
 	} else {
