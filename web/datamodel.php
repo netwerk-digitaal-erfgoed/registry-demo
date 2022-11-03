@@ -1,4 +1,5 @@
 <?php include("includes/header.php") ?>
+<style>.properties { font-size:1.8em }</style>
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
@@ -98,6 +99,11 @@
 		<td><a href="https://www.w3.org/TR/vocab-dcat-3/#Eigenschap:dataset_distribution" rel="nofollow"><code>dcat:distribution</code></a></td>
 		<td>Dataset <a href="#dcatdistribution">distributions</a>.</td>
 		<td><a href="https://schema.org/distribution" rel="nofollow"><code>schema:distribution</code></a></td>
+		</tr>
+		<tr>
+		<td><a href="http://purl.org/dc/terms/isPartOf" rel="nofollow"><code>dct:isPartOf</code></a></td>
+		<td>Data Catalog the dataset is part of.</td>
+		<td><a href="https://schema.org/distribution" rel="nofollow"><code>schema:includedInDataCatalog</code></a></td>
 		</tr>
 		</tbody>
 		</table>
