@@ -233,9 +233,6 @@ function getDatasetDescription(uri) {
     };
 
     xhr.send();
-  } else {
-    table.className = "";
-    table.innerHTML = "";
   }
 }
 
@@ -245,7 +242,9 @@ function showDataset(uri, sparqlresult) {
   var table = document.getElementById("props-" + uri);
   table.className = "props";
 
-  var strTable = "<tr><th>URI</th><td colspan=2><a target=\"_blank\" href=\"" + uri + "\">" + uri + "</a></td></tr>";
+  var strTable = "<tr><th>URI</th><td colspan=2>";
+  strTable += "<a id=\"close-"+uri+"\" style=\"float:right;cursor:pointer;background-color:#be2c00;color:white;display:inline;padding:5px;line-height:1em;text-decoration: none;\">X</a>";
+  strTable += "<a target=\"_blank\" href=\"" + uri + "\">" + uri + "</a></td></tr>";
 
   for (var prop in sparqlresult.results.bindings) {
     subject_value = sparqlresult.results.bindings[prop].s.value;
@@ -280,6 +279,13 @@ function showDataset(uri, sparqlresult) {
   }
 
   table.innerHTML = strTable;
+  
+  var x = document.getElementById("close-" + uri);
+  x.addEventListener('click', function() {
+    table.className = "";
+    table.innerHTML = "";
+  });
+
 }
 
 function isValidHttpUrl(string) {
@@ -357,22 +363,22 @@ function showDatasets(sparqlresult) {
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
 	
     var li = document.createElement("li");
-    li.setAttribute("id", dataset);
     li.setAttribute("class", "linkprop");
 
     var span = document.createElement("span");
+    span.setAttribute("id", dataset);
     span.appendChild(document.createTextNode(title+" ("+publisherName+")"));
     li.appendChild(span);
 
     var div = document.createElement("div");
     div.setAttribute("class", "scroll");
-	  li.appendChild(div);
+	li.appendChild(div);
  
     var eul = document.createElement("table");
     eul.setAttribute("id", "props-" + dataset);
     div.appendChild(eul);
 
-    li.addEventListener('click', function() {
+    span.addEventListener('click', function() {
       getDatasetDescription(this.id);
     });
 
