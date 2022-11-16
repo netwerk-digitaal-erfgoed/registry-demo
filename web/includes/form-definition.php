@@ -13,7 +13,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:identifier",
 	"mandatory"=>1,
 	"range"=>"xsd:anyURI",
-	"title"=>t("De unieke identificatie van de datasetbeschrijving (een URI)"),
+	"title"=>t('De unieke identificatie (URI) van de datasetbeschrijving'),
 	"description"=>"",
 	"script_schema"=>'if ($("#id_dataset_identifier").val()) { schema["@id"]=$("#id_dataset_identifier").val(); schema["identifier"]=$("#id_dataset_identifier").val(); }',
 	"screen"=>1
@@ -34,7 +34,7 @@ $datasetfields[]=array(
 $datasetfields[]=array(
 	"id"=>"dataset_license",
 	"label"=>t("Licentie"),
-	"example"=>"http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+	"example"=>"https://creativecommons.org/publicdomain/zero/1.0/",
 	"mandatory"=>1,
 	"property_uri"=>"schema:license",
 	"range"=>"DONL:License",
@@ -44,29 +44,57 @@ $datasetfields[]=array(
 	"screen"=>1
 );
 
+#$datasetfields[]=array(
+#	"id"=>"dataset_publisher",
+#	"label"=>t("Verstrekker"),
+#	"example"=>"http://standaarden.overheid.nl/owms/terms/Nationaal_Archief",
+#	"property_uri"=>"schema:publisher",
+#	"mandatory"=>1,
+#	"range"=>"donl:authority",
+#	"select"=>"donl_organization",
+#	"title"=>t("De uitgever (publisher) van de dataset"),
+#	"script_schema"=>'if ($("#id_dataset_publisher").val()) { var publisher={}; publisher["@id"]=$("#id_dataset_publisher").val(); publisher["@type"]="Organization"; publisher["name"]=$("#id_dataset_publisher option:selected").text(); schema["publisher"]=publisher; }',
+#	"screen"=>1
+#);
+
 $datasetfields[]=array(
-	"id"=>"dataset_publisher",
-	"label"=>t("Verstrekker"),
-	"example"=>"http://standaarden.overheid.nl/owms/terms/Nationaal_Archief",
-	"property_uri"=>"schema:publisher",
+	"id"=>"dataset_publisher_uri",
+	"label"=>t("Verstrekker URI"),
+	"example"=>"https://www.museum.nl/",
 	"mandatory"=>1,
-	"range"=>"donl:authority",
-	"select"=>"donl_organization",
-	"title"=>t("De uitgever (publisher) van de dataset"),
-	"script_schema"=>'if ($("#id_dataset_publisher").val()) { var publisher={}; publisher["@id"]=$("#id_dataset_publisher").val(); publisher["@type"]="Organization"; publisher["name"]=$("#id_dataset_publisher option:selected").text(); schema["publisher"]=publisher; }',
+	"property_uri"=>"schema:publisher",	
+	"range"=>"xsd:anyURI",
+#	"select"=>"donl_organization",
+	"title"=>t("De URI van de verstrekker (publisher) van de dataset"),
+	"script_schema"=>'schema["publisher"]={}; schema["publisher"]["@type"]="Organization"; schema["publisher"]["@id"]=$("#id_dataset_publisher_uri").val();',
 	"screen"=>1
 );
+
+$datasetfields[]=array(
+	"id"=>"dataset_publisher_name",
+	"label"=>t("Verstrekker naam"),
+	"example"=>"Museum De Lier",
+	"mandatory"=>1,
+	"property_uri"=>"schema:publisher",	
+	"range"=>"xml:string",
+#	"select"=>"donl_organization",
+	"title"=>t("De naam van de verstrekker (publisher) van de dataset"),
+	"script_schema"=>'schema["publisher"]["name"]=$("#id_dataset_publisher_name").val();',
+	"screen"=>1
+);
+
 
 #-----
 
 $datasetfields[]=array(
 	"id"=>"dataset_description",
-	"label"=>t("Beschrijving inhoud"),
+	"label"=>t("Beschrijving"),
 	"example"=>"Door het formulier vooringevulde, vaste waarden om het testen te vereenvoudigen.",
 	"property_uri"=>"schema:description",
 	"mandatory"=>0,
+	"large"=>1,
 	"range"=>"xml:string",
-	"title"=>t("De beschrijving van de inhoud van de dataset"),
+	"title"=>t("De 'wervende' beschrijving van de inhoud van de dataset"),
 	"script_schema"=>'if ($("#id_dataset_description").val()) { schema["description"]=$("#id_dataset_description").val(); }',
 	"screen"=>2
 );
@@ -74,122 +102,13 @@ $datasetfields[]=array(
 $datasetfields[]=array(
 	"id"=>"dataset_metadataLanguage",
 	"label"=>t("Taal metadata"),
-	"example"=>"http://publications.europa.eu/resource/authority/language/NLD",
+	"example"=>"nl",
 	"property_uri"=>"schema:InLanguage",
 	"mandatory"=>0,
-	"select"=>"donl_language",
-	"range"=>"donl:language",
-	"title"=>t("De in de beschrijving gebruikte taal"),
-	"script_schema"=>'if ($("#id_dataset_metadataLanguage").val() != "") { 	
-	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/NLD") { schema["inLanguage"]="nl-NL"; }
-	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/DEU") { schema["inLanguage"]="de-DE"; }
-	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/ENG") { schema["inLanguage"]="en-US"; }
-	if ($("#id_dataset_metadataLanguage").val()=="http://publications.europa.eu/resource/authority/language/FRY") { schema["inLanguage"]="nl-FY"; }
-	}',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_creator",
-	"label"=>t("Data-eigenaar"),
-	"example"=>"http://standaarden.overheid.nl/owms/terms/Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap",
-	"mandatory"=>0,
-	"property_uri"=>"schema:creator",	
-	"range"=>"donl:authority",
-	"select"=>"donl_organization",
-	"title"=>t("De maker (creator) of eigenaar van de dataset"),
-	"script_schema"=>'if ($("#id_dataset_creator").val()) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_creator option:selected").text(); schema["creator"]["@id"]=$("#id_dataset_creator").val(); }',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_mainEntityOfPage",
-	"label"=>t("Meer informatie"),
-	"example"=>"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html",
-	"property_uri"=>"schema:mainEntityOfPage",
-	"multiple"=>1,
-	"range"=>"xsd:anyURI",
-	"title"=>t("Webpagina met meer informatie over de dataset"),
-	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_0").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["mainEntityOfPage"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_dateCreated",
-	"label"=>t("Creatiedatum"),
-	"example"=>"2020-03-30T04:05",
-	"property_uri"=>"schema:dateCreated",
-	"range"=>"xsd:datetime", // of xsd:date
-	"title"=>t("Datum waarom de dataset is aangemaakt"),
-	"script_schema"=>'if ($("#id_dataset_dateCreated").val()) { schema["dateCreated"]=$("#id_dataset_dateCreated").val(); }',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_datePublished",
-	"label"=>t("Publicatiedatum"),
-	"example"=>"2020-03-30T04:05",
-	"property_uri"=>"schema:datePublished",
-	"range"=>"xsd:datetime", // of xsd:date
-	"title"=>t("Datum waarop de dataset is gepubliceerd"),
-	"script_schema"=>'if ($("#id_dataset_datePublished").val()) { schema["datePublished"]=$("#id_dataset_datePublished").val(); }',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_dateModified",
-	"label"=>t("Wijzigingsdatum"),
-	"example"=>"2020-03-31T04:05",
-	"property_uri"=>"schema:dateModified",
-	"range"=>"xsd:datetime", // of xsd:date
-	"title"=>t("Datum waarop de dataset voor het laatst is bijgewerkt"),
-	"script_schema"=>'if ($("#id_dataset_dateModified").val()) { schema["dateModified"]=$("#id_dataset_dateModified").val(); }',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_version",
-	"label"=>t("Versie"),
-	"example"=>"4",
-	"property_uri"=>"schema:version",
-	"range"=>"xml:string",
-	"title"=>t("De versie van de dataset"),
-	"script_schema"=>'if ($("#id_dataset_version").val()) { schema["version"]=$("#id_dataset_version").val(); }',
-	"screen"=>2
-);
-
-
-
-$datasetfields[]=array(
-	"id"=>"dataset_contactPointCreator_name",
-	"label"=>t("Data-eigenaar contact Naam"),
-	"example"=>"T. Ester",
-	"property_uri"=>"schema:name",
-	"range"=>"xml:string",
-	"title"=>t("Naam van de contactpersoon bij de maker van de dataset"),
-	"script_schema"=>'if ($("#id_dataset_contactPointCreator_name").val()) { if (schema["creator"]["contactPoint"]===undefined) { schema["creator"]["contactPoint"]={}; } schema["creator"]["contactPoint"]["@type"]="ContactPoint"; schema["creator"]["contactPoint"]["name"]=$("#id_dataset_contactPointCreator_name").val(); }',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_contactPointCreator_email",
-	"label"=>t("Data-eigenaar contact E&#8209;mail"),
-	"example"=>"voorbeeld@nde.nl",
-	"property_uri"=>"schema:email",
-	"range"=>"xml:string",
-	"title"=>t("E-mail van de contactpersoon bij de maker van de dataset"),
-	"script_schema"=>'if ($("#id_dataset_contactPointCreator_email").val()) { if (schema["creator"]["contactPoint"]===undefined) { schema["creator"]["contactPoint"]={}; } schema["creator"]["contactPoint"]["@type"]="ContactPoint"; schema["creator"]["contactPoint"]["email"]=$("#id_dataset_contactPointCreator_email").val(); }',
-	"screen"=>2
-);
-
-$datasetfields[]=array(
-	"id"=>"dataset_contactPointCreator_phone",
-	"label"=>t("Data-eigenaar contact Telefoon"),
-	"example"=>"088-1234567",
-	"property_uri"=>"schema:telephone",
-	"range"=>"xml:string",
-	"title"=>t("Telefoonnummer van de contactpersoon bij de maker van de dataset"),
-	"script_schema"=>'if ($("#id_dataset_contactPointCreator_phone").val()) { if (schema["creator"]["contactPoint"]===undefined) { schema["creator"]["contactPoint"]={}; } schema["creator"]["contactPoint"]["@type"]="ContactPoint"; schema["creator"]["contactPoint"]["telephone"]=$("#id_dataset_contactPointCreator_phone").val(); }',
+	"select"=>"bcp47_language",
+	"range"=>"bcp47:language",
+	"title"=>t("De IETF BCP 47 standaard taalcode van in de beschrijving gebruikte taal"),
+	"script_schema"=>'if ($("#id_dataset_metadataLanguage").val() != "") { schema["inLanguage"]=$("#id_dataset_metadataLanguage").val(); }',
 	"screen"=>2
 );
 
@@ -228,6 +147,138 @@ $datasetfields[]=array(
 );
 
 
+#$datasetfields[]=array(
+#	"id"=>"dataset_creator",
+#	"label"=>t("Data-eigenaar"),
+#	"example"=>"http://standaarden.overheid.nl/owms/terms/Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap",
+#	"mandatory"=>0,
+#	"property_uri"=>"schema:creator",	
+#	"range"=>"donl:authority",
+#	"select"=>"donl_organization",
+#	"title"=>t("De maker (creator) of eigenaar van de dataset"),
+#	"script_schema"=>'if ($("#id_dataset_creator").val()) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; schema["creator"]["name"]=$("#id_dataset_creator option:selected").text(); schema["creator"]["@id"]=$("#id_dataset_creator").val(); }',
+#	"screen"=>2
+#);
+
+$datasetfields[]=array(
+	"id"=>"dataset_creator_uri",
+	"label"=>t("Data-eigenaar URI"),
+	"example"=>"https://www.museum.nl/",
+	"mandatory"=>0,
+	"property_uri"=>"schema:creator",	
+	"range"=>"xsd:anyURI",
+#	"select"=>"donl_organization",
+	"title"=>t("De URI van de maker (creator) of eigenaar van de dataset"),
+	"script_schema"=>'if ($("#id_dataset_creator_uri").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } schema["creator"]["@id"]=$("#id_dataset_creator_uri").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_creator_name",
+	"label"=>t("Data-eigenaar naam"),
+	"example"=>"Museum De Lier",
+	"mandatory"=>0,
+	"property_uri"=>"schema:creator",	
+	"range"=>"xml:string",
+#	"select"=>"donl_organization",
+	"title"=>t("De naam van de maker (creator) of eigenaar van de dataset"),
+	"script_schema"=>'if ($("#id_dataset_creator_name").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } schema["creator"]["name"]=$("#id_dataset_creator_name").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_contactPointCreator_name",
+	"label"=>t("Data-eigenaar contact Naam"),
+	"example"=>"T. Ester",
+	"property_uri"=>"schema:name",
+	"range"=>"xml:string",
+	"title"=>t("Naam van de contactpersoon bij de maker van de dataset"),
+	"script_schema"=>'if ($("#id_dataset_contactPointCreator_name").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } if (schema["creator"]["contactPoint"]===undefined) {  schema["creator"]["contactPoint"]={}; } schema["creator"]["contactPoint"]["@type"]="ContactPoint"; schema["creator"]["contactPoint"]["name"]=$("#id_dataset_contactPointCreator_name").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_contactPointCreator_email",
+	"label"=>t("Data-eigenaar contact E&#8209;mail"),
+	"example"=>"voorbeeld@nde.nl",
+	"property_uri"=>"schema:email",
+	"range"=>"xml:string",
+	"title"=>t("E-mail van de contactpersoon bij de maker van de dataset"),
+	"script_schema"=>'if ($("#id_dataset_contactPointCreator_email").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } if (schema["creator"]["contactPoint"]===undefined) { schema["creator"]["contactPoint"]={}; } schema["creator"]["contactPoint"]["@type"]="ContactPoint"; schema["creator"]["contactPoint"]["email"]=$("#id_dataset_contactPointCreator_email").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_contactPointCreator_phone",
+	"label"=>t("Data-eigenaar contact Telefoon"),
+	"example"=>"088-1234567",
+	"property_uri"=>"schema:telephone",
+	"range"=>"xml:string",
+	"title"=>t("Telefoonnummer van de contactpersoon bij de maker van de dataset"),
+	"script_schema"=>'if ($("#id_dataset_contactPointCreator_phone").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } if (schema["creator"]["contactPoint"]===undefined) { schema["creator"]["contactPoint"]={}; } schema["creator"]["contactPoint"]["@type"]="ContactPoint"; schema["creator"]["contactPoint"]["telephone"]=$("#id_dataset_contactPointCreator_phone").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_mainEntityOfPage",
+	"label"=>t("Meer informatie"),
+	"example"=>"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html",
+	"property_uri"=>"schema:mainEntityOfPage",
+	"multiple"=>1,
+	"range"=>"xsd:anyURI",
+	"title"=>t("Webpagina met meer informatie over de dataset"),
+	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_0").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["mainEntityOfPage"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_dateCreated",
+	"label"=>t("Creatiedatum"),
+	"example"=>"2020-03-30T04:05",
+	"property_uri"=>"schema:dateCreated",
+	"range"=>"xsd:datetime", // of xsd:date
+	"title"=>t("Datum waarom de dataset is aangemaakt"),
+	"script_schema"=>'if ($("#id_dataset_dateCreated").val()) { schema["dateCreated"]=$("#id_dataset_dateCreated").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_datePublished",
+	"label"=>t("Publicatiedatum"),
+	"example"=>substr(date("c"),0,16),  # "2020-03-30T04:05"
+	"property_uri"=>"schema:datePublished",
+	"range"=>"xsd:datetime", // of xsd:date
+	"title"=>t("Datum waarop de dataset is gepubliceerd"),
+	"script_schema"=>'if ($("#id_dataset_datePublished").val()) { schema["datePublished"]=$("#id_dataset_datePublished").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_dateModified",
+	"label"=>t("Wijzigingsdatum"),
+	"example"=>"2020-03-31T04:05",
+	"property_uri"=>"schema:dateModified",
+	"range"=>"xsd:datetime", // of xsd:date
+	"title"=>t("Datum waarop de dataset voor het laatst is bijgewerkt"),
+	"script_schema"=>'if ($("#id_dataset_dateModified").val()) { schema["dateModified"]=$("#id_dataset_dateModified").val(); }',
+	"screen"=>2
+);
+
+$datasetfields[]=array(
+	"id"=>"dataset_version",
+	"label"=>t("Versie"),
+	"example"=>"4",
+	"property_uri"=>"schema:version",
+	"range"=>"xml:string",
+	"title"=>t("De versie van de dataset"),
+	"script_schema"=>'if ($("#id_dataset_version").val()) { schema["version"]=$("#id_dataset_version").val(); }',
+	"screen"=>2
+);
+
+
+
+
+
 $datasetfields[]=array(
 	"id"=>"dataset_keyword",
 	"label"=>t("Tag"),
@@ -243,12 +294,14 @@ $datasetfields[]=array(
 $datasetfields[]=array(
 	"id"=>"dataset_genre",
 	"label"=>t("Genre"),
-	"example"=>"http://standaarden.overheid.nl/owms/terms/Recreatie_(thema)",
+	"example"=>"Cultuur",
 	"property_uri"=>"schema:genre",
 	"multiple"=>1,
-	"select"=>"overheid_taxonomiebeleidsagenda",
-	"range"=>"overheid:taxonomiebeleidsagenda",
-	"title"=>t("Genre waarbinnen de dataset valt"),
+#	"select"=>"overheid_taxonomiebeleidsagenda",
+#	"range"=>"overheid:taxonomiebeleidsagenda",
+	"range"=>"xml:string",
+	"title"=>t("Genre(s) waarbinnen de dataset valt"),
+	"description"=>"Een of meer genres waarbinnen de dataset passend is. Kies bijvoorbeeld een genre uit de Activiteitenindex (of Taxonomie Beleidsagenda), beheert door KOOP, via https://standaarden.overheid.nl/owms/terms/TaxonomieBeleidsagenda.html.",
 	"script_schema"=>'if ($("#id_dataset_genre_0").val()) { var genre_idx=0; schema["genre"]=[]; while ($("#id_dataset_genre_"+genre_idx).val()) { schema["genre"].push($("#id_dataset_genre_"+genre_idx).val()); genre_idx++; }}',
 	"screen"=>2
 );
@@ -316,11 +369,9 @@ $datasetfields[]=array(
 	"multiple"=>1,
 	"property_uri"=>"schema:DataDownload",
 	"range"=>"schema:DataDownload",
-	"title"=>t("This property links the Dataset to an available Distribution."),
+	"title"=>t("Deze waarde linkt the dataset met de beschikbare distributie(s)"),
 	"screen"=>3
 );
-
-
 
 
 /* schema.org/DataDownload */
@@ -342,15 +393,14 @@ $distributionfields[]=array(
 $distributionfields[]=array(
 	"id"=>"distribution_0_encodingFormat",
 	"label"=>t("Formaat"),
-	"example"=>"application/ld+json",
+	"example"=>"application/sparql-results+json",
 	"mandatory"=>1,
 	"multiple"=>1,
 	"property_uri"=>"schema:encodingFormat",
 	"select"=>"iana_mediatypes",
 	"range"=>"dcat:mediaType",
 	"title"=>t("Media type (MIME formaat)"),
-	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_encodingFormat_0").val()) {
-var encodingFormat_idx=0; distribution["encodingFormat"]=[]; while ($("#id_distribution_"+dataset_idx+"_encodingFormat_"+encodingFormat_idx).val()) { distribution["encodingFormat"].push($("#id_distribution_"+dataset_idx+"_encodingFormat_"+encodingFormat_idx).val()); encodingFormat_idx++; }}'
+	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_encodingFormat_0").val()) { var encodingFormat_idx=0; distribution["encodingFormat"]=[]; while ($("#id_distribution_"+dataset_idx+"_encodingFormat_"+encodingFormat_idx).val()) { distribution["encodingFormat"].push($("#id_distribution_"+dataset_idx+"_encodingFormat_"+encodingFormat_idx).val()); encodingFormat_idx++; }}'
 );
 
 $distributionfields[]=array(
@@ -358,10 +408,9 @@ $distributionfields[]=array(
 	"label"=>t("Soort"),
 	"mandatory"=>1,
 	"property_uri"=>"schema:name",  // alternatief "schema:conditionsOfAccess"
-
 	"example"=>"SPARQL-endpoint",
 	"range"=>"xml:string",
-	"title"=>t("Een identifier die duidelijk maakt op welke manier gegevens beschikbaar worden gesteld: via een SPARQL-endpoint, OAI-PMH-endpoint, LDF-endpoint of een datadump."),
+	"title"=>t("Een identifier die duidelijk maakt op welke manier gegevens beschikbaar worden gesteld, zoals: SPARQL-endpoint, OAI-PMH-endpoint, LDF-endpoint, (gecomprimeerde) datadump"),
 	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_name").val()) { distribution["name"]=$("#id_distribution_"+dataset_idx+"_name").val(); }'
 	
 #	"example"=>"http://netwerkdigitaalerfgoed.nl/def/soort#datadump",
@@ -375,7 +424,7 @@ $distributionfields[]=array(
 $distributionfields[]=array(
 	"id"=>"distribution_0_license",
 	"label"=>t("Licentie"),
-	"example"=>"http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+	"example"=>"https://creativecommons.org/publicdomain/zero/1.0/",
 	"property_uri"=>"schema:license",
 	"range"=>"DONL:License",
 	"select"=>"donl_license",
@@ -390,6 +439,7 @@ $distributionfields[]=array(
 	"property_uri"=>"schema:description",
 	"range"=>"xml:string",
 	"mandatory"=>0,
+	"large"=>1,
 	"title"=>t("Beschrijving van de datasetdistributie"),
 	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_description").val()) { distribution["description"]=$("#id_distribution_"+dataset_idx+"_description").val(); }'
 );
@@ -397,25 +447,20 @@ $distributionfields[]=array(
 $distributionfields[]=array(
 	"id"=>"distribution_0_inLanguage",
 	"label"=>t("Taal"),
-	"example"=>"http://publications.europa.eu/resource/authority/language/ENG",
+	"example"=>"nl",
 	"property_uri"=>"schema:inLanguage",
 	"mandatory"=>0,
 	"multiple"=>1,
-	"select"=>"donl_language",
-	"range"=>"donl:language",
-	"title"=>t("Gebruikte taal in de datasetdistributie"),
-	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_inLanguage_0").val()!="") { var lang_idx=0; distribution["inLanguage"]=[]; while ($("#id_distribution_"+dataset_idx+"_inLanguage_"+lang_idx).val()) {
-	if ($("#id_distribution_"+dataset_idx+"_inLanguage_"+lang_idx).val()=="http://publications.europa.eu/resource/authority/language/NLD") { distribution["inLanguage"].push("nl-NL"); }
-	if ($("#id_distribution_"+dataset_idx+"_inLanguage_"+lang_idx).val()=="http://publications.europa.eu/resource/authority/language/DEU") { distribution["inLanguage"].push("de-DE"); }
-	if ($("#id_distribution_"+dataset_idx+"_inLanguage_"+lang_idx).val()=="http://publications.europa.eu/resource/authority/language/ENG") { distribution["inLanguage"].push("en-US"); }
-	if ($("#id_distribution_"+dataset_idx+"_inLanguage_"+lang_idx).val()=="http://publications.europa.eu/resource/authority/language/FRY") { distribution["inLanguage"].push("nl-FY"); }
-	lang_idx++; }}'
+	"select"=>"bcp47_language",
+	"range"=>"bcp47:language",
+	"title"=>t("De IETF BCP 47 standaard taalcode van in de datasetdistributie gebruikte taal"),
+	"script_schema"=>'if ($("#id_distribution_"+dataset_idx+"_inLanguage_0").val()!="") { distribution["inLanguage"]=$("#id_distribution_"+dataset_idx+"_inLanguage_0").val(); }'
 );
 
 $distributionfields[]=array(
 	"id"=>"distribution_0_datePublished",
 	"label"=>t("Publicatiedatum"),
-	"example"=>"2020-03-27T04:05",
+	"example"=>substr(date("c"),0,16),  # "2020-03-30T04:05"
 	"property_uri"=>"schema:datePublished",
 	"range"=>"xsd:datetime", // or Date
 	"title"=>t("Datum waarop de datasetdistributie is gepubliceerd"),

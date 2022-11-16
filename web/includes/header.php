@@ -10,8 +10,8 @@
          <link rel="icon" href="assets/favicon-32x32.png">
 		   <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <link rel="stylesheet" id="nde-style-css" href="assets/style.20211223.css" type="text/css" media="all">
-         <link rel="stylesheet" id="site-style-css" href="assets/site.20211223.css" type="text/css" media="all">
+         <link rel="stylesheet" id="nde-style-css" href="assets/style.20221116.css" type="text/css" media="all">
+         <link rel="stylesheet" id="site-style-css" href="assets/site.20221116.css" type="text/css" media="all">
          <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -115,7 +115,7 @@
 						<svg viewBox="0 0 266 38" xmlns="http://www.w3.org/2000/svg"> <defs> <style>.st0{fill:currentColor}</style> </defs> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -11.695065, 28.198312)" class="st0" d="M26.89 22.35h2.61v11.73h-2.61z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -3.999806, 9.619853)" class="st0" d="M8.31 3.77h2.61V15.5H8.31z"/> <path transform="matrix(0.382812, -0.923826, 0.923826, 0.382812, 8.495902, 26.296938)" class="st0" d="M18.06 5.49h11.73V8.1H18.06z"/> <path transform="matrix(0.382812, -0.923826, 0.923826, 0.382812, -20.135798, 31.990094)" class="st0" d="M8.01 29.76h11.73v2.61H8.01z"/> <path class="st0" d="M17.6 26.2h2.61v11.73H17.6zM17.6-.08h2.61v11.73H17.6z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -10.065885, 11.521379)" class="st0" d="M22.62 25.2h2.61v11.73h-2.61z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -1.542401, 5.825825)" class="st0" d="M12.57.92h2.61v11.73h-2.61z"/> <path transform="matrix(0.382683, -0.92388, 0.92388, 0.382683, -8.666396, 14.829821)" class="st0" d="M5.46 8.03h2.61v11.73H5.46z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -2.956749, 12.935421)" class="st0" d="M25.17 12.6H36.9v2.61H25.17z"/> <path transform="matrix(0.92388, -0.382683, 0.382683, 0.92388, -8.651537, 4.411784)" class="st0" d="M.9 22.65h11.73v2.61H.9z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, 1.4415, 22.756004)" class="st0" d="M22.32 8.33h11.73v2.61H22.32z"/> <path transform="matrix(0.707094, -0.707119, 0.707119, 0.707094, -17.136665, 15.061452)" class="st0" d="M3.75 26.91h11.73v2.61H3.75z"/> <text class="st0" style="font-family: Poppins,Helvetica,Arial,sans-serif;font-size: 27px; font-weight:400;" x="41" y="26">datasetregister</text> <rect x="-0.039" y="17.751" width="43.395" height="2.414" class="st0"/></svg>
                      </a>
                      <ul class="main">
-                        <li><a class="<?php if(strstr($_SERVER['REQUEST_URI'],"form.php")) { echo "active "; } ?>m-theme-before m-select--none" href="form.php<?= l() ?>"><?= t('Maak') ?></a>
+                        <li><a class="<?php if(strstr($_SERVER['REQUEST_URI'],"maak.php")) { echo "active "; } ?>m-theme-before m-select--none" href="maak.php<?= l() ?>"><?= t('Maak') ?></a>
                         </li>
                         <li>
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="validate.php<?= l() ?>"><?= t('Valideer') ?></a>
@@ -172,7 +172,7 @@
 					   <a class="m-theme-before m-select--none" href="/<?= l() ?>">Home</a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="form.php<?= l() ?>"><?= t('Maak') ?></a>
+					   <a class="m-theme-before m-select--none" href="maak.php<?= l() ?>"><?= t('Maak') ?></a>
 					</li>
 					<li>
 					   <a class="m-theme-before m-select--none" href="validate.php<?= l() ?>"><?= t('Valideer') ?></a>

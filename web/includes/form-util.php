@@ -141,12 +141,12 @@ function field($field,$class="") {
 	if ($class!="" && !isset($field["class"])) { $field["class"]=$class; }
 	
 	switch ($field["range"]) {
-		case "donl:language":
+		case "bcp47:language":
 		case "overheid:taxonomiebeleidsagenda":
 		case "overheid:license":
 		case "DONL:License": 
 		case "dcat:mediaType":
-		case "mdr:filetype": 
+		case "mdr:filetype":		
 		case "donl:authority": return field_waardelijst($field);  break;
 		
 		case "vcard:identifier": 
@@ -199,7 +199,7 @@ function field_xml_string($field) {
 		$id='id_'.$field["id"].'_0';
 		$str.='<span onclick="plus(\''.$id.'\')" class="btn btn-success btn-sm float-right" id="plus_'.$field["id"].'"><i class="fas fa-plus"></i></span>';
 	}	
-	$str.='<label title="'.$field["title"].'" for="'.$id.'"';
+	$str.='<label title="'.$field["title"].' ('.$field["range"].')" for="'.$id.'"';
 	if (isset($field["mandatory"]) && $field["mandatory"]==1) {
 		$str.=' class="mandatory"';
 	}
@@ -211,35 +211,48 @@ function field_xml_string($field) {
 	} else {
 		$str.=$field["label"];
 	}
+
 	$str.='</label>';
 
 	$str.='</th><td id="val_'.$id.'">';
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='<span class="multi">'; } 
 	
-	$str.='<input placeholder="'.$field["title"].'"';
-	if ($field["range"]=="xsd:anyURI") {
-		$str.='type="url" ';
+	if (isset($field["large"])) {
+		$str.='<textarea rows="5" ';
+		$str.='class="form-control dsra"'; 
+
+	} else {
+		$str.='<input ';
+		if ($field["range"]=="xsd:anyURI") {
+			$str.='type="url" ';
+		}
+		if ($field["range"]=="xsd:date") {
+			$str.='type="date" ';
+		}
+		if ($field["range"]=="xsd:datetime") {
+			$str.='type="datetime-local" ';
+		}	
+		if ($field["range"]=="vcard:hasEmail") {
+			$str.='type="email" ';
+		}
+		$str.='class="form-control"'; 
 	}
-	if ($field["range"]=="xsd:date") {
-		$str.='type="date" ';
-	}
-	if ($field["range"]=="xsd:datetime") {
-		$str.='type="datetime-local" ';
-	}	
-	if ($field["range"]=="vcard:hasEmail") {
-		$str.='type="email" ';
-	}
-	$str.='class="form-control" id="'.$id.'" placeholder="'.$field["range"].'" name="'.$field["property_uri"].'"';
+	$str.=' id="'.$id.'" name="'.$field["property_uri"].'"'; 
 
 	if (isset($field["mandatory"]) && $field["mandatory"]==1) {	
 		$str.=' required ';
 	}
 	
-	$str.='value="">';
-
+	if (isset($field["large"])) {
+		$str.='></textarea>';
+	} else {
+		$str.='value="">';
+	}
+	
 	if (isset($field["lang"]) && $field["lang"]==1) {
 		$str.=' <select data-placeholder="'.t('Maak een keuze uit de lijst').'" id="id_'.$field["id"].'_0_lang"><option value="nl">'.t('Nederlands').'</option><option value="en">'.t('Engels').'</option><option value="de">'.t('Duits').'</option><option value="fr">'.t('Frans').'</option></select>';
 	}
+	
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='</span>'; } 
 	$str.='</td></tr>';
 	
@@ -248,16 +261,21 @@ function field_xml_string($field) {
 
 function waardenlijst($name) {
 	$str='';
-	$waardenlijst=file_get_contents(__DIR__."/waardenlijsten/$name.json");
-	$waardenlijst_json=json_decode($waardenlijst,true);
-	foreach($waardenlijst_json as $id=>$val) {
-		if (isset($waardenlijst_json[$id]) && isset($waardenlijst_json[$id]['labels']) && isset($waardenlijst_json[$id]['labels'][LANGUAGE])) {
-			$str.='<option value="'.$id.'">'.$waardenlijst_json[$id]['labels'][LANGUAGE].'</option>'; # 
-		} else {
-			if (isset($val["id"]) && isset($val["title"])) {
-				$str.='<option value="'.$val["id"].'">'.$val["title"].'</option>'; # 
+	if (file_exists(__DIR__."/waardenlijsten/$name.json")) {
+		$waardenlijst=file_get_contents(__DIR__."/waardenlijsten/$name.json");
+		$waardenlijst_json=json_decode($waardenlijst,true);
+		ksort($waardenlijst_json);
+		foreach($waardenlijst_json as $id=>$val) {
+			if (isset($waardenlijst_json[$id]) && isset($waardenlijst_json[$id]['labels']) && isset($waardenlijst_json[$id]['labels'][LANGUAGE])) {
+				$str.='<option value="'.$id.'">'.$waardenlijst_json[$id]['labels'][LANGUAGE].'</option>'; # 
+			} else {
+				if (isset($val["id"]) && isset($val["title"])) {
+					$str.='<option value="'.$val["id"].'">'.$val["title"].'</option>'; # 
+				}
 			}
 		}
+	} else {
+		error_log("File ".__DIR__."/waardenlijsten/$name.json is missing");
 	}
 	return $str;
 }
@@ -289,7 +307,7 @@ function field_waardelijst($field) {
 	$str.='</th><td id="val_'.$id.'">'; 
 	if (isset($field["multiple"]) && $field["multiple"]==1) { $str.='<span class="multi">'; }
 
-	$str.='<select data-placeholder="'.$field["title"].' - '.t('Maak een keuze uit de lijst').'" id="'.$id.'" class="form-control"><option></option>'; # ('.$field["range"].')
+	$str.='<select data-placeholder="'.t('Maak een keuze uit de lijst').'" id="'.$id.'" class="form-control"><option></option>'; # ('.$field["range"].')  $field["title"].' - '.
 	$str.=waardenlijst($field["select"]);
 	$str.='</select>';
 	

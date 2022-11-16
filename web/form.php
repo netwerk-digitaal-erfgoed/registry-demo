@@ -6,7 +6,7 @@ include('includes/form-util.php');
 
 ?>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600" integrity="sha384-b71qHkM9yz+jZ/D+E8iSoeT0wWu4lsltA9v/vHPif0KtZaikbMStnBmJxSBdlT1D" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600" integrity="sha384-vVYzIakwDZ/whaaTP/uINizi/BMq0wvFYPh9c/kzsGmGC2qwhbiAuC1Fd5na2aBr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/css/bootstrap-select.min.css" integrity="sha384-YT6Vh7LpL+LTEi0RVF6MlYgTcoBIji2PmGBbXk3D4So5lw1e64pyuwTtbLOED1Li" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -14,16 +14,7 @@ include('includes/form-util.php');
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l"><?= t('Maak een datasetbeschrijving')?></h1>
-         <p><br></p>
-         <h2 class="title--m"><?= t('Datasetbeschrijvingen uit uw (collectiebeheer)systeem')?></h2>
-         <p><?= t('Het beschrijven van een dataset toont grote overeenkomsten met het beschrijven van een erfgoedcollectie. Het is dan ook logisch om ook de datasets in het collectiebeheersysteem te beheren. Dicht bij de bron, want vanuit hier worden veelal ook de datasets (als bestand of als API) beschikbaar gesteld. Online publicatie van de datasetbeschrijvingen is hierdoor vaak een eenvoudige en vooral geautomatiseerde stap. Vraag bij uw leverancier wat de mogelijkheden zijn om datasetbeschrijvingen te maken en te publiceren zodat ook uw datasets beter vindbaar worden.')?></p>
-         <p><br></p>
-         <h2 class="title--m"><?= t('Maak handmatig een datasetbeschrijving')?></h2>
-         <p><?= t('Als uw leverancier (nog) geen mogelijkheden biedt om een datasetbeschrijving te maken, dan kunt u handmatig een datasetbeschrijving maken conform de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">requirements</a>. Als hulpmiddel is onderstaand formulier beschikbaar. Deze handmatige werkwijze staat los van het collectiebeheersysteem en is dus verre van ideaal.')?></p>
-         <p><?= t('<strong>Let wel</strong>: het resultaat van het formulier is een datasetbeschrijving in JSON-LD, deze moet nog wel online worden gepubliceerd voordat het kan worden aangemeld bij het Datasetregister.')?></p>
-         <p><br></p>
-         <h2 class="title--m"><?= t('Datasetbeschrijving formulier')?></h2>
+         <h1 class="title--l"><?= t('Datasetbeschrijving formulier')?></h1>
       </div>
    </section>
    <section id="" class="m-t-quarter-space m-theme-bg m-theme--teal search-div">
@@ -50,11 +41,11 @@ include('includes/form-util.php');
             <div class="tab-content" id="myTabContent">
                <div class="tab-pane fade show active" id="uitleg" role="tabpanel" aria-labelledby="uitleg-tab">
                   <br>
-                  <p><?= t('Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe.<br>Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden.')?></p>
+                  <p><?= t('Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe. Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden.')?></p>
                   <br>
                   <p><?= t('Wilt u alleen een indruk krijgen van een datasetbeschrijving? Klik dan op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata.')?></p>
                   <br>
-                  <p><?= t('Via het formulier is niet alles mogelijk, zo kunnen er alleen organisaties gekozen worden als eigenaar en verstrekker (een persoon is volgens de eisen ook mogelijk) en is er geen meertaligheid. Voor enkele waarden zijn voor het gemak <a target="_new" href="https://waardelijsten.dcat-ap-donl.nl/">waardelijsten gekoppeld van DCAT-AP-DONL</a>, deze zijn waardelijsten zijn niet verplicht maar wel handig.')?></p>
+                  <p><?= t('Via het formulier is niet alles mogelijk, zo kunnen er als verwerken en maker alleen nog organisatie ingevuld worden (en niet een persoon), kunnen bij velden met een uitklaplijst geen eigen waarden ingevuld worden en is er geen meertaligheid. Dit kan wel door het resultaat te bewerken in een tekstverwerker.')?></p>
                </div>
                <div class="tab-pane fade" id="req" role="tabpanel" aria-labelledby="req-tab">					
                   <br><?php echo_datasetfields(1); ?>
@@ -71,7 +62,7 @@ include('includes/form-util.php');
                   </div>
                   <xmp id="id_script_jsonld_schema">
                   </xmp>
-                  <p id="copy-status" class="m-text-align--right"><?= t('Klik de JSON-LD om deze te kopieren.')?></p>
+                  <p id="copy-status" class="m-text-align--right"><?= t('Klik op de bovenstaande JSON-LD om deze te kopieren.')?></p>
                   <p><br></p>
                   <p><?= t('Heeft u niet zelf de mogelijkheden om deze JSON-LD te publiceren?<br>Dan kunt u gebruik maken van de <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">"publicatieservice" via Github</a>.')?></p>
                </div>
@@ -152,7 +143,7 @@ document.getElementById('id_script_jsonld_schema').addEventListener(
       navigator.clipboard.writeText(text);
       document.getElementById("copy-status").innerText = "<?= t('De JSON-LD is gekopieerd.')?>";
       setTimeout(function () {
-        document.getElementById("copy-status").innerText = "<?= t('Klik de JSON-LD om deze te kopieren.')?>";
+        document.getElementById("copy-status").innerText = "<?= t('Klik op de bovenstaande JSON-LD om deze te kopieren.')?>";
       }, 1200);
     } catch (err) {
       console.error("Failed to copy!", err);

@@ -38,7 +38,7 @@ include("includes/header.php") ?>
                   <div class="text m-t-half-space">
                      <h3><?= t('Ben je actief met datasets bij een erfgoedinstelling?') ?></h3>
                      <ul class="list--quicklinks">
-                        <li><a href="form.php<?= l() ?>"><?= t('Maak een datasetbeschrijving') ?></a></li>
+                        <li><a href="maak.php<?= l() ?>"><?= t('Maak een datasetbeschrijving') ?></a></li>
                         <li><a href="viaurl.php<?= l() ?>"><?= t('Voeg een datasetbeschrijving toe') ?></a></li>
 						<li><a href="faq-beheerders.php<?= l() ?>"><?= t('Veelgestelde vragen door dataset beheerders') ?></a></li>
                      </ul>

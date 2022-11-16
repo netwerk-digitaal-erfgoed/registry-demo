@@ -1,0 +1,122 @@
+{
+   "nl":{
+      "labels":{
+         "nl-NL":"Nederlands (nl)",
+         "en-US":"Dutch (nl)"
+      }
+   },
+   "nl-BE":{
+      "labels":{
+         "nl-NL":"Nederlands - België (nl-BE)",
+         "en-US":"Dutch - Belgium (nl-BE)"
+      }
+   },
+   "nl-NL":{
+      "labels":{
+         "nl-NL":"Nederlands - Nederland (nl-NL)",
+         "en-US":"Dutch - Netherlands (nl-NL)"
+      }
+   },
+   "fy":{
+      "labels":{
+         "nl-NL":"Fries (fy)",
+         "en-US":"Frisian (fy)"
+      }
+   },
+   "de":{
+      "labels":{
+         "nl-NL":"Duits (de)",
+         "en-US":"German (de)"
+      }
+   },
+   "de-AT":{
+      "labels":{
+         "nl-NL":"Duits - Oostenrijk (de-AT)",
+         "en-US":"German - Austria (de-AT)"
+      }
+   },
+   "de-CH":{
+      "labels":{
+         "nl-NL":"Duits - Zwitzerland de-CH)",
+         "en-US":"German - Switzerland (de-CH)"
+      }
+   },
+   "de-DE":{
+      "labels":{
+         "nl-NL":"Duits - Duitsland (de-DE)",
+         "en-US":"German - Germany (de-DE)"
+      }
+   },
+   "en":{
+      "labels":{
+         "nl-NL":"Engels (en)",
+         "en-US":"English (en)"
+      }
+   },
+   "en-AU":{
+      "labels":{
+         "nl-NL":"Engels - Australië (en-AU)",
+         "en-US":"English - Australia (en-AU)"
+      }
+   },
+   "en-CA":{
+      "labels":{
+         "nl-NL":"Engels - Canada (en-CA)",
+         "en-US":"English - Canada (en-CA)"
+      }
+   },
+   "en-GB":{
+      "labels":{
+         "nl-NL":"Engels - Groot-Brittannië (en-GB)",
+         "en-US":"English - Great Britain (en-GB)"
+      }
+   },
+   "en-IN":{
+      "labels":{
+         "nl-NL":"Engels - India (en-IN)",
+         "en-US":"English - India (en-IN)"
+      }
+   },
+   "en-NZ":{
+      "labels":{
+         "nl-NL":"Engels - Nieuw Zeeland (en-NZ)",
+         "en-US":"English - New Zealand (en-NZ)"
+      }
+   },
+   "en-SG":{
+      "labels":{
+         "nl-NL":"Engels - Singapore (en-SG)",
+         "en-US":"English - Singapore (en-SG)"
+      }
+   },
+   "en-US":{
+      "labels":{
+         "nl-NL":"Engels - Verenigde Staten (en-US)",
+         "en-US":"English - United States (en-US)"
+      }
+   },
+   "fr":{
+      "labels":{
+         "nl-NL":"Frans (fr)",
+         "en-US":"French (fr)"
+      }
+   },
+   "fr-BE":{
+      "labels":{
+         "nl-NL":"Frans - België (fr-BE)",
+         "en-US":"French - Belgium (fr-BE)"
+      }
+   },
+   "fr-CH":{
+      "labels":{
+         "nl-NL":"Frans - Zwitzerland (fr-CH)",
+         "en-US":"French - Switzerland (fr-CH)"
+      }
+   },
+   "fr-FR":{
+      "labels":{
+         "nl-NL":"Frans - Frankrijk (fr-FR)",
+         "en-US":"French - France (fr-FR)"
+      }
+   }
+}

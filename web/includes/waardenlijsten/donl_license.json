@@ -1,21 +1,26 @@
-
 {
-    "http://creativecommons.org/publicdomain/zero/1.0/deed.nl": {
+    "https://creativecommons.org/publicdomain/zero/1.0/": {
         "labels": {
-            "nl-NL": "CC-0 (1.0)",
-            "en-US": "CC-0 (1.0)"
+            "nl-NL": "CC-0 (Universeel)",
+            "en-US": "CC-0 (Universal)"
         }
     },
-    "http://creativecommons.org/licenses/by/4.0/deed.nl": {
+    "https://creativecommons.org/publicdomain/mark/1.0/": {
         "labels": {
-            "nl-NL": "CC-BY (4.0)",
-            "en-US": "CC-BY (4.0)"
+            "nl-NL": "Publiek domein",
+            "en-US": "Public domain"
         }
     },
-    "http://creativecommons.org/licenses/by-sa/4.0/deed.nl": {
+    "https://creativecommons.org/licenses/by/4.0/": {
         "labels": {
-            "nl-NL": "CC-BY-SA (4.0)",
-            "en-US": "CC-BY-SA (4.0)"
+            "nl-NL": "CC-BY (Naamsvermelding)",
+            "en-US": "CC-BY (Attribution)"
+        }
+    },
+    "https://creativecommons.org/licenses/by-sa/4.0/": {
+        "labels": {
+            "nl-NL": "CC-BY-SA (Naamsvermelding-GelijkDelen)",
+            "en-US": "CC-BY-SA (Attribution-ShareAlike)"
         }
     },
     "http://standaarden.overheid.nl/owms/terms/geslotenlicentie": {
@@ -34,12 +39,6 @@
         "labels": {
             "nl-NL": "Onbekende licentie",
             "en-US": "Unknown license"
-        }
-    },
-    "http://creativecommons.org/publicdomain/mark/1.0/deed.nl": {
-        "labels": {
-            "nl-NL": "Publiek domein",
-            "en-US": "Public domain"
         }
     }
 }
