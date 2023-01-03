@@ -4,7 +4,7 @@
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l"><?= t('Privacyverklaring') ?></h1>
          <p><br></p>
-         <p><?= t('In deze privacyverklaring beschrijven wij hoe wij je gegevens verwerken en beschermen. We volgen daarin de eisen van de Algemene Verordening Gegevensbescherming (AVG) die sinds 25 mei 2018 van kracht is. Deze privacyverklaring is op 24 mei 2018 in werking getreden en is een aanvulling op de <a href="https://netwerkdigitaalerfgoed.nl/privacy/">privacyverklaring van het Netwerk Digitaal Erfgoed</a>.') ?></p>
+         <p><?= t('In deze privacyverklaring beschrijven wij hoe wij je gegevens verwerken en beschermen. We volgen daarin de eisen van de Algemene Verordening Gegevensbescherming (AVG) die sinds 25 mei 2018 van kracht is. Deze privacyverklaring is op 24 mei 2018 in werking getreden en is een aanvulling op de <a href="https://www.nationaalarchief.nl/privacyverklaring-nationaal-archief">privacyverklaring van het Netwerk Archief</a>.') ?></p>
       </div>
       <div class="o-container o-container__small m-t-space">
          <h2><?= t('Onze gegevens') ?></h2>
