@@ -65,7 +65,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:publisher",	
 	"range"=>"xsd:anyURI",
 #	"select"=>"donl_organization",
-	"title"=>t("De URI van de verstrekker (publisher) van de dataset"),
+	"title"=>t("De URI van de organisatie die de verstrekker (publisher) van de dataset is"),
 	"script_schema"=>'schema["publisher"]={}; schema["publisher"]["@type"]="Organization"; schema["publisher"]["@id"]=$("#id_dataset_publisher_uri").val();',
 	"screen"=>1
 );
@@ -78,7 +78,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:publisher",	
 	"range"=>"xml:string",
 #	"select"=>"donl_organization",
-	"title"=>t("De naam van de verstrekker (publisher) van de dataset"),
+	"title"=>t("De naam van de organisatie die de verstrekker (publisher) van de dataset is"),
 	"script_schema"=>'schema["publisher"]["name"]=$("#id_dataset_publisher_name").val();',
 	"screen"=>1
 );
@@ -112,7 +112,7 @@ $datasetfields[]=array(
 	"screen"=>2
 );
 
-
+/*
 $datasetfields[]=array(
 	"id"=>"dataset_contactPointPublisher_name",
 	"label"=>t("Verstrekker contact Naam"),
@@ -145,7 +145,7 @@ $datasetfields[]=array(
 	"script_schema"=>'if ($("#id_dataset_contactPointPublisher_phone").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["telephone"]=$("#id_dataset_contactPointPublisher_phone").val(); }',
 	"screen"=>2
 );
-
+*/
 
 #$datasetfields[]=array(
 #	"id"=>"dataset_creator",
@@ -168,7 +168,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:creator",	
 	"range"=>"xsd:anyURI",
 #	"select"=>"donl_organization",
-	"title"=>t("De URI van de maker (creator) of eigenaar van de dataset"),
+	"title"=>t("De URI van de organisatie die maker (creator) of eigenaar van de dataset is"),
 	"script_schema"=>'if ($("#id_dataset_creator_uri").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } schema["creator"]["@id"]=$("#id_dataset_creator_uri").val(); }',
 	"screen"=>2
 );
@@ -181,7 +181,7 @@ $datasetfields[]=array(
 	"property_uri"=>"schema:creator",	
 	"range"=>"xml:string",
 #	"select"=>"donl_organization",
-	"title"=>t("De naam van de maker (creator) of eigenaar van de dataset"),
+	"title"=>t("De naam van de organisatie die maker (creator) of eigenaar van de dataset is"),
 	"script_schema"=>'if ($("#id_dataset_creator_name").val()) { if (schema["creator"]===undefined) { schema["creator"]={}; schema["creator"]["@type"]="Organization"; } schema["creator"]["name"]=$("#id_dataset_creator_name").val(); }',
 	"screen"=>2
 );
@@ -197,6 +197,7 @@ $datasetfields[]=array(
 	"screen"=>2
 );
 
+/*
 $datasetfields[]=array(
 	"id"=>"dataset_contactPointCreator_email",
 	"label"=>t("Data-eigenaar contact E&#8209;mail"),
@@ -230,6 +231,7 @@ $datasetfields[]=array(
 	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_0").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["mainEntityOfPage"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
 	"screen"=>2
 );
+*/
 
 $datasetfields[]=array(
 	"id"=>"dataset_dateCreated",
