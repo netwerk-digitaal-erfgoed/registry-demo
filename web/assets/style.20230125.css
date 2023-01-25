@@ -43,3 +43,4 @@ background-color: #faebe5
 #datasets li {
 font-size:2em 
 }
+input[type=url] { background-color:white}

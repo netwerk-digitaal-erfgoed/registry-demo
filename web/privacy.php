@@ -4,7 +4,7 @@
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l"><?= t('Privacyverklaring') ?></h1>
          <p><br></p>
-         <p><?= t('In deze privacyverklaring beschrijven wij hoe wij je gegevens verwerken en beschermen. We volgen daarin de eisen van de Algemene Verordening Gegevensbescherming (AVG) die sinds 25 mei 2018 van kracht is. Deze privacyverklaring is op 24 mei 2018 in werking getreden en is een aanvulling op de <a href="https://www.nationaalarchief.nl/privacyverklaring-nationaal-archief">privacyverklaring van het Nationaal Archief</a>.') ?></p>
+         <p><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief. Het verwerken, waaronder begrepen publiceren, van de namen van natuurlijke personen heeft ten doel kenbaar te maken dat deze persoon de contactpersoon, uitgever en/of maker van de betreffende dataset is. De wijze waarop het Nationaal Archief persoonsgegevens verwerkt is vastgelegd in een <a href="https://www.nationaalarchief.nl/privacybeleid-nationaal-archief">Privacybeleid</a> en <a href="https://www.nationaalarchief.nl/privacyreglement-nationaal-archief">Privacyreglement</a>.') ?></p>
       </div>
       <div class="o-container o-container__small m-t-space">
          <h2><?= t('Onze gegevens') ?></h2>

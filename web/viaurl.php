@@ -12,9 +12,11 @@ include("includes/header.php") ?>
       <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> aan te melden. Als de domeinnaam voorkomt op de lijst van toegestane domeinnamen (zie <a href="faq-ontwikkelaars.php#allowed_domain_names">FAQ</a>) en de aangetroffen datasetbeschrijving(en) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a> dan zullen deze in het Datasetregister worden opgenomen.')?></p>
    </section>
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
-      <div class="o-container o-container__small">
+      <div class="o-container o-container__small"><form id="viaurl">
          <label for="datasetdescriptionurl"><?= t('URL van pagina met datasetbeschrijving (of datacatalogus)')?>:</label>
-         <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="db_url" value="<?= $url ?>"><br>
+         <input type="url" id="datasetdescriptionurl" required class="form-control form-control-lg" name="db_url" value="<?= $url ?>"><br>
+		 <p><input type="checkbox" required name="privacy_check" id="privacy_check"> <?= t('Voor zover er persoonsgegevens in uw datasetbeschrijving of in uw toekomstige databeschrijvingen voorkomen geeft u – als het u zelf betreft - hierbij toestemming of – als het niet u zelf betreft – verklaart u dat u ervoor instaat dat de betrokken personen toestemming hebben gegeven voor het verwerken, waaronder begrepen publiceren, van deze gegevens ten behoeve van het datasetregister en heeft u deze personen gewezen op het <a target="_blank" href="https://www.nationaalarchief.nl/privacybeleid-nationaal-archief">privacybeleid</a> en <a target="_blank" href="https://www.nationaalarchief.nl/privacyreglement-nationaal-archief">privacyreglement</a> van het Nationaal Archief.') ?></p>
+		 <br>
          <span class="btn btn--arrow m-t-half-space btn--api" onclick="call_api()">
 		 <?= t('Datasetbeschrijving aanmelden')?>
             <svg class="rect">
@@ -28,11 +30,40 @@ include("includes/header.php") ?>
          <div id="api_status"></div>
          <xmp id="api_result">(<?= t('Hier komt het resultaat van de aanroep van de aanmeld functie via de API')?>)</xmp>
         </p>
-      </div>
+      <forn></div>
    </section>
 </main>
 <script>
+	const isValidUrl = urlString=> {
+      try { 
+      	return Boolean(new URL(urlString)); 
+      }
+      catch(e){ 
+      	return false; 
+      }
+  }
+
    function call_api() {
+
+	var du=document.getElementById("datasetdescriptionurl");
+	var pc=document.getElementById("privacy_check");
+
+	if (!isValidUrl(du.value)) {
+		du.setCustomValidity("Ongeldige of ontbrekende URL / Invalid of missing URL");
+		document.getElementById("viaurl").reportValidity();
+		return;
+	} else {
+		du.setCustomValidity("");
+	}
+
+	if (!pc.checked) {
+		pc.setCustomValidity("Verplicht / Required");
+		document.getElementById("viaurl").reportValidity();
+		return;
+	} else {
+		pc.setCustomValidity("");
+	}
+	
    	var as=document.getElementById("api_status");
 	as.style.backgroundColor="none";
 	as.innerHTML="";
