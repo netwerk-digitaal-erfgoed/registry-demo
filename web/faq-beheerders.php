@@ -24,7 +24,7 @@
       <h2><?= t('Hoe kan ik een datasetbeschrijving aanmelden bij het Datasetregister?')?></h2>
       <p><?= t('Idealiter vindt de aanmelding van een datasetbeschrijving (automatisch) plaats via het eigen beheersysteem.')?></p>
       <p><?= t('Een URL van een datasetbeschrijving (die dus door de erfgoedinstelling is gepubliceerd) kan bij het Datasetregister worden aangemeld. Na aanmelding zal het Datasetregister de datasetbeschrijving controleren en ophalen. Het Datasetregister zal dit frequent herhalen om wijzigingen of verwijderingen op te merken om het Datasetregister hiermee bij te werken.')?></p>
-      <p><?= t('Voor erfgoedinstellingen die nog niet in staat zijn om een datasetbeschrijving vanuit het eigen systeem te genereren biedt het Netwerk Digitaal Erfgoed een <a href="#TODO">formulier aan voor het maken van een datasetbeschrijving</a>. Het resultaat is een stuk JSON-LD die op de eigen website of ander platform gepubliceerd kan worden.')?></p>
+      <p><?= t('Voor erfgoedinstellingen die nog niet in staat zijn om een datasetbeschrijving vanuit het eigen systeem te genereren biedt het Netwerk Digitaal Erfgoed een <a href="/form.php">formulier aan voor het maken van een datasetbeschrijving</a>. Het resultaat is een stuk JSON-LD die op de eigen website of ander platform gepubliceerd kan worden.')?></p>
       <h2><?= t('Hoe kan ik het Datasetregister uitproberen?')?></h2>
       <p><?= t('Via deze website, een demonstrator voor de Datasetregister API, kun je datasetbeschrijvingen aanmelden en doorzoeken. Deze demonstrator maakt gebruik van de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/">REST API</a>, die je ook direct kunt aanspreken.')?></p>
       <h2><?= t('Wie maakt en beheert het Datasetregister?')?></h2>
