@@ -96,8 +96,8 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 <script>
 var querylang="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
 var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n";
-var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n  FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \""+querylang+"\"))\n  FILTER(LANG(?publisherName) = \"\" || LANGMATCHES(LANG(?publisherName), \""+querylang+"\")) \n";
-var sparqlEnd = "}";
+var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n     OPTIONAL { ?dataset schema:contentRating ?rating }\n FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \""+querylang+"\"))\n  FILTER(LANG(?publisherName) = \"\" || LANGMATCHES(LANG(?publisherName), \""+querylang+"\")) \n";
+var sparqlEnd = "} ORDER BY DESC(?rating) ?title";
 var sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 var sparqlQuery;
 
@@ -361,13 +361,14 @@ function showDatasets(sparqlresult) {
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
+    rating = sparqlresult.results.bindings[prop].rating.value;
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
 
     var span = document.createElement("span");
     span.setAttribute("id", dataset);
-    span.appendChild(document.createTextNode(title+" ("+publisherName+")"));
+    span.appendChild(document.createTextNode(title+" ("+publisherName+") "+rating));
     li.appendChild(span);
 
     var div = document.createElement("div");
