@@ -10,7 +10,7 @@
          <link rel="icon" href="assets/favicon-32x32.png">
 		   <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <link rel="stylesheet" id="nde-style-css" href="assets/style.20230125.css" type="text/css" media="all">
+         <link rel="stylesheet" id="nde-style-css" href="assets/style.20230221.css" type="text/css" media="all">
          <link rel="stylesheet" id="site-style-css" href="assets/site.20221116.css" type="text/css" media="all">
          <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
