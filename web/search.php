@@ -373,7 +373,7 @@ function showDatasets(sparqlresult) {
 
     var rating = document.createElement("span");
     rating.setAttribute("class", "star");
-    rating.appendChild(document.createTextNode(rating);
+    rating.appendChild(document.createTextNode(rating));
     li.appendChild(rating);
 
     var div = document.createElement("div");
