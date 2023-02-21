@@ -96,7 +96,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 <script>
 var querylang="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
 var sparqlPrefixes = "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n";
-var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n     OPTIONAL { ?dataset schema:contentRating ?rating }\n FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \""+querylang+"\"))\n  FILTER(LANG(?publisherName) = \"\" || LANGMATCHES(LANG(?publisherName), \""+querylang+"\")) \n";
+var sparqlStart = "SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {\n  ?dataset a dcat:Dataset ;\n     dct:title ?title ;\n      dct:publisher ?publisher .\n  ?publisher foaf:name ?publisherName .\n     OPTIONAL { ?dataset <http://schema.org/contentRating> ?rating }\n FILTER(LANG(?title) = \"\" || LANGMATCHES(LANG(?title), \""+querylang+"\"))\n  FILTER(LANG(?publisherName) = \"\" || LANGMATCHES(LANG(?publisherName), \""+querylang+"\")) \n";
 var sparqlEnd = "} ORDER BY DESC(?rating) ?title";
 var sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 var sparqlQuery;
