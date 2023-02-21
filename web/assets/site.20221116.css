@@ -124,7 +124,7 @@ body {
      display: block;
      flex-wrap: none;
 }
- label::after {
+ th > label::after {
   content:" ⓘ";
   color:#555;
   font-size:75%;
