@@ -361,7 +361,6 @@ function showDatasets(sparqlresult) {
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
-    rating = sparqlresult.results.bindings[prop].rating.value;
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
@@ -371,14 +370,18 @@ function showDatasets(sparqlresult) {
     span.appendChild(document.createTextNode(title+" ("+publisherName+") "));
     li.appendChild(span);
 
-    var stars = document.createElement("span");
-    stars.setAttribute("class", "star");
-    stars.appendChild(document.createTextNode(rating));
-    li.appendChild(stars);
+    if (typeof sparqlresult.results.bindings[prop].rating !== 'undefined') {
+      rating = sparqlresult.results.bindings[prop].rating.value;
 
+      var stars = document.createElement("span");
+      stars.setAttribute("class", "star");
+      stars.appendChild(document.createTextNode(rating));
+      li.appendChild(stars);
+    }
+    
     var div = document.createElement("div");
     div.setAttribute("class", "scroll");
-	li.appendChild(div);
+	  li.appendChild(div);
  
     var eul = document.createElement("table");
     eul.setAttribute("id", "props-" + dataset);
