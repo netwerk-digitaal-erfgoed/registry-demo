@@ -15,7 +15,9 @@ $stars='';
 $star_title='';
 if (isset($_GET["stars"])) {
 	$stars = preg_replace("/[^☆]+/", "", $_GET["stars"]);
-	$star_title = $starTitle[$stars];
+	if (!empty($stars)) {
+		$star_title = $starTitle[$stars];
+	}
 }
 ?>
 <link rel="stylesheet" href="/assets/search.20230222.css" type="text/css" media="all">
