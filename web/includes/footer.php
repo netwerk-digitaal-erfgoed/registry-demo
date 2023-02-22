@@ -116,18 +116,18 @@
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
                                  <li><a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a></li>
-                                 <li><a href="apidoc.php<?= l() ?>"><?= t('Datasetregister API specificatie') ?></a></li>
+                                 <li><a href="/apidoc.php<?= l() ?>"><?= t('Datasetregister API specificatie') ?></a></li>
                               </ul>
                            </div>
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
-                                 <li><a href="privacy.php<?= l() ?>"><?= t('Privacyverklaring') ?></a></li>
-                                 <li><a href="contact.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Contact') ?></a></li>
+                                 <li><a href="/privacy.php<?= l() ?>"><?= t('Privacyverklaring') ?></a></li>
+                                 <li><a href="/contact.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Contact') ?></a></li>
                               </ul>
                            </div>
                         </div>
 					 	<p><br><br></p>
-						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.') ?></p>
+						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="/assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.') ?></p>
 					 </div>
                   </div>
                   <div class="all-1_3 tablet-landscape-1_1">
@@ -172,5 +172,5 @@
    </div>
 </footer>
 </div>
-<script type='text/javascript' src='assets/main.js' id='main-js-js'></script>
+<script type="text/javascript" src="/assets/main.js" id="main-js-js"></script>
 </body></html>

@@ -202,9 +202,11 @@ $translations_nl_en = array(
     'Verwijder selectie(s)'=>'Clear selection(s)',
     'Zoek datasets'=>'Search datasets',
     'Neem onderstaande SPARQL mee naar de triplestore'=>'Take the SPARQL below to the triple store',
+	'De SPARQL is gekopieerd.'=>'The SPARQL has been copied.',
     'Klik de SPARQL om deze te kopieren.'=>'Click the SPARQL to copy it.',
     'Zoekresultaten'=>'Search results',
     'of'=>'or',
+	'De zoekresultaat zijn gesorteerd op het aantal sterren wat een indicatie is van hoe uitgebreid de datasetbeschrijving is.'=>'The search results are sorted by the number of stars which is an indication of how extensive the dataset description is.',
 
     # datamodel.php
     'Uitleg van de dataconcepten'=>'Explanation of the data concepts',
