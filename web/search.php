@@ -5,7 +5,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 }
 
 ?>
-<link rel="stylesheet" href="assets/search.20230222.css" type="text/css" media="all">
+<link rel="stylesheet" href="assets/search.20230224.css" type="text/css" media="all">
 <main>
   <section class="text m-t-space m-b-space m-theme--blue">
     <div class="o-container o-container__small m-t-space">
@@ -116,9 +116,9 @@ const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName ?rating 
       FILTER(LANG(?publisherName) = "" || LANGMATCHES(LANG(?publisherName), "${querylang}"))
 `;
 const sparqlEnd = "} ORDER BY DESC(?rating) ?title";
-var sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
-var sparqlQuery;
+const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 const regex = new RegExp('^\\s\\s\\s\\s', 'gm')
+var sparqlQuery;
 
 function updateSparql() {
 
@@ -284,7 +284,7 @@ function showDatasets(sparqlresult) {
 
     var link = document.createElement("a");
 	var linkText = document.createTextNode(title);
-    link.setAttribute("href", "show.php?uri="+encodeURIComponent(dataset)+"&stars="+stars);
+    link.setAttribute("href", "show.php?uri="+encodeURIComponent(dataset));
     link.appendChild(linkText);
     li.appendChild(link);
 	
