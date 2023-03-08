@@ -50,7 +50,7 @@ include("includes/header.php") ?>
                   <div class="text m-t-half-space">
                      <h3><?= t('Ben je op zoek naar erfgoeddatasets?') ?></h3>
                      <ul class="list--quicklinks">
-                        <li><a target="datastory" href="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/"><?= t('Leer via de Data story hoe te zoeken') ?></a></li>
+                        <li><a target="datastory" href="https://datastories.demo.netwerkdigitaalerfgoed.nl/hackalod/datasetregister/"><?= t('Leer via de Data story hoe te zoeken') ?></a></li>
                         <li><a target="triplestore" href="search.php<?= l() ?>"><?= t('Doorzoek alle datasetbeschrijvingen') ?></a></li>
                         <li><a href="faq-gebruikers.php<?= l() ?>"><?= t('Veelgestelde vragen door dataset gebruikers') ?></a></li>
                      </ul>
