@@ -154,7 +154,7 @@ $translations_nl_en = array(
     'Deze dienst'=>'This service',
     'De website en de API van het Datasetregister maken geen gebruik van cookies voor tracking of analytische doeleinden.'=>'The Dataset Register website and API do not use cookies for tracking or analytical purposes.',
     'Bevragingen van website en API worden vastgelegd in een logbestand. Deze technische informatie, waaronder het IP-adres dat de bevraging doet, is alleen toegankelijk door technische beheerders en wordt gebruikt om inzicht te krijgen in het gebruik van het Datasetregister.'=>'Website and API queries are recorded in a log file. This technical information, including the IP address that makes the query, is only accessible by technical administrators and is used to gain insight into the use of the Dataset Register.',
-  
+
     # apidoc.php
     'Datasetregister API specificatie'=>'Dataset Register API specification',
     'De Datasetregister API is bedoeld om online pagina\'s met datasetbeschrijving aan te melden en te valideren. De API beschrijving is op basis van een Open API specification beschikbaar via <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html" target="_blank">Swagger UI</a>.'=>'The Datasetregister API is intended to register and validate online pages with dataset description. The API description is available based on an Open API specification via <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html" target="_blank">Swagger UI</a>.',
@@ -301,7 +301,7 @@ $translations_nl_en = array(
     'Tijdsperiode waar de dataset betrekking op heeft'=>'Period of time to which the dataset relates',
     'Webpagina met meer informatie over de dataset'=>'Web page with more information about the dataset',
 	'Deze waarde linkt the dataset met de beschikbare distributie(s)'=>'This property links the Dataset to available Distribution(s)',
-	
+
     # form.php
     'Datasetbeschrijvingen uit uw (collectiebeheer)systeem'=>'Dataset descriptions from your (collection management) system',
     'Het beschrijven van een dataset toont grote overeenkomsten met het beschrijven van een erfgoedcollectie. Het is dan ook logisch om ook de datasets in het collectiebeheersysteem te beheren. Dicht bij de bron, want vanuit hier worden veelal ook de datasets (als bestand of als API) beschikbaar gesteld. Online publicatie van de datasetbeschrijvingen is hierdoor vaak een eenvoudige en vooral geautomatiseerde stap. Vraag bij uw leverancier wat de mogelijkheden zijn om datasetbeschrijvingen te maken en te publiceren zodat ook uw datasets beter vindbaar worden.'=>'Describing a dataset shows great similarities with describing a heritage collection. It is therefore logical to also manage the datasets in the collection management system. Close to the source, because from here the datasets (as a file or as an API) are often also made available. Online publication of the dataset descriptions is therefore often a simple and, above all, automated step. Ask your supplier about the options for creating and publishing dataset descriptions so that your datasets can also be found more easily.',
@@ -317,7 +317,7 @@ $translations_nl_en = array(
     'Wilt u alleen een indruk krijgen van een datasetbeschrijving? Klik dan op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata.'=>'Do you only want to get an impression of a dataset description? Then click on <a id="dataset_examples" href="#">sample data</a> to fill in all input fields with sample data.',
     'Via het formulier is niet alles mogelijk, zo kunnen er als verwerken en maker alleen nog organisatie ingevuld worden (en niet een persoon), kunnen bij velden met een uitklaplijst geen eigen waarden ingevuld worden en is er geen meertaligheid. Dit kan wel door het resultaat te bewerken in een tekstverwerker.'=>'Not everything is possible via the form, for example, only an organization can be entered as processing and maker (and not a person), fields with a drop-down list cannot be entered with their own values and there is no multilingualism. This can be done by editing the result in a text editor.',
     'Klik op de bovenstaande JSON-LD om deze te kopieren.'=>'Click the JSON-LD to copy it.',
-    'Heeft u niet zelf de mogelijkheden om deze JSON-LD te publiceren?<br>Dan kunt u gebruik maken van de <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">"publicatieservice" via Github</a>.'=>'Do you not have the possibilities to publish this JSON-LD yourself?<br>Then you can use the <a href="https://github.com/netwerk-digital-erfgoed/dataset-register-entries"> "publishing service" via Github</a>.',
+    'Heeft u niet zelf de mogelijkheden om deze JSON-LD te publiceren?<br>Dan kunt u gebruik maken van de <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">"publicatieservice" via Github</a>.'=>'Do you not have the possibilities to publish this JSON-LD yourself?<br>Then you can use the <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">publication service via GitHub</a>.',
     'De JSON-LD is gekopieerd.'=>'The JSON LD has been copied.',
 
     # form-util.php
@@ -344,12 +344,12 @@ $translations_nl_en = array(
     'Ga je aan de slag met het zoeken van datasetbeschrijvingen en het SPARQL-endpint, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.'=>'If you\'re getting started looking for dataset descriptions and the SPARQL endpint, let us know so we can keep you informed of developments, updates and availability.'
 
 );
-    
+
 
 function t($token) {
     global $translations_nl_en;
 
-    if (!isset($_GET["lang"]) || $_GET["lang"]!="en") { 
+    if (!isset($_GET["lang"]) || $_GET["lang"]!="en") {
         return $token;
     }
     $lang="en";
@@ -362,7 +362,7 @@ function t($token) {
 }
 
 function l() {
-    if (isset($_GET["lang"]) && $_GET["lang"]=="en") { 
+    if (isset($_GET["lang"]) && $_GET["lang"]=="en") {
         return "?lang=en";
     }
 }
