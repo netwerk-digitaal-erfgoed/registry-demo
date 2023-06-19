@@ -21,7 +21,7 @@ $translations_nl_en = array(
     'Ontwikkel je software voor erfgoedinstellingen?' => 'Do you develop software for heritage institutions?',
     'Eisen gesteld aan datasetbeschrijvingen' => 'Requirements for dataset descriptions',
     'Valideer een datasetbeschrijving' => 'Validate a dataset description',
-    'Documentatie van de API' => 'Documentation of the API',
+    'API-documentatie' => 'API documentation',
     'Veelgestelde vragen door ontwikkelaars' => 'Developer FAQ',
 
     # header.php

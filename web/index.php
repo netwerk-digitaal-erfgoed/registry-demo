@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if(!isset($_GET["lang"]) && !_bot_detected()) {
    if (strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2))!="nl") {
@@ -16,20 +16,20 @@ include("includes/header.php") ?>
 			<p class=" m-text-align--center" style="text-shadow:1px 0px 0px white;"><?= t('Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.') ?></p>
 		</div>
 	</section>
-   
+
 	<section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space">
 		<div class="o-container o-container__medium m-theme-bg b-homepanel" style="padding:10px 0 10px 0!important;">
 			<div class="c-grid__row item-in-view p-b-half-space inview" style="margin:0;padding:0;text-align:center">
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
 					<a href="viaurl.php<?= l() ?>"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor erfgoedinstellingen met datasets') ?>:<br><?= t('voeg een datasetbeschrijving toe') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
-				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1" style="margin:0;padding:0;text-align:center">				
+				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1" style="margin:0;padding:0;text-align:center">
 					<a href="search.php<?= l() ?>"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor gebruikers van erfgoeddata') ?>:<br><?= t('doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 			</div>
 		</div>
 	</section>
-   
+
    <section id="" class="m-flex c-module c-module--icon-row m-t-space m-bg--light p-t-space p-b-space">
       <div class="o-container o-container__medium">
          <div class="c-grid__row item-in-view inview">
@@ -64,7 +64,7 @@ include("includes/header.php") ?>
                      <ul class="list--quicklinks">
                         <li><a target="triplestore" href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/"><?= t('Eisen gesteld aan datasetbeschrijvingen') ?></a></li>
                         <li><a href="validate.php<?= l() ?>"><?= t('Valideer een datasetbeschrijving') ?></a></li>
-                        <li><a target="datastory" href="apidoc.php<?= l() ?>"><?= t('Documentatie van de API') ?></a></li>
+                        <li><a target="datastory" href="apidoc.php<?= l() ?>"><?= t('API-documentatie') ?></a></li>
                         <li><a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('Veelgestelde vragen door ontwikkelaars') ?></a></li>
                      </ul>
                   </div>
