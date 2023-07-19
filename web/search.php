@@ -104,18 +104,19 @@ PREFIX dct:  <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 `;
-const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {
+//const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {
+const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
       ?dataset a dcat:Dataset ;
                dct:title ?title ;
                dct:publisher ?publisher .
       ?publisher foaf:name ?publisherName .
-      OPTIONAL { 
-        ?dataset <http://schema.org/contentRating> ?rating 
-      }
+
       FILTER(LANG(?title) = "" || LANGMATCHES(LANG(?title), "${querylang}"))
       FILTER(LANG(?publisherName) = "" || LANGMATCHES(LANG(?publisherName), "${querylang}"))
 `;
-const sparqlEnd = "} ORDER BY DESC(?rating) ?title";
+// OPTIONAL { ?dataset <http://schema.org/contentRating> ?rating }
+// const sparqlEnd = "} ORDER BY DESC(?rating) ?title";
+const sparqlEnd = "} ORDER BY ?title";
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 const regex = new RegExp('^\\s\\s\\s\\s', 'gm')
 var sparqlQuery;
@@ -141,7 +142,8 @@ function updateSparql() {
   searchTerm = document.getElementById("searchTerm").value.trim().toLowerCase();
   if (searchTerm) {
     if (searchIn.size > 1) {
-      var sparqlUnion = "SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {\n  {\n";
+      //var sparqlUnion = "SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {\n  {\n";
+      var sparqlUnion = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {\n  {\n";
       var union = 0;
       if (searchIn.has("dct:title")) {
         sparqlUnion += sparqltxt;
@@ -273,27 +275,27 @@ function showDatasets(sparqlresult) {
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
-	if (typeof sparqlresult.results.bindings[prop].rating !== 'undefined') {
-      stars = sparqlresult.results.bindings[prop].rating.value;
-    } else {
-	  stars = '';
+	//if (typeof sparqlresult.results.bindings[prop].rating !== 'undefined') {
+  //  stars = sparqlresult.results.bindings[prop].rating.value;
+  //} else {
+	//stars = '';
 	}
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
 
     var link = document.createElement("a");
-	var linkText = document.createTextNode(title);
+	  var linkText = document.createTextNode(title);
     link.setAttribute("href", "show.php?uri="+encodeURIComponent(dataset));
     link.appendChild(linkText);
     li.appendChild(link);
 	
-	li.appendChild(document.createTextNode(" ("+publisherName+")"));
+	  li.appendChild(document.createTextNode(" ("+publisherName+")"));
 
-    var span = document.createElement("span");
-    span.setAttribute("class", "star");
-    span.appendChild(document.createTextNode(stars));
-    li.appendChild(span);
+    //var span = document.createElement("span");
+    //span.setAttribute("class", "star");
+    //span.appendChild(document.createTextNode(stars));
+    //li.appendChild(span);
 
     var div = document.createElement("div");
     div.setAttribute("class", "scroll");

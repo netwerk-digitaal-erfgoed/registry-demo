@@ -73,7 +73,7 @@ function getDatasetDescription(uri) {
 
     xhr.send();
 }
-
+/*
 function getStars() {
 
     var sparqlStars = "SELECT ?rating FROM <https://data.netwerkdigitaalerfgoed.nl/registry/description_ratings> WHERE { <"+datasetUri+"> <http://schema.org/contentRating> ?rating . }";
@@ -116,7 +116,7 @@ function showStars(sparqlresult) {
 	span_stars.title=starTitle[stars_nr];
   }
 }
-
+*/
 document.getElementById('sparql-query').addEventListener(
   "click",
   function(event) {
@@ -235,7 +235,7 @@ function prefix(str) {
 }
 
 getDatasetDescription();
-getStars();
+//getStars();
 </script>
 <?php 
 } 
