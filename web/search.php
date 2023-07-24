@@ -279,7 +279,7 @@ function showDatasets(sparqlresult) {
   //  stars = sparqlresult.results.bindings[prop].rating.value;
   //} else {
 	//stars = '';
-	}
+  //}
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
