@@ -93,12 +93,16 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
          </div>
       </div>
    </section>
-   <section class="m-t-quarter-space m-theme-bg m-theme--teal" id="starex">
+<!--
+     <section class="m-t-quarter-space m-theme-bg m-theme--teal" id="starex">
       <p><?= t('De zoekresultaat zijn gesorteerd op het aantal sterren wat een indicatie is van hoe uitgebreid de datasetbeschrijving is.') ?></p>
    </section>
+-->
 </main>
 <script>
-var querylang="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
+var querylang1="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
+var querylang2="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "nl"; } else { echo "en"; } ?>";
+
 const sparqlPrefixes = `PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct:  <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -107,12 +111,13 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 //const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {
 const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
       ?dataset a dcat:Dataset ;
-               dct:title ?title ;
                dct:publisher ?publisher .
-      ?publisher foaf:name ?publisherName .
-
-      FILTER(LANG(?title) = "" || LANGMATCHES(LANG(?title), "${querylang}"))
-      FILTER(LANG(?publisherName) = "" || LANGMATCHES(LANG(?publisherName), "${querylang}"))
+      OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang1}")) }
+      OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang2}")) }
+      OPTIONAL { ?dataset dct:title ?title }    
+      OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang1}")) }
+      OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang2}")) }
+      OPTIONAL { ?publisher foaf:name ?publisherName }
 `;
 // OPTIONAL { ?dataset <http://schema.org/contentRating> ?rating }
 // const sparqlEnd = "} ORDER BY DESC(?rating) ?title";
