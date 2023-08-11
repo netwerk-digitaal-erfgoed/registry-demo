@@ -311,7 +311,8 @@ function showDatasets(sparqlresult) {
     div.appendChild(eul);
 
     ul.appendChild(li);
-	
+
+/*
 	var starex = document.getElementById("starex");
 	if (uriCount==0) {
 	  starex.style.display = "none";
@@ -319,6 +320,7 @@ function showDatasets(sparqlresult) {
       starex.style.display = "block";
     }
   }
+*/
 }
 
 function set_lod_choices() {
