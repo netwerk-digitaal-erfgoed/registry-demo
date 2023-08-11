@@ -276,15 +276,15 @@ function showDatasets(sparqlresult) {
 
   uriCount=0;
   for (var prop in sparqlresult.results.bindings) {
-	uriCount++;
+	  uriCount++;
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
-	//if (typeof sparqlresult.results.bindings[prop].rating !== 'undefined') {
-  //  stars = sparqlresult.results.bindings[prop].rating.value;
-  //} else {
-	//stars = '';
-  //}
+    //if (typeof sparqlresult.results.bindings[prop].rating !== 'undefined') {
+    //  stars = sparqlresult.results.bindings[prop].rating.value;
+    //} else {
+    //stars = '';
+    //}
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
@@ -312,15 +312,13 @@ function showDatasets(sparqlresult) {
 
     ul.appendChild(li);
 
-/*
-	var starex = document.getElementById("starex");
-	if (uriCount==0) {
-	  starex.style.display = "none";
-    } else {
-      starex.style.display = "block";
-    }
+    // var starex = document.getElementById("starex");
+    //if (uriCount==0) {
+    //	  starex.style.display = "none";
+    //   } else {
+    //     starex.style.display = "block";
+    //  }
   }
-*/
 }
 
 function set_lod_choices() {
