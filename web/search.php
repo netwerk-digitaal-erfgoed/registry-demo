@@ -5,7 +5,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 }
 
 ?>
-<link rel="stylesheet" href="assets/search.20230224.css" type="text/css" media="all">
+<link rel="stylesheet" href="assets/search.20231101.css" type="text/css" media="all">
 <main>
   <section class="text m-t-space m-b-space m-theme--blue">
     <div class="o-container o-container__small m-t-space">
@@ -17,16 +17,16 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
     <div class="o-container no-container__small">
       <div class="row">
         <div class="column">
-          <label id="searchTermLabel"><?= t('Zoekwoord')?></label>
-          <input aria-labelledby="searchTermLabel" class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
+          <label id="searchTermLabel"><?= t('Zoekwoord')?> (<?= t('doorzoekt namen, omschrijvingen en steekwoorden') ?>)</label> 
+          <input aria-labelledby="searchTermLabel" title="<?= t('Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.') ?>" class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
           <br><br>
-          <label><?= t('Doorzoek')?></label>
+<!--          <label><?= t('Doorzoek')?></label>
           <p>
-		    <label class="doorzoek"><input class="choice" type="checkbox" checked name="searchIn[]" id="dct_title" value="dct:title"> <?= t('Naam')?></label>
-            <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dct_description" value="dct:description"> <?= t('Omschrijving')?></label>
-            <label class="doorzoek"><input class="choice" type="checkbox" name="searchIn[]" id="dcat_keyword" value="dcat:keyword"> <?= t('Steekwoorden')?></label>
+		    <label class="doorzoek"><input class="choice" checked="checked" disabled="disabled" type="checkbox"  name="searchIn[]" id="dct_title" value="dct:title"> <?= t('Naam')?></label>
+            <label class="doorzoek"><input class="choice" checked="checked" disabled="disabled" type="checkbox" name="searchIn[]" id="dct_description" value="dct:description"> <?= t('Omschrijving')?></label>
+            <label class="doorzoek"><input class="choice" checked="checked" disabled="disabled" type="checkbox" name="searchIn[]" id="dcat_keyword" value="dcat:keyword"> <?= t('Steekwoorden')?></label>
           </p>
-          <br>
+          <br> -->
           <label id="publisher_listLabel"><?= t('Uitgever')?></label>
           <select aria-labelledby="publisher_listLabel" class="form-control" id="publisher_list" name="publisher">
             <option value=""><?= t('Alle organisaties')?></option>
@@ -68,7 +68,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                </div>
                <p class="choices"><a href="#" onclick="return set_lod_choices()"><?= t('Selecteer Linked Data formaten')?></a><span class="mobile-hidden"> | <a href="#" onclick="return clear_formats()"><?= t('Verwijder selectie(s)')?></a></span></p>
                <span class="btn btn--arrow m-t-half-space btn--api" style="display:block" onclick="searchDatasets()">
-               <?= t('Zoek datasets')?>
+               <?= t('Zoek datasets')?><div id="wait" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                   <svg class="rect">
                      <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 586; stroke-dashoffset: 586;"></rect>
                   </svg>
@@ -103,103 +103,46 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 var querylang1="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
 var querylang2="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "nl"; } else { echo "en"; } ?>";
 
-const sparqlPrefixes = `PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dct:  <http://purl.org/dc/terms/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
-`;
-//const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {
-const sparqlStart = `    SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
-      ?dataset a dcat:Dataset ;
-               dct:publisher ?publisher .
-      OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang1}")) }
-      OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang2}")) }
-      OPTIONAL { ?dataset dct:title ?title }    
-      OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang1}")) }
-      OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang2}")) }
-      OPTIONAL { ?publisher foaf:name ?publisherName }
-`;
-// OPTIONAL { ?dataset <http://schema.org/contentRating> ?rating }
-// const sparqlEnd = "} ORDER BY DESC(?rating) ?title";
-const sparqlEnd = "} ORDER BY ?title";
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
-const regex = new RegExp('^\\s\\s\\s\\s', 'gm')
 var sparqlQuery;
 
 function updateSparql() {
 
-  var sparqltxt = sparqlStart;
-  var sparqlUnion = '';
+  searchTerm = document.getElementById("searchTerm").value.trim().replace(/"/g, '\\"');
 
+  sparqlQuery = `PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX luc: <http://www.ontotext.com/connectors/lucene#>
+PREFIX luc-index: <http://www.ontotext.com/connectors/lucene/instance#>
+SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
+  ?search a luc-index:datasetregister ;
+          luc:query "${searchTerm}" ;
+          luc:entities ?dataset .
+  ?dataset dct:publisher ?publisher .
+  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang1}")) }
+  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang2}")) }
+  OPTIONAL { ?dataset dct:title ?title }    
+  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang1}")) }
+  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang2}")) }
+  OPTIONAL { ?publisher foaf:name ?publisherName }
+`;
   if (creator) {
-    sparqltxt += "      ?dataset dct:creator <" + creator + "> .\n";
+    sparqlQuery += "  ?dataset dct:creator <" + creator + "> .\n";
   }
   if (publisher) {
-    sparqltxt += "      ?dataset dct:publisher <" + publisher + "> .\n";
+    sparqlQuery += "  ?dataset dct:publisher <" + publisher + "> .\n";
   }
-
   if (formats.size > 0) {
-    sparqltxt += "      ?dataset dcat:distribution ?distribution .\n";
-    sparqltxt += "      ?distribution dct:format ?format .\n";
-    sparqltxt += "      FILTER( ?format=\""+ Array.from(formats).join('" || ?format="')+"\")\n";
+    sparqlQuery += "  ?dataset dcat:distribution ?distribution .\n";
+    sparqlQuery += "  ?distribution dct:format ?format .\n";
+    sparqlQuery += "  FILTER( ?format=\"" + Array.from(formats).join('" || ?format="') + "\")\n";
   }
 
-  searchTerm = document.getElementById("searchTerm").value.trim().toLowerCase();
-  if (searchTerm) {
-    if (searchIn.size > 1) {
-      //var sparqlUnion = "SELECT DISTINCT ?dataset ?title ?publisherName ?rating WHERE {\n  {\n";
-      var sparqlUnion = "SELECT DISTINCT ?dataset ?title ?publisherName WHERE {\n  {\n";
-      var union = 0;
-      if (searchIn.has("dct:title")) {
-        sparqlUnion += sparqltxt;
-        sparqlUnion += "      FILTER CONTAINS(LCASE(?title),\"" + searchTerm + "\") .\n    }\n";
-        union++;
-      }
-      if (searchIn.has("dct:description")) {
-        if (union > 0) {
-          sparqlUnion += "  } UNION {\n";
-        }
-        sparqlUnion += sparqltxt
-        sparqlUnion += "      ?dataset dct:description ?description .\n";
-        sparqlUnion += "      FILTER CONTAINS(LCASE(?description),\"" + searchTerm + "\") .\n    }\n";
-        union++;
-      }
-      if (searchIn.has("dcat:keyword")) {
-        if (union > 0) {
-          sparqlUnion += "  } UNION {\n";
-        }
-        sparqlUnion += sparqltxt
-        sparqlUnion += "      ?dataset dcat:keyword ?keyword .\n";
-        sparqlUnion += "      FILTER CONTAINS(LCASE(?keyword),\"" + searchTerm + "\") .\n    }\n";
-      }
-      sparqlUnion += "  }\n"+sparqlEnd;
-      sparqltxt = '';
-
-    } else {
-      sparqltxt = sparqltxt.replace(regex, '');
-
-      if (searchIn.has("dct:title")) {
-        sparqltxt += "  FILTER CONTAINS(LCASE(?title),\"" + searchTerm + "\") .\n";
-      }
-      if (searchIn.has("dct:description")) {
-        sparqltxt += "  ?dataset dct:description ?description .\n";
-        sparqltxt += "  FILTER CONTAINS(LCASE(?description),\"" + searchTerm + "\") .\n";
-      }
-      if (searchIn.has("dcat:keyword")) {
-        sparqltxt += "  ?dataset dcat:keyword ?keyword .\n";
-        sparqltxt += "  FILTER CONTAINS(LCASE(?keyword),\"" + searchTerm + "\") .\n";
-      }
-      sparqltxt += sparqlEnd;
-    }
-  } else {
-    sparqltxt = sparqltxt.replace(regex, '');
-    sparqltxt += sparqlEnd;
-  }
-
-  sparqlQuery = sparqlPrefixes + sparqltxt + sparqlUnion;
+  sparqlQuery += "} ORDER BY ?title";
 
   document.getElementById('sparql-query').innerHTML = sparqlQuery;
-
+  console.log(sparqlQuery);
   toHash();
 }
 
@@ -243,6 +186,9 @@ function searchTriplestore() {
 }
 
 function searchDatasets() {
+	
+  document.getElementById("wait").style.display="inline-block";
+	
   updateSparql();
 
   document.getElementById("searchresults").style.display = "none";
@@ -260,6 +206,7 @@ function searchDatasets() {
         console.log("Call to triplestore got HTTP code " + xhr.status);
       }
     }
+    document.getElementById("wait").style.display="none";
   };
 
   xhr.send();
@@ -276,31 +223,20 @@ function showDatasets(sparqlresult) {
 
   uriCount=0;
   for (var prop in sparqlresult.results.bindings) {
-	  uriCount++;
+    uriCount++;
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
-    //if (typeof sparqlresult.results.bindings[prop].rating !== 'undefined') {
-    //  stars = sparqlresult.results.bindings[prop].rating.value;
-    //} else {
-    //stars = '';
-    //}
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
 
     var link = document.createElement("a");
-	  var linkText = document.createTextNode(title);
+    var linkText = document.createTextNode(title);
     link.setAttribute("href", "show.php?uri="+encodeURIComponent(dataset));
     link.appendChild(linkText);
     li.appendChild(link);
-	
-	  li.appendChild(document.createTextNode(" ("+publisherName+")"));
-
-    //var span = document.createElement("span");
-    //span.setAttribute("class", "star");
-    //span.appendChild(document.createTextNode(stars));
-    //li.appendChild(span);
+    li.appendChild(document.createTextNode(" ("+publisherName+")"));
 
     var div = document.createElement("div");
     div.setAttribute("class", "scroll");
@@ -311,13 +247,6 @@ function showDatasets(sparqlresult) {
     div.appendChild(eul);
 
     ul.appendChild(li);
-
-    // var starex = document.getElementById("starex");
-    //if (uriCount==0) {
-    //	  starex.style.display = "none";
-    //   } else {
-    //     starex.style.display = "block";
-    //  }
   }
 }
 
@@ -361,8 +290,8 @@ function toHash() {
 	if (formats.size > 0) {
 		searchData.f=Array.from(formats);
 	}
-	searchData.t=document.getElementById("searchTerm").value.trim().toLowerCase();
-    searchData.i=Array.from(searchIn);
+	searchData.t=document.getElementById("searchTerm").value.trim();
+    //searchData.i=Array.from(searchIn);
 
 	history.pushState({}, "", "#"+btoa(JSON.stringify(searchData)));
 }
@@ -384,9 +313,9 @@ function fromHash() {
 			}
 			
 			searchIn=new Set(searchData.i);
-			document.getElementById("dct_title").checked=searchData.i.includes("dct:title");
-			document.getElementById("dct_description").checked=searchData.i.includes("dct:description");
-			document.getElementById("dcat_keyword").checked=searchData.i.includes("dcat:keyword");		  
+			//document.getElementById("dct_title").checked=searchData.i.includes("dct:title");
+			//document.getElementById("dct_description").checked=searchData.i.includes("dct:description");
+			//document.getElementById("dcat_keyword").checked=searchData.i.includes("dcat:keyword");		  
 			document.getElementById("searchTerm").value=searchData.t;
 
 			if (searchData.f) {

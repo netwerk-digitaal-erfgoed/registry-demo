@@ -207,7 +207,9 @@ $translations_nl_en = array(
     'Zoekresultaten'=>'Search results',
     'of'=>'or',
 	'De zoekresultaat zijn gesorteerd op het aantal sterren wat een indicatie is van hoe uitgebreid de datasetbeschrijving is.'=>'The search results are sorted by the number of stars which is an indication of how extensive the dataset description is.',
-
+	'doorzoekt namen, omschrijvingen en steekwoorden'=>'searches names, descriptions and keywords',
+	'Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.'=>'If multiple search terms are specified, the search results will contain one or more of these terms. If you want all search terms to appear, link the search terms with AND.',
+	
     # datamodel.php
     'Uitleg van de dataconcepten'=>'Explanation of the data concepts',
     'Datasetbeschrijving'=>'Dataset description',
