@@ -115,6 +115,7 @@ function showMessages(items) {
 
 		for (var imessage in items[message]) {
 			strDetails += '<tr><td>' + items[message][imessage]["http://www.w3.org/ns/shacl#focusNode"][0]["@id"];
+			strDetails += '</td><td>';
 			if (items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"]) { 
 				strDetails+=items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
 			}
