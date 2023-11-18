@@ -199,6 +199,7 @@ $translations_nl_en = array(
     'Maker'=>'Creator',
     'Formaat'=>'Format',
     'Selecteer Linked Data formaten'=>'Select Linked Data formats',
+    'Selecteer SPARQL formaten'=>'Select SPARQL formats',
     'Verwijder selectie(s)'=>'Clear selection(s)',
     'Zoek datasets'=>'Search datasets',
     'Neem onderstaande SPARQL mee naar de triplestore'=>'Take the SPARQL below to the triple store',

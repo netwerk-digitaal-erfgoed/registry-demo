@@ -66,7 +66,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
                      }
                      ?>
                </div>
-               <p class="choices"><a href="#" onclick="return set_lod_choices()"><?= t('Selecteer Linked Data formaten')?></a><span class="mobile-hidden"> | <a href="#" onclick="return clear_formats()"><?= t('Verwijder selectie(s)')?></a></span></p>
+               <p class="choices"><a href="#" onclick="return set_lod_choices()"><?= t('Selecteer Linked Data formaten')?></a> | <a href="#" onclick="return set_sparql_choices()"><?= t('Selecteer SPARQL formaten')?></a> | <a href="#" onclick="return clear_formats()"><?= t('Verwijder selectie(s)')?></a></p>
                <span class="btn btn--arrow m-t-half-space btn--api" style="display:block" onclick="searchDatasets()">
                <?= t('Zoek datasets')?><div id="wait" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                   <svg class="rect">
@@ -255,6 +255,23 @@ function set_lod_choices() {
   for (i = 0; i < choices.length; i++) {
     if (choices[i].name == "format[]") {
       if (["application/ld+json", "application/n-quads", "application/n-triples", "application/rdf+xml", "application/sparql-query", "application/trig", "application/turtle", "application/vnd.hdt", "text/turtle", "text/n3", "application/x-sparqlstar-results+json", "application/sparql-results+xml", "application/sparql-results+json", "application/x-sparqlstar-results", "application/sparql-results","application/ld+json+gzip","application/n-quads+gzip","application/n-triples+gzip","application/rdf+xml+gzip","text/n3+gzip","text/turtle+gzip"].includes(choices[i].value)) {
+        choices[i].checked = true;
+        formats.add(choices[i].value);
+      } else {
+        choices[i].checked = false;
+        formats.delete(choices[i].value);
+      }
+    }
+  }
+  updateSparql();
+  return false;
+}
+
+function set_sparql_choices() {
+  choices = document.getElementsByClassName('choice');
+  for (i = 0; i < choices.length; i++) {
+    if (choices[i].name == "format[]") {
+      if (["application/sparql-query", "application/x-sparqlstar-results+json", "application/sparql-results+xml", "application/sparql-results+json", "application/x-sparqlstar-results", "application/sparql-results"].includes(choices[i].value)) {
         choices[i].checked = true;
         formats.add(choices[i].value);
       } else {
