@@ -352,7 +352,7 @@ $translations_nl_en = array(
 	'De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.'=>'The dataset description (or catalog) is not saved or added to the Dataset Register. A URL of a dataset description published online can be registered via the <a href="viaurl.php">Submit</a> page.',
 	'Inhoud van de datasetbeschrijving (of datacatalogus)'=>'Contents of the dataset description (or catalog)',
 	'Typering van de inhoud' => 'Content-type',
-	'Directe datasetbeschrijving validate'=>'Direct dataset description validation',
+	'Directe datasetbeschrijving validatie'=>'Direct dataset description validation',
 	'Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.'=>'If the dataset description is not yet online, paste the RDF of the dataset description into the <a href="validate-post.php">direct validation</a> page.',
 	'Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.'=>'If the dataset description is already online, paste the URL of the dataset description into the <a href="validate.php">validation</a> page.'
 );
