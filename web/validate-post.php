@@ -1,23 +1,25 @@
 <?php 
 
-$url="";
-if (isset($_GET["url"]) && filter_var($_GET["url"], FILTER_VALIDATE_URL)) {
-	$url=$_GET["url"];
-}
 include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l"><?= t('Valideer een datasetbeschrijving via URL') ?></h1>
-         <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/shacl/register.ttl">SHACL bestand</a>. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.') ?></p>
-		 <p><?= t('De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.') ?> <?= t('Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.') ?></p>		 
+         <h1 class="title--l"><?= t('Directe datasetbeschrijving validate') ?></h1>
+         <p><?= t('Voer de inhoud van een datasetbeschrijving (of datacatalogus) in RDF in om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren en selecteer het type RDF. Er wordt dan gecontroleerd of deze voldoet aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/shacl/register.ttl">SHACL bestand</a>. Als de aangeleverde RDF niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.') ?></p>
+		 <p><?= t('De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.') ?> <?= t('Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.') ?></p>
       </div>
    </section>
    <section class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
-      <div class="o-container o-container__small"><form action="validate.php" id="validate_form" class="form-control" method="get">
-         <label for="datasetdescriptionurl"><?= t('URL van pagina met datasetbeschrijving (of datacatalogus)')?>:</label>
-         <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= $url ?>"><br>
-         <span class="btn btn--arrow m-t-half-space btn--api" onclick="validate_form.submit()">
+      <div class="o-container o-container__small">
+         <label><?= t('Typering van de inhoud')?>: 
+         <input type="radio" name="contenttype" checked value="application/ld+json"> JSON-LD &nbsp;&nbsp;&nbsp;
+		 <input type="radio" name="contenttype" value="text/turtle"> Turtle &nbsp;&nbsp;&nbsp;
+		 <input type="radio" name="contenttype" value="application/n-triples"> N-triples &nbsp;&nbsp;&nbsp;
+		 <input type="radio" name="contenttype" value="application/rdf+xml"> RDF/XML 
+		 </label><br><br>
+         <label for="datasetdescription"><?= t('Inhoud van de datasetbeschrijving (of datacatalogus)')?>:</label>
+         <textarea style="background-color:white;width:100%" id="datasetdescription" class="form-control form-control-lg" rows="10"></textarea><br>
+         <span class="btn btn--arrow m-t-half-space btn--api" onclick="call_api()">
 		 <?= t('Datasetbeschrijving valideren') ?>
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
@@ -28,32 +30,18 @@ include("includes/header.php") ?>
          </span>
          <p id="api_show"><br></p>
 		 <div id="api_status"></div>
- 
- <?php if(!empty($url)) { ?>
- 
       </div>
    </section>
    
-   <section class="m-t-quarter-space">
+   <section class="text">
       <div class="o-container">
-         <div id="api_result"></div>
+         <div id="api_result" style="display:none">Calling API ...</div>
       </div>
    </section>
    
    <section class="m-flex c-module c-module--doorway p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small">
-	  
-		  <a id="btnAdd" class="btn btn--arrow m-t-half-space btn--api" style="display:none" href="viaurl.php">
-		  <?= t('Datasetbeschrijving aanmelden') ?>
-            <svg class="rect">
-               <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
-            </svg>
-            <svg class="icon icon-arrow-right">
-               <use xlink:href="#icon-arrow-right"></use>
-            </svg>
-         </a>
-		 
-		 <span id="api_source_link" class="btn btn--arrow m-t-half-space btn--api" onclick="toggle_visibility()">
+		 <div style="display:none" id="api_source_link" class="btn btn--arrow m-t-half-space btn--api" onclick="toggle_visibility()">
 		 <?= t('Klik om de SHACL validatie resultaten te bekijken') ?>
             <svg class="rect">
                <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect>
@@ -61,15 +49,12 @@ include("includes/header.php") ?>
             <svg class="icon icon-arrow-right">
                <use xlink:href="#icon-arrow-right"></use>
             </svg>
-         </span>
+         </div>
 		 <xmp id="api_source"></xmp>
-<?php } ?>
-        </p></form>
+        </p>
       </div>
    </section>
 </main>
-
-<?php if(!empty($url)) { ?>
 
 <script>
 var arrMessages = [];
@@ -116,7 +101,7 @@ function showMessages(items) {
 
 		for (var imessage in items[message]) {
 			strDetails += '<tr><td>' + items[message][imessage]["http://www.w3.org/ns/shacl#focusNode"][0]["@id"];
-			strDetails += '</td><td>';
+			strDetails += '</td><td>';	
 			if (items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"]) { 
 				strDetails+=items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
 			}
@@ -162,30 +147,23 @@ function processMessages(shaclObject) {
 }
 
 function call_api() {
-	var ab = document.getElementById("btnAdd");
-	ab.style.display = "none";
-
 	var al = document.getElementById("api_source_link");
 	al.style.display = "none";
 
 	var as = document.getElementById("api_status");
-
 	as.style.backgroundColor = "none";
 	as.innerHTML = "";
 
-
-
-
-	document.getElementById("api_result").innerHTML = "Calling API ...";
+	var ar=document.getElementById("api_result");
+	ar.style.display = "block";
+	
 	fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
-			"method": "PUT",
+			"method": "POST",
 			"headers": {
 				"Accept": "application/ld+json",
-				"Content-Type": "application/ld+json"
+				"Content-Type": document.querySelector('input[name="contenttype"]:checked').value  /* application/ld+json */
 			},
-			"body": JSON.stringify({
-				"@id": document.getElementById("datasetdescriptionurl").value
-			})
+			"body": document.getElementById("datasetdescription").value
 		})
 		.then(response => {
 			var as = document.getElementById("api_status");
@@ -193,10 +171,6 @@ function call_api() {
 			if (response.status == "200") {
 				as.style.backgroundColor = "#5cb85c";
 				as.innerHTML = "<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.') ?>";
-				
-				ab.style.display = "inline-block";
-				ab.href = "viaurl.php?url="+document.getElementById("datasetdescriptionurl").value;
-
 			} else {
 				al.style.display = "block";
 				as.style.backgroundColor = "#e44d26";
@@ -277,6 +251,9 @@ function displayMessages(response) {
 
 }
 
-call_api();
 </script>
-<?php } include("includes/footer.php") ?>
+<?php 
+
+include("includes/footer.php") 
+
+?>

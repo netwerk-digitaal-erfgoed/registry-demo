@@ -19,12 +19,12 @@ body {
      color: #be2c00;
 }
  #api_status {
-     padding: 20px;
-     color: white;
-     margin-top: 10px;
-     margin-bottom: -30px;
-     font-weight: bold;
-     font-size: 1.2em 
+     padding:20px;
+     color:white;
+     margin-top:10px;
+     margin-bottom:-30px;
+     font-weight:bold;
+     font-size:1.5em 
 }
  #api_status a {
      color: white;
