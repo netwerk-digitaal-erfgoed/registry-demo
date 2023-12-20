@@ -1,0 +1,31 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://datasetregister.netwerkdigitaalerfgoed.nl/api",
+      "service-desc": [
+        {
+          "href": "https://datasetregister.netwerkdigitaalerfgoed.nl/api/json",
+          "type": "application/json",
+          "title": "NDE Dataset Register REST API specification"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html",
+          "type": "text/html",
+          "title": "NDE Dataset Register REST API documentation"
+        }
+      ]
+    },
+    {
+      "anchor": "https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry",
+      "service-doc": [
+        {
+          "href": "https://www.w3.org/TR/sparql11-query/",
+          "type": "text/html",
+          "title": "SPARQL 1.1 Query Language"
+        }
+      ]
+    }
+  ]
+}
