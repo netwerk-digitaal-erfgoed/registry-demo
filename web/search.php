@@ -1,5 +1,12 @@
 <?php include("includes/search.php"); include("includes/header.php"); 
 
+$lang="nl"; 
+$notlang="en";
+if(isset($_GET["lang"]) && $_GET["lang"]=="en") { 
+	$lang="en"; 
+	$notlang="nl";
+} 
+
 if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 	$o=$_GET["o"];
 }
@@ -20,13 +27,6 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
           <label id="searchTermLabel"><?= t('Zoekwoord')?> (<?= t('doorzoekt namen, omschrijvingen en steekwoorden') ?>)</label> 
           <input aria-labelledby="searchTermLabel" title="<?= t('Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.') ?>" class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
           <br><br>
-<!--          <label><?= t('Doorzoek')?></label>
-          <p>
-		    <label class="doorzoek"><input class="choice" checked="checked" disabled="disabled" type="checkbox"  name="searchIn[]" id="dct_title" value="dct:title"> <?= t('Naam')?></label>
-            <label class="doorzoek"><input class="choice" checked="checked" disabled="disabled" type="checkbox" name="searchIn[]" id="dct_description" value="dct:description"> <?= t('Omschrijving')?></label>
-            <label class="doorzoek"><input class="choice" checked="checked" disabled="disabled" type="checkbox" name="searchIn[]" id="dcat_keyword" value="dcat:keyword"> <?= t('Steekwoorden')?></label>
-          </p>
-          <br> -->
           <label id="publisher_listLabel"><?= t('Uitgever')?></label>
           <select aria-labelledby="publisher_listLabel" class="form-control" id="publisher_list" name="publisher">
             <option value=""><?= t('Alle organisaties')?></option>
@@ -88,21 +88,14 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
          </xmp>
          <p id="copy-status" style="float:right"><?= t('Klik de SPARQL om deze te kopieren.')?></p>
          <div id="searchresults" style="display:none">
+			<div id="facet_block"><strong><?= t('Filter op organisatie') ?></strong>: <div id="facets"></div></div>
             <h2><?= t('Zoekresultaten')?> (<span id="countdatasets">0</span>)</h2>
             <ul id="datasets"></ul>
          </div>
       </div>
    </section>
-<!--
-     <section class="m-t-quarter-space m-theme-bg m-theme--teal" id="starex">
-      <p><?= t('De zoekresultaat zijn gesorteerd op het aantal sterren wat een indicatie is van hoe uitgebreid de datasetbeschrijving is.') ?></p>
-   </section>
--->
 </main>
 <script>
-var querylang1="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
-var querylang2="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "nl"; } else { echo "en"; } ?>";
-
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 var sparqlQuery;
 
@@ -120,11 +113,11 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
           luc:query "${searchTerm}" ;
           luc:entities ?dataset .
   ?dataset dct:publisher ?publisher .
-  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang1}")) }
-  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang2}")) }
+  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $lang ?>")) }
+  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $notlang ?>")) }
   OPTIONAL { ?dataset dct:title ?title }    
-  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang1}")) }
-  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "${querylang2}")) }
+  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "<?= $lang ?>")) }
+  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "<?= $notlang ?>")) }
   OPTIONAL { ?publisher foaf:name ?publisherName }
 `;
   if (creator) {
@@ -212,12 +205,16 @@ function searchDatasets() {
   xhr.send();
 }
 
+var organisationFacet;
+
 function showDatasets(sparqlresult) {
 
   document.getElementById("countdatasets").innerHTML = sparqlresult.results.bindings.length;
   document.getElementById("searchresults").style.display = "block";
   document.getElementById("sparql").scrollIntoView();
 
+  organisationFacet=new Object();
+  
   var ul = document.getElementById("datasets");
   ul.innerHTML = "";
 
@@ -227,13 +224,19 @@ function showDatasets(sparqlresult) {
     dataset = sparqlresult.results.bindings[prop].dataset.value;
     title = sparqlresult.results.bindings[prop].title.value;
     publisherName = sparqlresult.results.bindings[prop].publisherName.value;
+	if (organisationFacet[publisherName]) {
+		organisationFacet[publisherName]++;
+	} else {
+		organisationFacet[publisherName]=1;
+	}
 	
     var li = document.createElement("li");
     li.setAttribute("class", "linkprop");
+	li.setAttribute("data-organisation", publisherName);
 
     var link = document.createElement("a");
     var linkText = document.createTextNode(title);
-    link.setAttribute("href", "show.php?uri="+encodeURIComponent(dataset));
+    link.setAttribute("href", "show.php?lang=<?= $lang ?>&uri="+encodeURIComponent(dataset));
     link.appendChild(linkText);
     li.appendChild(link);
     li.appendChild(document.createTextNode(" ("+publisherName+")"));
@@ -248,6 +251,50 @@ function showDatasets(sparqlresult) {
 
     ul.appendChild(li);
   }
+  showFacets();
+}
+
+function showFacets() {
+	if (Object.keys(organisationFacet).length>1) {
+		  document.getElementById("facet_block").style.display = "block";
+
+		  facet_options="";
+		  // sort by number of occurences
+		  var organisations = Object.keys(organisationFacet);
+		  organisations.sort(function(a, b) { return organisationFacet[b] - organisationFacet[a] });
+
+		  organisations.forEach(function(org) {
+			facet_options+='<label><input type="checkbox" checked class="org_facet" onclick="showhideListFacets(this)" value="'+org+'"> '+org+' ('+organisationFacet[org]+')</label> ';			
+		  });
+		
+		  document.getElementById("facets").innerHTML=facet_options;
+	} else {
+		  document.getElementById("facet_block").style.display = "none";
+	}	
+}
+
+function showhideListFacets(organisation) {
+	var ul = document.getElementById("datasets");
+	var items = ul.getElementsByTagName("li");
+	var nrFacetResults=0;
+	for (var i = 0; i < items.length; ++i) {
+		if(items[i].getAttribute('data-organisation')==organisation.value) {
+			if (organisation.checked) {
+				items[i].style.display="list-item";
+			} else {
+				items[i].style.display="none";
+			}
+		}
+        if (items[i].style.display!="none") {
+            nrFacetResults++;
+		}
+	}
+	document.getElementById("countdatasets").innerHTML=nrFacetResults;
+}
+
+function getSortedKeys(obj) {
+    var keys = Object.keys(obj);
+    return keys.sort(function(a,b){return obj[b]-obj[a]});
 }
 
 function set_lod_choices() {
@@ -308,8 +355,6 @@ function toHash() {
 		searchData.f=Array.from(formats);
 	}
 	searchData.t=document.getElementById("searchTerm").value.trim();
-    //searchData.i=Array.from(searchIn);
-
 	history.pushState({}, "", "#"+btoa(JSON.stringify(searchData)));
 }
 
@@ -329,10 +374,7 @@ function fromHash() {
 				document.getElementById("publisher_list").value=publisher;
 			}
 			
-			searchIn=new Set(searchData.i);
-			//document.getElementById("dct_title").checked=searchData.i.includes("dct:title");
-			//document.getElementById("dct_description").checked=searchData.i.includes("dct:description");
-			//document.getElementById("dcat_keyword").checked=searchData.i.includes("dcat:keyword");		  
+			searchIn=new Set(searchData.i);	  
 			document.getElementById("searchTerm").value=searchData.t;
 
 			if (searchData.f) {
