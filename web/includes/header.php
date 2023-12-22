@@ -146,11 +146,9 @@
                            </nav>
                         </li>
                         <?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
-                           <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?><?php if(isset($_GET["uri"])) { echo "?uri=".urlencode
-						   ($_GET["uri"]); } ?>">NL &#x2022; <strong>EN</strong></a></li>
-                        <?php } else { ?>
-                           <li><a title="Switch to the English version" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en<?php if(isset($_GET["uri"])) { echo "&uri=".urlencode
-						   ($_GET["uri"]); } ?>"><strong>NL</strong> &#x2022; EN</a></li>
+                           <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?><?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">NL &#x2022; <strong>EN</strong></a></li>
+                        <?php } else { ?>						
+                           <li><a title="Switch to the English version" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en<?php if(isset($_GET["uri"])) { echo "&uri=".urlencode($_GET["uri"]); } ?>"><strong>NL</strong> &#x2022; EN</a></li>
                         <?php } ?>
                      </ul>
                   </div>
@@ -189,9 +187,9 @@
 					   <a class="m-theme-before m-select--none" href="/faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
 					</li>
                <li><?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
-                           <li><a href="/<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>">Schakel naar de<br><strong>Nederlandse</strong> versie</a>
+                           <li><a href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?><?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">Schakel naar de<br><strong>Nederlandse</strong> versie</a>
                         <?php } else { ?>
-                           <li><a href="/<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en">Switch to the<br><strong>English</strong> version</a></li>
+                           <li><a href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en<?php if(isset($_GET["uri"])) { echo "&uri=".urlencode($_GET["uri"]); } ?>">Switch to the<br><strong>English</strong> version</a></li>
                         <?php } ?></li>
 				 </ul>
                </div>
