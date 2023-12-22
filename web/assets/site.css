@@ -221,6 +221,19 @@ body.home {
 	}
 }
 
+#tableMetadata {
+  font-size:1.6em;
+  margin:32px 0
+}
+
+#sectionMetadata, #tableMetadata tr, #sectionSummary {
+  display:none
+}
+
+#sectionMetadata a {
+  text-decoration:underline
+}
+
 /* search */
 
 .column,.column2 {
