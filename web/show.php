@@ -25,7 +25,15 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
         <?php } ?>
 	   </div>
    </section>
-	
+
+   <section class="text m-t-space m-b-space m-theme--blue" id="sectionSummary">
+     <div class="o-container o-container__small m-t-space">
+ 	 <div class="all-1_2 tablet-portrait-1_2 phablet-1_1">
+		<a href="dataset-summary.php?lang=<?= $lang ?>&uri=<?= urlencode($dataset_uri) ?>"><span style="font-size:1.6em" class="btn btn--arrow m-t-half-space btn--api">Er is een datasetsamenvatting beschikbaar <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+      </div>
+	  </div>
+   </section>
+				
    <section class="text m-t-space m-b-space m-theme--blue" id="sectionMetadata">
       <div class="o-container o-container__small m-t-space">
         <h2 class="title--l"><?= t('Metadata') ?></h2>
@@ -68,8 +76,29 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 <script>
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 const sparqlRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=';
+const sparqlKgRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/dataset-knowledge-graph?query=';
 const datasetUri='<?= $dataset_uri ?>';
 const sparqlQuery="SELECT * FROM <" + datasetUri + "> WHERE {\n  ?subject ?predicate ?object .\n}";
+const sparqlKqQuery="PREFIX void: <http://rdfs.org/ns/void#> SELECT ?triples { <" + datasetUri + "> a void:Dataset; void:triples ?triples . }";
+
+function checkDatasetSummary(uri) {
+    var url = sparqlKgRepo + encodeURIComponent(sparqlKqQuery);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.setRequestHeader("Accept", "application/json");
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          showDatasetSummaryButton(JSON.parse(xhr.responseText));
+        } else {
+          console.log("Call to triplestore got HTTP code " + xhr.status);
+        }
+      }
+    };
+
+    xhr.send();
+}
 
 function getDatasetDescription(uri) {
     var url = sparqlRepo + encodeURIComponent(sparqlQuery);
@@ -109,6 +138,13 @@ function getMetadata() {
   };
 
   xhr.send();
+}
+
+function showDatasetSummaryButton(sparqlresult) {
+	triples=parseInt(sparqlresult.results.bindings[0].triples.value);
+	if (triples>0) {
+		document.getElementById('sectionSummary').style.display="block";
+	}
 }
 
 function showMetadata(sparqlresult) {

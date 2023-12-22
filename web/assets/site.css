@@ -476,3 +476,27 @@ body.home {
 .props thead th {
 	background-color: white;
 }
+
+/* summary */
+
+.propskg th {
+	width: 64%
+}
+.propskg {
+	font-size: 1.4em;  
+}
+.double {
+	width: 32%!important
+}
+
+.props thead th:nth-child(2),.props thead th:nth-child(3) {
+	text-align:left;
+}
+
+.props thead .double {
+	text-align: right!important;
+}
+
+.props thead th {
+	background-color: white;
+}

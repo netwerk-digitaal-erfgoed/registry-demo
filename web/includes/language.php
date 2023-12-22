@@ -345,17 +345,7 @@ $translations_nl_en = array(
     'Een andere manier om gevoel te krijgen bij de mogelijkheden is de <a href="https://datastories.demo.netwerkdigitaalerfgoed.nl/hackalod/datasetregister/">Data Stories</a>. Alleen nog beschikbaar in het Nederlands, maar via de blauwwe pijl boven de resultaat tabellen tover je de SPARQL-query naar voren waarmee de gegevens voor tabel eronder zijn verkregen. Pas de query aan en je ziet gelijk het resultaat!'=>'Another way to get a feel for the possibilities is the <a href="https://datastories.demo.netwerkdigitaalerfgoed.nl/hackalod/datasetregister/">Data Stories</a>. Only available in Dutch, but via the blue arrow above the result tables you conjure up the SPARQL query with which the data for the table below is obtained. Modify the query and you will immediately see the result!',
     'Wat mag ik met de data uit het Datasetregister?'=>'What am I allowed to do with the data from the Dataset Register?',
     'Het gebruik van het SPARQL-endpoint staat open voor iedereen, zonder enige drempel. De datasetbeschrijvingen zelf worden door erfgoedinstellingen onder een open licentie beschikbaar gesteld. Je vindt dit terug in de verplichte property <code>schema:license</code>. De distributies binnen een dataset (dus de daadwerkelijke data) kunnen onderhevig zijn aan een meer restrictieve licentie.'=>'The use of the SPARQL endpoint is open to everyone, without any barriers. The dataset descriptions themselves are made available by heritage institutions under an open license. You can find this in the mandatory property <code>schema:license</code>. The distributions within a dataset (ie the actual data) may be subject to a more restrictive license.',
-    'Ga je aan de slag met het zoeken van datasetbeschrijvingen en het SPARQL-endpoint, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.'=>'If you\'re getting started looking for dataset descriptions and the SPARQL endpoint, let us know so we can keep you informed of developments, updates and availability.',
-
-	# validate-post.php
-	
-	'Voer de inhoud van een datasetbeschrijving (of datacatalogus) in RDF in om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren en selecteer het type RDF. Er wordt dan gecontroleerd of deze voldoet aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/shacl/register.ttl">SHACL bestand</a>. Als de aangeleverde RDF niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.'=>'Enter the contents of a dataset description (or catalog) in RDF to validate it via the <a href="apidoc.php">Dataset Register API</a>. It is then checked whether it meets the <a href="https://netwerk-digital-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. The validation is performed on the basis of a <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/shacl/register.ttl">SHACL file</a>. If the supplied RDF does not comply, the result of the SHACL validation is shown.',
-	'De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.'=>'The dataset description (or catalog) is not saved or added to the Dataset Register. A URL of a dataset description published online can be registered via the <a href="viaurl.php">Submit</a> page.',
-	'Inhoud van de datasetbeschrijving (of datacatalogus)'=>'Contents of the dataset description (or catalog)',
-	'Typering van de inhoud' => 'Content-type',
-	'Directe datasetbeschrijving validatie'=>'Direct dataset description validation',
-	'Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.'=>'If the dataset description is not yet online, paste the RDF of the dataset description into the <a href="validate-post.php">direct validation</a> page.',
-	'Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.'=>'If the dataset description is already online, paste the URL of the dataset description into the <a href="validate.php">validation</a> page.',
+    'Ga je aan de slag met het zoeken van datasetbeschrijvingen en het SPARQL-endpint, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.'=>'If you\'re getting started looking for dataset descriptions and the SPARQL endpint, let us know so we can keep you informed of developments, updates and availability.',
 	
     # show.php
 	
@@ -373,7 +363,37 @@ $translations_nl_en = array(
 	# catalog.php
 	
 	'De volgende'=>'The following',
-	'datasets maken onderdeel uit '=>'datasets are part of'
+	'datasets maken onderdeel uit '=>'datasets are part of',
+	
+	# validate-post.php
+	
+	'Voer de inhoud van een datasetbeschrijving (of datacatalogus) in RDF in om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren en selecteer het type RDF. Er wordt dan gecontroleerd of deze voldoet aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/shacl/register.ttl">SHACL bestand</a>. Als de aangeleverde RDF niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.'=>'Enter the contents of a dataset description (or catalog) in RDF to validate it via the <a href="apidoc.php">Dataset Register API</a>. It is then checked whether it meets the <a href="https://netwerk-digital-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. The validation is performed on the basis of a <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/shacl/register.ttl">SHACL file</a>. If the supplied RDF does not comply, the result of the SHACL validation is shown.',
+	'De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.'=>'The dataset description (or catalog) is not saved or added to the Dataset Register. A URL of a dataset description published online can be registered via the <a href="viaurl.php">Submit</a> page.',
+	'Inhoud van de datasetbeschrijving (of datacatalogus)'=>'Contents of the dataset description (or catalog)',
+	'Typering van de inhoud' => 'Content-type',
+	'Directe datasetbeschrijving validatie'=>'Direct dataset description validation',
+	'Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.'=>'If the dataset description is not yet online, paste the RDF of the dataset description into the <a href="validate-post.php">direct validation</a> page.',
+	'Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.'=>'If the dataset description is already online, paste the URL of the dataset description into the <a href="validate.php">validation</a> page.',
+	
+	# dataset-knowledge-graph.php
+	
+	'Datasetsamenvatting'=>'Dataset Summary',
+	'Deze datasetsamenvatting is gemaakt door de '=>'This Dataset Summary has been produced in the',
+	'Terug naar datasetbeschrijving'=>'Back to the dataset description',
+	'Grootte'=>'Size',
+	'Klassegebruik'=>'Class usage',
+	'Eigenschapgebruik'=>'Property usage',
+	'Eigenschapdichtheid per onderwerpklasse'=>'Property density per subject class',
+	'Uitgaande links'=>'Outgoing links',
+	'Gebruikte vocabulaires'=>'Used vocabularies',
+	'Eenheid'=>'Unit',
+	'Aantal voorkomens'=>'Number of occurrences',
+	'Klasse'=>'Class',
+	'Aantal keer gebruikt'=>'Number of times used',
+	'Eigenschap'=>'Property',
+	'Uitgaande link'=>'Outgoing link',
+	'Vocabulaire'=>'Vocabulary'
+	
 );
 
 
