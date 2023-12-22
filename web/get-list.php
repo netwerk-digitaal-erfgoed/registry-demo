@@ -22,8 +22,8 @@ if (isset($_GET["list"])) {
 	header('Cache-control: max-age=' . strtotime($expiresAt) - strtotime($generatedAt));
 
 	# cors
-	$http_origin = $_SERVER['HTTP_ORIGIN'];
-	if (strpos($http_origin,"datasetregister) !== false) {
+	$http_origin = $_SERVER['HTTP_HOST'];
+	if (strpos($http_origin,"datasetregister') !== false) {
 		header("Access-Control-Allow-Origin: $http_origin");
 	}
 
