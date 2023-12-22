@@ -1,0 +1,232 @@
+.column,.column2 {
+    float:none;
+    width:100%;
+    margin:0;
+    padding:0;
+    border:0;
+  }
+  .column2 { padding-top:16px }
+   .row:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+  @media only screen and (min-width:1008px){
+    .column {
+      float:left;
+      width:57%;
+      margin-right:2% 
+    }
+    .column2 {
+      float:left;
+      width:40%;
+      border-left:2px solid white;
+      padding-left:20px;
+      padding-top:0;
+    }
+  }
+   input[type=search], select {
+    width:100%;
+    padding:8px;
+    margin-top:1px;
+  }
+   .linkprop span {
+    cursor:pointer;
+    text-decoration:underline;
+  }
+   .choices {
+    text-align:center;
+  }
+   .choices a {
+    font-size:0.8em;
+    font-weight:400;
+  }
+  
+  @media only screen and (min-width:42.375em){
+    .scroll{
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .scroll table {
+      white-space: nowrap;
+    }
+  }
+  .props {
+    border-left:3px solid #be2c00;
+    border-spacing:5px;
+    border-collapse:unset;
+    background-color:#fff4ef;
+  }
+   .props th, .props td {
+    vertical-align:top;
+      white-space:normal;
+  }
+   .formatcheckboxes {
+    background-color:#fff4ef;
+    border:3px solid #fff;
+    height:112px; /* was met doorzoek checkbox zichtbaar 192px; */
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:5px;
+    margin:1px;
+  }
+   ol li {
+    font-size:1em !important 
+  }
+   label {
+    font-weight:100!important;
+    color:#172a70!important;
+    display:inline-block;
+    margin-right:2em;
+  }
+  .formatcheckboxes label {
+      display:block;
+  }
+   .search-div {
+    padding:16px;
+    margin:32px 0;
+  }
+   #searchresults {
+    margin-top:50px;
+  }
+  #dataset_description {
+      font-size: 1.6em;margin:32px 0
+  }
+  #dataset_description a {
+      text-decoration:underline;
+  }
+  
+  .close-uri, .link-uri { 
+      float:right;
+      cursor:pointer;
+      color:white!important;
+      display:inline;
+      padding:10px;
+      line-height:1em;
+      text-decoration:none!important;
+  }
+  
+  .star {
+      text-decoration: none!important;
+  }
+  
+  .props th, .props td {
+      overflow-wrap: anywhere;
+      padding: 3px 6px;
+  }
+  .props th {
+      text-align:right;
+  }
+  
+  #starex {
+      margin-bottom:0;
+      display:none;
+  }
+  
+  #starex p {
+      text-align:center;
+      padding:1em
+  }
+  
+  #sparql-query {
+      font-size:14px;
+      text-align:left
+  }
+  
+  .xmllang { 
+      display:inline-block;
+      color:white;
+      width:18px;
+      text-align:center;
+      font-weight:normal;
+      vertical-align: super;
+      font-size:0.6em;
+      padding:3px;
+      line-height:1em;
+      background-color:#be2c00
+  }
+  
+  h3 {
+      text-overflow:ellipsis;
+      overflow:hidden
+  }
+  
+  #stars {
+      float:right
+  }
+  
+  #stars_ok {
+      color: #be2c00;
+  }
+  
+  #stars_not {
+      color:#faebe5
+  }
+  .lds-ellipsis {
+    display: none;
+    position: relative;
+    width: 80px;
+    height: 20px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top:10px;
+    margin-left:20px;
+    border-radius: 50%;
+    background: #c44018;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+#facet_block {	
+	display: none;
+    background-color: #f4e6e2;
+    padding: 5px 10px;
+	margin-bottom:32px;
+}
+#facets { columns: 3 }
+
+#facet_block, #facet_block label {
+	font-size:1.5rem!important;
+}
