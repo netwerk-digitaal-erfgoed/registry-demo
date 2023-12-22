@@ -1,23 +1,41 @@
-<?php include("includes/search.php"); include("includes/header.php"); 
+<?php 
+
+include("includes/search.php"); 
+include("includes/header.php"); 
+
+$lang="nl";
+if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } 
 
 $dataset_uri='';
 if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 	$dataset_uri=$_GET["uri"];
 }
 ?>
-<link rel="stylesheet" href="/assets/search.20230224.css" type="text/css" media="all">
 
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l"><?= t('Datasetbeschrijving') ?> <span id="stars"><span id="stars_ok"></span><span id="stars_not"></span></span></h1>
-		 <h3><?= htmlentities($dataset_uri,ENT_QUOTES) ?></h3>
-		 
-		 <?php if (empty($dataset_uri)) { ?>
-		 <div class="m-theme-bg m-theme--teal search-div"><p>De opgegeven URI is ongeldig.</p></div>
-		 <?php } else { ?>
-		 <table id="dataset_description"></table>
-		 <?php } ?>
+        <h1 class="title--l"><?= t('Datasetbeschrijving') ?></h1>
+        <h3><?= htmlentities($dataset_uri,ENT_QUOTES) ?></h3>
+        
+        <?php if (empty($dataset_uri)) { ?>
+        <div class="m-theme-bg m-theme--teal search-div"><p><?= t('De opgegeven URI is ongeldig') ?>.</p></div>
+        <?php } else { ?>
+        <table id="dataset_description"></table>
+        <?php } ?>
+	   </div>
+   </section>
+	
+   <section class="text m-t-space m-b-space m-theme--blue" id="sectionMetadata">
+      <div class="o-container o-container__small m-t-space">
+        <h2 class="title--l"><?= t('Metadata') ?></h2>
+        <table id="tableMetadata" class="props">
+		  <tr id="row_postedURL"><th><?= t('Geregistreerde URL') ?></th><td id="val_postedURL"></td></tr>
+		  <tr id="row_postedDate"><th><?= t('Registratiedatum') ?></th><td id="val_postedDate"></td></tr>
+		  <tr id="row_lastDateRead"><th><?= t('Laatste cache update') ?></th><td id="val_lastDateRead"></td></tr>
+		  <tr id="row_ratingValue"><th><?= t('Beoordeling (25-100)') ?></th><td id="val_ratingValue"></td></tr>
+		  <tr id="row_ratingExplanation"><th><?= t('Missende eigenschappen') ?></th><td id="val_ratingExplanation"></td></tr>		
+		</table>
 	   </div>
    </section>
    
@@ -39,17 +57,15 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
      <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
 		 <?php if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) { ?>
-		 <a href="javascript:history.back();"><span class="btn btn--arrow m-t-half-space">Terug naar zoekresultaten <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 578; stroke-dashoffset: 578;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+		 <a href="javascript:history.back();"><span class="btn btn--arrow m-t-half-space"><?= t('Terug naar zoekresultaten') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 578; stroke-dashoffset: 578;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 		 <?php } else { ?>
-		 <a href="search.php"><span class="btn btn--arrow m-t-half-space">Doorzoek het Dataset Register <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 578; stroke-dashoffset: 578;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+		 <a href="search.php?lang=<?= $lang ?>"><span class="btn btn--arrow m-t-half-space"><?= t('Doorzoek het Dataset Register') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 578; stroke-dashoffset: 578;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 		 <?php } ?>
-
       </div>
    </section>
 </main>
 <?php if (!empty($dataset_uri)) { ?>
 <script>
-const querylang="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 const sparqlRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=';
 const datasetUri='<?= $dataset_uri ?>';
@@ -73,50 +89,42 @@ function getDatasetDescription(uri) {
 
     xhr.send();
 }
-/*
-function getStars() {
 
-    var sparqlStars = "SELECT ?rating FROM <https://data.netwerkdigitaalerfgoed.nl/registry/description_ratings> WHERE { <"+datasetUri+"> <http://schema.org/contentRating> ?rating . }";
+function getMetadata() {
+  var sparqlLastDateRead = "SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation WHERE { ?postedURL <http://schema.org/about> <"+datasetUri+"> ; <http://schema.org/datePosted> ?postedDate . <"+datasetUri+"> <http://schema.org/dateRead> ?lastDateRead . OPTIONAL { <"+datasetUri+"> <http://schema.org/contentRating>/<http://schema.org/ratingValue> ?ratingValue ; <http://schema.org/contentRating>/<http://schema.org/ratingExplanation> ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
+  
+  var url = sparqlRepo + encodeURIComponent(sparqlLastDateRead);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.setRequestHeader("Accept", "application/json");
 
-    var url = sparqlRepo + encodeURIComponent(sparqlStars);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.setRequestHeader("Accept", "application/json");
-
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          showStars(JSON.parse(xhr.responseText));
-        } else {
-          console.log("Call to triplestore got HTTP code " + xhr.status);
-        }
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        showMetadata(JSON.parse(xhr.responseText));
+      } else {
+        console.log("Call to triplestore got HTTP code " + xhr.status);
       }
-    };
+    }
+  };
 
-    xhr.send();
+  xhr.send();
 }
 
-const starTitle=[];
-starTitle[1]='This dataset description has a license, a title and a publisher, but lacks a description, one or more distributions, a creator, a landing page, a created, modified/updated and/or issued/published date and a language, a source, one or more keywords, spatial coverage and/or temporal coverage.';
-starTitle[2]='This dataset description has a license, a title, a publisher, a description and one or more distributions, but lacks a creator, a landing page, a created, modified/updated and/or issued/published date and a language, a source, one or more keywords, spatial coverage and/or temporal coverage.';
-starTitle[3]='This dataset description has a license, a title, a publisher, a description, one or more distributions, a creator and a landing page but lacks a created, modified/updated and/or issued/published date and a language, a source, one or more keywords, spatial coverage and/or temporal coverage.';
-starTitle[4]='This dataset description has a license, a title, a publisher, a description, one or more distributions, a creator and a landing page and a created, modified/updated and/or issued/published date but lacks a language, a source, one or more keywords, spatial coverage and/or temporal coverage.';
-starTitle[5]='This dataset description has a license, a title, a publisher, a description, one or more distributions, a creator, and a landing page, a created, modified/updated and/or issued/published date, and a language, a source, one or more keywords, spatial coverage and/or temporal coverage.';
-
-function showStars(sparqlresult) {
-
-  var span_stars = document.getElementById("stars");
-  var span_stars_ok = document.getElementById("stars_ok");
-  var span_stars_not = document.getElementById("stars_not");
-
-  if (typeof sparqlresult.results.bindings[0].rating !== undefined) {
-	stars_nr=sparqlresult.results.bindings[0].rating.value.length;
-	span_stars_ok.innerHTML=sparqlresult.results.bindings[0].rating.value;
-	span_stars_not.innerHTML="☆".repeat(5-stars_nr);
-	span_stars.title=starTitle[stars_nr];
-  }
+function showMetadata(sparqlresult) {
+	document.getElementById('sectionMetadata').style.display="block";
+	for (var prop in sparqlresult.results.bindings[0]) { 
+		document.getElementById('row_'+prop).style.display="table-row";
+		let val=sparqlresult.results.bindings[0][prop].value.replaceAll('http://purl.org/dc/terms/','');
+		if (sparqlresult.results.bindings[0][prop].type=="uri") {
+			document.getElementById('val_'+prop).innerHTML='<a target="_blank" href="'+val+'">'+val+'</a>';
+		} else {
+			const niceDateTime = /^(\d{4})\-(\d{2})-(\d{2})T(\d{2}\:\d{2}).*/g
+			document.getElementById('val_'+prop).innerText=val.replace(niceDateTime, "$3-$2-$1 ($4)");;		
+		}
+	}
 }
-*/
+
 document.getElementById('sparql-query').addEventListener(
   "click",
   function(event) {
@@ -158,7 +166,6 @@ function showDataset(sparqlresult) {
     property_value = sparqlresult.results.bindings[prop].predicate.value;
     object_value = sparqlresult.results.bindings[prop].object.value;
 
-	
     if (subject_value == datasetUri && property_value != "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
 
       strTable += "<tr><th>" + prefix(property_value);
@@ -166,11 +173,16 @@ function showDataset(sparqlresult) {
         strTable += ' <span class="xmllang">' + sparqlresult.results.bindings[prop].object["xml:lang"] + '</span>';
       }
 	  strTable += "</th><td colspan=2>";
-      if (isValidHttpUrl(object_value)) {
-         strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
-      } else {
-        strTable += object_value;
-      }	  
+	  if(property_value == "http://purl.org/dc/terms/isPartOf") {
+          strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
+		  strTable += "<a class=\"datacatalog\" href=\"catalog.php?lang=<?= $lang ?>&uri=" + encodeURI(object_value) + "\"><?= t('Bekijk datasets binnen deze datacatalog') ?></a>";
+	  } else {
+		  if (isValidHttpUrl(object_value)) {
+			 strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
+		  } else {
+			strTable += object_value;
+		  }	  
+	  }
 	  strTable += "</td></tr>";
       
       if ((property_value == "http://www.w3.org/ns/dcat#distribution") ||
@@ -200,8 +212,6 @@ function showDataset(sparqlresult) {
   }
 
   table.innerHTML = strTable;
-  
-
 }
 
 function isValidHttpUrl(string) {
@@ -235,7 +245,8 @@ function prefix(str) {
 }
 
 getDatasetDescription();
-//getStars();
+getMetadata();
+checkDatasetSummary();
 </script>
 <?php 
 } 

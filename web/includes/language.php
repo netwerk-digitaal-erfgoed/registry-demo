@@ -210,7 +210,8 @@ $translations_nl_en = array(
 	'De zoekresultaat zijn gesorteerd op het aantal sterren wat een indicatie is van hoe uitgebreid de datasetbeschrijving is.'=>'The search results are sorted by the number of stars which is an indication of how extensive the dataset description is.',
 	'doorzoekt namen, omschrijvingen en steekwoorden'=>'searches names, descriptions and keywords',
 	'Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.'=>'If multiple search terms are specified, the search results will contain one or more of these terms. If you want all search terms to appear, link the search terms with AND.',
-	
+	'Filter op organisatie'=>'Filter by organisation',
+
     # datamodel.php
     'Uitleg van de dataconcepten'=>'Explanation of the data concepts',
     'Datasetbeschrijving'=>'Dataset description',
@@ -354,7 +355,25 @@ $translations_nl_en = array(
 	'Typering van de inhoud' => 'Content-type',
 	'Directe datasetbeschrijving validatie'=>'Direct dataset description validation',
 	'Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.'=>'If the dataset description is not yet online, paste the RDF of the dataset description into the <a href="validate-post.php">direct validation</a> page.',
-	'Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.'=>'If the dataset description is already online, paste the URL of the dataset description into the <a href="validate.php">validation</a> page.'
+	'Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.'=>'If the dataset description is already online, paste the URL of the dataset description into the <a href="validate.php">validation</a> page.',
+	
+    # show.php
+	
+	'De opgegeven URI is ongeldig'=>'The provided URI is invalid',
+	'Metadata'=>'Metadata',
+	'Geregistreerde URL'=>'Registered URL',
+	'Registratiedatum'=>'Registration date',
+	'Laatste cache update'=>'Last cache update',
+	'Beoordeling (25-100)'=>'Rating (25-100)',
+	'Missende eigenschappen'=>'Missing properties',
+	'Terug naar zoekresultaten'=>'Back to search results',
+	'Doorzoek het Dataset Register'=>'Search the Datasetregister',
+	'Bekijk datasets binnen deze datacatalog'=>'View the datasets of this datacatalog',
+	
+	# catalog.php
+	
+	'De volgende'=>'The following',
+	'datasets maken onderdeel uit '=>'datasets are part of'
 );
 
 
