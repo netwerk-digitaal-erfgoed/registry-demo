@@ -12,7 +12,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 }
 
 ?>
-<link rel="stylesheet" href="assets/search.20231101.css" type="text/css" media="all">
+<link rel="stylesheet" href="assets/search.20231222.css" type="text/css" media="all">
 <main>
   <section class="text m-t-space m-b-space m-theme--blue">
     <div class="o-container o-container__small m-t-space">
