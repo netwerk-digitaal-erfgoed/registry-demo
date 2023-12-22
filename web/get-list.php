@@ -12,7 +12,7 @@ if (isset($_GET["list"])) {
 	} else {
 		exit;
 	}
-	
+
 	# client cache 2 hours
 	$now = time();
 	$generatedAt = gmdate('D, d M Y H:i:s T', $now);
@@ -20,6 +20,12 @@ if (isset($_GET["list"])) {
 	$expiresAt = gmdate('D, d M Y H:i:s T', strtotime($lastModified) + 2*3600); # 2 hours
 	header('Last-modified: ' . $lastModified);
 	header('Cache-control: max-age=' . strtotime($expiresAt) - strtotime($generatedAt));
+
+	# cors
+	$http_origin = $_SERVER['HTTP_ORIGIN'];
+	if (strpos($http_origin,"datasetregister) !== false) {
+		header("Access-Control-Allow-Origin: $http_origin");
+	}
 
 	header('Content-Type: application/json; charset=utf-8');
 	echo json_encode($list);
