@@ -429,7 +429,7 @@ document.getElementById("searchTerm")
     }
   });
 
-fetchData('https://datasetregister.coret.org/get-list.php?list=formats').then(data => {
+fetchData('get-list.php?list=formats').then(data => {
     const listformatsDiv = document.getElementById("format_list");
     for (const item of data) {
       const newFormat = document.createElement('label');
@@ -451,7 +451,7 @@ fetchData('https://datasetregister.coret.org/get-list.php?list=formats').then(da
     console.info("Loaded " + data.length + " formats in checklist");
   });
 
-fetchData('https://datasetregister.coret.org/get-list.php?list=publishers').then(data => {
+fetchData('get-list.php?list=publishers').then(data => {
     const listpublishersDiv = document.getElementById("publisher_list");
     for (const key in data) {
       const value = data[key];
@@ -464,7 +464,7 @@ fetchData('https://datasetregister.coret.org/get-list.php?list=publishers').then
     console.info("Loaded " + Object.keys(data).length + " publishers in dropdown");
   });
 
-fetchData('https://datasetregister.coret.org/get-list.php?list=creators').then(data => {
+fetchData('get-list.php?list=creators').then(data => {
     const listcreatorsDiv = document.getElementById("creator_list");
     for (const key in data) {
       const value = data[key];
