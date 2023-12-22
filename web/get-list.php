@@ -23,7 +23,7 @@ if (isset($_GET["list"])) {
 
 	# cors
 	$http_origin = $_SERVER['HTTP_HOST'];
-	if (strpos($http_origin,"datasetregister') !== false) {
+	if (strpos($http_origin,"datasetregister") !== false) {
 		header("Access-Control-Allow-Origin: $http_origin");
 	}
 
