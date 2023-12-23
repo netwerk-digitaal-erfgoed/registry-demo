@@ -435,7 +435,7 @@ fetchData('get-list.php?list=formats').then(data => {
       const newFormat = document.createElement('label');
       const inputElement = document.createElement('input');
       inputElement.type = 'checkbox';
-      inputElement.class = 'choice';
+      inputElement.className = 'choice';
       inputElement.value = item;
       inputElement.name = 'format[]';
       inputElement.checked = formats.has(item);
