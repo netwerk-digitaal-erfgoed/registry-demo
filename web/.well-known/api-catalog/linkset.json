@@ -26,6 +26,16 @@
           "title": "SPARQL 1.1 Query Language"
         }
       ]
+    },
+    {
+      "anchor": "https://datasetregister.coret.org/dataset-newest-rss.php",
+      "service-doc": [
+        {
+          "href": "https://www.rssboard.org/rss-specification",
+          "type": "text/html",
+          "title": "RSS 2.0 Specification"
+        }
+      ]
     }
   ]
 }

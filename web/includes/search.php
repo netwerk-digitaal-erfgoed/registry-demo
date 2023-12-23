@@ -3,6 +3,7 @@
 define('SPARQL_ENDPOINT', 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry');
 define('SPARQL_CACHE_DURATION_HOURS',1);
 define('CACHE_DIRECTORY','/tmp/');
+define('SHOW_NEWEST',25);
 
 function getFormats() {
 	$sparqlGetPublishers='PREFIX dct: <http://purl.org/dc/terms/>
@@ -75,6 +76,43 @@ function getPublishers() {
 		}
 	}
 	return $publishers;
+}
+
+function getNewest() {
+
+	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { 
+		$lang="en"; $bilang="nl";
+	} else { 
+		$lang="nl"; $bilang="en"; 
+	}
+
+	$sparqlGetPublishers='PREFIX dcat: <http://www.w3.org/ns/dcat#>
+	PREFIX dct:  <http://purl.org/dc/terms/>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	SELECT DISTINCT ?dataset ?title ?publisherName ?postedDate WHERE {
+	  ?postedURL <http://schema.org/about> ?dataset ;
+	  <http://schema.org/datePosted> ?postedDate .
+	  ?dataset dct:publisher ?publisher .
+	  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "'.$lang.'")) }
+	  OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "'.$bilang.'")) }
+	  OPTIONAL { ?dataset dct:title ?title }    
+	  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "'.$lang.'")) }
+	  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "'.$bilang.'")) }
+	  OPTIONAL { ?publisher foaf:name ?publisherName }
+	} ORDER BY DESC(?postedDate) LIMIT '.SHOW_NEWEST;
+
+	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
+
+	$newest=array();
+	if (isset($sparqlResults)) {
+		foreach ($sparqlResults["results"]["bindings"] as $item) {
+			$newest[]=array("dataset"=>$item["dataset"]["value"],
+							"title"=>$item["title"]["value"],
+							"publisherName"=>$item["publisherName"]["value"],
+							"postedDate"=>$item["postedDate"]["value"]);
+		}
+	}
+	return $newest;	
 }
 
 function getSPARQLresults($sparqlQueryString,$lang) {
