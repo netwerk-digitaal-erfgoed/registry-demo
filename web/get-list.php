@@ -9,6 +9,8 @@ if (isset($_GET["list"])) {
 		$list=getCreators();
 	} elseif ($_GET["list"]=="formats") {
 		$list=getFormats();
+	} elseif ($_GET["list"]=="newest") {
+		$list=getNewest();
 	} else {
 		exit;
 	}
