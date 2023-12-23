@@ -405,7 +405,29 @@ $translations_nl_en = array(
 	'De meest recent toegevoegde datasets aan het NDE Datasetregister'=>'The most recently added datasets to the NDE Dataset Register',
 	'Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.'=>'This list is also available as <a href="dataset-newest-rss.php?lang=en">RSS feed</a>.',
 	'Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.'=>'An overview of <a href="dataset-newest.php?lang=en">recently submitted dataset descriptions</a> is also available.'
-	
+
+	# dataset-summary
+	'Datasetsamenvatting'=>'Dataset Summary',
+	'Grootte'=>'Size',
+	'Eenheid'=>'Unit',
+	'Aantal voorkomens'=>'Numer of occurences',
+	'Voorbeeld resources'=>'Example resources',
+	'Uitgaande links naar termenbronnen'=>'Outgoing link to terminology sources',
+	'Termenbron'=>'Terminology source',
+	'Gebruikte vocabulaires'=>'Used vocabularies',
+	'Vocabulaire'=>'Vocabulary',
+	'Klassegebruik'=>'Class usage',
+	'Klasse'=>'Class',
+	'Aantal keer gebruikt'=>'Number of times used',
+	'Eigenschapgebruik'=>'Property usage',
+	'Eigenschap'=>'Property',
+	'Eigenschapdichtheid per onderwerpklasse'=>'Property density per subject class',
+	'Licenties'=>'License',
+	'Licentie'=>'Licens',
+	'Deze datasetsamenvatting is gemaakt door de '=>'This dataset summary was produced by the ',
+	'Er is ook een <a href="https://datastories.demo.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph/">Data story</a> beschikbaar op de gehele Dataset Knowledge Graph.'=>'There is also a <a href="https://datastories.demo.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph/">Data story</a> available on the entire Dataset Knowledge Graph.',
+	'Klik om de onderliggende SPARQL query uit te voeren op de Datasetregister Knowledge Graph (let op: in de triplestore, selecteer rechtboven de \\\'dataset-knowledge-graph\\\' repository!'=>'To execute the underlying SPARQL query, click on the Datasetregister Knowledge Graph (note: in the triplestore, select the \\\'dataset-knowledge-graph\\\' repository at the top right!',
+	'Terug naar datasetbeschrijving'=>'Back to the dataset description'	
 );
 
 

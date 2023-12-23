@@ -1,17 +1,29 @@
 <?php 
 
+$dataset_uri='';
+if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
+	$dataset_uri=$_GET["uri"];
+} else  {
+	header("Location: /");
+	exit;
+}
+
 include("includes/search.php"); 
 include("includes/header.php"); 
 
 $lang="nl";
 if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } 
 
-$dataset_uri='';
-if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
-	$dataset_uri=$_GET["uri"];
-}
 ?>
-
+<style>
+.sparqlbtn {
+	border-left: 3px solid #be2c00;
+    border-bottom: 3px solid #be2c00;
+    padding: 5px 10px;
+	font-size:1.6em;
+	display:inline-block;
+</style>
+	
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
@@ -23,21 +35,39 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
         <?php } ?>
 	   </div>
    </section>
-
+   
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h3 class="title--l"><?= t('Grootte') ?></h3>
-		<table id="table1" class="props propskg">
+		<table id="tableKGsize" class="props propskg">
 			<thead><tr><th><?= t('Eenheid') ?></th><th><?= t('Aantal voorkomens') ?></th></tr></thead>
 			<tbody></tbody>
 		</table>
 	   </div>
    </section>
+   
+   <section class="text m-t-space m-b-space m-theme--blue">
+      <div class="o-container o-container__small m-t-space">
+        <h3 class="title--l"><?= t('Voorbeeld resources') ?></h3>
+		<ul id="listKGexamples">
+		</ul>
+	   </div>
+   </section>
+ 
+   <section class="text m-t-space m-b-space m-theme--blue">
+      <div class="o-container o-container__small m-t-space">
+        <h3 class="title--l"><?= t('Uitgaande links naar termenbronnen') ?></h3>
+		<table id="tableKGoutgoinglinks" class="props propskg">
+			<thead><tr><th><?= t('Termenbron') ?></th><th><?= t('Aantal voorkomens') ?></th></tr></thead>
+			<tbody></tbody>		
+		</table>
+	   </div>
+   </section> 
  
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h3 class="title--l"><?= t('Gebruikte vocabulaires') ?></h3>
-		<table id="table6" class="props propskg">
+		<table id="tableKGvocabularies" class="props propskg">
 			<thead><tr><th><?= t('Vocabulaire') ?></th><th>Prefix</th></tr></thead>
 			<tbody></tbody>	
 		</table>
@@ -47,7 +77,7 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h3 class="title--l"><?= t('Klassegebruik') ?></h3>
-		<table id="table2" class="props propskg">
+		<table id="tableKGclasses" class="props propskg">
 			<thead><tr><th><?= t('Klasse') ?></th><th><?= t('Aantal keer gebruikt') ?></th></tr></thead>
 			<tbody></tbody>
 		</table>
@@ -57,7 +87,7 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h3 class="title--l"><?= t('Eigenschapgebruik') ?></h3>
-		<table id="table3" class="props propskg">
+		<table id="tableKGproperties" class="props propskg">
 			<thead><tr><th><?= t('Eigenschap') ?></th><th><?= t('Aantal keer gebruikt') ?></th></tr></thead>
 			<tbody></tbody>
 		</table>
@@ -67,26 +97,26 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h3 class="title--l"><?= t('Eigenschapdichtheid per onderwerpklasse') ?></h3>
-		<table id="table4" class="props propskg">
+		<table id="tableKGpropertydensity" class="props propskg">
 			<thead><tr><th class='double'><?= t('Klasse') ?></th><th class='double'><?= t('Eigenschap') ?></th><th><?= t('Aantal keer gebruikt') ?></th></tr></thead>
 			<tbody></tbody>		
 		</table>
 	   </div>
    </section>
-
+    
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-        <h3 class="title--l"><?= t('Uitgaande links') ?></h3>
-		<table id="table5" class="props propskg">
-			<thead><tr><th><?= t('Uitgaande link') ?></th><th><?= t('Aantal voorkomens') ?></th></tr></thead>
-			<tbody></tbody>		
+        <h3 class="title--l"><?= t('Licenties') ?></h3>
+		<table id="tableKGlicenses" class="props propskg">
+			<thead><tr><th><?= t('Licentie') ?></th><th><?= t('Aantal voorkomens') ?></th></tr></thead>
+			<tbody></tbody>
 		</table>
 	   </div>
-   </section>   
+   </section>
    
      <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
-		<p><?= t('Deze datasetsamenvatting is gemaakt door de ') ?> <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph" target="_blank">NDE Dataset Knowledge Graph Pipeline</a>.</p> 
+		<p><?= t('Deze datasetsamenvatting is gemaakt door de ') ?> <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph" target="_blank">NDE Dataset Knowledge Graph Pipeline</a>. <br><?= t('Er is ook een <a href="https://datastories.demo.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph/">Data story</a> beschikbaar op de gehele Dataset Knowledge Graph.') ?></p> 
 		 <a href="/show.php?lang=<?= $lang ?>&uri=<?= $dataset_uri ?>"><span class="btn btn--arrow m-t-half-space"><?= t('Terug naar datasetbeschrijving') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 578; stroke-dashoffset: 578;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
       </div>
    </section>
@@ -97,9 +127,10 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 const sparqlRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/dataset-knowledge-graph?query=';
 const datasetUri='<?= $dataset_uri ?>';
 
-const sparqlQuery1=`PREFIX void: <http://rdfs.org/ns/void#>
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Size
+const sparqlKGsize=`PREFIX void: <http://rdfs.org/ns/void#>
 PREFIX nde: <https://www.netwerkdigitaalerfgoed.nl/def#>
-SELECT * {
+SELECT ?triples ?distinctSubjects ?properties ?distinctObjectsURI ?distinctObjectsLiteral {
 OPTIONAL { <${datasetUri}> nde:distinctObjectsLiteral ?distinctObjectsLiteral . }
 OPTIONAL { <${datasetUri}> nde:distinctObjectsURI ?distinctObjectsURI . }
 OPTIONAL { <${datasetUri}> void:properties ?properties . }
@@ -107,30 +138,36 @@ OPTIONAL { <${datasetUri}> void:distinctSubjects ?distinctSubjects . }
 <${datasetUri}> void:triples ?triples .
 }`;
 
-const sparqlQuery2=`PREFIX void: <http://rdfs.org/ns/void#>
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Classes
+const sparqlKGclasses=`PREFIX void: <http://rdfs.org/ns/void#>
 SELECT ?labelPart ?valuePart {
     <${datasetUri}> void:classPartition ?classPartition .
     ?classPartition void:class ?labelPart ;
                     void:entities ?valuePart .
 } ORDER BY DESC(?valuePart)`;
 
-const sparqlQuery3=`PREFIX void: <http://rdfs.org/ns/void#>
-SELECT ?labelPart ?valuePart {
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Properties
+const sparqlKGproperties=`PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?labelPart ?valuePart ?valuePart2 {
     <${datasetUri}> void:propertyPartition ?propertyPartition .
     ?propertyPartition void:property ?labelPart ;
-                    void:entities ?valuePart .
+                    void:entities ?valuePart ;
+                    void:distinctObjects ?valuePart2 .
 } ORDER BY DESC(?valuePart)`;
 
-const sparqlQuery4=`PREFIX void: <http://rdfs.org/ns/void#>
-SELECT ?labelPart1 ?labelPart2 ?valuePart {
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Property density per subject class
+const sparqlKGpropertydensity=`PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?labelPart1 ?labelPart2 ?valuePart ?valuePart2 {
     <${datasetUri}> void:classPartition ?classPartition .
     ?classPartition void:class ?labelPart1 ;
                     void:propertyPartition ?propertyPartition .
     ?propertyPartition void:property ?labelPart2 ;
-                       void:entities ?valuePart .
+                       void:entities ?valuePart ;
+					   void:distinctObjects ?valuePart2 .
 } ORDER BY ?labelPart1 ?labelPart2`;
 
-const sparqlQuery5=`PREFIX void: <http://rdfs.org/ns/void#>
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Outgoing links to terminology sources
+const sparqlKGoutgoinglinks=`PREFIX void: <http://rdfs.org/ns/void#>
 SELECT ?labelPart ?valuePart {
     [] a void:Linkset;
     void:subjectsTarget <${datasetUri}>;
@@ -138,68 +175,80 @@ SELECT ?labelPart ?valuePart {
     void:triples ?valuePart.
 } ORDER BY DESC(?valuepart)`;
 
-
-const sparqlQuery6=`PREFIX void: <http://rdfs.org/ns/void#>
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Vocabularies
+const sparqlKGvocabularies=`PREFIX void: <http://rdfs.org/ns/void#>
 SELECT ?valuePart WHERE { 
 <${datasetUri}> a void:Dataset;
     void:vocabulary ?valuePart.
 }`;
 
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Licenses
+const sparqlKGlicenses=`PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?labelPart ?valuePart WHERE { 
+	<${datasetUri}> a void:Dataset;
+		void:subset ?subset.
+	?subset dcterms:license ?labelPart ;
+	void:triples ?valuePart .
+}`;
 
+// https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph > Example resources
+const sparqlKGexample=`PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?valuePart WHERE { 
+	<${datasetUri}> a void:Dataset;
+		void:exampleResource ?valuePart .
+}`;
 
-
-
-// Vocabularies nog niet geïmplementeerd
-// PREFIX void: <http://rdfs.org/ns/void#>
-// SELECT ?p ?q {
-//   <http://data.beeldengeluid.nl/id/dataset/0010> a void:Dataset; void:vocabulary  ?q
-// }
+// Distributions not yet implemented
 
 function getFromDatasetKnowledgGraph(table,func,query) {
-    var url = sparqlRepo + encodeURIComponent(query);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.setRequestHeader("Accept", "application/json");
+	var tableObj=document.getElementById(table);
+	
+	if (tableObj) {
+		var url = sparqlRepo + encodeURIComponent(query);
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url);
+		xhr.setRequestHeader("Accept", "application/json");
 
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          func(table,JSON.parse(xhr.responseText));
-        } else {
-          console.log("Call to triplestore got HTTP code " + xhr.status);
-        }
-      }
-    };
+		xhr.onreadystatechange = function() {
+		  if (xhr.readyState === 4) {
+			if (xhr.status === 200) {
+			  func(table,JSON.parse(xhr.responseText));
+			} else {
+			  console.log("Call to triplestore got HTTP code " + xhr.status);
+			}
+		  }
+		};
 
-    xhr.send();
+		xhr.send();
+		
+		// annoyingly you have to manually set the repository to dataset-knowledge-graph (not the default)
+		const newElement = document.createElement('div');
+		newElement.innerHTML = '<a title="Klik om de onderliggende SPARQL query uit te voeren op de Datasetregister Knowledge Graph (let op: in de triplestore, selecteer rechtboven de \'dataset-knowledge-graph\' repository!)" class="sparqlbtn" target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query='+encodeURIComponent(query)+'">SPARQL</a>';
+		tableObj.parentNode.appendChild(newElement);
+	} else {
+	 console.info("table "+table+" not present in HTML");
+	}
 }
 
-/*
-document.getElementById('sparql-query').addEventListener(
-  "click",
-  function(event) {
+function hideTableSection(table) {	
+	table.parentNode.parentNode.style.opacity=0.2;
+}
 
-    if (!navigator.clipboard) {
-      // Clipboard API not available
-      return;
-    }
-    const text = document.getElementById('sparql-query').innerHTML;
-    try {
-      navigator.clipboard.writeText(text);
-      document.getElementById("copy-status").innerText = "<?= t('De SPARQL is gekopieerd.') ?>";
-      setTimeout(function() {
-        document.getElementById("copy-status").innerText = "<?= t('Klik de SPARQL om deze te kopieren.') ?>";
-      }, 1200);
-    } catch (err) {
-      console.error("Failed to copy!", err);
-    }
-  },
-  false
-);
-*/
+function showList(list,sparqlresult) {
+	var ul = document.getElementById(list);
+	var rowCount = 0;
+	for (var prop in sparqlresult.results.bindings) {	  
+		newLi = "<li><a href=\"" + sparqlresult.results.bindings[prop].valuePart.value + "\">" + sparqlresult.results.bindings[prop].valuePart.value + "</a></li>";
+		ul.appendChild(newLi);
+		rowCount++;
+	}
+	if (rowCount==0) {
+		hideTableSection(ul);
+	}
+}
 
-
-function showList(table,sparqlresult) {
+function showRows(table,sparqlresult) {
 	var table = document.getElementById(table);
 	var tBody = table.getElementsByTagName('tbody')[0];
 	var rowCount = 0;
@@ -210,9 +259,12 @@ function showList(table,sparqlresult) {
 		strRow += "</tr>";
 		tBody.insertRow(rowCount++).innerHTML = strRow;
 	}
+	if (rowCount==0) {
+		hideTableSection(table);
+	}	
 }
-
-function showDoubleList(table,sparqlresult) {
+	
+function showDoubleColRows(table,sparqlresult) {
 	var table = document.getElementById(table);
 	var tBody = table.getElementsByTagName('tbody')[0];
 	var rowCount = 0;
@@ -224,9 +276,12 @@ function showDoubleList(table,sparqlresult) {
 		strRow += "</tr>";
 		tBody.insertRow(rowCount++).innerHTML = strRow;
 	}
+	if (rowCount==0) {
+		hideTableSection(table);
+	}	
 }
 
-function showValues(table,sparqlresult) {
+function showValueRows(table,sparqlresult) {
 	var table = document.getElementById(table);
 	var tBody = table.getElementsByTagName('tbody')[0];
 	var rowCount = 0;
@@ -237,9 +292,12 @@ function showValues(table,sparqlresult) {
 		strRow += "</tr>";
 		tBody.insertRow(rowCount++).innerHTML = strRow;
 	}
+	if (rowCount==0) {
+		hideTableSection(table);
+	}	
 }
 	
-function showSingleValues(table,sparqlresult) {
+function showSingleValueRows(table,sparqlresult) {
 	var table = document.getElementById(table);
 	var tBody = table.getElementsByTagName('tbody')[0];
 	var rowCount = 0;
@@ -250,12 +308,15 @@ function showSingleValues(table,sparqlresult) {
 		strRow += "</tr>";
 		tBody.insertRow(rowCount++).innerHTML = strRow;
 	}
+	if (rowCount==0) {
+		hideTableSection(table);
+	}	
 }
 	 
 function prefix(str) {
 
   alt = str.replace("http://schema.org/","schema:");
-  alt = str.replace("http://schema.org","schema:");
+  alt = alt.replace("http://schema.org","schema:");
   alt = alt.replace("https://schema.org/","schema:");
   alt = alt.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#","rdf:");
   alt = alt.replace("http://www.w3.org/ns/dcat#","dcat:");
@@ -287,12 +348,14 @@ function prefix(str) {
   return "<abbr title=\"" + str + "\">" + alt + "</abbr>";
 }
 
-getFromDatasetKnowledgGraph('table1',showValues,sparqlQuery1);
-getFromDatasetKnowledgGraph('table2',showList,sparqlQuery2);
-getFromDatasetKnowledgGraph('table3',showList,sparqlQuery3);
-getFromDatasetKnowledgGraph('table4',showDoubleList,sparqlQuery4);
-getFromDatasetKnowledgGraph('table5',showList,sparqlQuery5);
-getFromDatasetKnowledgGraph('table6',showSingleValues,sparqlQuery6);
+getFromDatasetKnowledgGraph('tableKGsize',showValueRows,sparqlKGsize);
+getFromDatasetKnowledgGraph('tableKGclasses',showRows,sparqlKGclasses);
+getFromDatasetKnowledgGraph('tableKGproperties',showRows,sparqlKGproperties);
+getFromDatasetKnowledgGraph('tableKGpropertydensity',showDoubleColRows,sparqlKGpropertydensity);
+getFromDatasetKnowledgGraph('tableKGoutgoinglinks',showRows,sparqlKGoutgoinglinks);
+getFromDatasetKnowledgGraph('tableKGvocabularies',showSingleValueRows,sparqlKGvocabularies);
+getFromDatasetKnowledgGraph('tableKGlicenses',showRows,sparqlKGlicenses);
+getFromDatasetKnowledgGraph('listKGexamples',showList,sparqlKGexample);
 
 </script>
 <?php 
