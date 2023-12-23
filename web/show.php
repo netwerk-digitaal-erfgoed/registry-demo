@@ -282,7 +282,6 @@ function prefix(str) {
 
 getDatasetDescription();
 getMetadata();
-checkDatasetSummary();
 </script>
 <?php 
 } 
