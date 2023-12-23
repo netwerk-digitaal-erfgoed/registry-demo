@@ -395,7 +395,16 @@ $translations_nl_en = array(
 	'Welke musea bieden linked data?'=>'Which museums offer linked data?',
 	'Het volgende overzicht laat de linked data datasets zien van musea:'=>'The following overview shows the linked data datasets of museums:',
 	'Welke data bevatten informatie uit bevolkingsregisters?'=>'Which data contain information from population registers?',
-	'Het volgende overzicht laat datasets zien die als keyword "bevolkingsregister" hebben:'=>'The following overview shows datasets with the Dutch keyword "bevolkingsregister" (=population register):'
+	'Het volgende overzicht laat datasets zien die als keyword "bevolkingsregister" hebben:'=>'The following overview shows datasets with the Dutch keyword "bevolkingsregister" (=population register):',
+	
+	# dataset-newest.php
+	'Recent aangemelde databeschrijvingen'=>'Recently submitted data descriptions',
+	'Onderstaande lijst toont de'=>'The list below shows the',
+    'meest recent aangemelde datasetbeschrijvingen via de <a href="viaurl.php">Meld aan</a> pagina of de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html">Dataset Register API</a>.'=>'most recently registered dataset descriptions via the <a href="viaurl.php">Submit</a> page or the <a href="https://datasetregister.netwerkdigitaalerfgoed.nl /api/static/index.html">Dataset Register API</a>.',
+	'Aangemeld op'=>'Registered on',
+	'De meest recent toegevoegde datasets aan het NDE Datasetregister'=>'The most recently added datasets to the NDE Dataset Register',
+	'Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.'=>'This list is also available as <a href="dataset-newest-rss.php?lang=en">RSS feed</a>.',
+	'Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.'=>'An overview of <a href="dataset-newest.php?lang=en">recently submitted dataset descriptions</a> is also available.'
 	
 );
 
