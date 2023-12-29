@@ -99,6 +99,15 @@ th:first-child{ width:20px!important }
 	</div></section>
 
 	<div class="o-container o-container__small m-t-space">
+		<h2><?= t('Welke distributies zijn het meest recent?') ?></h2>
+		<p><?= t('Het volgende overzicht laat een top 50 zien van distributies die recent zijn gepubliceerd of bijgewerkt:') ?></p>
+	</div>
+
+	<section class="m-t-quarter-space m-theme-bg m-theme--teal search-div"><div class="o-container no-container__small">
+		<query data-config="https://demo.netwerkdigitaalerfgoed.nl/hackalod/datasetregister/#query=PREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0APREFIX%20dcat%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23%3E%0ASELECT%20%3Fdataset%20%3FaccessURL%20%3Fformat%20%3Fsize%20%3Fmodified%20%20WHERE%20%7B%0A%20%20%20%20%3Fdataset%20dcat%3Adistribution%20%3Fdistribution%20.%0A%20%20%20%20%23%20%3Ftitle%20niet%20getoond%20vanwege%20breedte%20tabel%0A%20%20%20%20OPTIONAL%20%7B%0A%20%20%20%20%20%20%20%20%3Fdataset%20dct%3Atitle%20%3Ftitle%20FILTER%28langMatches%28lang%28%3Ftitle%29%2C%20%22nl%22%29%29%20%0A%20%20%20%20%7D%0A%20%20%20%20OPTIONAL%20%7B%0A%20%20%20%20%20%20%20%20%3Fdataset%20dct%3Atitle%20%3Ftitle%20FILTER%28langMatches%28lang%28%3Ftitle%29%2C%20%22en%22%29%29%20%0A%20%20%20%20%7D%0A%20%20%20%20OPTIONAL%20%7B%0A%20%20%20%20%20%20%20%20%3Fdataset%20dct%3Atitle%20%3Ftitle%20%0A%20%20%20%20%7D%20%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%3Fdistribution%20dct%3Amodified%20%3Fm%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dcat%3AaccessURL%20%3FaccessURL%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dct%3Aformat%20%3Fformat.%0A%20%20%20%20%7D%20UNION%20%7B%0A%20%20%20%20%20%20%20%20%3Fdistribution%20dct%3Aissued%20%3Fm%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dcat%3AaccessURL%20%3FaccessURL%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dct%3Aformat%20%3Fformat.%0A%20%20%20%20%7D%0A%20%20%20%20OPTIONAL%20%7B%0A%20%20%20%20%20%20%20%20%3Fdistribution%20dcat%3AbyteSize%20%3Fsize%20%0A%20%20%20%20%7D%0A%20%20%20%20BIND%28SUBSTR%28STR%28%3Fm%29%2C1%2C10%29%20AS%20%3Fmodified%29%20%20%23%20kan%20%3Chttp%3A%2F%2Fschema.org%2FDate%3E%20of%20xsd%3Adate%20zijn%20...%0A%7D%20ORDER%20BY%20DESC%28%3Fmodified%29%20LIMIT%2050"></query>
+	</div></section>
+
+	<div class="o-container o-container__small m-t-space">
 		<h2><?= t('Welke musea bieden linked data?') ?></h2>
 		<p><?= t('Het volgende overzicht laat de linked data datasets zien van musea:') ?></p>
 	</div>

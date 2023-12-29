@@ -396,7 +396,9 @@ $translations_nl_en = array(
 	'Het volgende overzicht laat de linked data datasets zien van musea:'=>'The following overview shows the linked data datasets of museums:',
 	'Welke data bevatten informatie uit bevolkingsregisters?'=>'Which data contain information from population registers?',
 	'Het volgende overzicht laat datasets zien die als keyword "bevolkingsregister" hebben:'=>'The following overview shows datasets with the Dutch keyword "bevolkingsregister" (=population register):',
-	
+    'Welke distributies zijn het meest recent?'=>'Which distributions are the most recent?',
+    'Het volgende overzicht laat een top 50 zien van distributies die recent zijn gepubliceerd of bijgewerkt:'=>'The following overview shows a top 50 distributions that have been recently issued or modified:',
+
 	# dataset-newest.php
 	'Recent aangemelde databeschrijvingen'=>'Recently submitted data descriptions',
 	'Onderstaande lijst toont de'=>'The list below shows the',
