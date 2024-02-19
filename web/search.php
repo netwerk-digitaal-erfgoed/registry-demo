@@ -469,6 +469,7 @@ fetchData('get-list.php?list=creators<?php if(isset($_GET["lang"]) && $_GET["lan
     for (const key in data) {
       const value = data[key];
       const newCreatorItem = document.createElement('option');
+      newCreatorItem.value = key;
       newCreatorItem.class = 'choice';
       newCreatorItem.textContent = value;
       newCreatorItem.selected = (creator == key);
