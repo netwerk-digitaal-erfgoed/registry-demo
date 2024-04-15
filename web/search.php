@@ -23,7 +23,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
     <div class="o-container no-container__small">
       <div class="row">
         <div class="column">
-          <label id="searchTermLabel"><?= t('Zoekwoord')?> (<?= t('doorzoekt namen, omschrijvingen en steekwoorden') ?>)</label> 
+          <label id="searchTermLabel"><?= t('Zoekwoord')?> (<?= t('doorzoekt titels, omschrijvingen en steekwoorden') ?>)</label> 
           <input aria-labelledby="searchTermLabel" title="<?= t('Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.') ?>" class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
           <br><br>
           <label id="publisher_listLabel"><?= t('Uitgever')?></label>
