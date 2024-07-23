@@ -402,7 +402,7 @@ $translations_nl_en = array(
 	# dataset-newest.php
 	'Recent aangemelde databeschrijvingen'=>'Recently submitted data descriptions',
 	'Onderstaande lijst toont de'=>'The list below shows the',
-    'meest recent aangemelde datasetbeschrijvingen via de <a href="viaurl.php">Meld aan</a> pagina of de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html">Dataset Register API</a>.'=>'most recently registered dataset descriptions via the <a href="viaurl.php">Submit</a> page or the <a href="https://datasetregister.netwerkdigitaalerfgoed.nl /api/static/index.html">Dataset Register API</a>.',
+    'meest recent aangemelde datasetbeschrijvingen via de <a href="viaurl.php">Meld aan</a> pagina of de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/">Dataset Register API</a>.'=>'most recently registered dataset descriptions via the <a href="viaurl.php">Submit</a> page or the <a href="https://datasetregister.netwerkdigitaalerfgoed.nl /api/">Dataset Register API</a>.',
 	'Aangemeld op'=>'Registered on',
 	'De meest recent toegevoegde datasets aan het NDE Datasetregister'=>'The most recently added datasets to the NDE Dataset Register',
 	'Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.'=>'This list is also available as <a href="dataset-newest-rss.php?lang=en">RSS feed</a>.',
