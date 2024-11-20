@@ -96,10 +96,12 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
   OPTIONAL { ?publisher foaf:name ?publisherName }
 `;
   if (creator) {
-    sparqlQuery += "  ?dataset dct:creator <" + creator + "> .\n";
+    sparqlQuery += "  ?dataset dct:creator ?creator .\n";
+    sparqlQuery += "  VALUES ?publisher {<"+creator.split('|').join("> <")+">}\n";    
   }
   if (publisher) {
-    sparqlQuery += "  ?dataset dct:publisher <" + publisher + "> .\n";
+    sparqlQuery += "  ?dataset dct:publisher ?publisher .\n";
+    sparqlQuery += "  VALUES ?publisher {<"+publisher.split('|').join("> <")+">}\n";
   }
   if (formats.size > 0) {
     sparqlQuery += "  ?dataset dcat:distribution ?distribution .\n";

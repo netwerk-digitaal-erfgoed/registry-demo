@@ -44,10 +44,20 @@ function getCreators() {
 	$creators=array();
 	if (isset($sparqlResults)) {
 		foreach ($sparqlResults["results"]["bindings"] as $item) {
-			$creators[$item["creator"]["value"]]=$item["creator_name"]["value"];
+			# not-so-nice work-around to deduplicate organisation names
+			$index=trim($item["creator_name"]["value"]);
+			if ($index=="Rijksdienst voor Cultureel Erfgoed") {  $index="Rijksdienst voor het Cultureel Erfgoed";}
+			if ($index=="Rijksdienst voor Cultureel Erfgoed - Kunstcollectie") {  $index="Rijksdienst voor het Cultureel Erfgoed";}
+			if ($index=="Rijksdienst voor het Cultureel Erfgoed (RCE)") {  $index="Rijksdienst voor het Cultureel Erfgoed";}
+			if (!isset($creators[$index])) {
+				$creators[$index]=$item["creator"]["value"];
+			} else {
+				$creators[$index].="|".$item["creator"]["value"];
+			} 
 		}
 	}
-	return $creators;
+
+	return array_flip($creators);
 }
 
 function getPublishers() {
@@ -72,10 +82,19 @@ function getPublishers() {
 	$publishers=array();
 	if (isset($sparqlResults)) {
 		foreach ($sparqlResults["results"]["bindings"] as $item) {
-			$publishers[$item["publisher"]["value"]]=$item["publisher_name"]["value"];
+			# not-so-nice work-around to deduplicate organisation names
+			$index=trim($item["publisher_name"]["value"]);
+			if ($index=="Rijksdienst voor Cultureel Erfgoed") {  $index="Rijksdienst voor het Cultureel Erfgoed";}
+			if ($index=="Rijksdienst voor Cultureel Erfgoed - Kunstcollectie") {  $index="Rijksdienst voor het Cultureel Erfgoed";}
+			if ($index=="Rijksdienst voor het Cultureel Erfgoed (RCE)") {  $index="Rijksdienst voor het Cultureel Erfgoed";}
+			if (!isset($publishers[$index])) {
+				$publishers[$index]=$item["publisher"]["value"];
+			} else {
+				$publishers[$index].="|".$item["publisher"]["value"];
+			} 
 		}
 	}
-	return $publishers;
+	return array_flip($publishers);
 }
 
 function getNewest() {
