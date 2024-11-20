@@ -188,7 +188,7 @@ function showDataset(sparqlresult) {
         strTable += "</td></tr>";
       }
       if (property_value == "http://www.w3.org/ns/dcat#distribution" && maxShownDistribution==0) {
-          strTable += '<tr><th style="background-color:white;text-align:center;border-top:1px dashed #be2c00;border-bottom:1px dashed #be2c00;" colspan="3"><?= t('Let op: er worden hier maximaal 5 distributies weergegeven,<br>gebruik SPARQL om alle distributies te bekijken!') ?></th>';
+          strTable += '<tr><th style="background-color:white;text-align:center;border-top:1px dashed #be2c00;border-bottom:1px dashed #be2c00;" colspan="3"><?= t('Let op: er worden hier maximaal 20 distributies weergegeven,<br>gebruik SPARQL om alle distributies te bekijken!') ?></th>';
           maxShownDistribution--;
       }    
       if ((property_value == "http://purl.org/dc/terms/creator") ||
