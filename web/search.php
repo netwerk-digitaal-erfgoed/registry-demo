@@ -108,7 +108,7 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
       .join('" || ?format="') + "\")\n";
   }
 
-  sparqlQuery += "} ORDER BY ?title LIMIT 200";
+  sparqlQuery += "} ORDER BY ?title";
 
   document.getElementById('sparql-query')
     .innerHTML = sparqlQuery;
@@ -156,7 +156,7 @@ function searchDatasets() {
   updateSparql();
   document.getElementById("searchresults").style.display = "none";
 
-  var url = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=' + encodeURIComponent(sparqlQuery);
+  var url = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=' + encodeURIComponent(sparqlQuery + ' LIMIT 201');
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.setRequestHeader("Accept", "application/json");
@@ -174,7 +174,6 @@ function searchDatasets() {
 }
 
 function showDatasets(sparqlresult) {
-  document.getElementById("countdatasets").innerHTML = sparqlresult.results.bindings.length;
   document.getElementById("searchresults").style.display = "block";
   document.getElementById("sparql").scrollIntoView();
 
@@ -185,38 +184,45 @@ function showDatasets(sparqlresult) {
 
   uriCount = 0;
   for (var prop in sparqlresult.results.bindings) {
-    uriCount++;
-    dataset = sparqlresult.results.bindings[prop].dataset.value;
-    title = sparqlresult.results.bindings[prop].title.value;
-    publisherName = sparqlresult.results.bindings[prop].publisherName.value;
-    if (organisationFacet[publisherName]) {
-      organisationFacet[publisherName]++;
-    } else {
-      organisationFacet[publisherName] = 1;
+    if (uriCount++<200) {
+      dataset = sparqlresult.results.bindings[prop].dataset.value;
+      title = sparqlresult.results.bindings[prop].title.value;
+      publisherName = sparqlresult.results.bindings[prop].publisherName.value;
+      if (organisationFacet[publisherName]) {
+        organisationFacet[publisherName]++;
+      } else {
+        organisationFacet[publisherName] = 1;
+      }
+
+      var li = document.createElement("li");
+      li.setAttribute("class", "linkprop");
+      li.setAttribute("data-organisation", publisherName);
+
+      var link = document.createElement("a");
+      var linkText = document.createTextNode(title);
+      link.setAttribute("href", "show.php?lang=<?= $lang ?>&uri=" + encodeURIComponent(dataset));
+      link.appendChild(linkText);
+      li.appendChild(link);
+      li.appendChild(document.createTextNode(" (" + publisherName + ")"));
+
+      var div = document.createElement("div");
+      div.setAttribute("class", "scroll");
+      li.appendChild(div);
+
+      var eul = document.createElement("table");
+      eul.setAttribute("id", "props-" + dataset);
+      div.appendChild(eul);
+
+      ul.appendChild(li);
     }
-
-    var li = document.createElement("li");
-    li.setAttribute("class", "linkprop");
-    li.setAttribute("data-organisation", publisherName);
-
-    var link = document.createElement("a");
-    var linkText = document.createTextNode(title);
-    link.setAttribute("href", "show.php?lang=<?= $lang ?>&uri=" + encodeURIComponent(dataset));
-    link.appendChild(linkText);
-    li.appendChild(link);
-    li.appendChild(document.createTextNode(" (" + publisherName + ")"));
-
-    var div = document.createElement("div");
-    div.setAttribute("class", "scroll");
-    li.appendChild(div);
-
-    var eul = document.createElement("table");
-    eul.setAttribute("id", "props-" + dataset);
-    div.appendChild(eul);
-
-    ul.appendChild(li);
   }
   showFacets();
+  if (uriCount>200) {
+    countstring="<?= t('<strong>let op</strong>: meer dan 200 resultaten, gebruik filters of SPARQL</span>') ?>";
+  } else {
+    countstring=uriCount;
+  }
+  document.getElementById("countdatasets").innerHTML = countstring;
 }
 
 function showFacets() {
