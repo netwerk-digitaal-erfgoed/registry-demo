@@ -69,7 +69,7 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 const sparqlRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=';
 const datasetUri='<?= $dataset_uri ?>';
-const sparqlQuery="SELECT * FROM <" + datasetUri + "> WHERE {\n  ?subject ?predicate ?object .\n}";
+const sparqlQuery="SELECT * FROM <" + datasetUri + "> WHERE { ?subject ?predicate ?object . }";
 
 function getDatasetDescription(uri) {
     var url = sparqlRepo + encodeURIComponent(sparqlQuery);
@@ -155,6 +155,8 @@ function searchTriplestore() {
 
 function showDataset(sparqlresult) {
 
+  maxShownDistribution=20;
+
   var table = document.getElementById("dataset_description");
   table.className = "props";
 
@@ -167,45 +169,73 @@ function showDataset(sparqlresult) {
     object_value = sparqlresult.results.bindings[prop].object.value;
 
     if (subject_value == datasetUri && property_value != "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
-
-      strTable += "<tr><th>" + prefix(property_value);
-	  if (typeof sparqlresult.results.bindings[prop].object["xml:lang"] !== 'undefined') {
-        strTable += ' <span class="xmllang">' + sparqlresult.results.bindings[prop].object["xml:lang"] + '</span>';
-      }
-	  strTable += "</th><td colspan=2>";
-	  if(property_value == "http://purl.org/dc/terms/isPartOf") {
+      if ((property_value == "http://www.w3.org/ns/dcat#distribution" && maxShownDistribution>0) || property_value != "http://www.w3.org/ns/dcat#distribution") {
+        strTable += "<tr><th>" + prefix(property_value);
+        if (typeof sparqlresult.results.bindings[prop].object["xml:lang"] !== 'undefined') {
+            strTable += ' <span class="xmllang">' + sparqlresult.results.bindings[prop].object["xml:lang"] + '</span>';
+          }
+        strTable += "</th><td colspan=2>";
+        if(property_value == "http://purl.org/dc/terms/isPartOf") {
+              strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
+          strTable += "<a class=\"datacatalog\" href=\"catalog.php?lang=<?= $lang ?>&uri=" + encodeURI(object_value) + "\"><?= t('Bekijk datasets binnen deze datacatalog') ?></a>";
+        } else {
+          if (isValidHttpUrl(object_value)) {
           strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
-		  strTable += "<a class=\"datacatalog\" href=\"catalog.php?lang=<?= $lang ?>&uri=" + encodeURI(object_value) + "\"><?= t('Bekijk datasets binnen deze datacatalog') ?></a>";
-	  } else {
-		  if (isValidHttpUrl(object_value)) {
-			 strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
-		  } else {
-			strTable += object_value;
-		  }	  
-	  }
-	  strTable += "</td></tr>";
-      
-      if ((property_value == "http://www.w3.org/ns/dcat#distribution") ||
-        (property_value == "http://purl.org/dc/terms/creator") ||
+          } else {
+          strTable += object_value;
+          }	  
+        }
+        strTable += "</td></tr>";
+      }
+      if (property_value == "http://www.w3.org/ns/dcat#distribution" && maxShownDistribution==0) {
+          strTable += '<tr><th style="background-color:white;text-align:center;border-top:1px dashed #be2c00;border-bottom:1px dashed #be2c00;" colspan="3"><?= t('Let op: er worden hier maximaal 5 distributies weergegeven,<br>gebruik SPARQL om alle distributies te bekijken!') ?></th>';
+          maxShownDistribution--;
+      }    
+      if ((property_value == "http://purl.org/dc/terms/creator") ||
         (property_value == "http://purl.org/dc/terms/publisher")) {
         for (var prop in sparqlresult.results.bindings) {
           sub_subject_value = sparqlresult.results.bindings[prop].subject.value;
           sub_property_value = sparqlresult.results.bindings[prop].predicate.value;
-          sub_object_value = sparqlresult.results.bindings[prop].object.value;
 
           if (sub_subject_value == object_value && sub_property_value != "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
-			strTable += "<tr><td></td><th>" + prefix(sub_property_value)
-			if (typeof sparqlresult.results.bindings[prop].object["xml:lang"] !== 'undefined') {
-				strTable += ' <span class="xmllang">' + sparqlresult.results.bindings[prop].object["xml:lang"] + '</span>';
-			}
-			strTable += "</th><td>";
-			if (isValidHttpUrl(sub_object_value)) {
+            strTable += "<tr><td></td><th>" + prefix(sub_property_value)
+            if (typeof sparqlresult.results.bindings[prop].object["xml:lang"] !== 'undefined') {
+              strTable += ' <span class="xmllang">' + sparqlresult.results.bindings[prop].object["xml:lang"] + '</span>';
+            }
+            strTable += "</th><td>";
+            sub_object_value = sparqlresult.results.bindings[prop].object.value;
+            if (isValidHttpUrl(sub_object_value)) {
               strTable += "<a target=\"_blank\" href=\"" + sub_object_value + "\">" + sub_object_value + "</a></td></tr>";
             } else {
               strTable += sub_object_value;
             }
-			strTable += "</td></tr>";
+            strTable += "</td></tr>";
           }
+        }
+      }
+
+      if (property_value == "http://www.w3.org/ns/dcat#distribution") {
+        if (maxShownDistribution>0) {
+          for (var prop in sparqlresult.results.bindings) {
+            sub_subject_value = sparqlresult.results.bindings[prop].subject.value;
+            sub_property_value = sparqlresult.results.bindings[prop].predicate.value;
+
+            if (sub_subject_value == object_value && sub_property_value != "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
+              strTable += "<tr><td></td><th>" + prefix(sub_property_value)
+              if (typeof sparqlresult.results.bindings[prop].object["xml:lang"] !== 'undefined') {
+                strTable += ' <span class="xmllang">' + sparqlresult.results.bindings[prop].object["xml:lang"] + '</span>';
+              }
+              strTable += "</th><td>";
+              sub_object_value = sparqlresult.results.bindings[prop].object.value;
+              if (isValidHttpUrl(sub_object_value)) {
+                strTable += "<a target=\"_blank\" href=\"" + sub_object_value + "\">" + sub_object_value + "</a></td></tr>";
+              } else {
+                strTable += sub_object_value;
+              }
+              strTable += "</td></tr>";
+            }
+          }
+          maxShownDistribution--;
         }
       }
     }
@@ -233,6 +263,7 @@ function prefix(str) {
   pre = pre.replace("http://www.w3.org/ns/dcat#", "");
   pre = pre.replace("http://purl.org/dc/terms/", "");
   pre = pre.replace("http://xmlns.com/foaf/0.1/", "");
+  pre = pre.replace("http://www.w3.org/2002/07/owl#", "");
 
   alt = str.replace("http://schema.org/", "schema:");
   alt = alt.replace("https://schema.org/", "schema:");
@@ -240,6 +271,7 @@ function prefix(str) {
   alt = alt.replace("http://www.w3.org/ns/dcat#", "dcat:");
   alt = alt.replace("http://purl.org/dc/terms/", "dct:");
   alt = alt.replace("http://xmlns.com/foaf/0.1/", "foaf:");
+  alt = alt.replace("http://www.w3.org/2002/07/owl#", "owl:");
 
   return "<strong title=\"" + alt + "\">" + pre.charAt(0).toUpperCase() + pre.slice(1) + "</strong>";
 }

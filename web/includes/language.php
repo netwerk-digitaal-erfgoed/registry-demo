@@ -211,8 +211,8 @@ $translations_nl_en = array(
 	'doorzoekt titels, omschrijvingen en steekwoorden'=>'searches titles, descriptions and keywords',
 	'Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.'=>'If multiple search terms are specified, the search results will contain one or more of these terms. If you want all search terms to appear, link the search terms with AND.',
 	'Filter op organisatie'=>'Filter by organisation',
-    '<strong>let op</strong>: meer dan 200 resultaten, gebruik filters of SPARQL</span>'=>'<strong>beware</strong>: more than 200 results, use filters or SPARQL</span>',
-    
+    'Let op: meer dan 200 resultaten, gebruik filters of SPARQL!'=>'Beware: more than 200 results, use filters or SPARQL!',
+
     # datamodel.php
     'Uitleg van de dataconcepten'=>'Explanation of the data concepts',
     'Datasetbeschrijving'=>'Dataset description',
@@ -367,7 +367,8 @@ $translations_nl_en = array(
 	'Terug naar zoekresultaten'=>'Back to search results',
 	'Doorzoek het Dataset Register'=>'Search the Datasetregister',
 	'Bekijk datasets binnen deze datacatalog'=>'View the datasets of this datacatalog',
-	
+	'Let op: er worden hier maximaal 20 distributies weergegeven,<br>gebruik SPARQL om alle distributies te bekijken!' => 'Beware: a maximum of 20 distributions are shown here,<br>use SPARQL to see all distributions!',
+    
 	# catalog.php
 	'De volgende'=>'The following',
 	'datasets maken onderdeel uit '=>'datasets are part of',

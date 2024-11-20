@@ -218,7 +218,7 @@ function showDatasets(sparqlresult) {
   }
   showFacets();
   if (uriCount>200) {
-    countstring="<?= t('<strong>let op</strong>: meer dan 200 resultaten, gebruik filters of SPARQL</span>') ?>";
+    countstring="<?= t('Let op: meer dan 200 resultaten, gebruik filters of SPARQL!') ?>";
   } else {
     countstring=uriCount;
   }
