@@ -90,10 +90,13 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
   ?dataset dct:publisher ?publisher .
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $lang ?>")) }
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $notlang ?>")) }
-  OPTIONAL { ?dataset dct:title ?title }    
-  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "<?= $lang ?>")) }
-  OPTIONAL { ?publisher foaf:name ?publisherName FILTER(langMatches(lang(?publisherName), "<?= $notlang ?>")) }
-  OPTIONAL { ?publisher foaf:name ?publisherName }
+  OPTIONAL { ?dataset dct:title ?title }
+  {
+    SELECT DISTINCT ?publisher (SAMPLE(?name) AS ?publisherName) WHERE {
+      ?publisher foaf:name ?name .
+      FILTER (langMatches(lang(?name), "<?= $lang ?>") || langMatches(lang(?name), "<?= $notlang ?>") || lang(?name) = "")
+    } GROUP BY ?publisher
+  }
 `;
   if (creator) {
     sparqlQuery += "  ?dataset dct:creator ?creator .\n";
