@@ -97,7 +97,7 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
 `;
   if (creator) {
     sparqlQuery += "  ?dataset dct:creator ?creator .\n";
-    sparqlQuery += "  VALUES ?publisher {<"+creator.split('|').join("> <")+">}\n";    
+    sparqlQuery += "  VALUES ?creator {<"+creator.split('|').join("> <")+">}\n";    
   }
   if (publisher) {
     sparqlQuery += "  ?dataset dct:publisher ?publisher .\n";
