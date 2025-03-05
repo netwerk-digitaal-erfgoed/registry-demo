@@ -1,2 +1,2 @@
-FROM php:8.0.0-fpm-alpine
+FROM php:8.3.0-fpm-alpine
 COPY web /web
