@@ -53,7 +53,7 @@ PREFIX dct:  <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
   ?dataset dct:isPartOf ?catalog .
-  FILTER(STR(?catalog)="<?= $uri ?>" || ?catalog=<<?= $uri ?>>)
+  FILTER(STR(?catalog)="<?= htmlspecialchars($uri) ?>" || ?catalog=<<?= htmlspecialchars($uri) ?>>)
   ?dataset dct:publisher ?publisher .
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang1}")) }
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "${querylang2}")) }
