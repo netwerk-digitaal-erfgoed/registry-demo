@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_GET["lang"]) && !_bot_detected()) {
-   if (strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2))!="nl") {
+   if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2))!="nl") {
       header('Location: /?lang=en', true, 302);
    }
 }

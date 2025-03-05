@@ -8,6 +8,9 @@ if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; }
 
 if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 	$uri=$_GET["uri"];
+} else {
+  header("Location: /",TRUE,400);
+  exit;
 }
 
 ?>
