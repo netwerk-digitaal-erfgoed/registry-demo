@@ -1,4 +1,10 @@
-<?php include ("language.php"); ?><!DOCTYPE html>
+<?php 
+
+include ("language.php"); 
+header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
+header("X-Content-Type-Options: nosniff");
+
+?><!DOCTYPE html>
 <!--[if IE 9]> 
 <html class="no-js ie ie9" lang="nl-NL">
    <![endif]-->
