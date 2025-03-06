@@ -9,6 +9,9 @@ if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; }
 $dataset_uri='';
 if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 	$dataset_uri=$_GET["uri"];
+} else {
+  header("Location: /",TRUE,400);
+  exit;
 }
 ?>
 
@@ -68,8 +71,8 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 <script>
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
 const sparqlRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=';
-const datasetUri='<?= $dataset_uri ?>';
-const sparqlQuery="SELECT * FROM <" + datasetUri + "> WHERE { ?subject ?predicate ?object . }";
+const datasetUri = '<?= htmlspecialchars($dataset_uri,ENT_QUOTES) ?>';
+const sparqlQuery = "SELECT * FROM <" + datasetUri + "> WHERE { ?subject ?predicate ?object . }";
 
 function getDatasetDescription(uri) {
     var url = sparqlRepo + encodeURIComponent(sparqlQuery);
