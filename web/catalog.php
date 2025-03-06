@@ -1,8 +1,5 @@
 <?php 
 
-include("includes/search.php"); 
-include("includes/header.php"); 
-
 $lang="nl";
 if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } 
 
@@ -12,6 +9,9 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
   header("Location: /",TRUE,400);
   exit;
 }
+
+include("includes/search.php"); 
+include("includes/header.php"); 
 
 ?>
 
