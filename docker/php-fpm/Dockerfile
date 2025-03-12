@@ -1,2 +1,2 @@
-FROM php:8.3.0-fpm-alpine
+FROM bitnami/php-fpm
 COPY web /web
