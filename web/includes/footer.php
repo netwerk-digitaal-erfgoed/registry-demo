@@ -135,9 +135,9 @@
                         <p><?= t('Volg het Netwerk Digitaal Erfgoed via') ?>:</p>
                         <ul class="social">
                            <li>
-                              <a aria-labelledby="footer" aria-label="Twitter link" target="_blank" href="https://twitter.com/DigitaalErfgoed">
-                                 <svg class="icon icon-twitter">
-                                    <use xlink:href="#icon-twitter"></use>
+                              <a aria-labelledby="footer" aria-label="Github link" target="_blank" href="https://github.com/netwerk-digitaal-erfgoed/">
+                                 <svg class="icon icon-github">
+                                    <use xlink:href="#icon-github"></use>
                                  </svg>
                               </a>
                            </li>
@@ -152,13 +152,6 @@
                               <a aria-labelledby="footer" aria-label="Youtube link" target="_blank" href="https://www.youtube.com/channel/UCvHDarEQeREkRVLdzJSbKWw">
                                  <svg class="icon icon-youtube">
                                     <use xlink:href="#icon-youtube"></use>
-                                 </svg>
-                              </a>
-                           </li>
-                           <li>
-                              <a aria-labelledby="footer" aria-label="Github link" target="_blank" href="https://github.com/netwerk-digitaal-erfgoed/">
-                                 <svg class="icon icon-github">
-                                    <use xlink:href="#icon-github"></use>
                                  </svg>
                               </a>
                            </li>
