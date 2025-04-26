@@ -9,7 +9,7 @@ include("includes/header.php");
   <section class="text m-t-space m-b-space m-theme--blue">
     <div class="o-container o-container__small m-t-space">
       <h1 class="title--l"><?= t('Recent aangemelde databeschrijvingen') ?></h1>
-	  <p><?= t('Onderstaande lijst toont de').' '.SHOW_NEWEST.t('meest recent aangemelde datasetbeschrijvingen via de <a href="viaurl.php">Meld aan</a> pagina of de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html">Dataset Register API</a>.') ?> <?= t('Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.') ?></p>
+	  <p><?= t('Onderstaande lijst toont de').' '.SHOW_NEWEST.' '.t('meest recent aangemelde datasetbeschrijvingen via de <a href="viaurl.php">Meld aan</a> pagina of de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/static/index.html">Dataset Register API</a>.') ?> <?= t('Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.') ?></p>
 	  <p><br></p>
       <ul id="newest_list"></ul>
     </div>
