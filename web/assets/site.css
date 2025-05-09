@@ -489,3 +489,18 @@ body.home {
 .props thead th {
 	background-color: white;
 }
+
+#archived{
+  display:none;
+  background-color:#be2c00;
+  color:#ffffff;
+  font-size:1.75em;
+  padding:0.5em 0.25em;
+  text-align: center;
+  text-wrap-style: balance;
+  margin:1.5em 0
+}
+
+#archived strong{
+  color:#ffffff
+}

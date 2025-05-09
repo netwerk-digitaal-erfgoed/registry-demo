@@ -21,7 +21,7 @@ include("includes/header.php");
       <div class="o-container o-container__small m-t-space">
         <h1 class="title--l"><?= t('Datasetbeschrijving') ?></h1>
         <h3><?= htmlentities($dataset_uri,ENT_QUOTES) ?></h3>
-        
+        <div id="archived"></div>
         <?php if (empty($dataset_uri)) { ?>
         <div class="m-theme-bg m-theme--teal search-div"><p><?= t('De opgegeven URI is ongeldig') ?>.</p></div>
         <?php } else { ?>
@@ -36,6 +36,7 @@ include("includes/header.php");
         <table id="tableMetadata" class="props">
 		  <tr id="row_postedURL"><th><?= t('Geregistreerde URL') ?></th><td id="val_postedURL"></td></tr>
 		  <tr id="row_postedDate"><th><?= t('Registratiedatum') ?></th><td id="val_postedDate"></td></tr>
+		  <tr id="row_validUntil"><th><?= t('Was geldig tot') ?></th><td id="val_validUntil"></td></tr>
 		  <tr id="row_lastDateRead"><th><?= t('Laatste cache update') ?></th><td id="val_lastDateRead"></td></tr>
 		  <tr id="row_ratingValue"><th><?= t('Beoordeling (25-100)') ?></th><td id="val_ratingValue"></td></tr>
 		  <tr id="row_ratingExplanation"><th><?= t('Missende eigenschappen') ?></th><td id="val_ratingExplanation"></td></tr>		
@@ -95,7 +96,7 @@ function getDatasetDescription(uri) {
 }
 
 function getMetadata() {
-  var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation WHERE { BIND(<"+datasetUri+"> AS ?dataset) ?dataset schema:subjectOf ?postedURL . OPTIONAL { ?dataset schema:datePosted ?postedDate . } OPTIONAL { ?dataset schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
+  var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation ?validUntil WHERE { BIND(<"+datasetUri+"> AS ?dataset) OPTIONAL { ?dataset schema:subjectOf ?postedURL . } OPTIONAL { ?dataset schema:validUntil ?validUntil . } OPTIONAL { ?dataset schema:datePosted ?postedDate . } OPTIONAL { ?dataset schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
   
   var url = sparqlRepo + encodeURIComponent(sparqlLastDateRead);
   var xhr = new XMLHttpRequest();
@@ -118,6 +119,13 @@ function getMetadata() {
 function showMetadata(sparqlresult) {
 	document.getElementById('sectionMetadata').style.display="block";
 	for (var prop in sparqlresult.results.bindings[0]) { 
+
+    if (prop=='validUntil') {
+      banner=document.getElementById('archived');
+      banner.innerHTML='<?= t('<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar, de inhoud van de datasetbeschrijving is waarschijnlijk niet meer kloppend.') ?>';
+      banner.style.display='block';
+    }
+
 		document.getElementById('row_'+prop).style.display="table-row";
 		let val=sparqlresult.results.bindings[0][prop].value.replaceAll('http://purl.org/dc/terms/','');
 		if (sparqlresult.results.bindings[0][prop].type=="uri") {

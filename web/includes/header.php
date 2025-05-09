@@ -17,7 +17,7 @@ header("X-Content-Type-Options: nosniff");
 		   <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <link rel="stylesheet" id="nde-style-css" href="assets/style.20230221.min.css" type="text/css" media="all">
-         <link rel="stylesheet" id="site-style-css" href="assets/site.20231222.min.css" type="text/css" media="all">
+         <link rel="stylesheet" id="site-style-css" href="assets/site.20250509.min.css" type="text/css" media="all">
          <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
