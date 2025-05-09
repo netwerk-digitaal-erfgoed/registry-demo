@@ -79,11 +79,12 @@ function updateSparql() {
   searchTerm = document.getElementById("searchTerm").value.trim().replace(/"/g, '\\"');
 
   sparqlQuery = `PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX luc: <http://www.ontotext.com/connectors/lucene#>
 PREFIX luc-index: <http://www.ontotext.com/connectors/lucene/instance#>
-SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
+SELECT DISTINCT ?dataset ?title ?publisherName ?validUntil WHERE {
   ?search a luc-index:datasetregister ;
           luc:query "${searchTerm}" ;
           luc:entities ?dataset .
@@ -91,11 +92,12 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $lang ?>")) }
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $notlang ?>")) }
   OPTIONAL { ?dataset dct:title ?title }
+  OPTIONAL { ?dataset schema:validUntil ?validUntil }
   {
     SELECT DISTINCT ?publisher (SAMPLE(?name) AS ?publisherName) WHERE {
       ?publisher foaf:name ?name .
       FILTER (langMatches(lang(?name), "<?= $lang ?>") || langMatches(lang(?name), "<?= $notlang ?>") || lang(?name) = "")
-    } GROUP BY ?publisher
+    } GROUP BY ?validUntil ?publisher
   }
 `;
   if (creator) {
@@ -113,7 +115,7 @@ SELECT DISTINCT ?dataset ?title ?publisherName WHERE {
       .join('" || ?format="') + "\")\n";
   }
 
-  sparqlQuery += "} ORDER BY ?title";
+  sparqlQuery += "} ORDER BY ?validUntil ?title";
 
   document.getElementById('sparql-query')
     .innerHTML = sparqlQuery;
@@ -210,6 +212,12 @@ function showDatasets(sparqlresult) {
       li.appendChild(link);
       li.appendChild(document.createTextNode(" (" + publisherName + ")"));
 
+      if (sparqlresult.results.bindings[prop].validUntil) {
+        const span = document.createElement("span");
+        span.innerHTML = "<?= t('gearchiveerd') ?>";
+        span.className="archivednotice";
+        li.appendChild(span);
+      }
       var div = document.createElement("div");
       div.setAttribute("class", "scroll");
       li.appendChild(div);

@@ -504,3 +504,14 @@ body.home {
 #archived strong{
   color:#ffffff
 }
+
+.archivednotice { 
+  color: #fff;
+  vertical-align: super;
+  font-size: .6em;
+  padding: 3px;
+  line-height: 1em;
+  background-color: #be2c00;
+  text-decoration: none!important;
+  margin-left: 1em
+}

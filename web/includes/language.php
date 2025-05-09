@@ -212,7 +212,8 @@ $translations_nl_en = array(
 	'Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.'=>'If multiple search terms are specified, the search results will contain one or more of these terms. If you want all search terms to appear, link the search terms with AND.',
 	'Filter op organisatie'=>'Filter by organisation',
     'Let op: groot aantal resultaten, de eerste 200 worden getoond, gebruik filters of SPARQL!'=>'Beware: large number of results, first 200 are shown, use filters or SPARQL!',
-
+    'gearchiveerd' => 'archived',
+    
     # datamodel.php
     'Uitleg van de dataconcepten'=>'Explanation of the data concepts',
     'Datasetbeschrijving'=>'Dataset description',
