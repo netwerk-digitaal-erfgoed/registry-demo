@@ -5,11 +5,13 @@ define('SPARQL_CACHE_DURATION_HOURS',1);
 define('CACHE_DIRECTORY','/tmp/');
 define('SHOW_NEWEST',25);
 
-function getFormats() {
+function getMediaTypes() {
 	$sparqlGetPublishers='PREFIX dct: <http://purl.org/dc/terms/>
-		SELECT DISTINCT ?format WHERE {
-		  ?distribution dct:format ?format
-		} GROUP BY ?format ORDER BY ?format';
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+SELECT DISTINCT ?format WHERE {
+    ?distribution dct:format|dcat:mediaType ?format
+    FILTER(isLITERAL(?format))
+} GROUP BY ?format ORDER BY ?format';
 
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers,'nn');
 

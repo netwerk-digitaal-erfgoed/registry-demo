@@ -39,7 +39,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
         <div class="column2">
           <label><?= t('Formaat')?></label>
             <div id="format_list" class="formatcheckboxes"></div>
-            <p class="choices"><a href="#" onclick="return set_lod_choices()"><?= t('Selecteer Linked Data formaten')?></a> | <a href="#" onclick="return set_sparql_choices()"><?= t('Selecteer SPARQL formaten')?></a> | <a href="#" onclick="return clear_formats()"><?= t('Verwijder selectie(s)')?></a></p>
+            <p class="choices"><a href="#" onclick="return set_lod_choices()"><?= t('Selecteer Linked Data formaten')?></a> | <a href="#" onclick="return set_sparql_choices()"><?= t('Selecteer SPARQL formaten')?></a> | <a href="#" onclick="return clear_mediaTypes()"><?= t('Verwijder selectie(s)')?></a></p>
             <span class="btn btn--arrow m-t-half-space btn--api" style="display:block" onclick="searchDatasets()">
               <?= t('Zoek datasets')?><div id="wait" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
 			  <svg class="rect">
@@ -108,11 +108,11 @@ SELECT DISTINCT ?dataset ?title ?publisherName ?validUntil WHERE {
     sparqlQuery += "  ?dataset dct:publisher ?publisher .\n";
     sparqlQuery += "  VALUES ?publisher {<"+publisher.split('|').join("> <")+">}\n";
   }
-  if (formats.size > 0) {
+  if (mediaTypes.size > 0) {
     sparqlQuery += "  ?dataset dcat:distribution ?distribution .\n";
-    sparqlQuery += "  ?distribution dct:format ?format .\n";
-    sparqlQuery += "  FILTER( ?format=\"" + Array.from(formats)
-      .join('" || ?format="') + "\")\n";
+    sparqlQuery += "  ?distribution dct:format|dcat:mediaType ?mediaType .\n";
+    sparqlQuery += "  FILTER( ?mediaType=\"" + Array.from(mediaTypes)
+      .join('" || ?mediaType="') + "\")\n";
   }
 
   sparqlQuery += "} ORDER BY ?validUntil ?title";
@@ -139,11 +139,11 @@ function set_publisher(value) {
 
 function set_choice(name, value, checked) {
   switch (name) {
-    case 'format[]':
+    case 'mediaTypes[]':
       if (checked) {
-        formats.add(value);
+        mediaTypes.add(value);
       } else {
-        formats.delete(value);
+        mediaTypes.delete(value);
       }
       break;
   }
@@ -163,7 +163,7 @@ function searchDatasets() {
   updateSparql();
   document.getElementById("searchresults").style.display = "none";
 
-  var url = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=' + encodeURIComponent(sparqlQuery + ' LIMIT 201');
+  var url = '<?= SPARQL_ENDPOINT ?>?query=' + encodeURIComponent(sparqlQuery + ' LIMIT 201');
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.setRequestHeader("Accept", "application/json");
@@ -289,13 +289,13 @@ function getSortedKeys(obj) {
 function set_lod_choices() {
   choices = document.getElementsByClassName('choice');
   for (i = 0; i < choices.length; i++) {
-    if (choices[i].name == "format[]") {
+    if (choices[i].name == "mediaTypes[]") {
       if (["application/ld+json", "application/n-quads", "application/n-triples", "application/rdf+xml", "application/sparql-query", "application/trig", "application/turtle", "application/vnd.hdt", "text/turtle", "text/n3", "application/x-sparqlstar-results+json", "application/sparql-results+xml", "application/sparql-results+json", "application/x-sparqlstar-results", "application/sparql-results", "application/ld+json+gzip", "application/n-quads+gzip", "application/n-triples+gzip", "application/rdf+xml+gzip", "text/n3+gzip", "text/turtle+gzip"].includes(choices[i].value)) {
         choices[i].checked = true;
-        formats.add(choices[i].value);
+        mediaTypes.add(choices[i].value);
       } else {
         choices[i].checked = false;
-        formats.delete(choices[i].value);
+        mediaTypes.delete(choices[i].value);
       }
     }
   }
@@ -306,13 +306,13 @@ function set_lod_choices() {
 function set_sparql_choices() {
   choices = document.getElementsByClassName('choice');
   for (i = 0; i < choices.length; i++) {
-    if (choices[i].name == "format[]") {
+    if (choices[i].name == "mediaTypes[]") {
       if (["application/sparql-query", "application/x-sparqlstar-results+json", "application/sparql-results+xml", "application/sparql-results+json", "application/x-sparqlstar-results", "application/sparql-results"].includes(choices[i].value)) {
         choices[i].checked = true;
-        formats.add(choices[i].value);
+        mediaTypes.add(choices[i].value);
       } else {
         choices[i].checked = false;
-        formats.delete(choices[i].value);
+        mediaTypes.delete(choices[i].value);
       }
     }
   }
@@ -320,12 +320,12 @@ function set_sparql_choices() {
   return false;
 }
 
-function clear_formats() {
+function clear_mediaTypes() {
   choices = document.getElementsByClassName('choice');
   for (i = 0; i < choices.length; i++) {
-    if (choices[i].name == "format[]") {
+    if (choices[i].name == "mediaTypes[]") {
       choices[i].checked = false;
-      formats.delete(choices[i].value);
+      mediaTypes.delete(choices[i].value);
     }
   }
   return false;
@@ -340,8 +340,8 @@ function toHash() {
   if (publisher) {
     searchData.p = publisher;
   }
-  if (formats.size > 0) {
-    searchData.f = Array.from(formats);
+  if (mediaTypes.size > 0) {
+    searchData.f = Array.from(mediaTypes);
   }
   searchData.t = document.getElementById("searchTerm").value.trim();
   history.pushState({}, "", "#" + btoa(JSON.stringify(searchData)));
@@ -361,7 +361,7 @@ function fromHash() {
       }
       document.getElementById("searchTerm").value = searchData.t;
       if (searchData.f) {
-        formats = new Set(searchData.f);
+        mediaTypes = new Set(searchData.f);
       }
       searchDatasets();
     } catch (e) {
@@ -397,7 +397,7 @@ if (document.getElementById('publisher_list')
       .selectedIndex].value;
   bSearch = 1;
 }
-var formats = new Set();
+var mediaTypes = new Set();
 
 if (bSearch) {
   searchDatasets();
@@ -448,16 +448,16 @@ document.getElementById("searchTerm")
     }
   });
 
-fetchData('get-list.php?list=formats').then(data => {
-    const listformatsDiv = document.getElementById("format_list");
+fetchData('get-list.php?list=mediaTypes').then(data => {
+    const listmediaTypesDiv = document.getElementById("format_list");
     for (const item of data) {
       const newFormat = document.createElement('label');
       const inputElement = document.createElement('input');
       inputElement.type = 'checkbox';
       inputElement.className = 'choice';
       inputElement.value = item;
-      inputElement.name = 'format[]';
-      inputElement.checked = formats.has(item);
+      inputElement.name = 'mediaTypes[]';
+      inputElement.checked = mediaTypes.has(item);
       inputElement.addEventListener('click', function(a) {
         set_choice(this.name, this.value, this.checked);
         updateSparql();
@@ -465,9 +465,9 @@ fetchData('get-list.php?list=formats').then(data => {
       newFormat.appendChild(inputElement);
       const labelText = document.createTextNode('  ' + item);
       newFormat.appendChild(labelText);
-      listformatsDiv.append(newFormat);
+      listmediaTypesDiv.append(newFormat);
     }
-    console.info("Loaded " + data.length + " formats in checklist");
+    console.info("Loaded " + data.length + " mediaTypes in checklist");
   });
 
 fetchData('get-list.php?list=publishers<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo '&lang=en'; } ?>').then(data => {

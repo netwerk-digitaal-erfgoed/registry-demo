@@ -7,8 +7,8 @@ if (isset($_GET["list"])) {
 		$list=getPublishers();
 	} elseif ($_GET["list"]=="creators") {
 		$list=getCreators();
-	} elseif ($_GET["list"]=="formats") {
-		$list=getFormats();
+	} elseif ($_GET["list"]=="mediaTypes") {
+		$list=getMediaTypes();
 	} elseif ($_GET["list"]=="newest") {
 		$list=getNewest();
 	} else {
