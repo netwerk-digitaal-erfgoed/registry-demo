@@ -96,8 +96,8 @@ function getDatasetDescription(uri) {
 }
 
 function getMetadata() {
-  var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation ?validUntil WHERE { BIND(<"+datasetUri+"> AS ?dataset) OPTIONAL { ?dataset schema:subjectOf ?postedURL . } OPTIONAL { ?dataset schema:validUntil ?validUntil . } OPTIONAL { ?dataset schema:datePosted ?postedDate . } OPTIONAL { ?dataset schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
-  
+  var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation ?validUntil WHERE { BIND(<"+datasetUri+"> AS ?dataset) OPTIONAL { ?dataset schema:subjectOf ?postedURL . } OPTIONAL { ?postedURL schema:validUntil ?validUntil . } OPTIONAL { ?postedURL schema:datePosted ?postedDate . } OPTIONAL { ?postedURL schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
+
   var url = sparqlRepo + encodeURIComponent(sparqlLastDateRead);
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
