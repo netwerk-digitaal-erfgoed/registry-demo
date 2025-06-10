@@ -226,7 +226,7 @@ body.home {
   margin:32px 0
 }
 
-#sectionMetadata, #tableMetadata tr, #sectionSummary {
+#tableMetadata tr, #sectionSummary {
   display:none
 }
 

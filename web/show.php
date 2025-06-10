@@ -29,8 +29,8 @@ include("includes/header.php");
         <?php } ?>
 	   </div>
    </section>
-	
-   <section class="text m-t-space m-b-space m-theme--blue" id="sectionMetadata">
+
+   <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h2 class="title--l"><?= t('Metadata') ?></h2>
         <table id="tableMetadata" class="props">
