@@ -106,7 +106,7 @@ function echo_script_jsonld_schema() {
 	global $datasetfields,$distributionfields;
 
 	echo 'var schema = {};';
-	echo 'schema["@context"] = "http://schema.org/";';
+	echo 'schema["@context"] = "https://schema.org/";';
 	echo 'schema["@type"] = "Dataset";';
 	
 	foreach($datasetfields as $datasetfield) {
