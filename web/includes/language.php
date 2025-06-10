@@ -177,6 +177,14 @@ $translations_nl_en = array(
     'overtreding'=>'violation',
     'waarschuwingen'=>'warnings',
     'waarschuwing'=>'warning',
+	'naar details'=>'to details',
+	'Waarschuwing'=>'Warning',
+	'Advies'=>'Info',
+	'Overtreding'=>'Violation',
+	'Er'=>'here',
+	'zijn'=>'are',
+	'en er'=>'and there',
+	'geconstateerd'=>'observed',
 
     # viaurl.php
     'Meld een datasetbeschrijving aan'=>'Submit a dataset description',

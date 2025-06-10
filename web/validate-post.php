@@ -59,7 +59,7 @@ include("includes/header.php") ?>
 <script>
 var arrMessages = [];
 var arrStats = [];
-var preferLanguage = "nl";
+var preferLanguage = "<?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { echo '<input type="hidden" name="lang" value="en">'; } else { echo "nl"; } ?>";
 var strValidationResults = "";
 
 
@@ -78,16 +78,16 @@ function showMessages(items) {
 
 		var resultSeverity = items[message][0]["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#");
 
-		strOverview += '<li><span title="' + resultSeverity[1] + '" class="val_count_' + resultSeverity[1] + '">' + items[message].length + '</span>' + message + ' <a href="#message' + nrMessage + '">naar details</a></li>';
+		strOverview += '<li><span title="' + resultSeverity[1] + '" class="val_count_' + resultSeverity[1] + '">' + items[message].length + '</span>' + message + ' <a href="#message' + nrMessage + '"><?= t('naar details') ?></a></li>';
 		strDetails += '<p id="message' + nrMessage + '"><br></p>';
 		strDetails += '<div class="imessage"><h3><span style="float:right" class="val_count_' + resultSeverity[1] + '">';
 		if (resultSeverity[1] == 'Warning') {
-			strDetails += "Waarschuwing";
+			strDetails += "<?= t('Waarschuwing') ?>";
 		} else {
 			if (resultSeverity[1] == 'Info') {
-			strDetails += "Advies";
+			strDetails += "<?= t('Advies') ?>";
 			} else {
-				strDetails += "Overtreding";
+				strDetails += "<?= t('Overtreding') ?>";
 			}
 		}
 		strDetails += '</span>' + message;
@@ -220,10 +220,10 @@ function displayMessages(response) {
 	var numberMessages = Object.keys(arrMessages).length;
 
 	if (numberMessages > 0) {
-		strValidationResults += "<h2>Er ";
+		strValidationResults += "<h2><?= t('Er') ?> ";
 		if (arrStats['Violation'] > 0) {
 			if (arrStats['Violation'] > 1) {
-				strValidationResults += "zijn " + arrStats['Violation'] + " <?= t('overtredingen') ?>";
+				strValidationResults += "<?= t('zijn') ?> " + arrStats['Violation'] + " <?= t('overtredingen') ?>";
 			} else {
 				strValidationResults += "is " + arrStats['Violation'] + " <?= t('overtreding') ?>";
 			}
@@ -231,15 +231,15 @@ function displayMessages(response) {
 
 		if (arrStats['Warning'] > 0) {
 			if (arrStats['Violation'] > 0) {
-				strValidationResults += " en er "
+				strValidationResults += " <?= t('en er') ?> "
 			}
 			if (arrStats['Warning'] > 1) {
-				strValidationResults += "zijn " + arrStats['Warning'] + " <?= t('waarschuwingen') ?>";
+				strValidationResults += "<?= t('zijn') ?> " + arrStats['Warning'] + " <?= t('waarschuwingen') ?>";
 			} else {
 				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing') ?>";
 			}
 		}
-		strValidationResults += " geconstateerd</h2>";
+		strValidationResults += " <?= t('geconstateerd') ?></h2>";
 		showMessages(arrMessages);
 	}
 
