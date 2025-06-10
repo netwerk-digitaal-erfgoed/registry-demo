@@ -112,7 +112,6 @@ $datasetfields[]=array(
 	"screen"=>2
 );
 
-/*
 $datasetfields[]=array(
 	"id"=>"dataset_contactPointPublisher_name",
 	"label"=>t("Verstrekker contact Naam"),
@@ -145,7 +144,6 @@ $datasetfields[]=array(
 	"script_schema"=>'if ($("#id_dataset_contactPointPublisher_phone").val()) { if (schema["publisher"]["contactPoint"]===undefined) { schema["publisher"]["contactPoint"]={}; } schema["publisher"]["contactPoint"]["@type"]="ContactPoint"; schema["publisher"]["contactPoint"]["telephone"]=$("#id_dataset_contactPointPublisher_phone").val(); }',
 	"screen"=>2
 );
-*/
 
 #$datasetfields[]=array(
 #	"id"=>"dataset_creator",
@@ -197,7 +195,6 @@ $datasetfields[]=array(
 	"screen"=>2
 );
 
-/*
 $datasetfields[]=array(
 	"id"=>"dataset_contactPointCreator_email",
 	"label"=>t("Data-eigenaar contact E&#8209;mail"),
@@ -231,7 +228,6 @@ $datasetfields[]=array(
 	"script_schema"=>'if ($("#id_dataset_mainEntityOfPage_0").val()) { var mainEntityOfPage_idx=0; schema["mainEntityOfPage"]=[]; while ($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()) { schema["mainEntityOfPage"].push($("#id_dataset_mainEntityOfPage_"+mainEntityOfPage_idx).val()); mainEntityOfPage_idx++; }}',
 	"screen"=>2
 );
-*/
 
 $datasetfields[]=array(
 	"id"=>"dataset_dateCreated",
@@ -276,10 +272,6 @@ $datasetfields[]=array(
 	"script_schema"=>'if ($("#id_dataset_version").val()) { schema["version"]=$("#id_dataset_version").val(); }',
 	"screen"=>2
 );
-
-
-
-
 
 $datasetfields[]=array(
 	"id"=>"dataset_keyword",
