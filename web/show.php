@@ -117,23 +117,29 @@ function getMetadata() {
 }
 
 function showMetadata(sparqlresult) {
-	document.getElementById('sectionMetadata').style.display="block";
-	for (var prop in sparqlresult.results.bindings[0]) { 
-
-    if (prop=='validUntil') {
-      banner=document.getElementById('archived');
-      banner.innerHTML='<?= t('<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar, de inhoud van de datasetbeschrijving is waarschijnlijk niet meer kloppend.') ?>';
-      banner.style.display='block';
-    }
+    for (const [prop, value] of Object.entries(sparqlresult.results.bindings[0])) {
+        if (prop === 'validUntil') {
+            banner = document.getElementById('archived');
+            banner.innerHTML = '<?= t('<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar, de inhoud van de datasetbeschrijving is waarschijnlijk niet meer kloppend.') ?>';
+            banner.style.display = 'block';
+        }
 
 		document.getElementById('row_'+prop).style.display="table-row";
-		let val=sparqlresult.results.bindings[0][prop].value.replaceAll('http://purl.org/dc/terms/','');
-		if (sparqlresult.results.bindings[0][prop].type=="uri") {
-			document.getElementById('val_'+prop).innerHTML='<a target="_blank" href="'+val+'">'+val+'</a>';
-		} else {
-			const niceDateTime = /^(\d{4})\-(\d{2})-(\d{2})T(\d{2}\:\d{2}).*/g
-			document.getElementById('val_'+prop).innerText=val.replace(niceDateTime, "$3-$2-$1 ($4)");;		
+		let val=value.value.replaceAll('http://purl.org/dc/terms/','');
+        if (value.type === 'uri') {
+			val = '<a target="_blank" href="'+val+'">'+val+'</a>';
+		} else if (value.datatype === 'http://www.w3.org/2001/XMLSchema#dateTime') {
+            const date = new Date(value.value);
+            val = date.toLocaleString(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'UTC'
+            });
 		}
+        document.getElementById('val_' + prop).innerHTML = val;
 	}
 }
 
