@@ -59,7 +59,7 @@ include("includes/header.php") ?>
 <script>
 var arrMessages = [];
 var arrStats = [];
-var preferLanguage = "<?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { echo '<input type="hidden" name="lang" value="en">'; } else { echo "nl"; } ?>";
+var preferLanguage = "<?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { echo 'en'; } else { echo "nl"; } ?>";
 var strValidationResults = "";
 
 
