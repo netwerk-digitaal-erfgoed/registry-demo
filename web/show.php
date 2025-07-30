@@ -30,6 +30,10 @@ include("includes/header.php");
 	   </div>
    </section>
 
+   <section class="text m-t-space m-b-space m-theme--blue" id="datasummary_section" style="display:none">
+      <div class="o-container o-container__small m-t-space" id="datasummary_div"></div>
+   </section>
+	  
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
         <h2 class="title--l"><?= t('Metadata') ?></h2>
@@ -95,6 +99,26 @@ function getDatasetDescription(uri) {
     xhr.send();
 }
 
+function getDataSummary() {
+    const url = "https://lab.coret.org/datasetregister/data-summary.php?dataset="+encodeURIComponent(datasetUri);
+    
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok: " + response.statusText);
+            }
+            return response.text(); // Get response as plain text (HTML)
+        })
+        .then(html => {
+			if (html != "") {
+				document.getElementById("datasummary_section").style.display="block";
+				document.getElementById("datasummary_div").innerHTML=html;
+			}
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+        });
+}
 function getMetadata() {
   var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation ?validUntil WHERE { <"+datasetUri+">  schema:subjectOf ?postedURL . OPTIONAL { ?postedURL schema:validUntil ?validUntil . } OPTIONAL { ?postedURL schema:datePosted ?postedDate . } OPTIONAL { ?postedURL schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
 
@@ -296,6 +320,7 @@ function prefix(str) {
 
 getDatasetDescription();
 getMetadata();
+getDataSummary();
 </script>
 <?php 
 } 
