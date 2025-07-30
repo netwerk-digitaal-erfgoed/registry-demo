@@ -8,7 +8,12 @@ define('SHOW_NEWEST',25);
 function getMediaTypes() {
 	$sparqlGetPublishers='PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX schema: <http://schema.org/>
 SELECT DISTINCT ?format WHERE {
+    ?dataset a dcat:Dataset .
+	?dataset schema:subjectOf ?registrationUrl .
+    FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
+    ?dataset dcat:distribution ?distribution .
     ?distribution dct:format|dcat:mediaType ?format
     FILTER(isLITERAL(?format))
 } GROUP BY ?format ORDER BY ?format';
@@ -29,17 +34,20 @@ function getCreators() {
 	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } else { $lang="nl"; }
 
 	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-	PREFIX dcat: <http://www.w3.org/ns/dcat#>
-	PREFIX dct: <http://purl.org/dc/terms/>
-	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-	SELECT DISTINCT ?creator ?creator_name WHERE {
-		?dataset a dcat:Dataset .
-		?dataset dct:creator ?creator .
-		?creator foaf:name ?creator_name
-		FILTER isIRI(?creator) 
-		FILTER(LANG(?creator_name) = "" || LANGMATCHES(LANG(?creator_name), "'.$lang.'")) 
-		BIND(LCASE(STRDT(STR(?creator_name), xsd:string)) AS ?creator_name2)
-	} ORDER BY ?creator_name2';
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?creator ?creator_name WHERE {
+	?dataset a dcat:Dataset .
+	?dataset schema:subjectOf ?registrationUrl .
+	FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
+	?dataset dct:creator ?creator .
+	?creator foaf:name ?creator_name
+	FILTER isIRI(?creator) 
+	FILTER(LANG(?creator_name) = "" || LANGMATCHES(LANG(?creator_name), "'.$lang.'")) 
+	BIND(LCASE(STRDT(STR(?creator_name), xsd:string)) AS ?creator_name2)
+} ORDER BY ?creator_name2';
 
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
 
@@ -67,17 +75,20 @@ function getPublishers() {
 	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } else { $lang="nl"; }
 
 	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-	PREFIX dcat: <http://www.w3.org/ns/dcat#>
-	PREFIX dct: <http://purl.org/dc/terms/>
-	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-	SELECT DISTINCT ?publisher ?publisher_name WHERE {
-		?dataset a dcat:Dataset .
-		?dataset dct:publisher ?publisher .
-		?publisher foaf:name ?publisher_name
-		FILTER isIRI(?publisher) 
-		FILTER(LANG(?publisher_name) = "" || LANGMATCHES(LANG(?publisher_name), "'.$lang.'")) 
-		BIND(LCASE(STRDT(STR(?publisher_name), xsd:string)) AS ?publisher_name2)
-	} ORDER BY ?publisher_name2';
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?publisher ?publisher_name WHERE {
+	?dataset a dcat:Dataset .
+	?dataset schema:subjectOf ?registrationUrl .
+	FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
+	?dataset dct:publisher ?publisher .
+	?publisher foaf:name ?publisher_name
+	FILTER isIRI(?publisher) 
+	FILTER(LANG(?publisher_name) = "" || LANGMATCHES(LANG(?publisher_name), "'.$lang.'")) 
+	BIND(LCASE(STRDT(STR(?publisher_name), xsd:string)) AS ?publisher_name2)
+} ORDER BY ?publisher_name2';
 
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
 
