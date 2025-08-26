@@ -34,7 +34,7 @@ include("includes/header.php");
       <div class="o-container o-container__small m-t-space">
         <h2 class="title--l"><?= t('Metadata') ?></h2>
         <table id="tableMetadata" class="props">
-		  <tr id="row_postedURL"><th><?= t('Geregistreerde URL') ?></th><td id="val_postedURL"></td></tr>
+		  <tr id="row_postedURL"><th><?= t('Geregistreerde URL') ?></th><td><a class="datacatalog" id="validate_postedURL"><?= t('Valideer') ?></a><span id="val_postedURL"></span></td></tr>
 		  <tr id="row_postedDate"><th><?= t('Registratiedatum') ?></th><td id="val_postedDate"></td></tr>
 		  <tr id="row_validUntil"><th><?= t('Was geldig tot') ?></th><td id="val_validUntil"></td></tr>
 		  <tr id="row_lastDateRead"><th><?= t('Laatste cache update') ?></th><td id="val_lastDateRead"></td></tr>
@@ -126,20 +126,25 @@ function showMetadata(sparqlresult) {
 
 		document.getElementById('row_'+prop).style.display="table-row";
 		let val=value.value.replaceAll('http://purl.org/dc/terms/','');
-        if (value.type === 'uri') {
-			val = '<a target="_blank" href="'+val+'">'+val+'</a>';
+    if (value.type === 'uri') {
+        uri = val;
+			  val = '<a target="_blank" href="'+uri+'">'+uri+'</a>';
 		} else if (value.datatype === 'http://www.w3.org/2001/XMLSchema#dateTime') {
-            const date = new Date(value.value);
-            val = date.toLocaleString(undefined, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZone: 'UTC'
-            });
+        const date = new Date(value.value);
+        val = date.toLocaleString(undefined, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: 'UTC'
+        });
 		}
-        document.getElementById('val_' + prop).innerHTML = val;
+    document.getElementById('val_' + prop).innerHTML = val;
+
+    if (prop==='postedURL' && uri) {
+      document.getElementById('validate_postedURL').href="validate.php?url=" + encodeURIComponent(uri);
+    }
 	}
 }
 
