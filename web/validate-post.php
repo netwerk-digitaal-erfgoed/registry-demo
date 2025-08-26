@@ -241,8 +241,8 @@ function displayMessages(response) {
 		}
 
 		if (arrStats['Info'] > 0) {
-			if (arrStats['Violation'] + arrStats['Warning'] > 0) {
-				strValidationResults += " <?= t('en er') ?> "
+			if (arrStats['Violation'] > 0 || arrStats['Warning'] > 0) {
+				strValidationResults += " <?= t('en er') ?> ";
 			}
 			if (arrStats['Info'] > 1) {
 				strValidationResults += "<?= t('zijn') ?> " + arrStats['Info'] + " <?= t('adviezen') ?>";
