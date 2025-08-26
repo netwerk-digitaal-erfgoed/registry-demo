@@ -238,12 +238,6 @@ function displayMessages(response) {
         console.log(err);
     }
 
-
-	//Messages.sort(function(a, b) {
-	//console.log(Messages[a].length-Messages[b].length);
-	//   return Messages[a].length-Messages[b].length;
-	//});
-
 	var numberMessages = Object.keys(arrMessages).length;
 
 	if (numberMessages > 0) {
@@ -266,6 +260,18 @@ function displayMessages(response) {
 				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing') ?>";
 			}
 		}
+
+		if (arrStats['Info'] > 0) {
+			if (arrStats['Violation'] + arrStats['Warning'] > 0) {
+				strValidationResults += " <?= t('en er') ?> "
+			}
+			if (arrStats['Info'] > 1) {
+				strValidationResults += "<?= t('zijn') ?> " + arrStats['Info'] + " <?= t('adviezen') ?>";
+			} else {
+				strValidationResults += "is " + arrStats['Info'] + " <?= t('advies') ?>";
+			}
+		}
+
 		strValidationResults += " <?= t('geconstateerd') ?></h2>";
 		showMessages(arrMessages);
 	}
