@@ -117,7 +117,7 @@ sparqlQuery += `  ?dataset dct:publisher ?publisher .
       .join('" || ?mediaType="') + "\")\n";
   }
 
-  sparqlQuery += "} ORDER BY ?validUntil ?title";
+  sparqlQuery += "} ORDER BY ?validUntil ?title LIMIT 201";
 
   document.getElementById('sparql-query')
     .innerHTML = sparqlQuery;
@@ -165,7 +165,7 @@ function searchDatasets() {
   updateSparql();
   document.getElementById("searchresults").style.display = "none";
 
-  var url = '<?= SPARQL_ENDPOINT ?>?query=' + encodeURIComponent(sparqlQuery + ' LIMIT 201');
+  var url = '<?= SPARQL_ENDPOINT ?>?query=' + encodeURIComponent(sparqlQuery);
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.setRequestHeader("Accept", "application/json");
