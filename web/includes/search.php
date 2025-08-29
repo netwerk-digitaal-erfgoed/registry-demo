@@ -34,20 +34,20 @@ function getCreators() {
 	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } else { $lang="nl"; }
 
 	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX schema: <http://schema.org/>
-SELECT DISTINCT ?creator ?creator_name WHERE {
-	?dataset a dcat:Dataset .
-	?dataset schema:subjectOf ?registrationUrl .
-	FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
-	?dataset dct:creator ?creator .
-	?creator foaf:name ?creator_name
-	FILTER isIRI(?creator) 
-	FILTER(LANG(?creator_name) = "" || LANGMATCHES(LANG(?creator_name), "'.$lang.'")) 
-	BIND(LCASE(STRDT(STR(?creator_name), xsd:string)) AS ?creator_name2)
-} ORDER BY ?creator_name2';
+	PREFIX dcat: <http://www.w3.org/ns/dcat#>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+	PREFIX schema: <http://schema.org/>
+	SELECT DISTINCT ?creator ?creator_name WHERE {
+		?dataset a dcat:Dataset .
+		?dataset schema:subjectOf ?registrationUrl .
+        FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
+		?dataset dct:creator ?creator .
+		?creator foaf:name ?creator_name
+		FILTER isIRI(?creator) 
+		FILTER(LANG(?creator_name) = "" || LANGMATCHES(LANG(?creator_name), "'.$lang.'")) 
+		BIND(LCASE(STRDT(STR(?creator_name), xsd:string)) AS ?creator_name2)
+	} ORDER BY ?creator_name2';
 
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
 
@@ -70,25 +70,26 @@ SELECT DISTINCT ?creator ?creator_name WHERE {
 	return array_flip($creators);
 }
 
+
 function getPublishers() {
 
 	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } else { $lang="nl"; }
 
 	$sparqlGetPublishers='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX schema: <http://schema.org/>
-SELECT DISTINCT ?publisher ?publisher_name WHERE {
-	?dataset a dcat:Dataset .
-	?dataset schema:subjectOf ?registrationUrl .
-	FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
-	?dataset dct:publisher ?publisher .
-	?publisher foaf:name ?publisher_name
-	FILTER isIRI(?publisher) 
-	FILTER(LANG(?publisher_name) = "" || LANGMATCHES(LANG(?publisher_name), "'.$lang.'")) 
-	BIND(LCASE(STRDT(STR(?publisher_name), xsd:string)) AS ?publisher_name2)
-} ORDER BY ?publisher_name2';
+	PREFIX dcat: <http://www.w3.org/ns/dcat#>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+	PREFIX schema: <http://schema.org/>
+	SELECT DISTINCT ?publisher ?publisher_name WHERE {
+		?dataset a dcat:Dataset .
+		?dataset schema:subjectOf ?registrationUrl .
+        FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
+		?dataset dct:publisher ?publisher .
+		?publisher foaf:name ?publisher_name
+		FILTER isIRI(?publisher) 
+		FILTER(LANG(?publisher_name) = "" || LANGMATCHES(LANG(?publisher_name), "'.$lang.'")) 
+		BIND(LCASE(STRDT(STR(?publisher_name), xsd:string)) AS ?publisher_name2)
+	} ORDER BY ?publisher_name2';
 
 	$sparqlResults=getSPARQLresults($sparqlGetPublishers,$lang);
 
@@ -177,4 +178,58 @@ function doSPARQLcall($sparqlQueryString) {
 	curl_close ($ch);
 
 	return $response;
+}
+
+
+
+function getOrganisationLocations($listtype) {
+
+	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { 
+		$lang="en"; $bilang="nl";
+	} else { 
+		$lang="nl"; $bilang="en"; 
+	}
+
+	$dct_type="dct:publisher";
+	switch ($listtype) {	
+		case 2: $dct_type="dct:creator"; break;
+		case 3: $dct_type="dct:creator|dct:publisher"; break;
+	}
+	
+	$sparql='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX sdo: <https://schema.org/>
+SELECT DISTINCT ?organisation_uri ?organisation_name ?geonames ?organisation_placename ?latitude ?longitude WHERE {
+    ?dataset a dcat:Dataset .
+    ?dataset schema:subjectOf ?registrationUrl .
+    #FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
+    ?dataset '.$dct_type.' ?organisation_uri .
+    ?organisation_uri foaf:name ?organisation_name
+    FILTER(LANG(?organisation_name) = "" || LANGMATCHES(LANG(?organisation_name), "nl")) 
+    # lookup location in organization_locations graph
+    ?organisation_uri sdo:location ?geonames .
+    SERVICE <https://demo.netwerkdigitaalerfgoed.nl/geonames/sparql> {
+        ?geonames <https://www.geonames.org/ontology#name> ?organisation_placename ;
+        <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> ?latitude ;
+        <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> ?longitude .
+    }
+}';
+
+	$sparqlResults=getSPARQLresults($sparql,$lang);
+
+	$orglocs=array();
+	if (isset($sparqlResults)) {
+		foreach ($sparqlResults["results"]["bindings"] as $item) {
+			$orglocs[]=array("organisation_uri"=>$item["organisation_uri"]["value"],
+							"organisation_name"=>$item["organisation_name"]["value"],
+							"organisation_placename"=>$item["organisation_placename"]["value"],
+							"geonames"=>$item["geonames"]["value"],
+							"latitude"=>$item["latitude"]["value"],
+							"longitude"=>$item["longitude"]["value"]);
+		}
+	}
+	return $orglocs;	
 }

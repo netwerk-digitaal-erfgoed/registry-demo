@@ -11,6 +11,12 @@ if (isset($_GET["list"])) {
 		$list=getMediaTypes();
 	} elseif ($_GET["list"]=="newest") {
 		$list=getNewest();
+	} elseif ($_GET["list"]=="orglocs_publishers") {
+		$list=getOrganisationLocations(1);		
+	} elseif ($_GET["list"]=="orglocs_creators") {
+		$list=getOrganisationLocations(2);		
+	} elseif ($_GET["list"]=="orglocs_publishers_creators") {
+		$list=getOrganisationLocations(3);
 	} else {
 		exit;
 	}
