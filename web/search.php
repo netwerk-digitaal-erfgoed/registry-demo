@@ -84,11 +84,13 @@ PREFIX schema: <http://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX luc: <http://www.ontotext.com/connectors/lucene#>
 PREFIX luc-index: <http://www.ontotext.com/connectors/lucene/instance#>
-SELECT DISTINCT ?dataset ?title ?publisherName ?validUntil WHERE {
-  ?search a luc-index:datasetregister ;
+SELECT DISTINCT ?dataset ?title ?publisherName ?validUntil WHERE {`;
+if (searchTerm.trim()!="") {
+sparqlQuery += `  ?search a luc-index:datasetregister ;
           luc:query "${searchTerm}" ;
-          luc:entities ?dataset .
-  ?dataset dct:publisher ?publisher .
+          luc:entities ?dataset .`;
+}
+sparqlQuery += `  ?dataset dct:publisher ?publisher .
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $lang ?>")) }
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $notlang ?>")) }
   OPTIONAL { ?dataset dct:title ?title }
