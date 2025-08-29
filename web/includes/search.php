@@ -204,7 +204,7 @@ PREFIX schema: <http://schema.org/>
 PREFIX sdo: <https://schema.org/>
 SELECT DISTINCT ?organisation_uri ?organisation_name ?geonames ?organisation_placename ?latitude ?longitude WHERE {
     ?dataset a dcat:Dataset .
-    ?dataset schema:subjectOf ?registrationUrl .
+    #?dataset schema:subjectOf ?registrationUrl .
     #FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
     ?dataset '.$dct_type.' ?organisation_uri .
     ?organisation_uri foaf:name ?organisation_name
