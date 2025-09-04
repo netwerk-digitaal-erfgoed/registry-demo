@@ -1,11 +1,11 @@
-<?php include("includes/search.php"); include("includes/header.php"); 
+<?php include("includes/search.php"); include("includes/header.php");
 
-$lang="nl"; 
+$lang="nl";
 $notlang="en";
-if(isset($_GET["lang"]) && $_GET["lang"]=="en") { 
-	$lang="en"; 
+if(isset($_GET["lang"]) && $_GET["lang"]=="en") {
+	$lang="en";
 	$notlang="nl";
-} 
+}
 
 if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
 	$o=$_GET["o"];
@@ -23,7 +23,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
     <div class="o-container no-container__small">
       <div class="row">
         <div class="column">
-          <label id="searchTermLabel"><?= t('Zoekwoord')?> (<?= t('doorzoekt titels, omschrijvingen en steekwoorden') ?>)</label> 
+          <label id="searchTermLabel"><?= t('Zoekwoord')?> (<?= t('doorzoekt titels, omschrijvingen en steekwoorden') ?>)</label>
           <input aria-labelledby="searchTermLabel" title="<?= t('Als er meerdere zoektermen worden opgegeven dan bevatten de zoekresultaten één of meer van deze termen. Wil je dat alle zoektermen moeten voorkomen koppel de zoektermen dan met AND.') ?>" class="form-control" value="" type="search" id="searchTerm" onkeyup="updateSparql()">
           <br><br>
           <label id="publisher_listLabel"><?= t('Uitgever')?></label>
@@ -82,14 +82,7 @@ function updateSparql() {
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX luc: <http://www.ontotext.com/connectors/lucene#>
-PREFIX luc-index: <http://www.ontotext.com/connectors/lucene/instance#>
 SELECT DISTINCT ?dataset ?title ?publisherName ?validUntil WHERE {`;
-if (searchTerm.trim()!="") {
-sparqlQuery += `  ?search a luc-index:datasetregister ;
-          luc:query "${searchTerm}" ;
-          luc:entities ?dataset .`;
-}
 sparqlQuery += `  ?dataset dct:publisher ?publisher .
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $lang ?>")) }
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $notlang ?>")) }
@@ -102,9 +95,14 @@ sparqlQuery += `  ?dataset dct:publisher ?publisher .
     } GROUP BY ?validUntil ?publisher
   }
 `;
+
+  if (searchTerm.trim()!="") {
+      sparqlQuery += `FILTER(CONTAINS(LCASE(?title), LCASE('${searchTerm}')) || CONTAINS(LCASE(?publisher_name), LCASE('${searchTerm}')))`;
+  }
+
   if (creator) {
     sparqlQuery += "  ?dataset dct:creator ?creator .\n";
-    sparqlQuery += "  VALUES ?creator {<"+creator.split('|').join("> <")+">}\n";    
+    sparqlQuery += "  VALUES ?creator {<"+creator.split('|').join("> <")+">}\n";
   }
   if (publisher) {
     sparqlQuery += "  ?dataset dct:publisher ?publisher .\n";
