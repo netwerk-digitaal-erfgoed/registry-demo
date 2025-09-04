@@ -4,7 +4,7 @@
       <h1><?= t('Veelgestelde vragen over het Datasetregister door ontwikkelaars die datasets willen vinden') ?></h1>
       <p><br></p>
       <h2><?= t('Op welke wijze kan ik het Datasetregister doorzoeken?')?></h2>
-      <p><?= t('Het Datasetregister biedt toegang tot datasetbeschrijvingen van erfgoedinstellingen. Via een frequente crawl worden de datasetbeschrijvingen in schema.org/Dataset of DCAT opgehaald, getransformeerd naar DCAT en opgeslagen in een openbare triplestore. Deze triplestore - op basis van GraphDB - heeft een web-gui die is te bereiken via  <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">https://triplestore.netwerkdigitaalerfgoed.nl/</a>.')?></p>
+      <p><?= t('Het Datasetregister biedt toegang tot datasetbeschrijvingen van erfgoedinstellingen. Via een frequente crawl worden de datasetbeschrijvingen in schema.org/Dataset of DCAT opgehaald, getransformeerd naar DCAT en opgeslagen in een openbare triplestore. Deze triplestore - op basis van GraphDB - heeft een web-gui die is te bereiken via  <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister</a>.')?></p>
       <h2><?= t('Is er een API op het Datasetregister?')?></h2>
       <p><?= t('Ja, twee zelfs. Eén is gericht op de erfgoedinstellingen (en hun IT-leveranciers) en betreft vooral het valideren en aanmelden van datasetbeschrijvingen.')?></p>
       <p><?= t('De tweede API is gericht op ontwikkelaars die datasets willen vinden: het <strong>SPARQL-endpoint</strong> <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/sparql">https://datasetregister.netwerkdigitaalerfgoed.nl/sparql</a>.')?></p>

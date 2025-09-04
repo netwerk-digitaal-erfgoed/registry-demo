@@ -24,7 +24,7 @@
       <p><?= t('Via de REST API kan een URL worden aangemeld van een pagina waar een datasetbeschrijving wordt gepubliceerd, een directe URL van een RDF bestand met datasetbeschrijving of een URL van een datacatalog.') ?></p>
       <p><?= t('Via deze website kun je via de browser een URL van een datasetbechrijving of datacatalogus aanmelden, hierbij wordt er gebruik gemaakt van de REST API.') ?></p>
       <h2 id="allowed_domain_names"><?= t('Kan iedereen een datasetbeschrijving toevoegen aan het Datasetregister?') ?></h2>
-      <p><?= t('Het aanmelden van datasets via de REST API werkt op basis van een <a href="https://triplestore.netwerkdigitaalerfgoed.nl/resource?uri=https:%2F%2Fdata.netwerkdigitaalerfgoed.nl%2Fregistry%2Fallowed_domain_names&amp;role=context" target="_blank">lijst van toegestane domeinen</a>. Datasetbechrijvingen (en datacatalogi) die afkomstig zijn van domeinen op deze lijst worden toegevoegd.') ?></p>
+      <p><?= t('Het aanmelden van datasets via de REST API werkt op basis van een <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister/CYjX1Y?exec=true" target="_blank">lijst van toegestane domeinen</a>. Datasetbechrijvingen (en datacatalogi) die afkomstig zijn van domeinen op deze lijst worden toegevoegd.') ?></p>
       <p><?= t('Ontbreekt er een domeinnaam van een erfgoedinstelling of leverancier, neem dan contact op.') ?></p>
       <h2><?= t('Hoe kan een datasetbeschrijving gecontroleerd worden?') ?></h2>
       <p><?= t('Via de REST API kan de datasetbeschrijving van een datasetbeschrijving worden gecontroleerd op de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a>.') ?></p>

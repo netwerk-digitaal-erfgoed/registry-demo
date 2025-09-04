@@ -124,7 +124,7 @@ $translations_nl_en = array(
     'Via de REST API kan een URL worden aangemeld van een pagina waar een datasetbeschrijving wordt gepubliceerd, een directe URL van een RDF bestand met datasetbeschrijving of een URL van een datacatalog.'=>'Via the REST API, a URL can be submitted of a page where a dataset description is published, a direct URL of an RDF file with dataset description or a URL of a data catalog.',
     'Via deze website kun je via de browser een URL van een datasetbechrijving of datacatalogus aanmelden, hierbij wordt er gebruik gemaakt van de REST API.'=>'Via this website you can submit a URL of a dataset description or data catalog via the browser, using the REST API.',
     'Kan iedereen een datasetbeschrijving toevoegen aan het Datasetregister?'=>'Can anyone add a dataset description to the Datasets Register?',
-    'Het aanmelden van datasets via de REST API werkt op basis van een <a href="https://triplestore.netwerkdigitaalerfgoed.nl/resource?uri=https:%2F%2Fdata.netwerkdigitaalerfgoed.nl%2Fregistry%2Fallowed_domain_names&amp;role=context" target="_blank">lijst van toegestane domeinen</a>. Datasetbechrijvingen (en datacatalogi) die afkomstig zijn van domeinen op deze lijst worden toegevoegd.'=>'',
+    'Het aanmelden van datasets via de REST API werkt op basis van een <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister/CYjX1Y?exec=true" target="_blank">lijst van toegestane domeinen</a>. Datasetbechrijvingen (en datacatalogi) die afkomstig zijn van domeinen op deze lijst worden toegevoegd.'=>'',
     'Ontbreekt er een domeinnaam van een erfgoedinstelling of leverancier, neem dan contact op.'=>'If a domain name of a heritage institution or supplier is missing, please contact us.',
     'Hoe kan een datasetbeschrijving gecontroleerd worden?'=>'How can a dataset description be checked?',
     'Via de REST API kan de datasetbeschrijving van een datasetbeschrijving worden gecontroleerd op de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a>.'=>'Via the REST API, the dataset description of a dataset description can be checked against the <a href="https://netwerk-digital-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a>.',
@@ -198,7 +198,7 @@ $translations_nl_en = array(
 
     # search.php
     'Doorzoek alle datasetbeschrijvingen'=>'Search all dataset descriptions',
-    'Door erfgoedinstellingen aangemelde datasetbeschrijvingen worden opgeslagen in een openbare <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> op basis van het DCAT <a href="datamodel.php">datamodel</a>. Via de <a href="datastory.php">datastory</a> leer je hoe te zoeken middels SPARQL. Deze pagina toont een zoekinterface op het datasetregister. Ook is dit een hulpmiddel voor het maken van SPARQL queries om de datasetbeschrijvingen te doorzoeken.'=>'Dataset descriptions submitted by heritage institutions are stored in a public <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> based on the DCAT <a href="datamodel.php?lang=en">data model</a>. Via the <a href="datastory.php?lang=en">datastory</a> you will learn how to search using SPARQL. This page shows a search interface on the Dataset Register. It is also a tool for creating SPARQL queries to search the dataset descriptions.',
+    'Door erfgoedinstellingen aangemelde datasetbeschrijvingen worden opgeslagen in een openbare <a target="triplestore" href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">triplestore</a> op basis van het DCAT <a href="datamodel.php">datamodel</a>. Via de <a href="datastory.php">datastory</a> leer je hoe te zoeken middels SPARQL. Deze pagina toont een zoekinterface op het datasetregister. Ook is dit een hulpmiddel voor het maken van SPARQL queries om de datasetbeschrijvingen te doorzoeken.'=>'Dataset descriptions submitted by heritage institutions are stored in a public <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> based on the DCAT <a href="datamodel.php?lang=en">data model</a>. Via the <a href="datastory.php?lang=en">datastory</a> you will learn how to search using SPARQL. This page shows a search interface on the Dataset Register. It is also a tool for creating SPARQL queries to search the dataset descriptions.',
     'Zoekwoord'=>'Keyword',
     'Doorzoek'=>'Search',
     'Naam'=>'Name',
@@ -223,7 +223,7 @@ $translations_nl_en = array(
 	'Filter op organisatie'=>'Filter by organisation',
     'Let op: groot aantal resultaten, de eerste 200 worden getoond, gebruik filters of SPARQL!'=>'Beware: large number of results, first 200 are shown, use filters or SPARQL!',
     'gearchiveerd' => 'archived',
-    
+
     # datamodel.php
     'Uitleg van de dataconcepten'=>'Explanation of the data concepts',
     'Datasetbeschrijving'=>'Dataset description',
@@ -345,7 +345,7 @@ $translations_nl_en = array(
     # faq-developers.php
     'Veelgestelde vragen over het Datasetregister door ontwikkelaars die datasets willen vinden'=>'Frequently asked questions about the Dataset Register by developers who want to find datasets',
     'Op welke wijze kan ik het Datasetregister doorzoeken?'=>'How can I search the Dataset Register?',
-    'Het Datasetregister biedt toegang tot datasetbeschrijvingen van erfgoedinstellingen. Via een frequente crawl worden de datasetbeschrijvingen in schema.org/Dataset of DCAT opgehaald, getransformeerd naar DCAT en opgeslagen in een openbare triplestore. Deze triplestore - op basis van GraphDB - heeft een web-gui die is te bereiken via  <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">https://triplestore.netwerkdigitaalerfgoed.nl/</a>.'=>'The Dataset Register provides access to dataset descriptions of heritage institutions. A frequent crawl retrieves the dataset descriptions in schema.org/Dataset or DCAT, transforms them into DCAT, and stores them in a public triplestore. This triplestore - based on GraphDB - has a web gui that can be reached via <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">https://triplestore.netwerkdigitaalerfgoed.nl/</a>.',
+    'Het Datasetregister biedt toegang tot datasetbeschrijvingen van erfgoedinstellingen. Via een frequente crawl worden de datasetbeschrijvingen in schema.org/Dataset of DCAT opgehaald, getransformeerd naar DCAT en opgeslagen in een openbare triplestore. Deze triplestore - op basis van GraphDB - heeft een web-gui die is te bereiken via  <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister</a>.'=>'The Dataset Register provides access to dataset descriptions of heritage institutions. A frequent crawl retrieves the dataset descriptions in schema.org/Dataset or DCAT, transforms them into DCAT, and stores them in a public triplestore. This triplestore - based on GraphDB - has a web gui that can be reached via <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl">https://qlever-ui.demo.netwerkdigitaalerfgoed.nl</a>.',
     'Is er een API op het Datasetregister?'=>'Is there an API on the Dataset Register?',
     'Ja, twee zelfs. Eén is gericht op de erfgoedinstellingen (en hun IT-leveranciers) en betreft vooral het valideren en aanmelden van datasetbeschrijvingen.'=>'Yes, even two. One is aimed at the heritage institutions (and their IT suppliers) and mainly concerns the validation and registration of dataset descriptions.',
     'De tweede API is gericht op ontwikkelaars die datasets willen vinden: het <strong>SPARQL-endpoint</strong> <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/sparql">https://datasetregister.netwerkdigitaalerfgoed.nl/sparql</a>.'=>'The second API is aimed at developers who want to find datasets: the <strong>SPARQL endpoint</strong> <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/sparql">https://datasetregister.netwerkdigitaalerfgoed.nl/sparql</a>.',
@@ -366,7 +366,7 @@ $translations_nl_en = array(
 	'Directe datasetbeschrijving validatie'=>'Direct dataset description validation',
 	'Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.'=>'If the dataset description is not yet online, paste the RDF of the dataset description into the <a href="validate-post.php?lang=en">direct validation</a> page.',
 	'Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.'=>'If the dataset description is already online, paste the URL of the dataset description into the <a href="validate.php">validation</a> page.',
-	
+
     # show.php
 	'De opgegeven URI is ongeldig'=>'The provided URI is invalid',
 	'Metadata'=>'Metadata',
@@ -386,9 +386,9 @@ $translations_nl_en = array(
 	'De volgende'=>'The following',
 	'datasets maken onderdeel uit '=>'datasets are part of',
 
-	# datastory.php	
+	# datastory.php
 	'Inzicht in erfgoeddatasets'=>'Insight into heritage datasets',
-	'De bij het NDE Datasetregister aangemelde datasetbeschrijvingen worden geharvest en samengebracht in een openbare triplestore. Het doel van het datasetregister is om de vindbaarheid van datasets (API\'s en bestanden/dumps) te vergroten. Ben je op zoek naar een dataset, ga dan naar de <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore van het Datasetregister</a> en doorzoek de datasetbeschrijvingen via SPARQL. Lees de <a href="datamodel.php">uitleg van de dataconcepten</a> en de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements voor Datasets</a> voor gebruikte RDF klassen en eigenschappen.'=>'The dataset descriptions registered with the NDE Dataset Register are harvested and brought together in a public triple store. The purpose of the dataset register is to increase the findability of datasets (APIs and files/dumps). If you are looking for a dataset, go to the <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore of the Dataset Register</a> and search the dataset descriptions via SPARQL. Read the <a href="datamodel.php">explanation of the data concepts</a> and the <a href="https://netwerk-digital-erfgoed.github.io/requirements-datasets/">Requirements for Datasets </a> for RDF classes and properties used.',
+	'De bij het NDE Datasetregister aangemelde datasetbeschrijvingen worden geharvest en samengebracht in een openbare triplestore. Het doel van het datasetregister is om de vindbaarheid van datasets (API\'s en bestanden/dumps) te vergroten. Ben je op zoek naar een dataset, ga dan naar de <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">triplestore van het Datasetregister</a> en doorzoek de datasetbeschrijvingen via SPARQL. Lees de <a href="datamodel.php">uitleg van de dataconcepten</a> en de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements voor Datasets</a> voor gebruikte RDF klassen en eigenschappen.'=>'The dataset descriptions registered with the NDE Dataset Register are harvested and brought together in a public triple store. The purpose of the dataset register is to increase the findability of datasets (APIs and files/dumps). If you are looking for a dataset, go to the <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore of the Dataset Register</a> and search the dataset descriptions via SPARQL. Read the <a href="datamodel.php">explanation of the data concepts</a> and the <a href="https://netwerk-digital-erfgoed.github.io/requirements-datasets/">Requirements for Datasets </a> for RDF classes and properties used.',
 	'SPARQL\'n maar!'=>'Let\'s SPARQL!',
 	'Om je op weg te helpen geven we je hier enkele voorbeeld SPARQL-queries. Klik op de rode "pijl-omhoog" om de betreffende SPARQL-query te tonen. Je kunt deze ook aanpassen en opnieuw uitvoeren! Klik op een kolomkop om op de betreffende kolom te sorteren.'=>'To help you get started, here are some example SPARQL queries. Click on the red "up arrow" to display the appropriate SPARQL query. You can also customize and redo the query! Click on a column heading to sort by that column.',
 	'Welke Linked Dataset zijn als datadumps beschikbaar?'=>'Which Linked Dataset are available as data dumps?',
@@ -422,7 +422,7 @@ $translations_nl_en = array(
 	'De meest recent toegevoegde datasets aan het NDE Datasetregister'=>'The most recently added datasets to the NDE Dataset Register',
 	'Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.'=>'This list is also available as <a href="dataset-newest-rss.php?lang=en">RSS feed</a>.',
 	'Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.'=>'An overview of <a href="dataset-newest.php?lang=en">recently submitted dataset descriptions</a> is also available.'
-	
+
 );
 
 

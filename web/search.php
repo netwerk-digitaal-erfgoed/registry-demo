@@ -16,7 +16,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
   <section class="text m-t-space m-b-space m-theme--blue">
     <div class="o-container o-container__small m-t-space">
       <h1 class="title--l"><?= t('Doorzoek alle datasetbeschrijvingen') ?></h1>
-      <p><?= t('Door erfgoedinstellingen aangemelde datasetbeschrijvingen worden opgeslagen in een openbare <a target="triplestore" href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a> op basis van het DCAT <a href="datamodel.php">datamodel</a>. Via de <a href="datastory.php">datastory</a> leer je hoe te zoeken middels SPARQL. Deze pagina toont een zoekinterface op het datasetregister. Ook is dit een hulpmiddel voor het maken van SPARQL queries om de datasetbeschrijvingen te doorzoeken.')?> <?= t('Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.') ?></p>
+      <p><?= t('Door erfgoedinstellingen aangemelde datasetbeschrijvingen worden opgeslagen in een openbare <a target="triplestore" href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">triplestore</a> op basis van het DCAT <a href="datamodel.php">datamodel</a>. Via de <a href="datastory.php">datastory</a> leer je hoe te zoeken middels SPARQL. Deze pagina toont een zoekinterface op het datasetregister. Ook is dit een hulpmiddel voor het maken van SPARQL queries om de datasetbeschrijvingen te doorzoeken.')?> <?= t('Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.') ?></p>
     </div>
   </section>
   <section id="" class="m-t-quarter-space m-theme-bg m-theme--teal search-div">
@@ -68,7 +68,7 @@ if (isset($_GET["o"]) && filter_var($_GET["o"], FILTER_VALIDATE_URL)) {
    </section>
 </main>
 <script>
-const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
+const sparqlUrl = 'https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister?exec=true&query=';
 var sparqlQuery;
 var organisationFacet;
 var bSearch = 0;

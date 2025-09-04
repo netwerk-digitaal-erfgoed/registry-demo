@@ -1,10 +1,10 @@
-<?php 
+<?php
 
-include("includes/search.php"); 
-include("includes/header.php"); 
+include("includes/search.php");
+include("includes/header.php");
 
 $lang="nl";
-if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } 
+if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; }
 # TODO make queries bilingual
 ?>
 <link href="/assets/stories.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@ th:first-child{ width:20px!important }
 		<h1 class="title--l"><?= t('Datasetregister datastory') ?></h1>
 
 		<h2><?= t('Inzicht in erfgoeddatasets') ?></h2>
-		<p><?= t('De bij het NDE Datasetregister aangemelde datasetbeschrijvingen worden geharvest en samengebracht in een openbare triplestore. Het doel van het datasetregister is om de vindbaarheid van datasets (API\'s en bestanden/dumps) te vergroten. Ben je op zoek naar een dataset, ga dan naar de <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore van het Datasetregister</a> en doorzoek de datasetbeschrijvingen via SPARQL. Lees de <a href="datamodel.php">uitleg van de dataconcepten</a> en de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements voor Datasets</a> voor gebruikte RDF klassen en eigenschappen.') ?></p>
+		<p><?= t('De bij het NDE Datasetregister aangemelde datasetbeschrijvingen worden geharvest en samengebracht in een openbare triplestore. Het doel van het datasetregister is om de vindbaarheid van datasets (API\'s en bestanden/dumps) te vergroten. Ben je op zoek naar een dataset, ga dan naar de <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">triplestore van het Datasetregister</a> en doorzoek de datasetbeschrijvingen via SPARQL. Lees de <a href="datamodel.php">uitleg van de dataconcepten</a> en de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements voor Datasets</a> voor gebruikte RDF klassen en eigenschappen.') ?></p>
 
 		<h2><?= t('SPARQL\'n maar!') ?></h2>
 		<p><?= t('Om je op weg te helpen geven we je hier enkele voorbeeld SPARQL-queries. Klik op de rode "pijl-omhoog" om de betreffende SPARQL-query te tonen. Je kunt deze ook aanpassen en opnieuw uitvoeren! Klik op een kolomkop om op de betreffende kolom te sorteren.') ?></p>

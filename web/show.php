@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 $lang="nl";
-if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; } 
+if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $lang="en"; }
 
 $dataset_uri='';
 if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
@@ -11,8 +11,8 @@ if (isset($_GET["uri"]) && filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
   exit;
 }
 
-include("includes/search.php"); 
-include("includes/header.php"); 
+include("includes/search.php");
+include("includes/header.php");
 
 ?>
 
@@ -39,16 +39,16 @@ include("includes/header.php");
 		  <tr id="row_validUntil"><th><?= t('Was geldig tot') ?></th><td id="val_validUntil"></td></tr>
 		  <tr id="row_lastDateRead"><th><?= t('Laatste cache update') ?></th><td id="val_lastDateRead"></td></tr>
 		  <tr id="row_ratingValue"><th><?= t('Beoordeling (25-100)') ?></th><td id="val_ratingValue"></td></tr>
-		  <tr id="row_ratingExplanation"><th><?= t('Missende eigenschappen') ?></th><td id="val_ratingExplanation"></td></tr>		
+		  <tr id="row_ratingExplanation"><th><?= t('Missende eigenschappen') ?></th><td id="val_ratingExplanation"></td></tr>
 		</table>
 	   </div>
    </section>
-   
+
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
 	     <p><a style="float:right" onclick="return searchTriplestore()" href="#"><?= t('Neem onderstaande SPARQL mee naar de triplestore')?></a></p>
 		 <h2 id="sparql">SPARQL</h2>
-         <xmp id="sparql-query">SELECT * FROM <<?= htmlentities($dataset_uri,ENT_QUOTES) ?>> WHERE { 
+         <xmp id="sparql-query">SELECT * FROM <<?= htmlentities($dataset_uri,ENT_QUOTES) ?>> WHERE {
   ?subject ?predicate ?object
 }</xmp>
          <p id="copy-status" style="float:right"><?= t('Klik de SPARQL om deze te kopieren.')?></p>
@@ -58,7 +58,7 @@ include("includes/header.php");
          </div>
       </div>
    </section>
-   
+
      <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
 		 <?php if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) { ?>
@@ -71,7 +71,7 @@ include("includes/header.php");
 </main>
 <?php if (!empty($dataset_uri)) { ?>
 <script>
-const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
+const sparqlUrl = 'https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister?exec=true&query=';
 const sparqlRepo = 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=';
 const datasetUri = '<?= htmlspecialchars($dataset_uri,ENT_QUOTES) ?>';
 const sparqlQuery = "SELECT * FROM <" + datasetUri + "> WHERE { ?subject ?predicate ?object . }";
@@ -206,14 +206,14 @@ function showDataset(sparqlresult) {
           strTable += "<a target=\"_blank\" href=\"" + object_value + "\">" + object_value + "</a>";
           } else {
           strTable += object_value;
-          }	  
+          }
         }
         strTable += "</td></tr>";
       }
       if (property_value == "http://www.w3.org/ns/dcat#distribution" && maxShownDistribution==0) {
           strTable += '<tr><th style="background-color:white;text-align:center;border-top:1px dashed #be2c00;border-bottom:1px dashed #be2c00;" colspan="3"><?= t('Let op: er worden hier maximaal 20 distributies weergegeven,<br>gebruik SPARQL om alle distributies te bekijken!') ?></th>';
           maxShownDistribution--;
-      }    
+      }
       if ((property_value == "http://purl.org/dc/terms/creator") ||
         (property_value == "http://purl.org/dc/terms/publisher")) {
         for (var prop in sparqlresult.results.bindings) {
@@ -302,7 +302,7 @@ function prefix(str) {
 getDatasetDescription();
 getMetadata();
 </script>
-<?php 
-} 
+<?php
+}
 
 include("includes/footer.php") ?>
