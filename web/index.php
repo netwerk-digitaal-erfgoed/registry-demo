@@ -79,7 +79,7 @@ include("includes/header.php") ?>
 document.addEventListener('DOMContentLoaded', () => get_count());
 
 function get_count() {
-	var url = "https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=SELECT%20(COUNT(%20DISTINCT%20%3Fdataset)%20as%20%3FpCount)%20WHERE%20%7B%20%3Fdataset%20a%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23Dataset%3E%20%7D";
+	var url = "https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=SELECT%20(COUNT(%20DISTINCT%20%3Fdataset)%20as%20%3FpCount)%20WHERE%20%7B%20%3Fdataset%20a%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23Dataset%3E%20%7D";
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);

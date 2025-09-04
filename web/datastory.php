@@ -17,7 +17,7 @@ table {font-size:1.5em!important}
 th:first-child{ width:20px!important }
 </style>
 
-<main class="story" data-endpoint="https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry">
+<main class="story" data-endpoint="https://datasetregister.netwerkdigitaalerfgoed.nl/sparql">
 	<div class="o-container o-container__small m-t-space">
 		<h1 class="title--l"><?= t('Datasetregister datastory') ?></h1>
 

@@ -1,6 +1,6 @@
 <?php
 
-define('SPARQL_ENDPOINT', 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry');
+define('SPARQL_ENDPOINT', 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql');
 define('SPARQL_CACHE_DURATION_HOURS',1);
 define('CACHE_DIRECTORY','/tmp/');
 define('SHOW_NEWEST',25);

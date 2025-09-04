@@ -18,7 +18,7 @@
       ]
     },
     {
-      "anchor": "https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry",
+      "anchor": "https://datasetregister.netwerkdigitaalerfgoed.nl/sparql",
       "service-doc": [
         {
           "href": "https://www.w3.org/TR/sparql11-query/",

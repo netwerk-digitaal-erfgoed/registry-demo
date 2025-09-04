@@ -74,7 +74,7 @@ function searchDatasets() {
 	
   document.getElementById("searchresults").style.display = "none";
 
-  var url = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=' + encodeURIComponent(sparqlQuery);
+  var url = 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=' + encodeURIComponent(sparqlQuery);
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.setRequestHeader("Accept", "application/json");

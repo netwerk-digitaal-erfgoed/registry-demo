@@ -72,7 +72,7 @@ include("includes/header.php");
 <?php if (!empty($dataset_uri)) { ?>
 <script>
 const sparqlUrl = 'https://triplestore.netwerkdigitaalerfgoed.nl/sparql?query=';
-const sparqlRepo = 'https://triplestore.netwerkdigitaalerfgoed.nl/repositories/registry?query=';
+const sparqlRepo = 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=';
 const datasetUri = '<?= htmlspecialchars($dataset_uri,ENT_QUOTES) ?>';
 const sparqlQuery = "SELECT * FROM <" + datasetUri + "> WHERE { ?subject ?predicate ?object . }";
 
