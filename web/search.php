@@ -97,7 +97,7 @@ sparqlQuery += `  ?dataset dct:publisher ?publisher .
 `;
 
   if (searchTerm.trim()!="") {
-      sparqlQuery += `FILTER(CONTAINS(LCASE(?title), LCASE('${searchTerm}')) || CONTAINS(LCASE(?publisher_name), LCASE('${searchTerm}')))`;
+      sparqlQuery += `FILTER(CONTAINS(LCASE(?title), LCASE('${searchTerm}')) || CONTAINS(LCASE(?publisher_name), LCASE('${searchTerm}')) || CONTAINS(LCASE(STR(?dataset)), LCASE('${searchTerm}')))`;
   }
 
   if (creator) {
