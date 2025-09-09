@@ -83,7 +83,8 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT DISTINCT ?dataset ?title ?publisherName ?validUntil WHERE {`;
-sparqlQuery += `  ?dataset dct:publisher ?publisher .
+sparqlQuery += `
+  ?dataset dct:publisher ?publisher .
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $lang ?>")) }
   OPTIONAL { ?dataset dct:title ?title FILTER(langMatches(lang(?title), "<?= $notlang ?>")) }
   OPTIONAL { ?dataset dct:title ?title }
@@ -92,7 +93,7 @@ sparqlQuery += `  ?dataset dct:publisher ?publisher .
     SELECT DISTINCT ?publisher (SAMPLE(?name) AS ?publisherName) WHERE {
       ?publisher foaf:name ?name .
       FILTER (langMatches(lang(?name), "<?= $lang ?>") || langMatches(lang(?name), "<?= $notlang ?>") || lang(?name) = "")
-    } GROUP BY ?validUntil ?publisher
+    } GROUP BY ?publisher
   }
 `;
 
