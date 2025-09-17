@@ -85,7 +85,7 @@ function showMessages(items) {
 			strDetails += "<?= t('Waarschuwing') ?>";
 		} else {
 			if (resultSeverity[1] == 'Info') {
-			strDetails += "<?= t('Advies') ?>";
+			strDetails += "<?= t('Aanbeveling') ?>";
 			} else {
 				strDetails += "<?= t('Overtreding') ?>";
 			}
@@ -234,9 +234,9 @@ function displayMessages(response) {
 				strValidationResults += " <?= t('en er') ?> "
 			}
 			if (arrStats['Warning'] > 1) {
-				strValidationResults += "<?= t('zijn') ?> " + arrStats['Warning'] + " <?= t('waarschuwingen') ?>";
+				strValidationResults += "<?= t('zijn') ?> " + arrStats['Warning'] + " <?= t('waarschuwingen (in de toekomst worden deze aangemerkt als overtredingen)'=>'warnings (in the future these will be considered violations)') ?>";
 			} else {
-				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing') ?>";
+				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing (in de toekomst wordt deze aangemerkt als overtreding)'=>'warning (in the future this will be considered a violation)') ?>";
 			}
 		}
 
@@ -245,9 +245,9 @@ function displayMessages(response) {
 				strValidationResults += " <?= t('en er') ?> ";
 			}
 			if (arrStats['Info'] > 1) {
-				strValidationResults += "<?= t('zijn') ?> " + arrStats['Info'] + " <?= t('adviezen') ?>";
+				strValidationResults += "<?= t('zijn') ?> " + arrStats['Info'] + " <?= t('aanbevelingen') ?>";
 			} else {
-				strValidationResults += "is " + arrStats['Info'] + " <?= t('advies') ?>";
+				strValidationResults += "is " + arrStats['Info'] + " <?= t('aanbeveling') ?>";
 			}
 		}
 
