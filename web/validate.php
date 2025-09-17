@@ -5,6 +5,16 @@ if (isset($_GET["url"]) && filter_var($_GET["url"], FILTER_VALIDATE_URL)) {
 	$url=$_GET["url"];
 }
 include("includes/header.php") ?>
+<style>
+.naardetails {
+	border: 1px solid #aaa;
+    padding: 4px;
+    color: #444!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    margin-left: 1em;
+}
+</style>
 <main>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
@@ -37,13 +47,19 @@ include("includes/header.php") ?>
    
    <section class="m-t-quarter-space">
       <div class="o-container">
-         <div id="api_result"></div>
+         <div id="api_result"></div>		 
+		 <div id="cannot_add_datasetdescription" style="display:none">
+		  <p style="background-color:#e44d26;color:white;padding:10px;margin:0 1em 2em 1em">
+		    <?= t('Deze datasetbeschrijving (of datacatalogus) kan nog niet worden aangemeld op data de domeinnaam <span id="hostname_datasetdescription"></span> nog niet bekend is bij het Dataset Register. Neem contact op met het verzoek om deze domeinnaam op de "allowed domain list" te laten plaatsen.') ?>
+		  </p>
+	    </div>
       </div>
    </section>
    
    <section class="m-flex c-module c-module--doorway p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small">
 	  
+		<div id="can_add_datasetdescription" style="display:none">
 		  <a id="btnAdd" class="btn btn--arrow m-t-half-space btn--api" style="display:none" href="viaurl.php">
 		  <?= t('Datasetbeschrijving aanmelden') ?>
             <svg class="rect">
@@ -63,6 +79,9 @@ include("includes/header.php") ?>
                <use xlink:href="#icon-arrow-right"></use>
             </svg>
          </span>
+		</div>
+
+		
 		 <xmp id="api_source"></xmp>
 <?php } ?>
         </p></form>
@@ -85,54 +104,66 @@ function toggle_visibility() {
 }
 
 function showMessages(items) {
+    var strOverview = '';
+    var strDetails = '';
+    var nrMessage = 1;
 
-	var strOverview = '';
-	var strDetails = '';
-	var nrMessage = 1;
+    // Severity order mapping
+    const severityOrder = { "Violation": 0, "Failure": 0, "Warning": 1, "Info": 2 };
 
-	for (var message in items) {
+    // Collect messages into an array with severity attached
+    let messages = Object.keys(items).map(message => {
+        const severity = items[message][0]["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#")[1];
+        return { key: message, severity, data: items[message] };
+    });
 
-		var resultSeverity = items[message][0]["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#");
+    // Sort messages by severity order
+    messages.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
 
-		strOverview += '<li><span title="' + resultSeverity[1] + '" class="val_count_' + resultSeverity[1] + '">' + items[message].length + '</span>' + message + ' <a href="#message' + nrMessage + '"><?= t('naar details') ?></a></li>';
-		strDetails += '<p id="message' + nrMessage + '"><br></p>';
-		strDetails += '<div class="imessage"><h3><span style="float:right" class="val_count_' + resultSeverity[1] + '">';
-		if (resultSeverity[1] == 'Warning') {
-			strDetails += "<?= t('Waarschuwing') ?>";
-		} else {
-			if (resultSeverity[1] == 'Info') {
-				strDetails += "<?= t('Aanbeveling') ?>";
-			} else {
-				strDetails += "<?= t('Overtreding') ?>";
-			}
-		}
-		strDetails += '</span>' + message;
-		if (items[message][0]["http://www.w3.org/ns/shacl#resultPath"]) {
-			strDetails+=' via ' + items[message][0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
-		}
-		strDetails += '</h3><ul>';
-		strDetails += '<li>Shape: ' + items[message][0]["http://www.w3.org/ns/shacl#sourceShape"][0]["@id"] + '</li>';
-		strDetails += '<li>Constraint: ' + items[message][0]["http://www.w3.org/ns/shacl#sourceConstraintComponent"][0]["@id"] + '</li>';
-		strDetails += '</ul><br><table><thead><th>Focus node</th><th>Property or path</th><th>Value</th></thead><tbody>';
+    // Now build output
+    for (let { key: message, severity, data } of messages) {
+        strOverview += '<p><span title="' + severity + '" class="val_count_' + severity + '">' + data.length + '</span>' + message + ' <a class="naardetails" href="#message' + nrMessage + '"><?= t('naar details') ?></a></p>';
+        strDetails += '<p id="message' + nrMessage + '"><br></p>';
+        strDetails += '<div class="imessage"><h3><span style="float:right" class="val_count_' + severity + '">';
 
-		for (var imessage in items[message]) {
-			strDetails += '<tr><td>' + items[message][imessage]["http://www.w3.org/ns/shacl#focusNode"][0]["@id"];
-			strDetails += '</td><td>';
-			if (items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"]) { 
-				strDetails+=items[message][imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
-			}
-			strDetails += '</td><td>';
-			if (typeof items[message][imessage]["http://www.w3.org/ns/shacl#value"] !== 'undefined' && typeof items[message][imessage]["http://www.w3.org/ns/shacl#value"][0] !== 'undefined' && typeof items[message][imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"] !== 'undefined') {
-				strDetails += items[message][imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"];
-			}
-			strDetails += '</td></tr>';
-		}
-		strDetails += '</table></div>';
-		nrMessage++;
-	}
+        if (severity === 'Warning') {
+            strDetails += "<?= t('Waarschuwing') ?>";
+        } else if (severity === 'Info') {
+            strDetails += "<?= t('Aanbeveling') ?>";
+        } else {
+            strDetails += "<?= t('Overtreding') ?>";
+        }
 
-	strValidationResults += strOverview + strDetails;
+        strDetails += '</span>' + message;
+        if (data[0]["http://www.w3.org/ns/shacl#resultPath"]) {
+            strDetails += ' via ' + data[0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
+        }
+        strDetails += '</h3><ul>';
+        strDetails += '<li>Shape: ' + data[0]["http://www.w3.org/ns/shacl#sourceShape"][0]["@id"] + '</li>';
+        strDetails += '<li>Constraint: ' + data[0]["http://www.w3.org/ns/shacl#sourceConstraintComponent"][0]["@id"] + '</li>';
+        strDetails += '</ul><br><table><thead><th>Focus node</th><th>Property or path</th><th>Value</th></thead><tbody>';
+
+        for (let imessage in data) {
+            strDetails += '<tr><td>' + data[imessage]["http://www.w3.org/ns/shacl#focusNode"][0]["@id"];
+            strDetails += '</td><td>';
+            if (data[imessage]["http://www.w3.org/ns/shacl#resultPath"]) {
+                strDetails += data[imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
+            }
+            strDetails += '</td><td>';
+            if (typeof data[imessage]["http://www.w3.org/ns/shacl#value"] !== 'undefined'
+                && typeof data[imessage]["http://www.w3.org/ns/shacl#value"][0] !== 'undefined'
+                && typeof data[imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"] !== 'undefined') {
+                strDetails += data[imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"];
+            }
+            strDetails += '</td></tr>';
+        }
+        strDetails += '</table></div>';
+        nrMessage++;
+    }
+
+    strValidationResults += strOverview + strDetails;
 }
+
 
 function processMessages(shaclObject) {
 
@@ -284,6 +315,66 @@ function displayMessages(response) {
 
 }
 
+function get_base_hostname(url) {
+  try {
+    // Parse the URL
+    const { hostname } = new URL(url);
+
+    // Split into parts
+    const parts = hostname.split('.');
+
+    // If it's something like "bostaging.nl" → return it as-is
+    // If it's longer (e.g., "verhaalvanutrecht-nl.bostaging.nl") → return last two parts
+    if (parts.length >= 2) {
+      return parts.slice(-2).join('.');
+    }
+
+    return hostname; // fallback
+  } catch (e) {
+    console.error("Invalid URL:", url);
+    return null;
+  }
+}
+
+const sparqlRepo = 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=';
+
+function check_allowed() {
+
+  const datasetUrl = document.getElementById("datasetdescriptionurl")?.value || "";
+  if (!datasetUrl) return;
+  
+  const baseHostname = get_base_hostname(datasetUrl);
+  const sparqlAllowed = `SELECT ?s FROM <https://data.netwerkdigitaalerfgoed.nl/registry/allowed_domain_names> WHERE { ?s ?p ?o FILTER(?o = "${baseHostname}")}`;
+  
+  var url = sparqlRepo + encodeURIComponent(sparqlAllowed);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.setRequestHeader("Accept", "application/json");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        show_or_hide_add(baseHostname, JSON.parse(xhr.responseText));
+      } else {
+        console.log("Call to triplestore got HTTP code " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send();
+}
+
+function show_or_hide_add(baseHostname, sparqlresult) {
+	console.log(sparqlresult);
+  if (sparqlresult.results.bindings && sparqlresult.results.bindings.length > 0) {
+	  document.getElementById("can_add_datasetdescription").style.display = "block";	
+  } else {
+	  document.getElementById("hostname_datasetdescription").innerHTML=baseHostname;
+	  document.getElementById("cannot_add_datasetdescription").style.display = "block";		
+  }
+}
+
 call_api();
+check_allowed();
 </script>
 <?php } include("includes/footer.php") ?>

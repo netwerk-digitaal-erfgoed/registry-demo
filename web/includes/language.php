@@ -186,6 +186,7 @@ $translations_nl_en = array(
 	'Er'=>'There',
 	'zijn'=>'are',
 	'en er'=>'and there',
+	'Deze datasetbeschrijving (of datacatalogus) kan nog niet worden aangemeld op data de domeinnaam <span id="hostname_datasetdescription"></span> nog niet bekend is bij het Dataset Register. Neem contact op met het verzoek om deze domeinnaam op de "allowed domain list" te laten plaatsen.'=>'This dataset description (or data catalog) cannot yet be submitted because the domain name <span id="hostname_datasetdescription"></span> is not yet known to the Dataset Registry. Please contact us to request that this domain name be added to the "allowed domain list".',
 
     # viaurl.php
     'Meld een datasetbeschrijving aan'=>'Submit a dataset description',
