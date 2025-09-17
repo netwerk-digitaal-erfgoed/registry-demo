@@ -255,9 +255,9 @@ function displayMessages(response) {
 				strValidationResults += " <?= t('en er') ?> ";
 			}
 			if (arrStats['Warning'] > 1) {
-				strValidationResults += "<?= t('zijn') ?> " + arrStats['Warning'] + " <?= t('waarschuwingen (in de toekomst worden deze aangemerkt als overtredingen)'=>'warnings (in the future these will be considered violations)') ?>";
+				strValidationResults += "<?= t('zijn') ?> " + arrStats['Warning'] + " <?= t('waarschuwingen (in de toekomst worden deze aangemerkt als overtredingen)') ?>";
 			} else {
-				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing (in de toekomst wordt deze aangemerkt als overtreding)'=>'warning (in the future this will be considered a violation)') ?>";
+				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing (in de toekomst wordt deze aangemerkt als overtreding)') ?>";
 			}
 		}
 
