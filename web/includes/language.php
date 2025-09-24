@@ -380,7 +380,7 @@ $translations_nl_en = array(
 	'Bekijk datasets binnen deze datacatalog'=>'View the datasets of this datacatalog',
 	'Let op: er worden hier maximaal 20 distributies weergegeven,<br>gebruik SPARQL om alle distributies te bekijken!' => 'Beware: a maximum of 20 distributions are shown here,<br>use SPARQL to see all distributions!',
     'Was geldig tot'=>'Was valid until',
-    '<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar, de inhoud van de datasetbeschrijving is waarschijnlijk niet meer kloppend.' => '<strong>Please note</strong>: this is an archived dataset description, the dataset description is no longer available at the source, the content of the dataset description is probably no longer correct.',
+    '<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar of de inhoud van de datasetbeschrijving is niet meer valide.' => '<strong>Please note</strong>: this is an archived dataset description, the dataset description is no longer available from the source or the content of the dataset description is no longer valid.',
 
 	# catalog.php
 	'De volgende'=>'The following',

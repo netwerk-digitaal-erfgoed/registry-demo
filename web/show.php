@@ -96,7 +96,7 @@ function getDatasetDescription(uri) {
 }
 
 function getMetadata() {
-  var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation ?validUntil WHERE { <"+datasetUri+">  schema:subjectOf ?postedURL . OPTIONAL { ?postedURL schema:validUntil ?validUntil . } OPTIONAL { ?postedURL schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
+  var sparqlLastDateRead = "PREFIX schema: <http://schema.org/> SELECT ?postedURL ?postedDate ?lastDateRead ?ratingValue ?ratingExplanation ?validUntil WHERE {  BIND(<"+datasetUri+"> AS ?postedURL) OPTIONAL { ?postedURL schema:validUntil ?validUntil . } OPTIONAL { ?postedURL schema:datePosted ?postedDate . } OPTIONAL { ?postedURL schema:dateRead ?lastDateRead . } OPTIONAL { ?dataset schema:contentRating/schema:ratingValue ?ratingValue ; schema:contentRating/schema:ratingExplanation ?ratingExplanation . } } ORDER BY DESC(?lastDateRead) LIMIT 1";
 
   var url = sparqlRepo + encodeURIComponent(sparqlLastDateRead);
   var xhr = new XMLHttpRequest();
@@ -120,7 +120,7 @@ function showMetadata(sparqlresult) {
     for (const [prop, value] of Object.entries(sparqlresult.results.bindings[0])) {
         if (prop === 'validUntil') {
             banner = document.getElementById('archived');
-            banner.innerHTML = '<?= t('<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar, de inhoud van de datasetbeschrijving is waarschijnlijk niet meer kloppend.') ?>';
+            banner.innerHTML = '<?= t('<strong>Let op</strong>: dit is een gearchiveerde datasetbeschrijving, de datasetbeschrijving is niet meer bij de bron beschikbaar of de inhoud van de datasetbeschrijving is niet meer valide.') ?>';
             banner.style.display = 'block';
         }
 
