@@ -22,10 +22,12 @@ include("includes/header.php") ?>
    <section class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small">
          <label><?= t('Typering van de inhoud')?>: 
-         <input type="radio" name="contenttype" checked value="application/ld+json"> JSON-LD &nbsp;&nbsp;&nbsp;
-		 <input type="radio" name="contenttype" value="text/turtle"> Turtle &nbsp;&nbsp;&nbsp;
-		 <input type="radio" name="contenttype" value="application/n-triples"> N-triples &nbsp;&nbsp;&nbsp;
-		 <input type="radio" name="contenttype" value="application/rdf+xml"> RDF/XML 
+         <input type="radio" name="contenttype" checked value="application/ld+json"> JSON-LD
+		 <input type="radio" name="contenttype" value="text/turtle"> Turtle
+		 <input type="radio" name="contenttype" value="application/n-triples"> N-triples
+         <input type="radio" name="contenttype" value="text/n3"> N3
+         <input type="radio" name="contenttype" value="application/trig"> Trig
+         <input type="radio" name="contenttype" value="application/n-quads"> N-quads
 		 </label><br><br>
          <label for="datasetdescription"><?= t('Inhoud van de datasetbeschrijving (of datacatalogus)')?>:</label>
          <textarea style="background-color:white;width:100%" id="datasetdescription" class="form-control form-control-lg" rows="10"></textarea><br>
@@ -67,223 +69,182 @@ include("includes/header.php") ?>
 </main>
 
 <script>
-var arrMessages = [];
-var arrStats = [];
-var preferLanguage = "<?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { echo 'en'; } else { echo "nl"; } ?>";
-var strValidationResults = "";
+<script>
+let arrMessages = {};
+let arrStats = {};
+const preferLanguage = "<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'en') ? 'en' : 'nl'; ?>";
+let strValidationResults = "";
 
-
+// Toggle source link visibility
 function toggle_visibility() {
-	document.getElementById("api_source_link").style.display = "none";
-	document.getElementById("api_source").style.display = "block";
+  document.getElementById("api_source_link").style.display = "none";
+  document.getElementById("api_source").style.display = "block";
 }
 
+// Build and show messages
 function showMessages(items) {
-    var strOverview = '';
-    var strDetails = '';
-    var nrMessage = 1;
+  let strOverview = '';
+  let strDetails = '';
+  let nrMessage = 1;
+  strValidationResults = "";
+  
+  const severityOrder = { Violation: 0, Failure: 0, Warning: 1, Info: 2 };
+  const severityLabels = {
+    Warning: "<?= t('Waarschuwing') ?>",
+    Info: "<?= t('Aanbeveling') ?>",
+    default: "<?= t('Overtreding') ?>"
+  };
 
-    // Severity order mapping
-    const severityOrder = { "Violation": 0, "Failure": 0, "Warning": 1, "Info": 2 };
+  const messages = Object.entries(items).map(([message, data]) => ({
+    key: message,
+    severity: data[0]["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#")[1],
+    data
+  }));
 
-    // Collect messages into an array with severity attached
-    let messages = Object.keys(items).map(message => {
-        const severity = items[message][0]["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#")[1];
-        return { key: message, severity, data: items[message] };
-    });
+  messages.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
 
-    // Sort messages by severity order
-    messages.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
+  for (let { key: message, severity, data } of messages) {
+    strOverview += `
+      <p>
+        <span title="${severity}" class="val_count_${severity}">${data.length}</span>
+        ${message} <a class="naardetails" href="#message${nrMessage}"><?= t('naar details') ?></a>
+      </p>
+    `;
 
-    // Now build output
-    for (let { key: message, severity, data } of messages) {
-        strOverview += '<p><span title="' + severity + '" class="val_count_' + severity + '">' + data.length + '</span>' + message + ' <a class="naardetails" href="#message' + nrMessage + '"><?= t('naar details') ?></a></p>';
-        strDetails += '<p id="message' + nrMessage + '"><br></p>';
-        strDetails += '<div class="imessage"><h3><span style="float:right" class="val_count_' + severity + '">';
+    strDetails += `
+      <p id="message${nrMessage}"><br></p>
+      <div class="imessage">
+        <h3>
+          <span style="float:right" class="val_count_${severity}">
+            ${severityLabels[severity] ?? severityLabels.default}
+          </span>
+          ${message}${data[0]["http://www.w3.org/ns/shacl#resultPath"] ? " via " + data[0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"] : ""}
+        </h3>
+        <ul>
+          <li>Shape: ${data[0]["http://www.w3.org/ns/shacl#sourceShape"][0]["@id"]}</li>
+          <li>Constraint: ${data[0]["http://www.w3.org/ns/shacl#sourceConstraintComponent"][0]["@id"]}</li>
+        </ul><br>
+        <table>
+          <thead><th>Focus node</th><th>Property or path</th><th>Value</th></thead>
+          <tbody>
+    `;
 
-        if (severity === 'Warning') {
-            strDetails += "<?= t('Waarschuwing') ?>";
-        } else if (severity === 'Info') {
-            strDetails += "<?= t('Aanbeveling') ?>";
-        } else {
-            strDetails += "<?= t('Overtreding') ?>";
-        }
+    for (let imessage of data) {
+      const path = imessage["http://www.w3.org/ns/shacl#resultPath"]?.[0]?.["@id"] ?? "";
+      const value = imessage["http://www.w3.org/ns/shacl#value"]?.[0]?.["@id"] ?? "";
 
-        strDetails += '</span>' + message;
-        if (data[0]["http://www.w3.org/ns/shacl#resultPath"]) {
-            strDetails += ' via ' + data[0]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
-        }
-        strDetails += '</h3><ul>';
-        strDetails += '<li>Shape: ' + data[0]["http://www.w3.org/ns/shacl#sourceShape"][0]["@id"] + '</li>';
-        strDetails += '<li>Constraint: ' + data[0]["http://www.w3.org/ns/shacl#sourceConstraintComponent"][0]["@id"] + '</li>';
-        strDetails += '</ul><br><table><thead><th>Focus node</th><th>Property or path</th><th>Value</th></thead><tbody>';
-
-        for (let imessage in data) {
-            strDetails += '<tr><td>' + data[imessage]["http://www.w3.org/ns/shacl#focusNode"][0]["@id"];
-            strDetails += '</td><td>';
-            if (data[imessage]["http://www.w3.org/ns/shacl#resultPath"]) {
-                strDetails += data[imessage]["http://www.w3.org/ns/shacl#resultPath"][0]["@id"];
-            }
-            strDetails += '</td><td>';
-            if (typeof data[imessage]["http://www.w3.org/ns/shacl#value"] !== 'undefined'
-                && typeof data[imessage]["http://www.w3.org/ns/shacl#value"][0] !== 'undefined'
-                && typeof data[imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"] !== 'undefined') {
-                strDetails += data[imessage]["http://www.w3.org/ns/shacl#value"][0]["@id"];
-            }
-            strDetails += '</td></tr>';
-        }
-        strDetails += '</table></div>';
-        nrMessage++;
+      strDetails += `
+        <tr>
+          <td>${imessage["http://www.w3.org/ns/shacl#focusNode"][0]["@id"]}</td>
+          <td>${path}</td>
+          <td>${value}</td>
+        </tr>
+      `;
     }
 
-    strValidationResults += strOverview + strDetails;
+    strDetails += `</tbody></table></div>`;
+    nrMessage++;
+  }
+
+  strValidationResults += strOverview + strDetails;
 }
 
+// Process messages from SHACL
 function processMessages(shaclObject) {
+  const resultMessage = shaclObject["http://www.w3.org/ns/shacl#resultMessage"];
+  if (!resultMessage) return;
 
-	if (shaclObject["http://www.w3.org/ns/shacl#resultMessage"]) {
-		var resultMessage = shaclObject["http://www.w3.org/ns/shacl#resultMessage"];
-		if (resultMessage.length > 1) { // our own Messages are in 2 languages, SHACL's are in @en
-			if (shaclObject["http://www.w3.org/ns/shacl#resultMessage"][0]["@language"] == preferLanguage) {
-				resultMessageValue = shaclObject["http://www.w3.org/ns/shacl#resultMessage"][0]["@value"];
-			} else { // our Messages are either @nl or @en
-				resultMessageValue = shaclObject["http://www.w3.org/ns/shacl#resultMessage"][1]["@value"];
-			}
-		} else {
-			resultMessageValue = shaclObject["http://www.w3.org/ns/shacl#resultMessage"][0]["@value"];
-		}
+  const resultMessageValue =
+    resultMessage.length > 1
+      ? (resultMessage[0]["@language"] === preferLanguage ? resultMessage[0]["@value"] : resultMessage[1]["@value"])
+      : resultMessage[0]["@value"];
 
-		if (!arrMessages[resultMessageValue]) {
-			arrMessages[resultMessageValue] = [];
-		}
-		arrMessages[resultMessageValue].push(shaclObject);
+  arrMessages[resultMessageValue] ??= [];
+  arrMessages[resultMessageValue].push(shaclObject);
 
-		var resultSeverity = shaclObject["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#");
-		if (arrStats[resultSeverity[1]]) {
-			arrStats[resultSeverity[1]]++;
-		} else {
-			arrStats[resultSeverity[1]] = 1;
-		}
-	}
+  const severity = shaclObject["http://www.w3.org/ns/shacl#resultSeverity"][0]["@id"].split("#")[1];
+  arrStats[severity] = (arrStats[severity] || 0) + 1;
 }
 
+// Call API
 function call_api() {
-	var al = document.getElementById("api_source_link");
-	al.style.display = "none";
+  const al = document.getElementById("api_source_link");
+  const as = document.getElementById("api_status");
+  const ar = document.getElementById("api_result");
 
-	var as = document.getElementById("api_status");
-	as.style.backgroundColor = "none";
-	as.innerHTML = "";
+  al.style.display = "none";
+  as.style.backgroundColor = "none";
+  as.innerHTML = "";
+  ar.innerHTML = "In progress...";
+  ar.style.display = "block";
 
-	var ar=document.getElementById("api_result");
-	ar.style.display = "block";
-	
-	fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
-			"method": "POST",
-			"headers": {
-				"Accept": "application/ld+json",
-				"Content-Type": document.querySelector('input[name="contenttype"]:checked').value  /* application/ld+json */
-			},
-			"body": document.getElementById("datasetdescription").value
-		})
-		.then(response => {
-			var as = document.getElementById("api_status");
-
-			if (response.status == "200") {
-				as.style.backgroundColor = "#5cb85c";
-				as.innerHTML = "<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.') ?>";
-			} else {
-				al.style.display = "block";
-				as.style.backgroundColor = "#e44d26";
-				if (response.status == "400") {
-					as.innerHTML = "<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.')?>";
-				} else {
-					if (response.status == "404") {
-						as.innerHTML = "<?= t('De URL kan niet worden gevonden.')?>";
-					} else {
-						if (response.status == "406") {
-							as.innerHTML = "<?= t('De URL kan worden gevonden, maar bevat geen datasets.')?>";
-						} else {
-							as.innerHTML = "<?= t('Er heeft zich een onbekende fout voorgedaan. <a href=\"/contact.php\">Neem contact met ons op</a> en geef daarbij de door u ingevulde URL op.')?>";
-						}
-					}
-				}
-			}
-
-			return response.text();
-		})
-		.then(response => {
-			displayMessages(response);
-		})
-		.catch(err => {
-			console.log(err);
-		});
+  fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
+    method: "POST",
+    headers: {
+      Accept: "application/ld+json",
+      "Content-Type": document.querySelector('input[name="contenttype"]:checked').value
+    },
+    body: document.getElementById("datasetdescription").value
+  })
+    .then(response => {
+      if (response.status == 200) {
+        as.style.backgroundColor = "#5cb85c";
+        as.innerHTML = "<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.') ?>";
+      } else {
+        al.style.display = "block";
+        as.style.backgroundColor = "#e44d26";
+        const messages = {
+          400: "<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.')?>",
+          404: "<?= t('De URL kan niet worden gevonden.')?>",
+          406: "<?= t('De URL kan worden gevonden, maar bevat geen datasets.')?>"
+        };
+        as.innerHTML = messages[response.status] ?? "<?= t('Er heeft zich een onbekende fout voorgedaan. <a href=\"/contact.php\">Neem contact met ons op</a> en geef daarbij de door u ingevulde URL op.')?>";
+      }
+      return response.text();
+    })
+    .then(displayMessages)
+    .catch(err => console.warn("call_api error:", err));
 }
 
-
+// Display messages
 function displayMessages(response) {
+  document.getElementById("api_source").innerHTML = response;
 
-	document.getElementById("api_source").innerHTML = response;
-	
-	try {
-		results = JSON.parse(response);
-		results.forEach(processMessages);
-    } catch (err) {
-        console.log(err);
+  try {
+    JSON.parse(response).forEach(processMessages);
+  } catch (err) {
+    console.log(err);
+  }
+
+  const numberMessages = Object.keys(arrMessages).length;
+  if (numberMessages > 0) {
+    strValidationResults += "<h2><?= t('Er') ?> ";
+    const pluralize = (count, singular, plural) =>
+      count > 1 ? `<?= t('zijn') ?> ${count} ${plural}` : `is ${count} ${singular}`;
+
+    if (arrStats.Violation) {
+      strValidationResults += pluralize(arrStats.Violation, "<?= t('overtreding') ?>", "<?= t('overtredingen') ?>");
+    }
+    if (arrStats.Warning) {
+      if (arrStats.Violation) strValidationResults += " <?= t('en er') ?> ";
+      strValidationResults += pluralize(
+        arrStats.Warning,
+        "<?= t('waarschuwing (in de toekomst wordt deze aangemerkt als overtreding)') ?>",
+        "<?= t('waarschuwingen (in de toekomst worden deze aangemerkt als overtredingen)') ?>"
+      );
+    }
+    if (arrStats.Info) {
+      if (arrStats.Violation || arrStats.Warning) strValidationResults += " <?= t('en er') ?> ";
+      strValidationResults += pluralize(arrStats.Info, "<?= t('aanbeveling') ?>", "<?= t('aanbevelingen') ?>");
     }
 
+    strValidationResults += " <?= t('geconstateerd') ?></h2>";
+    showMessages(arrMessages);
+  }
 
-	//Messages.sort(function(a, b) {
-	//console.log(Messages[a].length-Messages[b].length);
-	//   return Messages[a].length-Messages[b].length;
-	//});
-
-	var numberMessages = Object.keys(arrMessages).length;
-
-	if (numberMessages > 0) {
-		strValidationResults += "<h2><?= t('Er') ?> ";
-		if (arrStats['Violation'] > 0) {
-			if (arrStats['Violation'] > 1) {
-				strValidationResults += "<?= t('zijn') ?> " + arrStats['Violation'] + " <?= t('overtredingen') ?>";
-			} else {
-				strValidationResults += "is " + arrStats['Violation'] + " <?= t('overtreding') ?>";
-			}
-		}
-
-		if (arrStats['Warning'] > 0) {
-			if (arrStats['Violation'] > 0) {
-				strValidationResults += " <?= t('en er') ?> "
-			}
-			if (arrStats['Warning'] > 1) {
-				strValidationResults += "<?= t('zijn') ?> " + arrStats['Warning'] + " <?= t('waarschuwingen (in de toekomst worden deze aangemerkt als overtredingen)') ?>";
-			} else {
-				strValidationResults += "is " + arrStats['Warning'] + " <?= t('waarschuwing (in de toekomst wordt deze aangemerkt als overtreding)') ?>";
-			}
-		}
-
-		if (arrStats['Info'] > 0) {
-			if (arrStats['Violation'] > 0 || arrStats['Warning'] > 0) {
-				strValidationResults += " <?= t('en er') ?> ";
-			}
-			if (arrStats['Info'] > 1) {
-				strValidationResults += "<?= t('zijn') ?> " + arrStats['Info'] + " <?= t('aanbevelingen') ?>";
-			} else {
-				strValidationResults += "is " + arrStats['Info'] + " <?= t('aanbeveling') ?>";
-			}
-		}
-
-		strValidationResults += " <?= t('geconstateerd') ?></h2>";
-		showMessages(arrMessages);
-	}
-
-	document.getElementById("api_result").innerHTML = strValidationResults;
-	document.getElementById("api_show").scrollIntoView({
-		behavior: "smooth",
-		block: "start"
-	});
-
+  document.getElementById("api_result").innerHTML = strValidationResults;
+  document.getElementById("api_show").scrollIntoView({ behavior: "smooth", block: "start" });
 }
-
 </script>
 <?php 
 
