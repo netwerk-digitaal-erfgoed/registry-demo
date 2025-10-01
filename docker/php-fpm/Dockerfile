@@ -1,2 +1,2 @@
-FROM bitnami/php-fpm
+FROM bitnamisecure/php-fpm
 COPY web /web
