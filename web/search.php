@@ -473,6 +473,7 @@ fetchData('get-list.php?list=mediaTypes').then(data => {
 
 fetchData('get-list.php?list=publishers<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo '&lang=en'; } ?>').then(data => {
     const listpublishersDiv = document.getElementById("publisher_list");
+	listpublishersDiv.options[0].text += ' ('+ Object.keys(data).length +')';
     for (const key in data) {
       const value = data[key];
       const newPublisherItem = document.createElement('option');
@@ -486,6 +487,7 @@ fetchData('get-list.php?list=publishers<?php if(isset($_GET["lang"]) && $_GET["l
 
 fetchData('get-list.php?list=creators<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo '&lang=en'; } ?>').then(data => {
     const listcreatorsDiv = document.getElementById("creator_list");
+	listcreatorsDiv.options[0].text += ' ('+ Object.keys(data).length +')';
     for (const key in data) {
       const value = data[key];
       const newCreatorItem = document.createElement('option');
