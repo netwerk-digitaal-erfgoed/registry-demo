@@ -199,23 +199,23 @@ function getOrganisationLocations($listtype) {
 	$sparql='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX schema: <http://schema.org/>
 PREFIX sdo: <https://schema.org/>
 SELECT DISTINCT ?organisation_uri ?organisation_name ?geonames ?organisation_placename ?latitude ?longitude WHERE {
-    ?dataset a dcat:Dataset .
-    #?dataset schema:subjectOf ?registrationUrl .
-    #FILTER (NOT EXISTS { ?registrationUrl schema:validUntil ?validUntil })
-    ?dataset '.$dct_type.' ?organisation_uri .
-    ?organisation_uri foaf:name ?organisation_name
-    FILTER(LANG(?organisation_name) = "" || LANGMATCHES(LANG(?organisation_name), "nl")) 
-    # lookup location in organization_locations graph
-    ?organisation_uri sdo:location ?geonames .
-    SERVICE <https://demo.netwerkdigitaalerfgoed.nl/geonames/sparql> {
-        ?geonames <https://www.geonames.org/ontology#name> ?organisation_placename ;
-        <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> ?latitude ;
-        <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> ?longitude .
+  {
+    SELECT DISTINCT ?organisation_uri {
+      ?dataset a dcat:Dataset ;
+               '.$dct_type.' ?organisation_uri .
     }
+  }
+  ?organisation_uri foaf:name ?organisation_name
+  FILTER (LANG(?organisation_name) = "" || LANGMATCHES(LANG(?organisation_name),"nl"))
+  # lookup location in organization_locations graph
+  ?organisation_uri sdo:location ?geonames .
+  SERVICE <https://demo.netwerkdigitaalerfgoed.nl/geonames/sparql> {
+    ?geonames <https://www.geonames.org/ontology#name> ?organisation_placename ;
+              <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?latitude ;
+              <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?longitude .
+  }
 }';
 
 	$sparqlResults=getSPARQLresults($sparql,$lang);
