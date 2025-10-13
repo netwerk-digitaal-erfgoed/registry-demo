@@ -130,7 +130,7 @@ header("X-Content-Type-Options: nosniff");
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
                         </li>
 						<li>
-                           <a class="m-theme-before m-select--none" href="search.php<?= l() ?>"><?= t('Doorzoek') ?></a>
+                           <a class="m-theme-before m-select--none" href="<?= languagePrefix() ?>/datasets"><?= t('Doorzoek') ?></a>
                         </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu">
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>

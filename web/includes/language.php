@@ -446,3 +446,11 @@ function l() {
         return "?lang=en";
     }
 }
+
+function languagePrefix() {
+    if (isset($_GET['lang']) && $_GET['lang'] === 'en') {
+        return '/en';
+    }
+
+    return '';
+}

@@ -24,7 +24,7 @@ include("includes/header.php") ?>
 					<a href="viaurl.php<?= l() ?>"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor erfgoedinstellingen met datasets') ?>:<br><?= t('voeg een datasetbeschrijving toe') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 				<div class="all-1_2 tablet-portrait-1_2 phablet-1_1" style="margin:0;padding:0;text-align:center">
-					<a href="search.php<?= l() ?>"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor gebruikers van erfgoeddata') ?>:<br><?= t('doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
+					<a href="<?= languagePrefix() ?>/datasets"><span class="btn btn--arrow m-t-half-space btn--api"><?= t('Voor gebruikers van erfgoeddata') ?>:<br><?= t('doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen') ?> <svg class="rect"> <rect class="svgrect" width="100%" height="100%" style="stroke-width: 3; fill: transparent; stroke-dasharray: 0; stroke-dashoffset: 0;"></rect> </svg> <svg class="icon icon-arrow-right"> <use xlink:href="#icon-arrow-right"></use> </svg> </span></a>
 				</div>
 			</div>
 		</div>
