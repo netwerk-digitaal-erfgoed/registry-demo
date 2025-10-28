@@ -100,7 +100,7 @@ function getDatasetDescription(uri) {
 }
 
 function getDataSummary() {
-    const url = "https://lab.coret.org/datasetregister/data-summary.php?uri="+encodeURIComponent(datasetUri);
+    const url = "/data-summary.php?uri="+encodeURIComponent(datasetUri);
     
     fetch(url)
       .then(response => {
