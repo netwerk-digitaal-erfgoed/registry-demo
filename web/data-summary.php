@@ -202,11 +202,11 @@ if (isset($stats["termUse"]) && count($stats["termUse"])>0) {
 
 $str.="<li>";
 if (isset($stats["publicationType"]["RDF dump"]) && isset($stats["publicationType"]["SPARQL endpoint"])) {
-	$str.="De dataset is kan gedownload worden als RDF dump en bevraagd worden via een SPARQL endpoint.";
+	$str.="De dataset kan gedownload worden als RDF dump en bevraagd worden via een SPARQL endpoint.";
 } elseif (isset($stats["publicationType"]["RDF dump"])) {
-	$str.="De dataset is kan gedownload worden als RDF dump.";
+	$str.="De dataset kan gedownload worden als RDF dump.";
 } elseif (isset($stats["publicationType"]["SPARQL endpoint"])) {
-	$str.="De dataset is kan bevraagd worden via een SPARQL endpoint (maar niet gedownload worden als RDF dump).";
+	$str.="De dataset kan bevraagd worden via een SPARQL endpoint (maar niet gedownload worden als RDF dump).";
 }
 $str.="</li>";
 
