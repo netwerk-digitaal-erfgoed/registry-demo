@@ -67,6 +67,14 @@ $namespace["https://www.ica.org/standards/RiC/ontology"]="rico:";
 $namespace["http://xmlns.com/foaf/0.1/"]="foaf:";
 $namespace["http://www.cidoc-crm.org/cidoc-crm/"]="cidoc:";
 $namespace["http://www.cidoc-crm.org/cidoc-crm"]="cidoc:";
+$namespace["http://justskos.org/ns/core#"]="js:";
+$namespace["http://www.w3.org/ns/org#"]="org:";
+$namespace["http://purl.org/dc/elements/1.1/"]="dc:";
+$namespace["http://purl.org/ontology/bibo/"]="bibo:";
+$namespace["http://www.gemeentegeschiedenis.nl/gg-schema#"]="gg:";
+$namespace["http://rdfs.org/ns/void#"]="void:";
+$namespace["https://id.loc.gov/ontologies/bibframe/"]="bf:";
+
 
 # alle JSON-LD in een graph in GraphDB laden (lijkt niet helemaal goed te gaan https://schema.org wordt http://schema.org ??)
 /*
@@ -127,6 +135,7 @@ $ts["https://www.wikidata.org#entities-all"]["nl"]="Wikidata: alle entiteiten (W
 $ts["https://www.wikidata.org#entities-persons"]["nl"]="Wikidata: personen (Wikimedia Foundation)"; $ts["https://www.wikidata.org#entities-persons"]["en"]="Wikidata: persons (Wikimedia Foundation)";
 $ts["https://www.wikidata.org#entities-places"]["nl"]="Wikidata: plaatsen in Nederland en België (Wikimedia Foundation)"; $ts["https://www.wikidata.org#entities-places"]["en"]="Wikidata: places in the Netherlands and Belgium (Wikimedia Foundation)";
 $ts["https://www.wikidata.org#entities-streets"]["nl"]="Wikidata: straten in Nederland (Wikimedia Foundation)"; $ts["https://www.wikidata.org#entities-streets"]["en"]="Wikidata: streets in the Netherlands (Wikimedia Foundation)";
+$ts["https://www.wikidata.org/#entities-streets"]=$ts["https://www.wikidata.org#entities-streets"];
 $ts["https://data.niod.nl/WO2_biografieen"]["nl"]="WO2-biografieën (Instituut voor oorlogs-, holocaust- en genocidestudies)"; $ts["https://data.niod.nl/WO2_biografieen"]["en"]="WW2 biographies (Institute for war, holocaust and genocide studies)";
 $ts["https://data.niod.nl/WO2_Thesaurus"]["nl"]="WO2-thesaurus (Instituut voor oorlogs-, holocaust- en genocidestudies)"; $ts["https://data.niod.nl/WO2_Thesaurus"]["en"]="Thesaurus WW2 (Institute for war, holocaust and genocide studies)";
 
@@ -135,7 +144,7 @@ $ts["https://data.niod.nl/WO2_Thesaurus"]["nl"]="WO2-thesaurus (Instituut voor o
 $ts["https://data.ihlia.nl/homosaurus"]["nl"]="Homosaurus (IHLIA LGBTI Heritage)"; $ts["https://data.ihlia.nl/homosaurus"]["en"]="Homosaurus (IHLIA LGBTI Heritage)";
 $ts["https://www.geonames.org/"]["en"]="GeoNames: global geographical names"; $ts["https://www.geonames.org/"]["nl"]="GeoNames: geografische namen wereldwijd";
 $ts["https://www.geonames.org"]["en"]="GeoNames: global geographical names"; $ts["https://www.geonames.org"]["nl"]="GeoNames: geografische namen wereldwijd";
-
+Wijdstraat 31, 2801 NA Gouda
 if (!isset($_GET["uri"]) || !filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 	exit;
 }
