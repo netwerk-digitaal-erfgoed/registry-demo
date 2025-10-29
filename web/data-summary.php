@@ -144,7 +144,7 @@ $ts["https://data.niod.nl/WO2_Thesaurus"]["nl"]="WO2-thesaurus (Instituut voor o
 $ts["https://data.ihlia.nl/homosaurus"]["nl"]="Homosaurus (IHLIA LGBTI Heritage)"; $ts["https://data.ihlia.nl/homosaurus"]["en"]="Homosaurus (IHLIA LGBTI Heritage)";
 $ts["https://www.geonames.org/"]["en"]="GeoNames: global geographical names"; $ts["https://www.geonames.org/"]["nl"]="GeoNames: geografische namen wereldwijd";
 $ts["https://www.geonames.org"]["en"]="GeoNames: global geographical names"; $ts["https://www.geonames.org"]["nl"]="GeoNames: geografische namen wereldwijd";
-Wijdstraat 31, 2801 NA Gouda
+
 if (!isset($_GET["uri"]) || !filter_var($_GET["uri"], FILTER_VALIDATE_URL)) {
 	exit;
 }
