@@ -69,7 +69,6 @@ include("includes/header.php") ?>
 </main>
 
 <script>
-<script>
 let arrMessages = {};
 let arrStats = {};
 const preferLanguage = "<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'en') ? 'en' : 'nl'; ?>";
