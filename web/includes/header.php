@@ -152,7 +152,7 @@ header("X-Content-Type-Options: nosniff");
                            </nav>
                         </li>
                         <?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
-                           <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?><?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">NL &#x2022; <strong>EN</strong></a></li>
+                           <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);?>?lang=nl<?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">NL &#x2022; <strong>EN</strong></a></li>
                         <?php } else { ?>						
                            <li><a title="Switch to the English version" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en<?php if(isset($_GET["uri"])) { echo "&uri=".urlencode($_GET["uri"]); } ?>"><strong>NL</strong> &#x2022; EN</a></li>
                         <?php } ?>
