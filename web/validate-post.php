@@ -150,9 +150,6 @@ function showMessages(items) {
 
 // Process messages from SHACL
 function processMessages(shaclObject) {
-  // clear previous results
-  arrMessages = {};
-  arrStats = {};
   const resultMessage = shaclObject["http://www.w3.org/ns/shacl#resultMessage"];
   if (!resultMessage) return;
 
@@ -170,6 +167,11 @@ function processMessages(shaclObject) {
 
 // Call API
 function call_api() {
+
+  // clear previous results
+  arrMessages = {};
+  arrStats = {};
+
   const al = document.getElementById("api_source_link");
   const as = document.getElementById("api_status");
   const ar = document.getElementById("api_result");

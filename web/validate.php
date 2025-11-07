@@ -205,8 +205,9 @@ function call_api() {
 	as.style.backgroundColor = "none";
 	as.innerHTML = "";
 
-
-
+   // clear previous results
+   arrMessages = {};
+   arrStats = {};
 
 	document.getElementById("api_result").innerHTML = "Calling API ...";
 	fetch("https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate", {
