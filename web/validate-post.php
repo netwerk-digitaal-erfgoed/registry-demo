@@ -69,8 +69,8 @@ include("includes/header.php") ?>
 </main>
 
 <script>
-let arrMessages = {};
-let arrStats = {};
+let arrMessages;
+let arrStats;
 const preferLanguage = "<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'en') ? 'en' : 'nl'; ?>";
 let strValidationResults = "";
 
@@ -150,6 +150,9 @@ function showMessages(items) {
 
 // Process messages from SHACL
 function processMessages(shaclObject) {
+  // clear previous results
+  arrMessages = {};
+  arrStats = {};
   const resultMessage = shaclObject["http://www.w3.org/ns/shacl#resultMessage"];
   if (!resultMessage) return;
 
