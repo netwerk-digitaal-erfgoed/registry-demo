@@ -44,6 +44,7 @@ include("includes/header.php");
 		  <tr id="row_lastDateRead"><th><?= t('Laatste cache update') ?></th><td id="val_lastDateRead"></td></tr>
 		  <tr id="row_ratingValue"><th><?= t('Beoordeling (25-100)') ?></th><td id="val_ratingValue"></td></tr>
 		  <tr id="row_ratingExplanation"><th><?= t('Missende eigenschappen') ?></th><td id="val_ratingExplanation"></td></tr>
+		  <tr id="row_usedInDatasets" style="display:none"><th><?= t('Gebruikt als bron in') ?></th><td id="val_usedInDatasets"></td></tr>
 		</table>
 	   </div>
    </section>
@@ -150,7 +151,7 @@ function showMetadata(sparqlresult) {
         }
 
 		document.getElementById('row_'+prop).style.display="table-row";
-		let val=value.value.replaceAll('http://purl.org/dc/terms/','');
+		let val=value.value.replaceAll('http://purl.org/dc/terms/','').replaceAll('http://www.w3.org/ns/dcat#','');
     if (value.type === 'uri') {
         uri = val;
 			  val = '<a target="_blank" href="'+uri+'">'+uri+'</a>';
@@ -292,6 +293,47 @@ function showDataset(sparqlresult) {
   table.innerHTML = strTable;
 }
 
+
+function getUsedInDatasets() {
+  var sparqlLastDateRead = "SELECT * WHERE { ?used_by_dataset <http://purl.org/dc/terms/source> <"+datasetUri+"> ; <http://purl.org/dc/terms/title> ?used_by_dataset_title }";
+
+  var url = sparqlRepo + encodeURIComponent(sparqlLastDateRead);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.setRequestHeader("Accept", "application/json");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        showUsedInDatasets(JSON.parse(xhr.responseText));
+      } else {
+        console.log("Call to triplestore got HTTP code " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send();
+}
+
+
+function showUsedInDatasets(sparqlresult) {
+	
+	//
+	//
+	
+	strUsed='';
+    for (const result of Object.entries(sparqlresult.results.bindings)) {
+		if(result[1].used_by_dataset.value) {
+			strUsed+='<li><a href="/show.php?uri='+encodeURIComponent(result[1].used_by_dataset.value)+'">'+result[1].used_by_dataset_title.value+'</a></li>';
+		}
+	}
+
+	if (strUsed) {
+		document.getElementById('val_usedInDatasets').innerHTML = '<ul>'+strUsed+'</ul>';
+		document.getElementById('row_usedInDatasets').style.display = 'table-row';
+	}
+}
+
 function isValidHttpUrl(string) {
   let url;
 
@@ -305,27 +347,28 @@ function isValidHttpUrl(string) {
 }
 
 function prefix(str) {
-  pre = str.replace("http://schema.org/", "");
-  pre = pre.replace("https://schema.org/", "");
-  pre = pre.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "");
-  pre = pre.replace("http://www.w3.org/ns/dcat#", "");
-  pre = pre.replace("http://purl.org/dc/terms/", "");
-  pre = pre.replace("http://xmlns.com/foaf/0.1/", "");
-  pre = pre.replace("http://www.w3.org/2002/07/owl#", "");
+  pre = str.replaceAll("http://schema.org/", "");
+  pre = pre.replaceAll("https://schema.org/", "");
+  pre = pre.replaceAll("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "");
+  pre = pre.replaceAll("http://www.w3.org/ns/dcat#", "");
+  pre = pre.replaceAll("http://purl.org/dc/terms/", "");
+  pre = pre.replaceAll("http://xmlns.com/foaf/0.1/", "");
+  pre = pre.replaceAll("http://www.w3.org/2002/07/owl#", "");
 
-  alt = str.replace("http://schema.org/", "schema:");
-  alt = alt.replace("https://schema.org/", "schema:");
-  alt = alt.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
-  alt = alt.replace("http://www.w3.org/ns/dcat#", "dcat:");
-  alt = alt.replace("http://purl.org/dc/terms/", "dct:");
-  alt = alt.replace("http://xmlns.com/foaf/0.1/", "foaf:");
-  alt = alt.replace("http://www.w3.org/2002/07/owl#", "owl:");
+  alt = str.replaceAll("http://schema.org/", "schema:");
+  alt = alt.replaceAll("https://schema.org/", "schema:");
+  alt = alt.replaceAll("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
+  alt = alt.replaceAll("http://www.w3.org/ns/dcat#", "dcat:");
+  alt = alt.replaceAll("http://purl.org/dc/terms/", "dct:");
+  alt = alt.replaceAll("http://xmlns.com/foaf/0.1/", "foaf:");
+  alt = alt.replaceAll("http://www.w3.org/2002/07/owl#", "owl:");
 
   return "<strong title=\"" + alt + "\">" + pre.charAt(0).toUpperCase() + pre.slice(1) + "</strong>";
 }
 
 getDatasetDescription();
 getMetadata();
+getUsedInDatasets();
 getDataSummary();
 </script>
 <?php
