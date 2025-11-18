@@ -74,7 +74,7 @@ $namespace["http://purl.org/ontology/bibo/"]="bibo:";
 $namespace["http://www.gemeentegeschiedenis.nl/gg-schema#"]="gg:";
 $namespace["http://rdfs.org/ns/void#"]="void:";
 $namespace["https://id.loc.gov/ontologies/bibframe/"]="bf:";
-
+$namespace["https://www.openarch.nl/def/a2a#"]="a2a:";
 
 # alle JSON-LD in een graph in GraphDB laden (lijkt niet helemaal goed te gaan https://schema.org wordt http://schema.org ??)
 /*
