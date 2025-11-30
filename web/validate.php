@@ -306,6 +306,8 @@ function displayMessages(response) {
 
 		strValidationResults += " <?= t('geconstateerd') ?></h2>";
 		showMessages(arrMessages);
+	} else {
+		strValidationResults = "";
 	}
 
 	document.getElementById("api_result").innerHTML = strValidationResults;
