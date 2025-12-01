@@ -1,4 +1,4 @@
-⚠️ # This project is deprecated
+ # ⚠️ This project is deprecated
 
 Please note that this project is in the process of being replaced by a [new app](https://github.com/netwerk-digitaal-erfgoed/dataset-register/tree/main/apps/browser).
 
