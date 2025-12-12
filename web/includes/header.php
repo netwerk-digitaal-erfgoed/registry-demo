@@ -187,7 +187,7 @@ header("X-Content-Type-Options: nosniff");
 					   <a class="m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="search.php<?= l() ?>"><?= t('Doorzoek') ?></a>
+					   <a class="m-theme-before m-select--none" href="<?= languagePrefix() ?>/datasets"><?= t('Doorzoek') ?></a>
 					</li>
 					<li>
 					   <a class="m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
