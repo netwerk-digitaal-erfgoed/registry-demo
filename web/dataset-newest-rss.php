@@ -27,9 +27,9 @@ $newests=getNewest();
 foreach($newests as $newest) {
 	print '<item>';
 	print '<title>'.$newest["title"].' ('.$newest["publisherName"].')</title>';
-	$url='https://'.$_SERVER['HTTP_HOST'].'/show.php?';
-	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $url.='lang=en&'; }
-	$url.='uri='.urlencode($newest["dataset"]);
+	$url='https://'.$_SERVER['HTTP_HOST'].'/datasets/';
+	if(isset($_GET["lang"]) && $_GET["lang"]=="en") { $url.='en/'; }
+	$url.=$newest["dataset"];
 	print '<link>'.$url.'</link>';
 	print '<guid>'.$url.'</guid>';
 	print '<pubDate>'.date('r', strtotime($newest["postedDate"])).'</pubDate>';
