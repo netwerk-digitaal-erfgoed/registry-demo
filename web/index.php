@@ -99,7 +99,7 @@ function get_count() {
 function show_count(response) {
 	try {
 		results = JSON.parse(response);
-		document.getElementById("count").innerHTML="<b>"+results.results.bindings[0].pCount.value+"</b>";
+		document.getElementById("datasetcount").innerHTML="<b>"+results.results.bindings[0].count.value+"</b>";
 	} catch (err) {
 		console.log(err);
 	}
