@@ -79,7 +79,7 @@ include("includes/header.php") ?>
 document.addEventListener('DOMContentLoaded', () => get_count());
 
 function get_count() {
-	var url = "https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=SELECT%20%28COUNT%28DISTINCT%20%3Fdataset%29%20as%20%3Fcount%29%20WHERE%20%7B%20%3Fdataset%20a%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23Dataset%3E%20%3B%20%3Chttp%3A%2F%2Fschema.org%2FsubjectOf%3E%20%3FregistrationUrl%20.%20%7D";
+	var url = "https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=PREFIX%20dcat%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23%3E%0APREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0ASELECT%20%28COUNT%28DISTINCT%20%3Fdataset%29%20as%20%3Fcount%29%20WHERE%20%7B%20%3Fdataset%20a%20dcat%3ADataset%20%3B%20schema%3AsubjectOf%20%3FregistrationUrl%20.%20%3FregistrationUrl%20schema%3AadditionalType%20%3Chttps%3A%2F%2Fdata.netwerkdigitaalerfgoed.nl%2Fregistry%2Fvalid%3E%20.%20%7D";
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
