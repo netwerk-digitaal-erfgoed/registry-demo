@@ -104,7 +104,6 @@ function show_count(response) {
 		console.log(err);
 	}
 }
-
 </script>
 
 <?php
