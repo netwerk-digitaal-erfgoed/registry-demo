@@ -113,7 +113,7 @@ function showDatasets(sparqlresult) {
 
     var link = document.createElement("a");
     var linkText = document.createTextNode(title);
-    link.setAttribute("href", "show.php?lang=<?= $lang ?>&uri="+encodeURIComponent(dataset));
+    link.setAttribute("href", "/datasets/"+dataset);
     link.appendChild(linkText);
     li.appendChild(link);
     li.appendChild(document.createTextNode(" ("+publisherName+")"));
