@@ -48,20 +48,3 @@ jobs:
           tags: |
             ${{ steps.vars.outputs.docker_image_php_fpm }}:${{ steps.vars.outputs.build_tag }}
             ${{ steps.vars.outputs.docker_image_php_fpm }}:latest
-
-      - uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
-      - name: Store DigitalOcean credentials
-        run: doctl kubernetes cluster kubeconfig save nde
-
-      - name: Update stateful set
-        run: |
-          kubectl set image statefulset/registry-demo \
-            nginx=${{ steps.vars.outputs.docker_image_nginx }}:${{ steps.vars.outputs.build_tag }} \
-            php=${{ steps.vars.outputs.docker_image_php_fpm }}:${{ steps.vars.outputs.build_tag }} \
-            --record
-
-      - name: Verify stateful set
-        run: kubectl rollout status statefulset/registry-demo
