@@ -199,7 +199,9 @@ function getOrganisationLocations($listtype) {
 	$sparql='PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <http://schema.org/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
 SELECT DISTINCT ?organisation_uri ?organisation_name ?geonames ?organisation_placename ?latitude ?longitude WHERE {
   {
     SELECT DISTINCT ?organisation_uri {
@@ -209,12 +211,17 @@ SELECT DISTINCT ?organisation_uri ?organisation_name ?geonames ?organisation_pla
   }
   ?organisation_uri foaf:name ?organisation_name
   FILTER (LANG(?organisation_name) = "" || LANGMATCHES(LANG(?organisation_name),"nl"))
-  # lookup location in organization_locations graph
-  ?organisation_uri sdo:location ?geonames .
-  SERVICE <https://demo.netwerkdigitaalerfgoed.nl/geonames/sparql> {
+  
+  # lookup location of organisation (used to be on data.netwerkdigitaalerfgoed.nl, need to look for better place)
+  SERVICE <https://qlever.coret.org/orgloc> {
+    ?organisation_uri schema:location ?geonames .
+  }
+
+  # lookup geo for location
+  SERVICE <https://geonames.netwerkdigitaalerfgoed.nl/sparql> {
     ?geonames <https://www.geonames.org/ontology#name> ?organisation_placename ;
-              <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?latitude ;
-              <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?longitude .
+              geo:lat ?latitude ;
+              geo:long ?longitude .
   }
 }';
 
