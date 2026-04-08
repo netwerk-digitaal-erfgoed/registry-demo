@@ -36,6 +36,21 @@ header("X-Content-Type-Options: nosniff");
 		   <meta property="twitter:title" content="<?= t('Datasetregister') ?> - <?= t('Voor alle erfgoeddatasets!') ?>">
 		   <meta property="twitter:description" content="<?= t('Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.') ?>">
          <meta name="author" content="Netwerk Digitaal Erfgoed">
+         <!-- Matomo -->
+         <script>
+         var _paq = window._paq = window._paq || [];
+         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+         _paq.push(['trackPageView']);
+         _paq.push(['enableLinkTracking']);
+         (function() {
+            var u="//matomo.netwerkdigitaalerfgoed.nl/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+         })();
+         </script>
+         <!-- End Matomo Code -->
       </head>
       <body class="<?php if(substr($_SERVER['SCRIPT_FILENAME'],-9,9)=="index.php") { echo "home "; } ?> page-template page-template-t_home page-template-t_home-php page page-id-5 m-theme--blue">
          <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
