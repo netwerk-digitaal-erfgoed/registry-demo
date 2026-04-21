@@ -1,14 +1,14 @@
-<?php 
+<?php
 
-include ("language.php"); 
+include ("language.php");
 header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
 header("X-Content-Type-Options: nosniff");
 
 ?><!DOCTYPE html>
-<!--[if IE 9]> 
+<!--[if IE 9]>
 <html class="no-js ie ie9" lang="nl-NL">
    <![endif]-->
-   <!--[if gt IE 9]><!--> 
+   <!--[if gt IE 9]><!-->
    <html class="no-js" lang="nl-NL">
       <!--<![endif]-->
       <head>
@@ -139,7 +139,7 @@ header("X-Content-Type-Options: nosniff");
                         <li><a class="<?php if(strstr($_SERVER['REQUEST_URI'],"maak.php")) { echo "active "; } ?>m-theme-before m-select--none" href="maak.php<?= l() ?>"><?= t('Maak') ?></a>
                         </li>
                         <li>
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="<?= languagePrefix() ?>/validate><?= t('Valideer') ?></a>
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="<?= languagePrefix() ?>/validate"><?= t('Valideer') ?></a>
                         </li>
                         <li>
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
@@ -168,7 +168,7 @@ header("X-Content-Type-Options: nosniff");
                         </li>
                         <?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
                            <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);?>?lang=nl<?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">NL &#x2022; <strong>EN</strong></a></li>
-                        <?php } else { ?>						
+                        <?php } else { ?>
                            <li><a title="Switch to the English version" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>?lang=en<?php if(isset($_GET["uri"])) { echo "&uri=".urlencode($_GET["uri"]); } ?>"><strong>NL</strong> &#x2022; EN</a></li>
                         <?php } ?>
                      </ul>
