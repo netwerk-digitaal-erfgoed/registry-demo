@@ -63,7 +63,7 @@ include("includes/header.php") ?>
                      <h3><?= t('Ontwikkel je software voor erfgoedinstellingen?') ?></h3>
                      <ul class="list--quicklinks">
                         <li><a target="triplestore" href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/"><?= t('Eisen gesteld aan datasetbeschrijvingen') ?></a></li>
-                        <li><a href="validate.php<?= l() ?>"><?= t('Valideer een datasetbeschrijving') ?></a></li>
+                        <li><a href="<?= languagePrefix() ?>/validate"><?= t('Valideer een datasetbeschrijving') ?></a></li>
                         <li><a target="datastory" href="apidoc.php<?= l() ?>"><?= t('API-documentatie') ?></a></li>
                         <li><a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('Veelgestelde vragen door ontwikkelaars') ?></a></li>
                      </ul>
