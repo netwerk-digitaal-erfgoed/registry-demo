@@ -4,6 +4,12 @@ $url="";
 if (isset($_GET["url"]) && filter_var($_GET["url"], FILTER_VALIDATE_URL)) {
 	$url=$_GET["url"];
 }
+
+# temporary redirect (to be done on webserver)
+header("HTTP/1.1 301 Moved Permanently");
+header("Location: /validate?url=".urlencode($url));
+exit();
+
 include("includes/header.php") ?>
 <style>
 .naardetails {
