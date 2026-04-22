@@ -139,7 +139,7 @@ header("X-Content-Type-Options: nosniff");
                         <li><a class="<?php if(strstr($_SERVER['REQUEST_URI'],"maak.php")) { echo "active "; } ?>m-theme-before m-select--none" href="maak.php<?= l() ?>"><?= t('Maak') ?></a>
                         </li>
                         <li>
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"validate.php")) { echo "active "; } ?>m-theme-before m-select--none" href="<?= languagePrefix() ?>/validate"><?= t('Valideer') ?></a>
+                           <a class="m-theme-before m-select--none" href="/validate"><?= t('Valideer') ?></a>
                         </li>
                         <li>
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
@@ -196,7 +196,7 @@ header("X-Content-Type-Options: nosniff");
 					   <a class="m-theme-before m-select--none" href="maak.php<?= l() ?>"><?= t('Maak') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="validate.php<?= l() ?>"><?= t('Valideer') ?></a>
+					   <a class="m-theme-before m-select--none" href="validate<?= l() ?>"><?= t('Valideer') ?></a>
 					</li>
 					<li>
 					   <a class="m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
