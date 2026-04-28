@@ -26,7 +26,7 @@
       <h2><?= t('Ga je aan de slag?') ?></h2>
       <p><?= t('Ga je aan de slag met het publiceren van datasetbeschrijvingen en de API op het Datasetregister, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.') ?></p>
       <h2><?= t('Meer weten?') ?></h2>
-      <p><?= t('Heb je vragen en/of opmerkingen over de werking van het Datasetregister neem dan contact op met <a href="mailto:info@nationaalarchief.nl?subject=Datasetregister">info@nationaalarchief.nl</a>.') ?></p>
+      <p><?= t('Heb je vragen en/of opmerkingen over de werking van het Datasetregister neem dan contact op met <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subject=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.') ?></p>
       <p><br></p>
    </div>
 </main>

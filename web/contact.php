@@ -5,7 +5,7 @@
          <h1 class="title--l"><?= t('Contact') ?></h1>
          <p><br></p>
          <p><?= t('Heb je vragen over het Datasetregister, problemen of wensen?') ?></p>
-		   <p><?= t('Neem dan contact op met <a href="mailto:info@nationaalarchief.nl?subject=Datasetregister">info@nationaalarchief.nl</a>.')?></p>
+		   <p><?= t('Neem dan contact op met <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subject=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.')?></p>
 		   <p><br></p>
       </div>
    </section>

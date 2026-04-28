@@ -8,7 +8,7 @@
       </div>
       <div class="o-container o-container__small m-t-space">
          <h2><?= t('Onze gegevens') ?></h2>
-         <p><?= t('Deze website is eigendom van en wordt beheerd en onderhouden door het Nationaal Archief. Je kunt ons bereiken via <a href="mailto:info@nationaalarchief.nl?subjec=Datasetregister">info@nationaalarchief.nl</a>.') ?></p>
+         <p><?= t('Deze website is eigendom van en wordt beheerd en onderhouden door het Nationaal Archief. Je kunt ons bereiken via <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subjec=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.') ?></p>
          <h2><?= t('Deze dienst') ?></h2>
          <p><?= t('De website en de API van het Datasetregister maken geen gebruik van cookies voor tracking of analytische doeleinden.') ?></p>
          <p><?= t('Bevragingen van website en API worden vastgelegd in een logbestand. Deze technische informatie, waaronder het IP-adres dat de bevraging doet, is alleen toegankelijk door technische beheerders en wordt gebruikt om inzicht te krijgen in het gebruik van het Datasetregister.') ?></p>
