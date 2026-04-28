@@ -8,7 +8,7 @@
 
 		<h2><?= t('Datasetbeschrijving')?></h2>
 		<p><?= t('Wanneer de datasetbeschrijving bij de bron wordt opgehaald en gevalideerd, dan wordt deze in een eigen graaf opgeslagen op basis van <code>dcat:Dataset</code>. De URL van de graaf correspondeert met de IRI van de dataset.')?></p>
-		<p><?= t('Datasetbeschrijvingen die worden geleverd op basis van schema.org - zoals geadviseerd in de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a> - worden geconverteerd naar DCAT.')?></p>
+		<p><?= t('Datasetbeschrijvingen die worden geleverd op basis van schema.org - zoals geadviseerd in de <a href="https://docs.nde.nl/requirements-datasets/">Requirements for Datasets</a> - worden geconverteerd naar DCAT.')?></p>
 		<p><?= t('Onderstaande tabel geeft de eigenschappen weer die in een datasetbeschrijving kunnen voorkomen:')?></p>
 				
 		<table class="properties">

@@ -15,7 +15,7 @@ include("includes/header.php") ?>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l"><?= t('Directe datasetbeschrijving validatie') ?></h1>
-         <p><?= t('Voer de inhoud van een datasetbeschrijving (of datacatalogus) in RDF in om deze via de <a href="apidoc.php">Datasetregister API</a> te valideren en selecteer het type RDF. Er wordt dan gecontroleerd of deze voldoet aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/requirements/shacl.ttl">SHACL bestand</a>. Als de aangeleverde RDF niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.') ?></p>
+         <p><?= t('Voer de inhoud van een datasetbeschrijving (of datacatalogus) in RDF in om deze via de <a href="api/">Datasetregister API</a> te valideren en selecteer het type RDF. Er wordt dan gecontroleerd of deze voldoet aan de <a href="https://docs.nde.nl/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/requirements/shacl.ttl">SHACL bestand</a>. Als de aangeleverde RDF niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.') ?></p>
 		 <p><?= t('De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.') ?> <?= t('Staat de datasetbeschrijving al online, plak dan de URL van de datasetbeschrijving in de <a href="validate.php">validatie</a> pagina.') ?></p>
       </div>
    </section>
@@ -193,12 +193,12 @@ function call_api() {
     .then(response => {
       if (response.status == 200) {
         as.style.backgroundColor = "#5cb85c";
-        as.innerHTML = "<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.') ?>";
+        as.innerHTML = "<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://docs.nde.nl/requirements-datasets/\">vereisten voor datasets</a>.') ?>";
       } else {
         al.style.display = "block";
         as.style.backgroundColor = "#e44d26";
         const messages = {
-          400: "<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>.')?>",
+          400: "<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://docs.nde.nl/requirements-datasets/\">vereisten voor datasets</a>.')?>",
           404: "<?= t('De URL kan niet worden gevonden.')?>",
           406: "<?= t('De URL kan worden gevonden, maar bevat geen datasets.')?>"
         };

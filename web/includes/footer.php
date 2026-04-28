@@ -115,8 +115,8 @@
                         <div class="c-grid__row m-flex">
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
-                                 <li><a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/">Requirements for Datasets</a></li>
-                                 <li><a href="apidoc.php<?= l() ?>"><?= t('Datasetregister API specificatie') ?></a></li>
+                                 <li><a href="https://docs.nde.nl/requirements-datasets/">Requirements for Datasets</a></li>
+                                 <li><a href="api/<?= l() ?>"><?= t('Datasetregister API specificatie') ?></a></li>
                               </ul>
                            </div>
                            <div class="c-grid__col c-site-footer__col">
@@ -130,34 +130,13 @@
 						<p><a href="https://www.nationaalarchief.nl" target="_blank"><img src="assets/na-logo.png" height="60" width="40" alt="Logo Nationaal Archief" class="nalogo"></a><?= t('Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.') ?></p>
 					 </div>
                   </div>
+                  <!--
                   <div class="all-1_3 tablet-landscape-1_1">
                      <div class="c-grid__col">
-                        <p><?= t('Volg het Netwerk Digitaal Erfgoed via') ?>:</p>
-                        <ul class="social">
-                           <li>
-                              <a aria-labelledby="footer" aria-label="Github link" target="_blank" href="https://github.com/netwerk-digitaal-erfgoed/">
-                                 <svg class="icon icon-github">
-                                    <use xlink:href="#icon-github"></use>
-                                 </svg>
-                              </a>
-                           </li>
-                           <li>
-                              <a aria-labelledby="footer" aria-label="LinkedIn link" target="_blank" href="https://www.linkedin.com/company/netwerkdigitaalerfgoed/?originalSubdomain=nl">
-                                 <svg class="icon icon-linkedin">
-                                    <use xlink:href="#icon-linkedin"></use>
-                                 </svg>
-                              </a>
-                           </li>
-                           <li>
-                              <a aria-labelledby="footer" aria-label="Youtube link" target="_blank" href="https://www.youtube.com/channel/UCvHDarEQeREkRVLdzJSbKWw">
-                                 <svg class="icon icon-youtube">
-                                    <use xlink:href="#icon-youtube"></use>
-                                 </svg>
-                              </a>
-                           </li>
-                        </ul>
+                        <p><?= t('Volg het Netwerk Digitaal Erfgoed via') ?>:</p>  
                      </div>
                   </div>
+                  -->
                </div>
             </div>
          </div>

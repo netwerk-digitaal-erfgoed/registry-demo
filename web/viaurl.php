@@ -9,7 +9,7 @@ include("includes/header.php") ?>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
       <h1 class="title--l"><?= t('Meld een datasetbeschrijving aan') ?></h1>
-      <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="apidoc.php">Datasetregister API</a> aan te melden. Als de domeinnaam voorkomt op de lijst van toegestane domeinnamen (zie <a href="faq-ontwikkelaars.php#allowed_domain_names">FAQ</a>) en de aangetroffen datasetbeschrijving(en) voldoen aan de <a href="https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/" target="_blank">dataset requirements</a> dan zullen deze in het Datasetregister worden opgenomen.')?></p>
+      <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="api/">Datasetregister API</a> aan te melden. Als de domeinnaam voorkomt op de lijst van toegestane domeinnamen (zie <a href="faq-ontwikkelaars.php#allowed_domain_names">FAQ</a>) en de aangetroffen datasetbeschrijving(en) voldoen aan de <a href="https://docs.nde.nl/requirements-datasets/" target="_blank">dataset requirements</a> dan zullen deze in het Datasetregister worden opgenomen.')?></p>
    </section>
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form id="viaurl">
@@ -83,11 +83,11 @@ include("includes/header.php") ?>
 
 		if (response.status=="202") {
 			as.style.backgroundColor="#5cb85c";
-			as.innerHTML="<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>. De datasets worden binnenkort toegevoegd aan het Dataset Register.')?>";
+			as.innerHTML="<?= t('Alle datasetbeschrijvingen op de ingediende URL zijn geldig volgens de <a href=\"https://docs.nde.nl/requirements-datasets/\">vereisten voor datasets</a>. De datasets worden binnenkort toegevoegd aan het Dataset Register.')?>";
 		} else {
 			as.style.backgroundColor="#e44d26";
 			if (response.status=="400") {
-				as.innerHTML="<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://netwerk-digitaal-erfgoed.github.io/requirements-datasets/\">vereisten voor datasets</a>. De antwoordtekst bevat een lijst met SHACL-overtredingen.')?>";
+				as.innerHTML="<?= t('Een of meer datasetbeschrijvingen zijn ongeldig volgens de <a href=\"https://docs.nde.nl/requirements-datasets/\">vereisten voor datasets</a>. De antwoordtekst bevat een lijst met SHACL-overtredingen.')?>";
 			} else {
 				if (response.status=="403") {
 					as.innerHTML="<?= t('De domeinnaam van de ingediende URL staat niet op de lijst met toegestane domeinnamen. <a href=\"/contact.php\">Neem contact met ons op</a> om de domeinnaam van uw instelling toe te voegen.')?>";
