@@ -16,8 +16,8 @@ header("X-Content-Type-Options: nosniff");
          <link rel="icon" href="assets/favicon-32x32.png">
 		   <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <link rel="stylesheet" id="nde-style-css" href="assets/style.20260428.min.css" type="text/css" media="all">
-         <link rel="stylesheet" id="site-style-css" href="assets/site.20250509.min.css" type="text/css" media="all">
+         <link rel="stylesheet" id="nde-style-css" href="assets/style.20260526.min.css" type="text/css" media="all">
+         <link rel="stylesheet" id="site-style-css" href="assets/site.20260526.min.css" type="text/css" media="all">
          <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -148,7 +148,7 @@ header("X-Content-Type-Options: nosniff");
                            <a class="m-theme-before m-select--none" href="<?= languagePrefix() ?>/datasets"><?= t('Doorzoek') ?></a>
                         </li>
                         <li class="has-sub" arial-label="Open submenu" title="Open submenu">
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
+                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veelgestelde vragen') ?></a>
                            <nav>
                               <ul class="submenu">
                                  <li>
@@ -205,7 +205,7 @@ header("X-Content-Type-Options: nosniff");
 					   <a class="m-theme-before m-select--none" href="<?= languagePrefix() ?>/datasets"><?= t('Doorzoek') ?></a>
 					</li>
 					<li>
-					   <a class="m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veel gestelde vragen') ?></a>
+					   <a class="m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veelgestelde vragen') ?></a>
 					</li>
                <li><?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
                            <li><a href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?><?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">Schakel naar de<br><strong>Nederlandse</strong> versie</a>
