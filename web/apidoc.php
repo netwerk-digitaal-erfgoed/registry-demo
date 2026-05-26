@@ -11,7 +11,7 @@
             --data-binary '{"@id":"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"}'
          </xmp>
          <p><br/></p>
-         <h3><?= t('Voorbeeld validatie datasetbeschrijving via API met Curl') ?></h3>
+         <h3><?= t('Voorbeeld controle datasetbeschrijving via API met Curl') ?></h3>
          <xmp>curl -i -X PUT 'https://datasetregister.netwerkdigitaalerfgoed.nl/api/datasets/validate' \
             -H 'link: <http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"' \
             -H 'content-type: application/ld+json' \

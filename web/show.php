@@ -38,7 +38,7 @@ include("includes/header.php");
       <div class="o-container o-container__small m-t-space">
         <h2 class="title--l"><?= t('Metadata') ?></h2>
         <table id="tableMetadata" class="props">
-		  <tr id="row_postedURL"><th><?= t('Geregistreerde URL') ?></th><td><a class="datacatalog" id="validate_postedURL"><?= t('Valideer') ?></a><span id="val_postedURL"></span></td></tr>
+		  <tr id="row_postedURL"><th><?= t('Geregistreerde URL') ?></th><td><a class="datacatalog" id="validate_postedURL"><?= t('Controleer') ?></a><span id="val_postedURL"></span></td></tr>
 		  <tr id="row_postedDate"><th><?= t('Registratiedatum') ?></th><td id="val_postedDate"></td></tr>
 		  <tr id="row_validUntil"><th><?= t('Was geldig tot') ?></th><td id="val_validUntil"></td></tr>
 		  <tr id="row_lastDateRead"><th><?= t('Laatste cache update') ?></th><td id="val_lastDateRead"></td></tr>

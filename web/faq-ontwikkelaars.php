@@ -31,7 +31,7 @@
       <p><?= t('Je kunt de datasetbeschrijving ook controleren met behulp van de algemenere <a href="https://validator.schema.org/">Schema Markup Validator</a>. Geef hier de URL op van de (online) pagina waarin de datasetbeschrijving is opgenomen of plak een codefragment om de test uit te voeren.') ?></p>
       <h2><?= t('Hoe werkt het Datasetregister, technisch?') ?></h2>
       <p><?= t('Het Datasetregister beoogt een verwijzer naar datasets te worden. Hiertoe crawlt het Datasetregister de URL\'s van aangemelde pagina\'s met datasetbeschrijvingen.') ?></p>
-      <p><?= t('De datasetbeschrijvingen worden gevalideerd en na conversie opgeslagen in een triplestore.') ?></p>
+      <p><?= t('De datasetbeschrijvingen worden gecontroleered en na conversie opgeslagen in een triplestore.') ?></p>
       <p><?= t('Onderstaand ontwerp toont de <i>high-level</i> componenten:') ?></p>
       <p><img src="assets/design.png" style="max-width:100%;margin:0 32px;"></p>
       <h2><?= t('Hoe kan ik het Datasetregister uitproberen?') ?></h2>

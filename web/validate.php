@@ -24,9 +24,9 @@ include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space">
       <div class="o-container o-container__small m-t-space">
-         <h1 class="title--l"><?= t('Valideer een datasetbeschrijving via URL') ?></h1>
+         <h1 class="title--l"><?= t('Controleer een datasetbeschrijving via URL') ?></h1>
          <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="api/">Datasetregister API</a> te valideren. Er wordt dan gecontroleerd de aangetroffen datasetbeschrijving (of datasetbeschrijvingen) voldoen aan de <a href="https://docs.nde.nl/requirements-datasets/" target="_blank">dataset requirements</a>. De validate wordt uitgevoerd op basis van een <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register/blob/main/requirements/shacl.ttl">SHACL bestand</a>. Als de op de URL aangetroffen dataset niet voldoet, dan wordt het resultaat van de SHACL validatie getoond.') ?></p>
-		 <p><?= t('De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.') ?> <?= t('Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe validatie</a> pagina.') ?></p>		 
+		 <p><?= t('De datasetbeschrijving wordt niet opgeslagen of toegevoegd aan het Dataset Register. Via de <a href="viaurl.php">Meld aan</a> pagina kan een URL van een online gepubliceerde datasetbeschrijving worden aangemeld.') ?> <?= t('Staat de datasetbeschrijving nog niet online, plak dan de RDF van de datasetbeschrijving in de <a href="validate-post.php">directe controle</a> pagina.') ?></p>		 
       </div>
    </section>
    <section class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
