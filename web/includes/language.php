@@ -4,25 +4,27 @@ $translations_nl_en = array(
 
     # index.php
     'Datasetregister' =>  'Dataset Register',
-    'Voor alle erfgoeddatasets!' => 'For all heritage datasets!',
-	'Het datasetregister geeft inzicht in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.' => 'The dataset register provides insight into the availability of datasets in the heritage field and thus encourages the use of these datasets.',
+    'Vind erfgoeddatasets op één plek' => 'Find heritage datasets in one place',
+	'In het Datasetregister zie je welke datasets er zijn en informatie over de inhoud.' => 'In the Dataset Register, you can see which datasets are available and information about their content.',
     'Voor erfgoedinstellingen met datasets' => 'For heritage institutions with datasets',
-    'voeg een datasetbeschrijving toe'=>'add a dataset description',
-    'Voeg een datasetbeschrijving toe'=>'Add a dataset description',
+    'Meld je dataset aan'=>'Submit your dataset',
     'Voor gebruikers van erfgoeddata' => 'For users of heritage data',
-    'doorzoek <span id="datasetcount">alle</span> datasetbeschrijvingen' => 'search <span id="datasetcount">all</span> dataset descriptions',
-    'Ben je actief met datasets bij een erfgoedinstelling?' => 'Are you active with datasets at a heritage institution?',
+    'zoek in <span id="datasetcount">alle</span> datasetbeschrijvingen' => 'search <span id="datasetcount">all</span> dataset descriptions',
+    'Werk je bij een erfgoedorganisatie?' => 'Do you work at a heritage organization?',
     'Maak een datasetbeschrijving' => 'Create a dataset description',
-    'Veelgestelde vragen door dataset beheerders' => 'Frequently asked questions by dataset administrators',
-    'Ben je op zoek naar erfgoeddatasets?' => 'Are you looking for heritage datasets?',
-    'Leer via de Data story hoe te zoeken' => 'Learn how to search via the Data story',
+    'Maak en publiceer je datasetbeschrijving' => 'Create and publish your dataset description',
+    'Veelgestelde vragen voor erfgoedorganisaties' => 'Frequently asked questions for heritage organizations',
+    'Zoek je erfgoeddatasets?' => 'Are you looking for heritage datasets?',
+    'Leer hoe je datasets vindt via Sparql' => 'Learn how to find datasets via Sparql',
     'Doorzoek alle datasetbeschrijvingen' => 'Search all dataset descriptions',
-    'Veelgestelde vragen door dataset gebruikers'=>'Frequently asked questions by dataset users',
-    'Ontwikkel je software voor erfgoedinstellingen?' => 'Do you develop software for heritage institutions?',
-    'Eisen gesteld aan datasetbeschrijvingen' => 'Requirements for dataset descriptions',
+    'Veelgestelde vragen voor gebruikers'=>'Frequently asked questions for users',
+    'Ontwikkel je software voor erfgoeddata?' => 'Do you develop software for heritage data?',
+    'Technische eisen voor datasetbeschrijvingen' => 'Technical requirements for dataset descriptions',
     'Controleer een datasetbeschrijving via URL' => 'Validate a dataset description via URL',
     'API-documentatie' => 'API documentation',
+    'Gebruik de API\'s' => 'Use the APIs',
     'Veelgestelde vragen door ontwikkelaars' => 'Developer FAQ',
+    'Verdiep je in alle technische documentatie' => 'Delve into all technical documentation',
 
     # header.php
     'Het datasetregister geeft inzicht (voor geïnteresseerden, onderzoekers, andere erfgoedinstellingen en softwareontwikkelaars) in de beschikbaarheid van datasets in het erfgoedveld en stimuleert daarmee het gebruik van deze datasets.' => 'The dataset register provides insight (for interested parties, researchers, other heritage institutions and software developers) into the availability of datasets in the heritage field and thus encourages the use of these datasets.',
@@ -31,7 +33,7 @@ $translations_nl_en = array(
     'Valideer'=>'Validate',
     'Meld aan'=>'Submit',
     'Doorzoek'=>'Search',
-    'Veelgestelde vragen'=>'FAQ',
+    'Veelgestelde vragen'=>'Frequently Asked Questions',
     'datasetbeheerders bij erfgoed&shy;instellingen'=>'dataset managers at heritage institutions',
     'datasetgebruikers bij erfgoed&shy;instellingen en aggregators'=>'dataset users at heritage institutions and aggregators',
     'ontwikkelaars van erfgoed software'=>'heritage software developers',
@@ -39,6 +41,7 @@ $translations_nl_en = array(
 
     # footer.php
     'Privacyverklaring'=>'Privacy statement',
+    'Hulp nodig?'=> 'Need help?',
     'Contact'=>'Contact',
     'Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief.'=>'The Dataset Register is the result of collaboration within the Digital Heritage Network and is managed and maintained by the National Archives.',
     'Volg het Netwerk Digitaal Erfgoed via'=>'Follow the Digital Heritage Network via',
@@ -146,6 +149,8 @@ $translations_nl_en = array(
     # contact.php
     'Heb je vragen over het Datasetregister, problemen of wensen?'=>'Do you have questions about the Dataset Register, problems or wishes?',
 	'Neem dan contact op met <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subject=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.'=>'Please contact <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subject=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.',
+    'Heb je als erfgoedorganisatie hulp nodig bij het maken van een datasetbeschrijving en het publiceren in het Datasetregister? De datawerkplaatsen van het Netwerk Digitaal Erfgoed helpen je graag verder.' => 'Do you need help as a heritage organization in creating a dataset description and publishing it in the Dataset Register? The data workshops of the Digital Heritage Network are happy to help you further.',
+    'Neem contact op met een datawerkplaats. Deze ondersteuning is kosteloos.' => 'Contact a data workshop. This support is free of charge.',
 
     # privacy.php
     'Het Datasetregister is het resultaat van de samenwerking binnen het Netwerk Digitaal Erfgoed en wordt beheerd en onderhouden door het Nationaal Archief. Het verwerken, waaronder begrepen publiceren, van de namen van natuurlijke personen heeft ten doel kenbaar te maken dat deze persoon de contactpersoon, uitgever en/of maker van de betreffende dataset is. De wijze waarop het Nationaal Archief persoonsgegevens verwerkt is vastgelegd in een <a href="https://www.nationaalarchief.nl/privacybeleid-nationaal-archief">Privacybeleid</a> en <a href="https://www.nationaalarchief.nl/privacyreglement-nationaal-archief">Privacyreglement</a>.'=>'The Dataset Register is the result of collaboration within the Digital Heritage Network and is managed and maintained by the National Archives. The purpose of processing, including publishing, the names of natural persons is to indicate that this person is the contact person, publisher and/or creator of the relevant dataset. The manner in which the National Archives processes personal data is laid down in a <a href="https://www.nationaalarchief.nl/privacybeleid-nationaal-archief">Privacy Policy</a> and <a href="https://www.nationaalarchief.nl/privacyreglement-nationaal-archief">Privacy Regulations</a>.',
@@ -422,7 +427,16 @@ $translations_nl_en = array(
 	'Aangemeld op'=>'Registered on',
 	'De meest recent toegevoegde datasets aan het NDE Datasetregister'=>'The most recently added datasets to the NDE Dataset Register',
 	'Deze lijst is ook beschikbaar als <a href="dataset-newest-rss.php">RSS feed</a>.'=>'This list is also available as <a href="dataset-newest-rss.php?lang=en">RSS feed</a>.',
-	'Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.'=>'An overview of <a href="dataset-newest.php?lang=en">recently submitted dataset descriptions</a> is also available.'
+	'Er is ook een overzicht beschikbaar van <a href="dataset-newest.php">recent aangemelde datasetbeschrijvingen</a>.'=>'An overview of <a href="dataset-newest.php?lang=en">recently submitted dataset descriptions</a> is also available.',
+
+    # zoek.php
+
+    'Zoek in het Datasetregister' => 'Search the Dataset Register',
+	'Ben je benieuwd welk digitaal erfgoed er op dit moment beschikbaar is? Het Datasetregister is de plek om dit te ontdekken. Je vindt hier geen digitaal erfgoed, maar wel beschrijvingen van datasets die direct doorverwijzen naar de datasets bij de bron.' => 'Are you curious about what digital heritage is currently available? The Dataset Register is the place to discover this. You won\'t find digital heritage here, but you will find descriptions of datasets that directly refer to the datasets at the source.',
+	'Gebruik de <a href="/datasets">zoekfunctie</a> om snel de juiste datasets te vinden. Met filters en zoektermen haal je eenvoudig de informatie boven die bij jouw vraag past.' => 'Use the <a href="/en/datasets">search function</a> to quickly find the right datasets. With filters and search terms, you can easily retrieve the information that fits your question.',
+	'Erfgoedorganisaties bieden hun datasets meestal aan onder een open licentie, vaak CC0. Dit betekent dat de datasets vrij gebruikt en gedeeld mogen worden, zonder dat vooraf toestemming nodig is. Zo kunnen datasets makkelijker worden gekoppeld, onderzocht en gebruikt in bijvoorbeeld websites, apps of onderzoek.' => 'Heritage organizations usually offer their datasets under an open license, often CC0. This means that the datasets may be freely used and shared, without prior permission being required. This makes it easier to link, research and use datasets in, for example, websites, apps or research.',
+	'Voor technisch gebruik is ook de onderliggende triplestore beschikbaar. Deze draait op GraphDB en is toegankelijk via <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister</a>. Hier kun je zelf SPARQL queries uitvoeren en datasetbeschrijvingen direct doorzoeken. Wil je meer inzicht in de mogelijkheden van het SPARQL-endpoint en de triplestore? De <a href="/datastory.php">datastory-pagina</a> laat stap voor stap zien hoe queries zijn opgebouwd.' => 'For technical use, the underlying triplestore is also available. It runs on GraphDB and is accessible via <a href="https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister">https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister</a>. Here you can execute SPARQL queries yourself and directly search dataset descriptions. Do you want more insight into the possibilities of the SPARQL endpoint and the triplestore? The <a href="/en/datastory.php">data story page</a> shows step by step how queries are built.',
+	'De zoekfunctie op de website en het SPARQL-endpoint zijn vrij toegankelijk. Iedereen kan de datasetbeschrijvingen doorzoeken.' => 'The search function on the website and the SPARQL endpoint are freely accessible. Everyone can search the dataset descriptions.'
 
 );
 

@@ -3,7 +3,7 @@
       <div class="c-grid__row">
          <div class="all-1_4 tablet-portrait-1_1">
             <div class="c-grid__col">
-               <a href="<?= l() ?>" class="logo" aria-label="Logo Netwerk Digitaal Erfgoed" aria-labelledby="footer">
+               <a href=" https://netwerkdigitaalerfgoed.nl/" class="logo" aria-label="Logo Netwerk Digitaal Erfgoed" aria-labelledby="footer">
                   <div class="icon icon--first">
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="43.167 125.167 157.333 150" enable-background="new 43.167 125.167 157.333 150" xml:space="preserve">
                         <g>
@@ -115,14 +115,14 @@
                         <div class="c-grid__row m-flex">
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
-                                 <li><a href="https://docs.nde.nl/requirements-datasets/">Requirements for Datasets</a></li>
-                                 <li><a href="api/<?= l() ?>"><?= t('Datasetregister API specificatie') ?></a></li>
+                                 <li><a href="contact.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Hulp nodig?') ?></a></li>
+                                 <li><a href="faq.php<?= l() ?>"><?= t('Veelgestelde vragen') ?></a></li>
                               </ul>
                            </div>
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
-                                 <li><a href="privacy.php<?= l() ?>"><?= t('Privacyverklaring') ?></a></li>
-                                 <li><a href="contact.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Contact') ?></a></li>
+                                 <li><a href="privacy.php"><?= t('Privacyverklaring') ?></a></li>
+                                 <!-- <li><a href="https://docs.nde.nl/requirements-datasets/">Requirements for Datasets</a></li> -->
                               </ul>
                            </div>
                         </div>
