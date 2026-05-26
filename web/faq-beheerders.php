@@ -1,46 +1,43 @@
 <?php include("includes/header.php") ?>
 <main>
-   <div class="o-container o-container__small m-t-space">
-      <h1><?= t('Veelgestelde vragen over het Datasetregister door dataset beheerders bij erfgoedinstellingen') ?></h1>
-      <p><br></p>
-      <h2><?= t('Wat is een dataset?')?></h2>
-      <p><?= t('Een dataset (of gegevensverzameling) is een verzameling van gegevens (data of metadata). In de context van erfgoedinstellingen kun je hierbij denken aan de data van/over erfgoedobjecten, zoals een catalogus, een set museumobjecten of een collectie van archieven of nadere toegangen. Deze (meta)data wordt veelal in een archiefbeheer- of collectieregistratiesysteem beheerd en in de een of andere vorm via de eigen website toegankelijk gemaakt aan haar gebruikers. De data kan ook worden gedeeld voor hergebruik, door een dienstenportaal of aggregator. Het systeem van de erfgoedinstelling dient hiervoor de data via een datadump (export) of API beschikbaar te stellen.')?></p>
-      <h2><?= t('Wat is een datasetbeschrijving?')?></h2>
-      <p><?= t('Een dataset dient zelf ook weer voorzien te worden van metadata. De beschrijving is dus data over de dataset.')?></p>
-      <h2><?= t('Waarom is een datasetbeschrijving belangrijk?')?></h2>
-      <p><?= t('Net als erfgoedcollecties is het van belang dat datasets ook vindbaar zijn. Een rijke datasetbeschrijving op een standaard wijze helpt bij het vindbaar maken van de dataset. De datasetbeschrijvingen, mits vormgegeven in een standaard formaat, zijn niet alleen "voer" voor het Datasetregister. Ook zoekmachines zoals Google herkennen datasetbeschrijvingen en maken deze onder andere doorzoekbaar via <a href="https://datasetsearch.research.google.com/">Dataset Search</a>. Hoe beter datasets zijn beschreven en deze beschrijvingen vindbaar zijn, hoe beter hergebruikers de datasets kunnen vinden en daarmee gebruiken en wellicht ook koppelen.')?></p>
-      <h2><?= t('Welke informatie bevat een datasetbeschrijving?')?></h2>
-      <p><?= t('Een datasetbeschrijving bevat informatie die de dataset beschrijft, zoals een identificatie (URI), een naam, een inhoudsbeschrijving, een licentie, een taal en een data-eigenaar (de maker). Aanvullend op de verplichte informatie elementen kan er informatie worden gegeven over de creatiedatum, publicatiedatum, versie, contact informatie, dekking qua plaats/gebied en tijd/periode, steekwoorden en genre.')?></p>
-      <p><?= t('De dataset kan op verschillende manieren aangeboden worden, dit wordt de distributie genoemd. Het kan een datadump zijn die gedownload kan worden in een of ander formaat of een API die bevraagbaar is, bijvoorbeeld een SPARQL endpoint. De informatie over distributies bestaat uit een URL, een formaat en soort, en optioneel een licentie, omschrijving, taal, publicatiedatum, wijzigingsdatum en bestandsgrootte.')?></p>
-      <p><?= t('Een set van datasetbeschrijvingen wordt een datasetcatalogus genoemd. Het geeft een totaal overzicht van de beschikbare datasets van een organisatie.')?></p>
-      <h2><?= t('Waar wordt een datasetbeschrijving gepubliceerd?')?></h2>
-      <p><?= t('Net als het publiceren van de dataset is het aan de erfgoedinstelling om de datasetbeschrijving te publiceren. Informatie, leesbaar voor mens en machine, dient online beschikbaar te worden gemaakt.')?></p>
-	   <p><?= t('Als het publiceren niet via de eigen infrastructuur zoals CMS lukt, dan kan er gebruik worden gemaakt van de "publication service" <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-register-entries">Dataset Register entries</a> via Github.')?></p>
-      <h2><?= t('Hoe kan ik mijn datasetbeschrijving controleren?')?></h2>
-      <p><?= t('Via de REST API kan de datasetbeschrijving worden gecontroleerd of deze voldoet aan de <a href="https://docs.nde.nl/requirements-datasets/">Requirements for Datasets</a>.')?></p>
-      <p><?= t('Je kunt de datasetbeschrijving ook controleren met behulp van de algemenere <a href="https://validator.schema.org/">Schema Markup Validator</a>. Geef hier de URL op van de (online) pagina waarin de datasetbeschrijving is opgenomen of plak een codefragment om de test uit te voeren.')?></p>
-      <h2><?= t('Wat is het Datasetregister?')?></h2>
-      <p><?= t('Het doel van het Datasetregister is om inzicht te krijgen in erfgoeddatasets. Erfgoedinstellingen worden aangemoedigd om datasets aan te bieden vanuit hun systeem, deze datasets te beschrijven en online te publiceren en om de URL\'s van datasetbeschrijvingen aan te melden bij het Datasetregister. Het Datasetregister haalt de datasetbeschrijvingen op waardoor er een totaalbeeld ontstaat van wat beschikbaar is.')?></p>
-      <h2><?= t('Hoe kan ik een datasetbeschrijving aanmelden bij het Datasetregister?')?></h2>
-      <p><?= t('Idealiter vindt de aanmelding van een datasetbeschrijving (automatisch) plaats via het eigen beheersysteem.')?></p>
-      <p><?= t('Een URL van een datasetbeschrijving (die dus door de erfgoedinstelling is gepubliceerd) kan bij het Datasetregister worden aangemeld. Na aanmelding zal het Datasetregister de datasetbeschrijving controleren en ophalen. Het Datasetregister zal dit frequent herhalen om wijzigingen of verwijderingen op te merken om het Datasetregister hiermee bij te werken.')?></p>
-      <p><?= t('Voor erfgoedinstellingen die nog niet in staat zijn om een datasetbeschrijving vanuit het eigen systeem te genereren biedt het Netwerk Digitaal Erfgoed een <a href="/form.php">formulier aan voor het maken van een datasetbeschrijving</a>. Het resultaat is een stuk JSON-LD die op de eigen website of ander platform gepubliceerd kan worden.')?></p>
-      <h2><?= t('Hoe kan ik het Datasetregister uitproberen?')?></h2>
-      <p><?= t('Via deze website, een demonstrator voor de Datasetregister API, kun je datasetbeschrijvingen aanmelden en doorzoeken. Deze demonstrator maakt gebruik van de <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/api/">REST API</a>, die je ook direct kunt aanspreken.')?></p>
-      <h2><?= t('Wie maakt en beheert het Datasetregister?')?></h2>
-      <p><?= t('Het Datasetregister is gemaakt door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a> en wordt beheerd en onderhouden door het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a>. Het Nationaal Archief staat in voor de werking en beschikbaarheid van het Datasetregister.')?></p>
-      <h2><?= t('Wat is de status van het Datasetregister?')?></h2>
-      <p><?= t('Het Datasetregister is klaar om verder gevuld te worden. De requirements, API en deze website zijn stabiel en worden op basis van feedback van gebruikers en leveranciers verfijnd.')?></p>
-      <h2><?= t('Kan ik al aan de slag met datasetbeschrijvingen maken?')?></h2>
-      <p><?= t('Jazeker! De definitie van wat voor informatie er in de datasetbeschrijving opgenomen dient te worden ligt vast. Oook het mechanisme om datasetbeschrijvingen aan te melden en de opslag van datasetbeschrijvingen in een triplestore zijn operationeel. Als dataset beheerder kun je dus beginen met het beschrijven van de beschikbare datasets, bekijken waar de datasetbeschrijvingen kunnen worden gepubliceerd en deze aanmelden. Veelal betekent dit ook contact zoeken met uw software leverancier.')?></p>
-      <p><?= t('Via een formulier kun je handmatig een datasetbeschrijving maken. Hiermee krijg je een idee over welke informatie benodigd <i>en</i> voorhanden is binnen systeem en organisatie. Vanuit het oogpunt van onderhoud is een oplossing vanuit uw systeem duurzamer.')?></p>
-      <p><?= t('Als je de datasetbeschrijvingen al online publiceert, dan zullen zoekmachines zoals Google\'s <a href="https://datasetsearch.research.google.com/">Dataset Search</a> de datasets wellicht al oppikken!')?></p>
-      <p><?= t('We horen ook graag wat je ervan vindt. Bijvoorbeeld: is duidelijk welke informatie in de datasetbeschrijving thuishoort? Is duidelijk hoe je de datasetbeschrijvingen gevuld krijgt, qua proces en qua gebruikte software?')?></p>
-      <h2><?= t('Ga je aan de slag?')?></h2>
-      <p><?= t('Ga je aan de slag met het publiceren van datasetbeschrijvingen en de API op het Datasetregister, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.')?></p>
-	   <h2><?= t('Meer weten?')?></h2>
-      <p><?= t('Heb je vragen en/of opmerkingen over de werking van het Datasetregister neem dan contact op met <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subject=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.')?></p>
-   </div>
-   <p><br></p>
+	<section class="text m-t-space m-b-space m-theme--blue">
+      <div class="o-container o-container__small m-t-space">
+         <h1><?= t('Veelgestelde vragen voor erfgoedorganisaties') ?></h1>
+         <p><br></p>
+         <h2><?= t('Wat is een dataset?') ?></h2>
+         <p><?= t('Een dataset is een verzameling gestructureerde beschrijvingen van erfgoeditems. Dat kunnen fysieke objecten zijn, zoals schilderijen of archiefstukken, maar ook personen, gebeurtenissen, plaatsen of digitale objecten zoals foto’s en audiovisueel materiaal.') ?></p>
+         <p><?= t('Een dataset bevat metadata, dit is de informatie over de erfgoeditems. Daarin staat bijvoorbeeld wie de maker is, uit welk jaar een object komt en wat het onderwerp is. Vaak staat er ook een verwijzing naar de plek waar het object digitaal te bekijken of fysiek te vinden is. Deze metadata wordt meestal vastgelegd in een collectie-informatiesysteem. Sommige erfgoedorganisaties beheren hun metadata echter op een andere manier, bijvoorbeeld in een Excelbestand of een eigen database. Door deze informatie als dataset te publiceren, maakt de organisatie deze voor iedereen beschikbaar.') ?></p>
+         <h2><?= t('Wat is een datasetbeschrijving?') ?></h2>
+         <p><?= t('Een datasetbeschrijving beschrijft de dataset als geheel. Er staat bijvoorbeeld in wat de titel is, welke informatie de dataset bevat en welke erfgoedorganisatie deze beheert. Ook bevat de beschrijving een verwijzing naar de plek waar de dataset beschikbaar is, meestal via een link.') ?></p>
+         <h2><?= t('Welke informatie staat er in een datasetbeschrijving?') ?></h2>
+         <p><?= t('Een datasetbeschrijving bevat informatie over inhoud, herkomst, beschikbaarheid en gebruik van een dataset. Denk aan gegevens zoals titel, beschrijving, licentie, erfgoedorganisatie van wie de dataset is en de URL van de dataset.') ?></p>
+         <h2><?= t('Hoeveel datasetbeschrijvingen mag ik in het datasetregister zetten?') ?></h2>
+         <p><?= t('Er is geen maximum. Je bepaalt als erfgoedorganisatie bepaalt zelf hoeveel datasetbeschrijvingen je publiceert. Je kunt bijvoorbeeld één datasetbeschrijving publiceren voor een volledige collectie, of meerdere datasetbeschrijvingen voor afzonderlijke deelcollecties of typen erfgoed.') ?></p>
+         <h2><?= t('Waar staat mijn dataset?') ?></h2>
+         <p><?= t('De dataset staat bij de organisatie die de data beheert, bijvoorbeeld in het collectie-informatiesysteem. De.datasetbeschrijving verwijst naar deze locatie via een URL. Je.dataset zelf staat dus niet in het Datasetregister.') ?></p>
+         <h2><?= t('Hoe maak ik een datasetbeschrijving?') ?></h2>
+         <p><?= t('Je maakt een datasetbeschrijving via je collectie-informatiesysteem of via een online formulier. Lees meer op de pagina Datasetbeschrijving maken.') ?></p>
+         <h2><?= t('Mijn erfgoedorganisatie heeft alleen een fysieke collectie. Kan ik hier een datasetbeschrijving van maken?') ?></h2>
+         <p><?= t('Ja. Een datasetbeschrijving kan gaan over fysieke collecties, zoals schilderijen, papieren archieven of museumobjecten, maar ook over digitale bronnen, zoals podcasts, video-interviews of gescande documenten.') ?></p>
+         <h2><?= t('Welke licentie moet ik gebruiken?') ?></h2>
+         <p><?= t('In het Netwerk Digitaal Erfgoed is een open licentie het uitgangspunt. De licentie geldt voor de metadata van de dataset, niet voor de individuele collectieobjecten binnen de dataset. De voorkeur gaat uit naar CC0. Kies alleen een andere licentie als juridische of privacyredenen dat nodig maken. Ook al is je metadata onder voorwaarden toegankelijk, publiceer dan toch een datasetbeschrijving. Zo is voor iedereen zichtbaar dat de dataset bestaat en onder welke voorwaarden deze toegankelijk is.') ?></p>
+         <h2><?= t('Hoe kan ik een datasetbeschrijving publiceren als mijn collectie-informatiesysteem of website dit niet ondersteunt?') ?></h2>
+         <p><?= t('Ja, neem contact op via de <a href="contact.php">contactpagina</a>.') ?></p>
+         <h2><?= t('Hoe meld ik een datasetbeschrijving aan?') ?></h2>
+         <p><?= t('Veel NDE-compatibele collectie-informatiesystemen kunnen datasetbeschrijvingen voor je aanmelden. Kan jouw systeem dit nog niet? Neem contact op met je leverancier. Heb je nog geen NDE-compatibel systeem? Dan meld je de registratie-URL handmatig aan via het <a href="viaurl.php">online aanmeldformulier</a>.') ?></p>
+         <h2><?= t('Hoe snel na aanmelding verschijnt mijn datasetbeschrijving in het Datasetregister?') ?></h2>
+         <p><?= t('Na een succesvolle aanmelding wordt een datasetbeschrijving binnen 24 uur opgenomen in het Datasetregister.') ?></p>
+         <h2><?= t('De datasetbeschrijving die ik heb aangemeld verschijnt niet in het Datasetregister. Wat moet ik doen?') ?></h2>
+         <p><?= t('Controleer eerst of alle verplichte velden zijn ingevuld en of de URL van de datasetbeschrijving goed bereikbaar is en geen foutmelding geeft. Je kunt daarna de URL van de datasetbeschrijving invoeren op de <a href="validate">controlepagina</a> om te zien of er problemen zijn met de datasetbeschrijving. Kom je er niet uit? Een <a href="https://netwerkdigitaalerfgoed.nl/datawerkplaatsen/">datawerkplaats</a> kijkt mee en helpt om de fout te vinden en op te lossen.') ?></p>
+         <h2><?= t('Hoe wijzig ik mijn datasetbeschrijving?') ?></h2>
+         <p><?= t('Wijzigingen voer je door in je eigen systeem. Het Datasetregister leest de beschrijving daarna automatisch in en verwerkt de wijziging binnen 24 uur. Apart doorgeven is niet nodig.') ?></p>
+         <h2><?= t('Hoe verwijder ik een datasetbeschrijving?') ?></h2>
+         <p><?= t('Verwijder de datasetbeschrijving op de plek waar deze is gepubliceerd, bijvoorbeeld in je collectie-informatiesysteem. Het Datasetregister kan de beschrijving dan niet meer inlezen en markeert deze automatisch als gearchiveerd. De beschrijving blijft wel nog zichtbaar in het archief van het Datasetregister. Voor permanente verwijdering: neem contact op via de <a href="contact.php">contactpagina</a>.') ?></p>
+         <h2><?= t('Wanneer is mijn datasetbeschrijving voor het laatst ingelezen door het Datasetregister?') ?></h2>
+         <p><?= t('Onder het kopje Registratie in de datasetbeschrijving staat het veld Laatst gelezen. Die datum laat zien wanneer het Datasetregister de URL van je datasetbeschrijving voor het laatst automatisch heeft ingelezen.') ?></p>
+         <h2><?= t('Mijn erfgoedorganisatie heeft nog geen linked open data. Mag mijn datasetbeschrijving wel in het Datasetregister?') ?></h2>
+         <p><?= t('Ja. Het aanbieden van data als linked open data is geen voorwaarde voor opname in het Datasetregister. Een dataset kan op verschillende manieren beschikbaar worden gesteld. Dat kan bijvoorbeeld ook een API zijn of een downloadbestand zoals CSV.') ?></p>\
+      </div>
+   </section>
 </main>
 <?php include("includes/footer.php") ?>

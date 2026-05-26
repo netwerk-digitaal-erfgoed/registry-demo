@@ -144,30 +144,9 @@ header("X-Content-Type-Options: nosniff");
                         <li>
                            <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"viaurl.php")) { echo "active "; } ?>m-theme-before m-select--none" href="viaurl.php<?= l() ?>"><?= t('Meld aan') ?></a>
                         </li>
-						<li>
+						      <li>
                            <a class="m-theme-before m-select--none" href="<?= languagePrefix() ?>/datasets"><?= t('Doorzoek') ?></a>
                         </li>
-                        <!--
-                        <li class="has-sub" arial-label="Open submenu" title="Open submenu">
-                           <a class="<?php if(strstr($_SERVER['REQUEST_URI'],"faq")) { echo "active "; } ?>m-theme-before m-select--none" href="faq.php<?= l() ?>"><?= t('Veelgestelde vragen') ?></a>
-                           <nav>
-                              <ul class="submenu">
-                                 <li>
-                                    <a href="faq-beheerders.php<?= l() ?>"><?= t('datasetbeheerders bij erfgoed&shy;instellingen') ?></a>
-                                 </li>
-                                 <li>
-                                    <a href="faq-gebruikers.php<?= l() ?>"><?= t('datasetgebruikers bij erfgoed&shy;instellingen en aggregators') ?></a>
-                                 </li>
-                                 <li>
-                                    <a href="faq-ontwikkelaars.php<?= l() ?>"><?= t('ontwikkelaars van erfgoed software') ?></a>
-                                 </li>
-                                 <li>
-                                    <a href="faq-developers.php<?= l() ?>"><?= t('ontwikkelaars die erfgoed datasets willen vinden') ?></a>
-                                 </li>
-                              </ul>
-                           </nav>
-                        </li>
-                     -->
                         <?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { ?>
                            <li><a title="Schakel naar de Nederlandse versie" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);?>?lang=nl<?php if(isset($_GET["uri"])) { echo "?uri=".urlencode($_GET["uri"]); } ?>">NL &#x2022; <strong>EN</strong></a></li>
                         <?php } else { ?>

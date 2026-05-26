@@ -10,7 +10,7 @@
          <hr>
          <p><br></p>
          <p><?= t('Heb je als erfgoedorganisatie hulp nodig bij het maken van een datasetbeschrijving en het publiceren in het Datasetregister? De datawerkplaatsen van het Netwerk Digitaal Erfgoed helpen je graag verder.') ?></p>
-         <p><?= t('Neem contact op met een datawerkplaats. Deze ondersteuning is kosteloos.') ?></p>
+         <p><?= t('Neem contact op met een <a href="https://netwerkdigitaalerfgoed.nl/datawerkplaatsen/">datawerkplaats</a>. Deze ondersteuning is kosteloos.') ?></p>
 
       </div>
    </section>

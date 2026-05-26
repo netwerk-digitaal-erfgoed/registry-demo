@@ -1,28 +1,21 @@
 <?php include("includes/header.php") ?>
 <main>
-   <div class="o-container o-container__small m-t-space">
-      <h1><?= t('Veelgestelde vragen over het Datasetregister door dataset gebruikers bij erfgoedinstellingen en aggregators') ?></h1>
-      <p><br></p>
-      <h2><?= t('Welke datasets stelt het Datasetregister beschikbaar?') ?></h2>
-      <p><?= t('Het Datasetregister stelt <b>geen</b> datasets ter beschikking. Datasets (in de vorm van datadump of API\'s) staan bij de bron (=de erfgoedinstelling) of op een open data platform waar de erfgoedinstelling gebruik van maakt.') ?></p>
-      <p><?= t('Het Datasetregister levert op basis van zoekvragen URI\'s van datasetbeschrijvingen op, deze datasetbeschrijvingen bevatten verwijzingen naar de datasets.') ?></p>
-      <h2><?= t('Welke datasetbeschrijvingen stelt het Datasetregister beschikbaar?') ?></h2>
-      <p><?= t('Het Datasetregister stelt <b>geen</b> datasetbeschrijvingen ter beschikking. Datasetbeschrijvingen staan bij de bron (=de erfgoedinstelling) of op een open data platform waar de erfgoedinstelling gebruik van maakt.') ?></p>
-      <p><?= t('OK, het Datasetregister bevat wel datasetbeschrijvingen, maar dit is puur als cache en om de datasetbeschrijvingen efficiënt te kunnen doorzoeken. Het Datasetregister levert op basis van zoekvragen URI\'s van datasetbeschrijvingen bij de bron op.') ?></p>
-      <h2><?= t('Hoe kan ik de datasetbeschrijvingen doorzoeken?') ?></h2>
-      <p><?= t('De datasetbeschrijvingen zijn via de web-GUI op het SPARQL-endpoint van de triplestore te doorzoeken. De datasetbeschrijvingen zijn opgeslagen op basis van het DCAT vocabulair.') ?></p>
-      <h2><?= t('Wie maakt en beheert het Datasetregister?') ?></h2>
-      <p><?= t('Het Datasetregister is gemaakt door de samenwerkende erfgoedinstellingen in het <a href="https://www.netwerkdigitaalerfgoed.nl/">Netwerk Digitaal Erfgoed</a> en wordt beheerd en onderhouden door het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a>. Het Nationaal Archief staat in voor de werking en beschikbaarheid van het Datasetregister.') ?></p>
-      <h2><?= t('Wat is de status van het Datasetregister?') ?></h2>
-      <p><?= t('Het Datasetregister is klaar om verder gevuld te worden. De requirements, API en deze website zijn stabiel en worden op basis van feedback van gebruikers en leveranciers verfijnd.') ?></p>
-      <h2><?= t('Kan ik het Datasetregister nu al gebruiken?') ?></h2>
-      <p><?= t('Jazeker! De definitie van wat voor informatie er in de datasetbeschrijving opgenomen dient te worden ligt vast. Ook het mechanisme om datasetbeschrijvingen aan te melden en de opslag van datasetbeschrijvingen in een triplestore zijn operationeel. Als dataset beheerder kun je dus beginen met het beschrijven van de beschikbare datasets, bekijken waar de datasetbeschrijvingen kunnen worden gepubliceerd en deze aanmelden. Veelal betekent dit ook contact zoeken met uw software leverancier.') ?></p>
-      <p><?= t('Als je een stap verder wilt gaan, dan kun je het Datasetregister in je collectiebeheersysteem implementeren zodat collectiebeheerders ermee aan de slag kunnen. Wij ondersteunen je hier graag bij.') ?></p>
-      <h2><?= t('Ga je aan de slag?') ?></h2>
-      <p><?= t('Ga je aan de slag met het publiceren van datasetbeschrijvingen en de API op het Datasetregister, laat het weten, zodat we je op de hoogte kunnen houden van ontwikkelingen, updates en beschikbaarheid.') ?></p>
-      <h2><?= t('Meer weten?') ?></h2>
-      <p><?= t('Heb je vragen en/of opmerkingen over de werking van het Datasetregister neem dan contact op met <a href="mailto:tech@netwerkdigitaalerfgoed.nl?subject=Datasetregister">tech@netwerkdigitaalerfgoed.nl</a>.') ?></p>
-   </div>
-   <p><br></p>
+   <section class="text m-t-space m-b-space m-theme--blue">
+      <div class="o-container o-container__small m-t-space">
+         <h1><?= t('Veelgestelde vragen voor gebruikers van erfgoeddata') ?></h1>
+         <p><br></p>
+         <h2><?= t('Op welke wijze kan ik het Datasetregister doorzoeken?') ?></h2>
+         <p><?= t('Wil je datasets eenvoudig verkennen, dan kun je gebruikmaken van de publiekswebsite van het Datasetregister met een <a href="datasets">zoekfunctie</a> en filters. Voor technisch gebruik kun je de onderliggende triplestore raadplegen. Deze is beschikbaar via een webinterface: <a href="https://qlever.netwerkdigitaalerfgoed.nl/datasetregister">https://qlever.netwerkdigitaalerfgoed.nl/datasetregister</a>') ?></p>
+         <h2><?= t('Zijn er voorbeelden van SPARQL-queries?') ?></h2>
+         <p><?= t('Ja. Op de pagina <a href="datasets">Doorzoek</a> vind je eenvoudige voorbeelden van zoekqueries. Deze pagina werkt als een SPARQL-generator: op basis van je zoekvraag wordt automatisch een query opgebouwd en uitgevoerd op de triplestore. Je kunt de gegenereerde query ook direct openen in de webinterface om deze verder aan te passen.') ?></p>
+         <p><?= t('Wil je meer inzicht in de mogelijkheden van het Sparl-endpoint en de triple store, bekijk dan de datastory. Deze is momenteel alleen beschikbaar in het Nederlands, maar geeft wel goed inzicht in hoe queries zijn opgebouwd. Via de blauwe pijl boven de resultatentabellen kun je de onderliggende SPARQL-query bekijken. Pas je deze aan, dan zie je direct het effect op de resultaten.') ?></p>
+         <h2><?= t('Wat voor data vind ik in het Datasetregister?') ?></h2>
+         <p><?= t('In het Datasetregister vind je geen datasets zelf, maar datasetbeschrijvingen. Deze beschrijvingen verwijzen naar de daadwerkelijke datasets, de distributies. Die distributies kunnen verschillende vormen hebben, zoals bestanden of datadumps, bijvoorbeeld XML, CSV of RDF, maar ook API’s zoals OAI-PMH, SPARQL of SRU. Wanneer een datasetbeschrijving wordt opgehaald bij de bron, wordt deze gevalideerd en opgeslagen in een eigen graaf op basis van DCAT:dataset. De URL van deze graaf correspondeert met de IRI van de dataset. Beschrijvingen die zijn aangeleverd volgens schema.org/Dataset worden daarbij automatisch geconverteerd naar DCAT. Meer informatie over dit datamodel vind je op de <a href="https://docs.nde.nl/services/dataset-register/data-model/">datamodelpagina</a>. Onderstaande afbeelding laat zien hoe datasetbeschrijvingen en data zich tot elkaar verhouden.') ?></p>
+         <p><img src="assets/datacatalog-dataset-distribution.svg" style="max-width:100%;margin:0 32px;"></p>
+         <h2><?= t('Welke voorwaarden gelden voor het gebruik van datasets?') ?></h2>
+         <p><?= t('Het gebruik van het SPARQL-endpoint en website van het Datasetregister is vrij toegankelijk voor iedereen. Je kunt de datasetbeschrijvingen dus zonder drempels doorzoeken.') ?></p>
+         <p><?= t('De datasetbeschrijvingen worden door erfgoedorganisaties meestal onder een open licentie beschikbaar gesteld, vaak CC0. Deze licentie vind je terug in de verplichte property schema:license. Gebruik data alleen volgens de aangegeven licentievoorwaarden. Let op: de licentie geldt voor de metadata van de datasets. De onderliggende collectieobjecten kunnen onder een andere en soms meer restrictieve licentie vallen.') ?></p>
+      </div>
+   </section>
 </main>
 <?php include("includes/footer.php") ?>

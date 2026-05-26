@@ -47,7 +47,7 @@ include("includes/header.php");
 var querylang1="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "en"; } else { echo "nl"; } ?>";
 var querylang2="<?php if(isset($_GET["lang"]) && $_GET["lang"]=="en") { echo "nl"; } else { echo "en"; } ?>";
 
-const sparqlUrl = 'https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister?query=';
+const sparqlUrl = 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=';
 var sparqlQuery = `PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct:  <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>

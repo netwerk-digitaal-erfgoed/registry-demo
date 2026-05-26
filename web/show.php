@@ -76,7 +76,7 @@ include("includes/header.php");
 </main>
 <?php if (!empty($dataset_uri)) { ?>
 <script>
-const sparqlUrl = 'https://qlever-ui.demo.netwerkdigitaalerfgoed.nl/datasetregister?exec=true&query=';
+const sparqlUrl = 'https://qlever.netwerkdigitaalerfgoed.nl/datasetregister?exec=true&query=';
 const sparqlRepo = 'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql?query=';
 const datasetUri = '<?= htmlspecialchars($dataset_uri,ENT_QUOTES) ?>';
 const sparqlQuery = "SELECT * FROM <" + datasetUri + "> WHERE { ?subject ?predicate ?object . }";

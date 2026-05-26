@@ -15,11 +15,16 @@ include('includes/form-util.php');
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
          <h1 class="title--l"><?= t('Datasetbeschrijving formulier')?></h1>
+         
+         <p><?= t('Heb je geen NDE-compatibel collectie-informatiesysteem waarmee je een datasetbeschrijving kunt maken? Gebruik dan het online formulier hieronder.') ?></p>
+         <p><?= t('Je vult stap voor stap de gevraagde gegevens over je dataset in, zoals titel, licentie en link naar de dataset. Het formulier maakt hier automatisch een computer leesbare datasetbeschrijving van.') ?></p>
+         <p><?= t('Die datasetbeschrijving kun je vervolgens kopiëren en publiceren, bijvoorbeeld op je eigen website. De functioneel beheerder van je website kan dit voor je doen. Zo krijgt je datasetbeschrijving een eigen URL. Dit is technisch nodig om een directe verbinding te leggen tussen de datasetbeschrijving en het Datasetregister. Zodra de datasetbeschrijving via de URL beschikbaar is én is <a href="viaurl.php">aangemeld</a> bij het Datasetregister, kan het Datasetregister deze opnemen. Kan jouw erfgoedorganisatie zelf geen datasetbeschrijving publiceren? Neem dan contact op via de <a href="contact.php">contactpagina</a>.') ?> 
       </div>
    </section>
    <section id="" class="m-t-quarter-space m-theme-bg m-theme--teal search-div">
       <div class="o-container o-container__small">
       <div class="container">
+
          <div class="row">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                <li class="nav-item" role="tab">
@@ -40,12 +45,10 @@ include('includes/form-util.php');
             </ul>
             <div class="tab-content" id="myTabContent">
                <div class="tab-pane fade show active" id="uitleg" role="tabpanel" aria-labelledby="uitleg-tab">
-                  <br>
-                  <p><?= t('Vul zo veel mogelijk van de invoervelden in, minimaal de verplichte invoervelden. Via een tooltip bij het label van een veld wordt er een beschrijving gegeven van het veld, wanneer er op een label geklikt wordt dan wordt de property beschrijving op schema.org geopend. Een groene plus knop voegt een extra invoerveld of invoerveldenset (bij distributie) toe. Op het laatste tabblad kan de datasetbeschrijving in JSON-LD worden gemaakt op basis van de ingevulde waarden.')?></p>
-                  <br>
-                  <p><?= t('Wilt u alleen een indruk krijgen van een datasetbeschrijving? Klik dan op <a id="dataset_examples" href="#">voorbeelddata</a> om alle invulvelden te vullen met voorbeelddata.')?></p>
-                  <br>
-                  <p><?= t('Via het formulier is niet alles mogelijk, zo kunnen er als verwerken en maker alleen nog organisatie ingevuld worden (en niet een persoon), kunnen bij velden met een uitklaplijst geen eigen waarden ingevuld worden en is er geen meertaligheid. Dit kan wel door het resultaat te bewerken in een tekstverwerker.')?></p>
+
+                  <p><?= t('Vul de velden zo volledig mogelijk in. Hoe completer de beschrijving, hoe beter deze vindbaar is voor gebruikers. Bij veel velden vind je een korte toelichting. Deze zie je verschijnen als je met je muis over het veld gaat. Wil je eerst een ingevulde datasetbeschrijving bekijken? Kies dan voor <a id="dataset_examples" href="#">voorbeelddata</a>.') ?>
+                  <p><?= t('Heb je hulp nodig? Neem contact op met een <a href="https://netwerkdigitaalerfgoed.nl/datawerkplaatsen/">datawerkplaats</a>.') ?>
+
                </div>
                <div class="tab-pane fade" id="req" role="tabpanel" aria-labelledby="req-tab">					
                   <br><?php echo_datasetfields(1); ?>

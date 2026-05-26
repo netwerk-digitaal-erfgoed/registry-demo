@@ -115,12 +115,13 @@
                         <div class="c-grid__row m-flex">
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
+                                 <li><a href="over.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Over het Datasetregister') ?></a></li>
                                  <li><a href="contact.php<?= l() ?>" class="router-link-active router-link-exact-active" aria-current="page"><?= t('Hulp nodig?') ?></a></li>
-                                 <li><a href="faq.php<?= l() ?>"><?= t('Veelgestelde vragen') ?></a></li>
                               </ul>
                            </div>
                            <div class="c-grid__col c-site-footer__col">
                               <ul>
+                                 <li><a href="faq.php<?= l() ?>"><?= t('Veelgestelde vragen') ?></a></li>
                                  <li><a href="privacy.php"><?= t('Privacyverklaring') ?></a></li>
                                  <!-- <li><a href="https://docs.nde.nl/requirements-datasets/">Requirements for Datasets</a></li> -->
                               </ul>

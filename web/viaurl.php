@@ -8,8 +8,12 @@ include("includes/header.php") ?>
 <main>
    <section class="text m-t-space m-b-space m-theme--blue">
       <div class="o-container o-container__small m-t-space">
-      <h1 class="title--l"><?= t('Meld een datasetbeschrijving aan') ?></h1>
-      <p><?= t('Voer een URL in van een pagina met een schema.org/Dataset of schema.org/DataCatalog (inline JSON-LD of direct RDF) om deze via de <a href="api/">Datasetregister API</a> aan te melden. Als de domeinnaam voorkomt op de lijst van toegestane domeinnamen (zie <a href="faq-ontwikkelaars.php#allowed_domain_names">FAQ</a>) en de aangetroffen datasetbeschrijving(en) voldoen aan de <a href="https://docs.nde.nl/requirements-datasets/" target="_blank">dataset requirements</a> dan zullen deze in het Datasetregister worden opgenomen.')?></p>
+      <h1 class="title--l"><?= t('Meld je datasetbeschrijving aan') ?></h1>
+      <p><?= t('Heb je je datasetbeschrijving gepubliceerd? Meld deze dan aan bij het Datasetregister.') ?></p>
+	  <p><?= t('Heb je een NDE-compatibel collectie-informatiesysteem? Dan wordt je datasetbeschrijving via je systeem aangemeld bij het Datasetregister. Kan je systeem dit nog niet? Neem dan contact op met je leverancier.') ?></p>
+	  <p><?= t('Heb je geen NDE-compatibel collectie-informatiesysteem? Meld je datasetbeschrijving dan handmatig aan via dit formulier. Vul de URL in van de pagina waarop je datasetbeschrijving hebt gepubliceerd.') ?></p>
+	  <p><?= t('Na een succesvolle aanmelding leest het Datasetregister de datasetbeschrijving automatisch binnen 24 uur in. Daarna verschijnt deze in het register en is je datasetbeschrijving vindbaar voor gebruikers.') ?></p>
+	  <p><?= t('Heb je hulp nodig? Neem contact op met een <a href="https://netwerkdigitaalerfgoed.nl/datawerkplaatsen/">datawerkplaats</a>.') ?></p>
    </section>
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form id="viaurl">
