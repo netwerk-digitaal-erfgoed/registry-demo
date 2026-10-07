@@ -78,7 +78,7 @@ include('includes/form-util.php');
 <!-- jQuery  -->
 <script src="assets/vendor/jquery/jquery.min.js"></script>
 <script src="assets/vendor/chosen/chosen.jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
 <script>
 <?php echo_datasetscript(); ?>
