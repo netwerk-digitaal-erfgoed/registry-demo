@@ -15,7 +15,7 @@ sdo:locations per organisation (publisher/creator) from graph https://demo.netwe
 via some search/openrefine handwork collected in https://docs.google.com/spreadsheets/d/1HOC2ij_YKPpXc7WrkyNlOFeAiJweWIlimYky7-dhy6g/edit?gid=0#gid=0
 -->
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 <style>
 #map {
   height: 800px;
@@ -58,7 +58,7 @@ via some search/openrefine handwork collected in https://docs.google.com/spreads
 </main>
 <div id="map"></div>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script>
 
 document.getElementById("listSelect").addEventListener("change", function () {

@@ -33,7 +33,7 @@ include("includes/header.php") ?>
       <div class="o-container o-container__small"><form action="validate.php" id="validate_form" class="form-control" method="get">
 	  <?php if (isset($_GET["lang"]) && $_GET["lang"]=="en") { echo '<input type="hidden" name="lang" value="en">'; } ?>
          <label for="datasetdescriptionurl"><?= t('URL van pagina met datasetbeschrijving (of datacatalogus)')?>:</label>
-         <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= $url ?>"><br>
+         <input type="url" id="datasetdescriptionurl" class="form-control form-control-lg" name="url" value="<?= htmlspecialchars($url, ENT_QUOTES) ?>"><br>
          <span class="btn btn--arrow m-t-half-space btn--api" onclick="validate_form.submit()">
 		 <?= t('Datasetbeschrijving valideren') ?>
             <svg class="rect">

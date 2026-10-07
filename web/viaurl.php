@@ -18,7 +18,7 @@ include("includes/header.php") ?>
    <section id="" class="m-flex c-module c-module--doorway p-t-space p-b-space m-theme-bg m-theme--teal">
       <div class="o-container o-container__small"><form id="viaurl">
          <label for="datasetdescriptionurl"><?= t('URL van pagina met datasetbeschrijving (of datacatalogus)')?>:</label>
-         <input type="url" id="datasetdescriptionurl" required class="form-control form-control-lg" name="db_url" value="<?= $url ?>"><br>
+         <input type="url" id="datasetdescriptionurl" required class="form-control form-control-lg" name="db_url" value="<?= htmlspecialchars($url, ENT_QUOTES) ?>"><br>
 		 <p><input type="checkbox" required name="privacy_check" id="privacy_check"> <?= t('Voor zover er persoonsgegevens in uw datasetbeschrijving of in uw toekomstige databeschrijvingen voorkomen geeft u – als het u zelf betreft - hierbij toestemming of – als het niet u zelf betreft – verklaart u dat u ervoor instaat dat de betrokken personen toestemming hebben gegeven voor het verwerken, waaronder begrepen publiceren, van deze gegevens ten behoeve van het datasetregister en heeft u deze personen gewezen op het <a target="_blank" href="https://www.nationaalarchief.nl/privacybeleid-nationaal-archief">privacybeleid</a> en <a target="_blank" href="https://www.nationaalarchief.nl/privacyreglement-nationaal-archief">privacyreglement</a> van het Nationaal Archief.') ?></p>
 		 <br>
          <span class="btn btn--arrow m-t-half-space btn--api" onclick="call_api()">
