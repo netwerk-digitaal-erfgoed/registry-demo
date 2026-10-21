@@ -1,3 +1,3 @@
-FROM bitnamisecure/php-fpm
-COPY docker/php-fpm/security.ini /opt/bitnami/php/etc/conf.d/zz-security.ini
+FROM php:8.4.27-fpm-alpine
+COPY docker/php-fpm/security.ini /usr/local/etc/php/conf.d/zz-security.ini
 COPY web /web
