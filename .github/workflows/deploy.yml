@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
 
       - name: Build and push image to registry
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: docker/nginx/Dockerfile
@@ -40,7 +40,7 @@ jobs:
             ${{ steps.vars.outputs.docker_image_nginx }}:latest
 
       - name: Build and push image to registry
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: docker/php-fpm/Dockerfile
