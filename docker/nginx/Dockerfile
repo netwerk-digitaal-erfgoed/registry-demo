@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine
+FROM nginx:1.30.7-alpine
 COPY web /web
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
